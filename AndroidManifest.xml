@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.oschina.app"
+    package="com.tencent.sgz"
     android:versionCode="25"
     android:versionName="1.7.6.6" >
 
@@ -174,7 +174,7 @@
         <activity
             android:name="com.tencent.weibo.webview.OAuthV1AuthorizeWebView"
             android:label="@string/app_name" />
-        <activity android:name="net.oschina.app.common.QQWeiboHelper2" />
+        <activity android:name="com.tencent.sgz.common.QQWeiboHelper2" />
         <activity
             android:name=".ui.Capture"
             android:configChanges="orientation|keyboardHidden"
@@ -192,7 +192,7 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <receiver android:name=".ui.BroadCast" >
             <intent-filter>
-                <action android:name="net.oschina.app.action.APPWIDGET_UPDATE" />
+                <action android:name="com.tencent.sgz.action.APPWIDGET_UPDATE" />
             </intent-filter>
         </receiver>
     </application>

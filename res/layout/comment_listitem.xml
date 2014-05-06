@@ -36,7 +36,7 @@
     		android:background="@drawable/review_bg_blue">
     	</LinearLayout>
 	    
-		<net.oschina.app.widget.LinkView 
+		<com.tencent.sgz.widget.LinkView 
 			android:id="@+id/comment_listitem_content" 
 			android:layout_width="fill_parent" 
 			android:layout_height="wrap_content"

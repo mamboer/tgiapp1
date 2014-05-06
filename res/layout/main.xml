@@ -7,7 +7,7 @@
     
 	<include layout="@layout/main_header" />   
     
-    <net.oschina.app.widget.ScrollLayout   
+    <com.tencent.sgz.widget.ScrollLayout   
 	  android:id="@+id/main_scrolllayout"    
 	  android:layout_width="fill_parent"    
 	  android:layout_height="fill_parent"
@@ -21,7 +21,7 @@
 	      
 	  <include layout="@layout/frame_active" />
        
-	</net.oschina.app.widget.ScrollLayout> 
+	</com.tencent.sgz.widget.ScrollLayout> 
     
     <include layout="@layout/main_footer" />   
 

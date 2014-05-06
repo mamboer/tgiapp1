@@ -32,7 +32,7 @@
 			android:layout_marginRight="5dip"/>
 	</FrameLayout>
 
-	<net.oschina.app.widget.PullToRefreshListView
+	<com.tencent.sgz.widget.PullToRefreshListView
 	  	android:id="@+id/question_tag_listview"
 	    style="@style/widget_listview"/>
    	

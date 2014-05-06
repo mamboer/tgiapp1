@@ -19,7 +19,7 @@
 			android:layout_width="fill_parent"
 			android:layout_height="fill_parent">
 		
-			<net.oschina.app.widget.PullToRefreshListView
+			<com.tencent.sgz.widget.PullToRefreshListView
 			  	android:id="@+id/tweet_detail_commentlist"
 			    style="@style/widget_listview"/>
 		</LinearLayout>

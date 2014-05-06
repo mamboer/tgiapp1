@@ -30,7 +30,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import net.oschina.app.R;
+import com.tencent.sgz.R;
 
 public class WeiboDialog extends Dialog {
 

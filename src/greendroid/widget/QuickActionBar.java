@@ -18,7 +18,7 @@ package greendroid.widget;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-import net.oschina.app.R;
+import com.tencent.sgz.R;
 
 import android.content.Context;
 import android.graphics.Rect;

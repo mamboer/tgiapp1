@@ -63,7 +63,7 @@
          	android:text="国产"/>
 	</LinearLayout>
 	
-    <net.oschina.app.widget.ScrollLayout   
+    <com.tencent.sgz.widget.ScrollLayout   
 	  	android:id="@+id/frame_software_scrolllayout"    
 	  	android:layout_width="fill_parent"    
 	  	android:layout_height="fill_parent"
@@ -74,9 +74,9 @@
 		<ListView
 		  	android:id="@+id/frame_software_listview_tag"
 		    style="@style/widget_listview"/>		
-		<net.oschina.app.widget.PullToRefreshListView
+		<com.tencent.sgz.widget.PullToRefreshListView
 		  	android:id="@+id/frame_software_listview"
 		    style="@style/widget_listview"/>   
-	</net.oschina.app.widget.ScrollLayout> 
+	</com.tencent.sgz.widget.ScrollLayout> 
    	
 </LinearLayout>

@@ -12,7 +12,7 @@
 	    android:layout_height="fill_parent"
 	    android:layout_weight="1"
 	    android:orientation="vertical">
-   	   	<net.oschina.app.widget.LinkView 
+   	   	<com.tencent.sgz.widget.LinkView 
 	   		android:id="@+id/comment_pub_quote"
 	        android:layout_width="fill_parent"
 	    	android:layout_height="wrap_content"

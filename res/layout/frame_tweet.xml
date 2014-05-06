@@ -24,7 +24,7 @@
          	android:text="@string/frame_title_tweet_my"/>
     </LinearLayout>
     
-	<net.oschina.app.widget.PullToRefreshListView
+	<com.tencent.sgz.widget.PullToRefreshListView
 	  	android:id="@+id/frame_listview_tweet"
 	    style="@style/widget_listview"/>
 	

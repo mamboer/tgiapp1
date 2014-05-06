@@ -24,11 +24,11 @@
          	android:text="@string/frame_title_news_recommend"/>
     </LinearLayout>
     
-	<net.oschina.app.widget.PullToRefreshListView
+	<com.tencent.sgz.widget.PullToRefreshListView
 	  	android:id="@+id/frame_listview_news"
 	    style="@style/widget_listview"/>
 	
-	<net.oschina.app.widget.PullToRefreshListView
+	<com.tencent.sgz.widget.PullToRefreshListView
 	  	android:id="@+id/frame_listview_blog"
 	    style="@style/widget_listview"
 	    android:visibility="gone"/>

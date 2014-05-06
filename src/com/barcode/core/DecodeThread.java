@@ -29,7 +29,7 @@ import java.util.EnumSet;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
-import net.oschina.app.ui.Capture;
+import com.tencent.sgz.ui.Capture;
 
 /**
  * This thread does all the heavy lifting of decoding the images.

@@ -30,8 +30,8 @@ import android.util.Log;
 
 import java.util.Collection;
 
-import net.oschina.app.R;
-import net.oschina.app.ui.Capture;
+import com.tencent.sgz.R;
+import com.tencent.sgz.ui.Capture;
 
 /**
  * This class handles all the messaging which comprises the state machine for

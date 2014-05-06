@@ -13,7 +13,7 @@
 		android:layout_height="fill_parent"
 		android:layout_weight="1">
 	   	
-		<net.oschina.app.widget.PullToRefreshListView
+		<com.tencent.sgz.widget.PullToRefreshListView
 		  	android:id="@+id/message_list_listview"
 		    style="@style/widget_listview"
 		    android:divider="@null"/>

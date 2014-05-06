@@ -35,7 +35,7 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.oschina.app.R;
+import com.tencent.sgz.R;
 
 /**
  * 二维码扫描框视图

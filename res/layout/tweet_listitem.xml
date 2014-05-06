@@ -36,7 +36,7 @@
 			android:textColor="@color/listitem_black"
 			android:textColorLink="@color/listitem_blue"/> -->
 		
-		<net.oschina.app.widget.LinkView 
+		<com.tencent.sgz.widget.LinkView 
 			android:id="@+id/tweet_listitem_content" 
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content"

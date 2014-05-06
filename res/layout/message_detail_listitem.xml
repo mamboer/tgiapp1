@@ -23,7 +23,7 @@
     	android:orientation="vertical"
     	android:background="@drawable/review_bg_left"> 
         
-		<net.oschina.app.widget.LinkView 
+		<com.tencent.sgz.widget.LinkView 
 			android:id="@+id/messagedetail_listitem_username" 
 			android:layout_width="fill_parent" 
 			android:layout_height="wrap_content"

@@ -35,8 +35,8 @@ import android.util.Log;
 
 import java.util.Map;
 
-import net.oschina.app.R;
-import net.oschina.app.ui.Capture;
+import com.tencent.sgz.R;
+import com.tencent.sgz.ui.Capture;
 
 final class DecodeHandler extends Handler {
 
