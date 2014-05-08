@@ -190,6 +190,34 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HalfTranslucent"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+		<activity
+            android:name=".ui.CDVActivity1"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ZoomLight"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+		<activity
+            android:name=".ui.CDVActivity2"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ZoomLight"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+		<activity
+            android:name=".ui.CDVActivity3"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ZoomLight"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+		<activity
+            android:name=".ui.CDVActivity4"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.ZoomLight"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <receiver android:name=".ui.BroadCast" >
             <intent-filter>
                 <action android:name="com.tencent.sgz.action.APPWIDGET_UPDATE" />

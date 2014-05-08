@@ -9,7 +9,7 @@
     	android:layout_height="40.dip"
     	android:paddingLeft="2dip"
    		android:paddingRight="2dip"
-    	android:background="@drawable/widget_head_bg">
+    	android:background="@color/dark_gray">
         <TextView 
 	        style="@style/detail_head_title"
 	        android:text="@string/setting_head_title"/>
@@ -18,7 +18,7 @@
 		   	android:layout_height="wrap_content" 
 		   	android:layout_gravity="left|center" 
 		   	android:clickable="true" 
-		   	android:background="@drawable/head_back"
+		   	android:background="@drawable/icon_arrow_left"
 		   	android:onClick="back"/>
     </FrameLayout>
     <FrameLayout 

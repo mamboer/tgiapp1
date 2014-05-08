@@ -27,41 +27,14 @@ import com.tencent.sgz.bean.Report;
 import com.tencent.sgz.bean.Result;
 import com.tencent.sgz.bean.Tweet;
 import com.tencent.sgz.bean.URLs;
-import com.tencent.sgz.ui.About;
-import com.tencent.sgz.ui.BaseActivity;
-import com.tencent.sgz.ui.BlogDetail;
-import com.tencent.sgz.ui.Capture;
-import com.tencent.sgz.ui.CommentPub;
-import com.tencent.sgz.ui.FeedBack;
-import com.tencent.sgz.ui.ImageDialog;
-import com.tencent.sgz.ui.ImageZoomDialog;
-import com.tencent.sgz.ui.LoginDialog;
-import com.tencent.sgz.ui.Main;
-import com.tencent.sgz.ui.MessageDetail;
-import com.tencent.sgz.ui.MessageForward;
-import com.tencent.sgz.ui.MessagePub;
-import com.tencent.sgz.ui.NewsDetail;
-import com.tencent.sgz.ui.QuestionDetail;
-import com.tencent.sgz.ui.QuestionPub;
-import com.tencent.sgz.ui.QuestionTag;
-import com.tencent.sgz.ui.ReportUi;
-import com.tencent.sgz.ui.ScreenShotShare;
-import com.tencent.sgz.ui.Search;
-import com.tencent.sgz.ui.Setting;
-import com.tencent.sgz.ui.SoftwareDetail;
-import com.tencent.sgz.ui.SoftwareLib;
-import com.tencent.sgz.ui.TweetDetail;
-import com.tencent.sgz.ui.TweetPub;
-import com.tencent.sgz.ui.UserCenter;
-import com.tencent.sgz.ui.UserFavorite;
-import com.tencent.sgz.ui.UserFriend;
-import com.tencent.sgz.ui.UserInfo;
+import com.tencent.sgz.ui.*;
 import com.tencent.sgz.widget.LinkView;
 import com.tencent.sgz.widget.PathChooseDialog;
 import com.tencent.sgz.widget.LinkView.MyURLSpan;
 import com.tencent.sgz.widget.PathChooseDialog.ChooseCompleteListener;
 import com.tencent.sgz.widget.ScreenShotView;
 import com.tencent.sgz.widget.ScreenShotView.OnScreenShotListener;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -1706,5 +1679,27 @@ public class UIHelper {
 		} else {
 			option.showAsDropDown(aim, -10, 0);
 		}
+	}
+
+
+	/**
+	 * 显示cordova webview1
+	 * @param context
+	 */
+	public static void showCDV1(Context context) {
+		Intent intent = new Intent(context, CDVActivity1.class);
+		context.startActivity(intent);
+	}
+	public static void showCDV2(Context context) {
+		Intent intent = new Intent(context, CDVActivity2.class);
+		context.startActivity(intent);
+	}
+	public static void showCDV3(Context context) {
+		Intent intent = new Intent(context, CDVActivity3.class);
+		context.startActivity(intent);
+	}
+	public static void showCDV4(Context context) {
+		Intent intent = new Intent(context, CDVActivity4.class);
+		context.startActivity(intent);
 	}
 }

@@ -189,8 +189,8 @@
     </style>
 	
     <style name="main_footbar_radio" parent="footbar">
-        <item name="android:background">@color/dark_gray</item>
         <item name="android:padding">0dip</item>
+        <item name="android:background">@drawable/selector_rbtn_black</item>
     </style>
 	<style name="main_footbar_image">
         <item name="android:layout_width">fill_parent</item>
@@ -202,7 +202,7 @@
     <style name="main_footbar_btn">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/full_transparent</item>
+        <item name="android:background">@drawable/selector_rbtn_black</item>
         <item name="android:padding">0dip</item>
         <item name="android:layout_weight">1</item>
     </style>

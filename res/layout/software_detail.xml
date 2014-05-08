@@ -13,18 +13,21 @@
 	   	android:paddingLeft="2dip"
    		android:paddingRight="2dip"
 	   	android:orientation="horizontal"
-	   	android:background="@drawable/head_bg">
+	   	android:background="@color/dark_gray">
 	   	<ImageView 
 	   		android:id="@+id/software_detail_back"
 		   	android:layout_width="wrap_content" 
 		   	android:layout_height="wrap_content" 
 		   	android:layout_gravity="left|center"
 		   	android:clickable="true" 
-		   	android:background="@drawable/head_back"/>
-	   	<TextView 
-	   		style="@style/detail_head_title" 
-	   		android:layout_gravity="center"
-	   		android:text="@string/software_detail_head_title"/>
+		   	android:background="@drawable/icon_arrow_left"/>
+
+	   	<TextView
+	   	    style="@style/detail_head_title"
+	   	    android:layout_gravity="center"
+	   	    android:text="@string/software_detail_head_title"
+	   	    android:textColor="@color/white" />
+
    	   	<ProgressBar 
 			android:id="@+id/software_detail_head_progress" 
 			style="@style/loading_small"
@@ -84,7 +87,14 @@
 		         	android:textColor="@color/black"/>
 	        </LinearLayout>     
 		   	
-			<View style="@style/detail_cut_line"/>
+			<View
+			    android:layout_width="fill_parent"
+			    android:layout_height="1dp"
+			    android:layout_marginTop="5.0dip" 
+                      android:layout_marginLeft="2.0dip" 
+                      android:layout_marginRight="2.0dip" 
+                      android:scaleType="fitXY" 
+			    android:background="@android:color/darker_gray"/>
 		   	
 			<WebView 
 				android:id="@+id/software_detail_webview"
@@ -100,7 +110,7 @@
 	         	android:layout_marginLeft="6.0dip"
 				android:layout_marginRight="6.0dip"
                 android:paddingBottom="10.0dip" 
-                android:background="@drawable/login_user_table_bg" >
+                android:background="@color/teal" >
                    <LinearLayout 
                       	android:layout_width="fill_parent" 
                       	android:layout_height="wrap_content"
@@ -181,14 +191,14 @@
 	                        android:textSize="@dimen/text_size_15" 
 	                        android:textColor="#ff000000"/>
                    </LinearLayout>
-                   <ImageView 
-	                    android:layout_width="fill_parent" 
-	                    android:layout_height="wrap_content" 
-	                    android:layout_marginTop="5.0dip" 
-	                    android:layout_marginLeft="2.0dip" 
-	                    android:layout_marginRight="2.0dip" 
-	                    android:src="@drawable/login_line" 
-	                    android:scaleType="fitXY" />
+                   <View
+			    		android:layout_width="fill_parent"
+			    		android:layout_height="1dp"
+			    		android:layout_marginTop="5.0dip" 
+                      	android:layout_marginLeft="2.0dip" 
+                      	android:layout_marginRight="2.0dip" 
+                      	android:scaleType="fitXY" />
+			    android:background="@android:color/darker_gray"/>
                    <LinearLayout 
 	                    android:layout_width="fill_parent" 
 	                    android:layout_height="wrap_content" 
@@ -224,22 +234,22 @@
                    	android:id="@+id/software_detail_homepage" 
                    	android:layout_width="88.0dip" 
                    	android:layout_height="35.0dip" 
-                   	android:background="@drawable/login_btn_selector"
-                   	android:text="软件首页" />
+                   	android:background="@drawable/selector_btn_green"
+                   	android:text="游戏首页" />
              	<Button 
                		android:layout_centerHorizontal="true"
                    	android:id="@+id/software_detail_download" 
                    	android:layout_width="88.0dip" 
                    	android:layout_height="35.0dip" 
-                   	android:background="@drawable/login_btn_selector"
-                   	android:text="软件下载" />
+                   	android:background="@drawable/selector_btn_yellow"
+                   	android:text="游戏下载" />
              	<Button 
                		android:layout_alignParentRight="true"
                    	android:id="@+id/software_detail_document" 
                    	android:layout_width="88.0dip" 
                    	android:layout_height="35.0dip" 
-                   	android:background="@drawable/login_btn_selector"
-                   	android:text="软件文档" />
+                   	android:background="@drawable/selector_btn_black"
+                   	android:text="游戏文档" />
              </RelativeLayout>
         </LinearLayout>	
     </ScrollView>

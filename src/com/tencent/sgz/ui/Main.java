@@ -10,6 +10,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.cordova.CordovaActivity;
+import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.CordovaWebViewClient;
+
 import com.tencent.sgz.AppConfig;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
@@ -43,6 +47,7 @@ import com.tencent.sgz.widget.BadgeView;
 import com.tencent.sgz.widget.NewDataToast;
 import com.tencent.sgz.widget.PullToRefreshListView;
 import com.tencent.sgz.widget.ScrollLayout;
+
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -76,7 +81,7 @@ import android.widget.TextView;
  * @version 1.0
  * @created 2012-3-21
  */
-public class Main extends BaseActivity {
+public class Main extends BaseActivity1 {
 	
 	public static final int QUICKACTION_LOGIN_OR_LOGOUT = 0;
 	public static final int QUICKACTION_USERINFO = 1;
@@ -216,10 +221,17 @@ public class Main extends BaseActivity {
 		this.initHeadView();
 		this.initFootBar();
 		this.initPageScroll();
+		//this.initPageScroll1();
 		this.initFrameButton();
 		this.initBadgeView();
 		this.initQuickActionGrid();
 		this.initFrameListView();
+		
+		CordovaWebView cw = (CordovaWebView)findViewById(R.id.cdv5);
+		cw.loadUrl("file:///android_asset/www/1.html", 500);
+		cw.setVerticalScrollBarEnabled(true);
+		cw.setHorizontalScrollBarEnabled(false);
+		cw.requestFocusFromTouch();
 
 		// 检查新版本
 		if (appContext.isCheckUp()) {
@@ -248,7 +260,7 @@ public class Main extends BaseActivity {
 	}
 
 	@Override
-	protected void onDestroy() {
+	public void onDestroy() {
 		super.onDestroy();
 		unregisterReceiver(tweetReceiver);
 	}
@@ -1096,6 +1108,7 @@ public class Main extends BaseActivity {
 		mHead_search.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				UIHelper.showSearch(v.getContext());
+				//UIHelper.showCDV1(v.getContext());
 			}
 		});
 		mHeadPub_post.setOnClickListener(new View.OnClickListener() {
@@ -1289,6 +1302,41 @@ public class Main extends BaseActivity {
 										UIHelper.LISTVIEW_ACTION_INIT);
 							break;
 						}
+						setCurPoint(viewIndex);
+					}
+				});
+	}
+	
+	private void initPageScroll1() {
+		mScrollLayout = (ScrollLayout) findViewById(R.id.main_scrolllayout);
+
+		LinearLayout linearLayout = (LinearLayout) findViewById(R.id.main_linearlayout_footer);
+		mHeadTitles = getResources().getStringArray(R.array.head_titles);
+		mViewCount = mScrollLayout.getChildCount();
+		mButtons = new RadioButton[mViewCount];
+
+		for (int i = 0; i < mViewCount; i++) {
+			mButtons[i] = (RadioButton) linearLayout.getChildAt(i * 2);
+			mButtons[i].setTag(i);
+			mButtons[i].setChecked(false);
+			mButtons[i].setOnClickListener(new View.OnClickListener() {
+				public void onClick(View v) {
+					int pos = (Integer) (v.getTag());
+					mScrollLayout.snapToScreen(pos);
+				}
+			});
+		}
+
+		// 设置第一显示屏
+		mCurSel = 0;
+		mButtons[mCurSel].setChecked(true);
+
+		mScrollLayout
+				.SetOnViewChangeListener(new ScrollLayout.OnViewChangeListener() {
+					public void OnViewChange(int viewIndex) {
+						// 切换列表视图-如果列表数据为空：加载数据
+						
+						
 						setCurPoint(viewIndex);
 					}
 				});
@@ -2335,4 +2383,10 @@ public class Main extends BaseActivity {
 		}
 		return flag;
 	}
+	
+	private void startCordovaActivity() {
+		Intent intent = new Intent(getApplicationContext(), CordovaActivity.class);
+		startActivity(intent);		
+	}
+	
 }

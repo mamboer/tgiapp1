@@ -8,7 +8,8 @@
 		android:layout_height="35.0dip"
 		android:orientation="horizontal" 
 		android:background="@color/teal"
-		android:gravity="center_vertical">
+		android:gravity="center_vertical"
+		android:visibility="gone">
      	<Button 
      		android:id="@+id/frame_btn_news_lastest"
      		style="@style/frame_button"
@@ -33,11 +34,25 @@
     
 	<com.tencent.sgz.widget.PullToRefreshListView
 	  	android:id="@+id/frame_listview_news"
-	    style="@style/widget_listview"/>
+	    style="@style/widget_listview"
+	    android:visibility="gone"/>
 	
 	<com.tencent.sgz.widget.PullToRefreshListView
 	  	android:id="@+id/frame_listview_blog"
 	    style="@style/widget_listview"
 	    android:visibility="gone"/>
 	
+	<FrameLayout
+	    android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<org.apache.cordova.CordovaWebView
+			android:id="@+id/cdv5"
+			android:layout_width="fill_parent"
+			android:layout_height="match_parent" /> 
+	</FrameLayout>
+	
+	<org.apache.cordova.CordovaWebView
+    	android:id="@+id/cdv5"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent" />
 </LinearLayout>

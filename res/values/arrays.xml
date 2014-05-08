@@ -32,14 +32,14 @@
         <item>提问</item>
         <item>分享</item>
         <item>综合</item>
-        <item>职业</item>
-        <item>站务</item>
+        <item>角色</item>
+        <item>官网</item>
     </string-array>
     <string-array name="head_titles">
-        <item>资讯</item>
-        <item>问答</item>
-        <item>动弹</item>
-        <item>我的空间</item>
+        <item>首页</item>
+        <item>攻略</item>
+        <item>社区</item>
+        <item>百宝箱</item>
         <item>留言</item>
     </string-array>
     <string-array name="path_op_title">
