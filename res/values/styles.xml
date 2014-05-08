@@ -189,15 +189,22 @@
     </style>
 	
     <style name="main_footbar_radio" parent="footbar">
-        <item name="android:background">@drawable/widget_bar_bg</item>
+        <item name="android:background">@color/dark_gray</item>
         <item name="android:padding">0dip</item>
     </style>
 	<style name="main_footbar_image">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:background">@drawable/widget_bar_bg</item>
+        <item name="android:background">@color/dark_gray</item>
         <item name="android:clickable">true</item>
+    </style>
+    <style name="main_footbar_btn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/full_transparent</item>
+        <item name="android:padding">0dip</item>
+        <item name="android:layout_weight">1</item>
     </style>
    	<style name="main_footbar_cutline">
         <item name="android:layout_width">wrap_content</item>
@@ -242,8 +249,27 @@
         <item name="android:layout_width">fill_parent</item>
    		<item name="android:layout_height">fill_parent</item>
        	<item name="android:layout_weight">1</item>
-       	<item name="android:background">@drawable/frame_button_bg</item>
-       	<item name="android:textColor">@color/frame_button_text_light</item>
+       	<item name="android:background">@color/teal</item>
+       	<item name="android:textColor">@color/white</item>
+    </style>
+    
+    <style name="frame_button_cutline">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    <style name="btn_text">
+        <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:textColor">#ffffff</item>
+	    <item name="android:gravity">center</item>
+	    <item name="android:layout_margin">0dp</item>
+	    <item name="android:textSize">@dimen/text_size_20</item>
+	    <item name="android:textStyle">bold</item>
+	    <item name="android:shadowColor">#000000</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">1</item>
+	    <item name="android:shadowRadius">2</item>
     </style>
     
     <style name="widget_listview">

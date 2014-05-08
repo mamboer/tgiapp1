@@ -20,11 +20,13 @@
 		   	android:layout_gravity="left|center"
 		   	android:clickable="true" 
 		   	android:background="@drawable/head_back"/>
-	   	<TextView 
+
+	   	<TextView
 	   	    android:id="@+id/frame_software_head_title"
-	   		style="@style/detail_head_title" 
-	   		android:layout_gravity="center"
-	   		android:text="开源软件库"/>
+	   	    style="@style/detail_head_title"
+	   	    android:layout_gravity="center"
+	   	    android:text="腾讯游戏" />
+
    	   	<ProgressBar 
 			android:id="@+id/frame_software_head_progress" 
 			style="@style/loading_small"

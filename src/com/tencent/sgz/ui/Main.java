@@ -142,7 +142,7 @@ public class Main extends BaseActivity {
 	private RadioButton fbQuestion;
 	private RadioButton fbTweet;
 	private RadioButton fbactive;
-	private ImageView fbSetting;
+	private Button fbSetting;
 
 	private Button framebtn_News_lastest;
 	private Button framebtn_News_blog;
@@ -1119,7 +1119,7 @@ public class Main extends BaseActivity {
 		fbTweet = (RadioButton) findViewById(R.id.main_footbar_tweet);
 		fbactive = (RadioButton) findViewById(R.id.main_footbar_active);
 
-		fbSetting = (ImageView) findViewById(R.id.main_footbar_setting);
+		fbSetting = (Button) findViewById(R.id.main_footbar_setting);
 		fbSetting.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				// 展示快捷栏&判断是否登录&是否加载文章图片
