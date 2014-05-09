@@ -12,14 +12,14 @@
 	   	android:paddingLeft="2dip"
    		android:paddingRight="7dip"
 	   	android:orientation="horizontal"
-	   	android:background="@drawable/widget_head_bg">
+	   	android:background="@color/dark_gray">
 	   	<ImageView 
 	   		android:id="@+id/friend_head_back"
 		   	android:layout_width="wrap_content" 
 		   	android:layout_height="wrap_content" 
 		   	android:layout_gravity="left|center"
 		   	android:clickable="true" 
-		   	android:background="@drawable/head_back"/>
+		   	android:background="@drawable/icon_arrow_left"/>
 	   	<TextView 
 	   		style="@style/detail_head_title" 
 	   		android:layout_gravity="center"

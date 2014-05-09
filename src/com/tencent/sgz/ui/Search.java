@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
+import com.tencent.sgz.AppManager;
 import com.tencent.sgz.R;
 import com.tencent.sgz.adapter.ListViewSearchAdapter;
 import com.tencent.sgz.bean.SearchList;
@@ -12,6 +13,7 @@ import com.tencent.sgz.bean.Notice;
 import com.tencent.sgz.bean.SearchList.Result;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -30,7 +32,7 @@ import android.widget.TextView;
  * 搜索
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-3-21
+ * @created 2014-5-9
  */
 public class Search extends BaseActivity{
 	private Button mSearchBtn;

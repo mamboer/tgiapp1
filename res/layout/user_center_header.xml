@@ -6,7 +6,7 @@
    	android:paddingRight="2dip"
    	android:gravity="center_vertical"
    	android:orientation="horizontal"
-   	android:background="@drawable/head_bg">
+   	android:background="@color/dark_gray">
    	<TextView 
    		android:id="@+id/user_center_head_title"
    		style="@style/detail_head_title"
@@ -20,7 +20,7 @@
 	   	android:layout_height="wrap_content" 
 	   	android:layout_gravity="left|center"
 	   	android:clickable="true" 
-	   	android:background="@drawable/head_back"/>
+	   	android:background="@drawable/icon_arrow_left"/>
 	<ProgressBar 
 		android:id="@+id/user_center_head_progress" 
 		style="@style/loading_small"

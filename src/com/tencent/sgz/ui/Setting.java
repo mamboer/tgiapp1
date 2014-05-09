@@ -45,9 +45,6 @@ public class Setting extends PreferenceActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		// 添加Activity到堆栈
-		AppManager.getAppManager().addActivity(this);
-
 		// 设置显示Preferences
 		addPreferencesFromResource(R.xml.preferences);
 		// 获得SharedPreferences
@@ -262,10 +259,6 @@ public class Setting extends PreferenceActivity {
 
 	}
 
-	public void back(View paramView) {
-		finish();
-	}
-
 	@Override
 	protected void onNewIntent(Intent intent) {
 		super.onNewIntent(intent);
@@ -273,12 +266,5 @@ public class Setting extends PreferenceActivity {
 		if (intent.getBooleanExtra("LOGIN", false)) {
 			account.setTitle(R.string.main_menu_logout);
 		}
-	}
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		// 结束Activity&从堆栈中移除
-		AppManager.getAppManager().finishActivity(this);
 	}
 }

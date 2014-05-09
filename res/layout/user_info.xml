@@ -3,7 +3,7 @@
   	android:layout_width="fill_parent"
   	android:layout_height="fill_parent"
   	android:orientation="vertical"
-  	android:background="@color/graywhite">
+  	android:background="@color/white">
 
 	<FrameLayout 
 	   	android:layout_width="fill_parent"
@@ -12,14 +12,14 @@
 	   	android:paddingRight="2dip"
 	   	android:gravity="center_vertical"
 	   	android:orientation="horizontal"
-	   	android:background="@drawable/head_bg">
+	   	android:background="@color/dark_gray">
 	   	<ImageView 
 	   		android:id="@+id/user_info_back"
 		   	android:layout_width="wrap_content" 
 		   	android:layout_height="wrap_content" 
 		   	android:layout_gravity="left|center"
 		   	android:clickable="true" 
-		   	android:background="@drawable/head_back"/>
+		   	android:background="@drawable/icon_arrow_left"/>
 	   	<TextView 
 	   		style="@style/detail_head_title"
 	   		android:layout_gravity="center"
@@ -82,7 +82,8 @@
 			    	android:layout_height="wrap_content"
 			    	android:layout_alignParentRight="true"
 			    	android:layout_alignParentBottom="true"
-			    	android:background="@drawable/login_btn_selector" 
+			    	android:background="@drawable/selector_btn_green" 
+			    	android:textColor="@color/white"
 			    	android:textSize="@dimen/text_size_12" 
 			        android:text="编辑头像"/>
 		    </RelativeLayout>
@@ -103,7 +104,7 @@
 	                android:duplicateParentState="true"
 	                android:textSize="@dimen/text_size_15" 
 	                android:textStyle="bold" 
-	                android:textColor="@color/grayslate" 
+	                android:textColor="@color/dark_gray" 
 	                android:text="收藏：" />
                 <TextView 
                		android:id="@+id/user_info_favorites"  
@@ -136,7 +137,7 @@
                   	android:duplicateParentState="true"
                   	android:textSize="@dimen/text_size_15" 
                 	android:textStyle="bold" 
-                  	android:textColor="@color/grayslate" 
+                  	android:textColor="@color/dark_gray" 
                   	android:text="关注：" />
              	<TextView 
                		android:id="@+id/user_info_followers"  
@@ -169,7 +170,7 @@
 	                android:duplicateParentState="true"
 	                android:textSize="@dimen/text_size_15" 
 	                android:textStyle="bold" 
-	                android:textColor="@color/grayslate" 
+	                android:textColor="@color/dark_gray" 
 	                android:text="粉丝：" />
                	<TextView 
               		android:id="@+id/user_info_fans"  
@@ -203,7 +204,7 @@
 	                android:duplicateParentState="true"
 	                android:textSize="@dimen/text_size_15" 
 	                android:textStyle="bold" 
-	                android:textColor="@color/grayslate" 
+	                android:textColor="@color/dark_gray" 
 	                android:text="加入时间：" />
                 <TextView 
                		android:id="@+id/user_info_jointime"    
@@ -229,7 +230,7 @@
                   	android:duplicateParentState="true"
                   	android:textSize="@dimen/text_size_15" 
                 	android:textStyle="bold" 
-                  	android:textColor="@color/grayslate" 
+                  	android:textColor="@color/dark_gray" 
                   	android:text="所在地区：" />
              	<TextView 
                		android:id="@+id/user_info_from" 
@@ -255,7 +256,7 @@
                   	android:duplicateParentState="true"
                   	android:textSize="@dimen/text_size_15" 
                 	android:textStyle="bold" 
-                  	android:textColor="@color/grayslate" 
+                  	android:textColor="@color/dark_gray" 
                   	android:text="开发平台：" />
              	<TextView 
                		android:id="@+id/user_info_devplatform"
@@ -281,7 +282,7 @@
 	                android:duplicateParentState="true"
 	                android:textSize="@dimen/text_size_15" 
 	                android:textStyle="bold" 
-	                android:textColor="@color/grayslate" 
+	                android:textColor="@color/dark_gray" 
 	                android:text="专长领域：" />
                	<TextView 
               		android:id="@+id/user_info_expertise"   

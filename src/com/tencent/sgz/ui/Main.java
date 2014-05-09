@@ -63,6 +63,8 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
@@ -79,9 +81,9 @@ import android.widget.TextView;
  * 
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-3-21
+ * @created 2014-5-9
  */
-public class Main extends BaseActivity1 {
+public class Main extends BaseActivity {
 	
 	public static final int QUICKACTION_LOGIN_OR_LOGOUT = 0;
 	public static final int QUICKACTION_USERINFO = 1;
@@ -227,11 +229,7 @@ public class Main extends BaseActivity1 {
 		this.initQuickActionGrid();
 		this.initFrameListView();
 		
-		CordovaWebView cw = (CordovaWebView)findViewById(R.id.cdv5);
-		cw.loadUrl("file:///android_asset/www/1.html", 500);
-		cw.setVerticalScrollBarEnabled(true);
-		cw.setHorizontalScrollBarEnabled(false);
-		cw.requestFocusFromTouch();
+		this.initWebview();
 
 		// 检查新版本
 		if (appContext.isCheckUp()) {
@@ -262,7 +260,10 @@ public class Main extends BaseActivity1 {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		unregisterReceiver(tweetReceiver);
+		//TODO:跟踪调查
+		try{
+			unregisterReceiver(tweetReceiver);
+		}catch(Exception e){}
 	}
 	
 	
@@ -364,6 +365,21 @@ public class Main extends BaseActivity1 {
 		}
 	}
 
+	/**
+	 * 初始化webview
+	 */
+	private void initWebview(){
+		WebView cdv = (WebView)findViewById(R.id.cdv5);
+		cdv.loadUrl("http://faso.me");//file:///android_asset/www/1.html
+		WebSettings ws = cdv.getSettings();
+		ws.setJavaScriptEnabled(true);
+		ws.setSupportZoom(true);
+		ws.setBuiltInZoomControls(true);
+		ws.setDefaultFontSize(15);
+        UIHelper.addWebImageShow(this, cdv);
+        cdv.setWebViewClient(UIHelper.getWebViewClient());
+	}
+	
 	/**
 	 * 初始化快捷栏
 	 */
@@ -1361,16 +1377,16 @@ public class Main extends BaseActivity1 {
 		mHeadPub_tweet.setVisibility(View.GONE);
 		// 头部logo、发帖、发动弹按钮显示
 		if (index == 0) {
-			mHeadLogo.setImageResource(R.drawable.frame_logo_news);
+			mHeadLogo.setImageResource(R.drawable.icon_home);
 			mHead_search.setVisibility(View.VISIBLE);
 		} else if (index == 1) {
-			mHeadLogo.setImageResource(R.drawable.frame_logo_post);
+			mHeadLogo.setImageResource(R.drawable.ico_game);
 			mHeadPub_post.setVisibility(View.VISIBLE);
 		} else if (index == 2) {
-			mHeadLogo.setImageResource(R.drawable.frame_logo_tweet);
+			mHeadLogo.setImageResource(R.drawable.ico_people);
 			mHeadPub_tweet.setVisibility(View.VISIBLE);
 		} else if (index == 3) {
-			mHeadLogo.setImageResource(R.drawable.frame_logo_active);
+			mHeadLogo.setImageResource(R.drawable.icon_apps);
 			mHeadPub_tweet.setVisibility(View.VISIBLE);
 		}
 	}

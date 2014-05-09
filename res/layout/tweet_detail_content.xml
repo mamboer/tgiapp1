@@ -42,7 +42,7 @@
 	           	android:includeFontPadding="false"
 	           	android:textSize="@dimen/text_size_10"
 	            android:textColor="@color/listitem_gray"
-	            android:text="更新了动弹"/>       	
+	            android:text="更新了微博"/>       	
 	    </LinearLayout>
 		<!-- 
 		<TextView 

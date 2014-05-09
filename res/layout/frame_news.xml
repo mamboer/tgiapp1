@@ -42,17 +42,21 @@
 	    style="@style/widget_listview"
 	    android:visibility="gone"/>
 	
-	<FrameLayout
-	    android:layout_width="fill_parent"
-		android:layout_height="fill_parent">
-		<org.apache.cordova.CordovaWebView
-			android:id="@+id/cdv5"
-			android:layout_width="fill_parent"
-			android:layout_height="match_parent" /> 
-	</FrameLayout>
-	
-	<org.apache.cordova.CordovaWebView
-    	android:id="@+id/cdv5"
+	<ScrollView
+    	android:id="@+id/home_scrollview" 
     	android:layout_width="fill_parent"
-    	android:layout_height="fill_parent" />
+    	android:layout_height="0dip"
+    	android:layout_weight="1"
+    	android:scrollbars="vertical"
+    	android:fadingEdge="none">
+     	
+	    <WebView
+	        android:id="@+id/cdv5"
+		    android:layout_width="fill_parent"
+   			android:layout_height="wrap_content"
+   			android:background="@color/teal"
+	        />
+	    
+    </ScrollView>
+
 </LinearLayout>

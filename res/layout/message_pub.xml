@@ -12,13 +12,13 @@
    		android:paddingRight="7dip"
 	   	android:gravity="center_vertical"
 	   	android:orientation="horizontal"
-	   	android:background="@drawable/head_bg">
+	   	android:background="@color/dark_gray">
 	   	<ImageView 
 	   		android:id="@+id/message_pub_back"
 		   	android:layout_width="wrap_content" 
 		   	android:layout_height="wrap_content" 
 		   	android:clickable="true" 
-		   	android:background="@drawable/head_back"/>
+		   	android:background="@drawable/icon_arrow_left"/>
 	   	<TextView 
 	   		style="@style/detail_head_title"
 	   		android:text="发送留言"/>
@@ -26,7 +26,7 @@
 	    	android:id="@+id/message_pub_publish"
 	        android:layout_width="45dip"
 	    	android:layout_height="wrap_content"
-	    	android:background="@drawable/login_btn_selector" 
+	    	android:background="@drawable/selector_btn_green" 
 	        android:text="发送"/>
 	</LinearLayout>
 
@@ -43,15 +43,17 @@
 	        android:autoLink="web"
 	        android:textSize="14sp"
 	        android:textColor="@color/white"
-	        android:background="@drawable/line_blue"/>
-	    <TextView 
-	        android:layout_height="wrap_content"
+	        android:background="@color/teal"/>
+
+	    <TextView
 	        android:layout_width="wrap_content"
-	        android:layout_marginTop="6.0dip"
+	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="2.0dip"
+	        android:layout_marginTop="6.0dip"
 	        android:text="* 留言内容(最多250个字)"
-	        android:textSize="12sp"
-	        android:textColor="@color/head_text"/>
+	        android:textColor="@color/dark_gray"
+	        android:textSize="12sp" />
+
 	    <EditText
 	        android:id="@+id/message_pub_content"
 	        android:layout_width="fill_parent"

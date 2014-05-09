@@ -18,15 +18,15 @@
 	    	android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content"
    		    android:padding="5.0dip"
-   		    android:background="@drawable/review_bg_blue">
+   		    android:background="@color/teal">
 	   		<ProgressBar style="@style/loading_small"/>
 		   	<TextView 
 		        android:layout_width="wrap_content"
 		    	android:layout_height="wrap_content"
 		    	android:layout_marginLeft="3dip"
 		        android:textSize="15sp"
-		        android:textColor="@color/black"
-		        android:text="动弹后台发布中···"/>
+		        android:textColor="@color/white"
+		        android:text="微博后台发布中···"/>
 	   	</LinearLayout>
 	</LinearLayout>
 	
@@ -77,7 +77,7 @@
 	        android:layout_height="fill_parent"
 	        android:autoLink="web"
 	        android:gravity="top"
-	        android:hint="请输入动弹内容"
+	        android:hint="请输入微博内容"
 	        android:background="@null"/>
 
 		<ImageView

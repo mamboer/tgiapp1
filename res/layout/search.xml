@@ -4,14 +4,32 @@
   	android:layout_height="fill_parent"
   	android:orientation="vertical"
   	android:background="@color/white">
+  	<FrameLayout 
+        android:layout_width="fill_parent" 
+        android:layout_height="40.dip"
+        android:paddingLeft="2dip"
+        android:paddingRight="2dip"
+        android:background="@color/dark_gray">
+        <TextView 
+            style="@style/detail_head_title"
+            android:text="@string/com_txt_search"/>
+        <ImageView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_gravity="left|center" 
+            android:clickable="true" 
+            android:background="@drawable/icon_arrow_left"
+            android:onClick="back"/>
+    </FrameLayout>
+
 	<FrameLayout
-	   	android:layout_width="fill_parent"
-	   	android:layout_height="wrap_content"
-	   	android:gravity="center_vertical"
-	   	android:paddingLeft="5dip"
-   		android:paddingRight="5dip"
-	   	android:orientation="horizontal"
-	   	android:background="@drawable/widget_head_bg">
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@color/white"
+	    android:orientation="horizontal"
+	    android:paddingLeft="5dip"
+	    android:paddingRight="5dip" >
+
 		<EditText
 	        android:id="@+id/search_editer"
 	        android:layout_width="fill_parent"
@@ -57,15 +75,15 @@
 			    android:text="游戏" />
 
 	   		<ImageView
-            style="@style/frame_button_cutline"
-            android:background="@drawable/frame_button_cutline" />
+                style="@style/frame_button_cutline"
+                android:background="@drawable/frame_button_cutline" />
 			<Button 
 				android:id="@+id/search_catalog_post"
 				style="@style/frame_button"
 	         	android:text="问答"/>
 			<ImageView
-            style="@style/frame_button_cutline"
-            android:background="@drawable/frame_button_cutline" />
+                style="@style/frame_button_cutline"
+                android:background="@drawable/frame_button_cutline" />
 
 			<Button
 			    android:id="@+id/search_catalog_blog"
@@ -73,16 +91,16 @@
 			    android:text="攻略" />
 
 			<ImageView
-            style="@style/frame_button_cutline"
-            android:background="@drawable/frame_button_cutline" />
+                style="@style/frame_button_cutline"
+                android:background="@drawable/frame_button_cutline" />
 	   		<Button 
 				android:id="@+id/search_catalog_news"
 				style="@style/frame_button"
 	         	android:text="新闻"/>
 			<ImageView
-            style="@style/frame_button_cutline"
-            android:background="@drawable/frame_button_cutline" 
-            android:visibility="gone"/> 
+                style="@style/frame_button_cutline"
+                android:background="@drawable/frame_button_cutline" 
+                android:visibility="gone"/> 
 			<Button 
 				android:id="@+id/search_catalog_code"
 				style="@style/frame_button"

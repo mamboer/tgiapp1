@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_relativelayout_header"
     android:layout_width="fill_parent"
     android:layout_height="40dip"
@@ -24,12 +23,13 @@
         android:textColor="@color/white" />
 	
    	<ProgressBar 
-		android:id="@+id/main_head_progress" 
-		style="@style/loading_small"
-		android:layout_toRightOf="@id/main_head_title"
-		android:layout_centerVertical="true"
-		android:layout_marginLeft="5.0dip"
-		android:visibility="gone"/>
+   	    android:id="@+id/main_head_progress" 
+   	    style="@style/GenericProgressIndicator"
+   	    android:layout_toRightOf="@id/main_head_title"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5.0dip"
+        android:visibility="gone"/>
+
     
     <ImageButton
         android:id="@+id/main_head_search"
@@ -47,7 +47,8 @@
 		android:layout_centerVertical="true"
 		android:layout_alignParentRight="true"
 		android:layout_marginRight="2.0dip"
-		android:background="@drawable/frame_icon_post"
+		style="@style/main_footbar_btn"
+        android:src="@drawable/ico_edit"
 		android:visibility="gone"/>
 		
     <ImageButton
@@ -57,6 +58,8 @@
 		android:layout_centerVertical="true"
 		android:layout_alignParentRight="true"
 		android:layout_marginRight="2.0dip"
-		android:background="@drawable/frame_icon_tweet"
-		android:visibility="gone"/>
+		style="@style/main_footbar_btn"
+        android:src="@drawable/ico_tweet"
+        android:visibility="gone"
+		/>
 </RelativeLayout>

@@ -12,14 +12,14 @@
 	   	android:paddingLeft="2dip"
    		android:paddingRight="7dip"
 	   	android:orientation="horizontal"
-	   	android:background="@drawable/widget_head_bg">
+	   	android:background="@color/dark_gray">
 	   	<ImageView 
 	   		android:id="@+id/favorite_head_back"
 		   	android:layout_width="wrap_content" 
 		   	android:layout_height="wrap_content" 
 		   	android:layout_gravity="left|center"
 		   	android:clickable="true" 
-		   	android:background="@drawable/head_back"/>
+		   	android:background="@drawable/icon_arrow_left"/>
 	   	<TextView 
 	   		style="@style/detail_head_title" 
 	   		android:layout_gravity="center"
@@ -38,28 +38,37 @@
 	   	<LinearLayout 
 			android:layout_width="fill_parent" 
 	   		android:layout_height="35.0dip" 
-	   		android:orientation="horizontal" 
+	   		android:orientation="horizontal"
+	   		android:background="@color/teal" 
 	   		android:gravity="center_vertical">
 			<Button 
 				android:id="@+id/favorite_catalog_software"
 				style="@style/frame_button"
-	         	android:text="软件"/>
-			<ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:background="@drawable/frame_button_cutline"/>
+	         	android:text="游戏"/>
+			<ImageView 
+     	    	style="@style/frame_button_cutline"
+     	    	android:background="@drawable/frame_button_cutline"/>
 			<Button 
 				android:id="@+id/favorite_catalog_post"
 				style="@style/frame_button"
-	         	android:text="话题"/>
-			<ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:background="@drawable/frame_button_cutline"/>
+	         	android:text="攻略"/>
+			<ImageView 
+     	    	style="@style/frame_button_cutline"
+     	    	android:background="@drawable/frame_button_cutline"/>
 			<Button 
 				android:id="@+id/favorite_catalog_code"
 				style="@style/frame_button"
-	         	android:text="代码"/>
-			<ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:background="@drawable/frame_button_cutline"/>
+	         	android:text="图鉴"/>
+			<ImageView 
+     	    	style="@style/frame_button_cutline"
+     	    	android:background="@drawable/frame_button_cutline"/>
 			<Button 
 				android:id="@+id/favorite_catalog_blog"
 				style="@style/frame_button"
-	         	android:text="博客"/>
-			<ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:background="@drawable/frame_button_cutline"/>
+	         	android:text="微博"/>
+			<ImageView 
+     	    	style="@style/frame_button_cutline"
+     	    	android:background="@drawable/frame_button_cutline"/>
 			<Button 
 				android:id="@+id/favorite_catalog_news"
 				style="@style/frame_button"

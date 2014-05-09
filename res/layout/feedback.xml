@@ -16,7 +16,7 @@
     	 	android:layout_height="wrap_content"      
     	 	android:paddingLeft="20dip"
     	 	android:paddingRight="20dip"    
-         	android:background="@drawable/login_bg"
+         	android:background="@color/teal"
          	android:orientation="vertical">            
             <TextView
              	android:layout_width="wrap_content" 
@@ -24,7 +24,7 @@
              	android:layout_gravity="center_horizontal" 
              	android:layout_marginTop="30dip" 
              	android:textSize="@dimen/text_size_18"
-             	android:textColor="@color/black" 
+             	android:textColor="@color/white" 
              	android:textStyle="bold" 
              	android:text="意见反馈" />
             <TextView
@@ -32,7 +32,7 @@
              	android:layout_height="wrap_content"
              	android:layout_marginTop="15dip" 
              	android:textSize="@dimen/text_size_13"
-             	android:textColor="@color/black" 
+             	android:textColor="@color/white" 
              	android:text="欢迎您提出宝贵的意见和建议" />
        	    <EditText
 		        android:id="@+id/feedback_content"
@@ -50,8 +50,9 @@
 		    	android:layout_height="45dip"
 		    	android:layout_marginTop="15dip"
 		    	android:layout_marginBottom="30dip"
-		    	android:background="@drawable/login_btn_selector" 
+		    	android:background="@drawable/selector_btn_black" 
 		    	android:textSize="@dimen/text_size_18"
+		    	android:textColor="@color/white"
 		        android:text="提交反馈"/>
         </LinearLayout>            
     </ScrollView>

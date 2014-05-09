@@ -17,12 +17,15 @@
 			android:layout_width="fill_parent" 
 			android:layout_height="35.0dip"
 			android:orientation="horizontal" 
+			android:background="@color/teal"
 			android:gravity="center_vertical">
 	     	<Button 
 	     		android:id="@+id/user_center_btn_active"
 	     		style="@style/frame_button"
 	         	android:text="动态"/>
-	     	<ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:background="@drawable/frame_button_cutline"/>
+	     	<ImageView
+     	    	style="@style/frame_button_cutline"
+     	    	android:background="@drawable/frame_button_cutline" />
 	     	<Button 
 	     		android:id="@+id/user_center_btn_blog"
 	     		style="@style/frame_button"

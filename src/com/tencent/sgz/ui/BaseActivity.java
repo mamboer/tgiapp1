@@ -72,5 +72,8 @@ public class BaseActivity extends Activity {
 		return super.onKeyDown(keyCode, event);
 	}
 	
+	public void back(View paramView) {
+		AppManager.getAppManager().finishActivity(this);
+	}
 
 }

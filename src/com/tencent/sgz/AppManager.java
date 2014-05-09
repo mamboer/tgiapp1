@@ -10,7 +10,7 @@ import android.content.Context;
  * 应用程序Activity管理类：用于Activity管理和应用程序退出
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-3-21
+ * @created 2014-04-21
  */
 public class AppManager {
 	
@@ -54,7 +54,7 @@ public class AppManager {
 	 * 结束指定的Activity
 	 */
 	public void finishActivity(Activity activity){
-		if(activity!=null){
+		if( activity!=null && !activity.isFinishing() ){
 			activityStack.remove(activity);
 			activity.finish();
 			activity=null;

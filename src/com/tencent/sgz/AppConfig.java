@@ -46,7 +46,7 @@ public class AppConfig {
 
 	public final static String SAVE_IMAGE_PATH = "save_image_path";
 	@SuppressLint("NewApi")
-	public final static String DEFAULT_SAVE_IMAGE_PATH = Environment.getExternalStorageDirectory()+ File.separator+ "OSChina"+ File.separator;
+	public final static String DEFAULT_SAVE_IMAGE_PATH = Environment.getExternalStorageDirectory()+ File.separator+ "sgz"+ File.separator;
 			
 	private Context mContext;
 	private AccessInfo accessInfo = null;

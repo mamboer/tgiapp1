@@ -54,13 +54,14 @@
 	            android:layout_weight="1"
 	            android:entries="@array/post_pub_options" />
 	    </LinearLayout>
+
 	    <TextView
 	        android:id="@+id/textView1"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginLeft="2.0dip"
 	        android:text="请对问题进行详细描述："
-	        android:textColor="@color/author_text" />
+	        android:textColor="@color/dark_gray" />
 
 	    <EditText
 	        android:id="@+id/question_pub_content"

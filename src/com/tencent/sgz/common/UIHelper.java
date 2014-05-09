@@ -1541,9 +1541,9 @@ public class UIHelper {
 						// i.setType("text/plain"); //模拟器
 						i.setType("message/rfc822"); // 真机
 						i.putExtra(Intent.EXTRA_EMAIL,
-								new String[] { "zhangdeyi@tencent.net" });
+								new String[] { "badstyle@qq.com" });
 						i.putExtra(Intent.EXTRA_SUBJECT,
-								"开源中国Android客户端 - 错误报告");
+								"赤壁乱舞客户端 - 错误报告");
 						i.putExtra(Intent.EXTRA_TEXT, crashReport);
 						cont.startActivity(Intent.createChooser(i, "发送错误报告"));
 						// 退出

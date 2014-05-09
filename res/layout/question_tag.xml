@@ -13,14 +13,14 @@
 	   	android:paddingRight="2dip"
 	   	android:gravity="center_vertical"
 	   	android:orientation="horizontal"
-	   	android:background="@drawable/head_bg">
+	   	android:background="@color/dark_gray">
 	   	<ImageView 
 	   		android:id="@+id/question_tag_home"
 		   	android:layout_width="wrap_content" 
 		   	android:layout_height="wrap_content" 
 		   	android:layout_gravity="left|center"
 		   	android:clickable="true" 
-		   	android:background="@drawable/head_home"/>
+		   	android:background="@drawable/icon_home"/>
 	   	<TextView 
 	   	    android:id="@+id/question_tag_head_title"
 	   		style="@style/detail_head_title" 
