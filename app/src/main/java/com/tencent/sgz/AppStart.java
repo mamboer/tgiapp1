@@ -6,6 +6,7 @@ import java.util.List;
 import com.tencent.sgz.common.FileUtils;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.ui.Main;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -22,7 +23,7 @@ import android.widget.LinearLayout;
  * 应用程序启动类：显示欢迎界面并跳转到主界面
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-3-21
+ * @created 2014-5-11
  */
 public class AppStart extends Activity {
     
