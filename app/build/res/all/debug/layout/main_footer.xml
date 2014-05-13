@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_linearlayout_footer"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/dark_gray"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+	<RadioButton
+	    android:id="@+id/main_footbar_news"
+	    style="@style/main_footbar_radio"
+	    android:drawableTop="@drawable/icon_home"
+	    android:text="@string/main_menu_home" />
+
+	<ImageView
+		style="@style/main_footbar_cutline"
+		android:src="@drawable/widget_bar_cut_off"/>
+
+	<RadioButton
+	    android:id="@+id/main_footbar_question"
+	    style="@style/main_footbar_radio"
+	    android:drawableTop="@drawable/ico_game"
+	    android:text="@string/main_menu_manual" />
+
+	<ImageView
+		style="@style/main_footbar_cutline"
+		android:src="@drawable/widget_bar_cut_off"/>
+
+	<RadioButton
+	    android:id="@+id/main_footbar_tweet"
+	    style="@style/main_footbar_radio"
+	    android:drawableTop="@drawable/ico_people"
+	    android:text="@string/main_menu_community" />
+
+	<ImageView
+		style="@style/main_footbar_cutline"
+		android:src="@drawable/widget_bar_cut_off"/>
+
+	<RadioButton
+	    android:id="@+id/main_footbar_active"
+	    style="@style/main_footbar_radio"
+	    android:drawableTop="@drawable/icon_apps"
+	    android:text="@string/main_menu_appbox" />
+
+	<ImageView
+		style="@style/main_footbar_cutline"
+		android:src="@drawable/widget_bar_cut_off"/>
+
+	<Button
+	    android:id="@+id/main_footbar_setting"
+	    style="@style/main_footbar_btn"
+	    android:drawableTop="@drawable/icon_person"
+	    android:text="@string/main_menu_icenter"
+	    android:textAppearance="?android:attr/textAppearance"
+	    android:textColor="@color/white"
+	    android:textSize="@dimen/text_size_10" />
+
+</LinearLayout>
+<!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/main_footer.xml -->

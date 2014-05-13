@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@color/grayslate" />
+    <item android:drawable="@color/full_transparent" />
+</selector><!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/head_text_light.xml -->

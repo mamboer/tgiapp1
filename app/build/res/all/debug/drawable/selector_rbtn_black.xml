@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+
+  	<item android:state_pressed="true">
+        <shape>
+		    <solid android:color="@color/gray" />
+		</shape>
+    </item>
+    <item android:state_checked="true">
+        <shape>
+		    <solid android:color="@color/gray" />
+		</shape>
+    </item>
+    <item>
+        <shape>
+		    <solid android:color="@color/dark_gray" />
+		</shape>
+    </item>
+
+</selector>
+<!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/selector_rbtn_black.xml -->

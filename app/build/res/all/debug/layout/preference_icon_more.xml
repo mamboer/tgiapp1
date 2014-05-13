@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	android:src="@drawable/pref_icon_more"/><!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/preference_icon_more.xml -->

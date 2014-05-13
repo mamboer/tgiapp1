@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_relativelayout_header"
+    android:layout_width="fill_parent"
+    android:layout_height="40dip"
+    android:background="@color/dark_gray" >
+  	
+    <ImageView
+        android:id="@+id/main_head_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5.0dip"
+        android:src="@drawable/icon_home" />
+    
+    <TextView
+        android:id="@+id/main_head_title"
+        style="@style/main_head_title"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5.0dip"
+        android:layout_toRightOf="@id/main_head_logo"
+        android:text="@string/app_name"
+        android:textColor="@color/white" />
+	
+   	<ProgressBar 
+   	    android:id="@+id/main_head_progress" 
+   	    style="@style/GenericProgressIndicator"
+   	    android:layout_toRightOf="@id/main_head_title"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5.0dip"
+        android:visibility="gone"/>
+
+    
+    <ImageButton
+        android:id="@+id/main_head_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="2.0dip"
+        android:background="@drawable/icon_search" />
+   	
+    <ImageButton
+    	android:id="@+id/main_head_pub_post"
+  		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerVertical="true"
+		android:layout_alignParentRight="true"
+		android:layout_marginRight="2.0dip"
+		style="@style/main_footbar_btn"
+        android:src="@drawable/ico_edit"
+		android:visibility="gone"/>
+		
+    <ImageButton
+    	android:id="@+id/main_head_pub_tweet"
+	  	android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerVertical="true"
+		android:layout_alignParentRight="true"
+		android:layout_marginRight="2.0dip"
+		style="@style/main_footbar_btn"
+        android:src="@drawable/ico_tweet"
+        android:visibility="gone"
+		/>
+</RelativeLayout>
+<!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/main_header.xml -->

@@ -1,0 +1,4109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res" >
+            <file
+                name="audio_animation_asc"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/audio_animation_asc.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="audio_animation_desc"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/audio_animation_desc.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="gd_grow_from_bottom"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/gd_grow_from_bottom.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="gd_grow_from_bottomleft_to_topright"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/gd_grow_from_bottomleft_to_topright.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="gd_grow_from_bottomright_to_topleft"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/gd_grow_from_bottomright_to_topleft.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="gd_grow_from_top"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/gd_grow_from_top.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="gd_grow_from_topleft_to_bottomright"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/gd_grow_from_topleft_to_bottomright.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="gd_grow_from_topright_to_bottomleft"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/gd_grow_from_topright_to_bottomleft.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="gd_rack"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/gd_rack.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="gd_shrink_from_bottom"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/gd_shrink_from_bottom.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="gd_shrink_from_bottomleft_to_topright"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/gd_shrink_from_bottomleft_to_topright.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="gd_shrink_from_bottomright_to_topleft"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/gd_shrink_from_bottomright_to_topleft.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="gd_shrink_from_top"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/gd_shrink_from_top.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="gd_shrink_from_topleft_to_bottomright"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/gd_shrink_from_topleft_to_bottomright.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="gd_shrink_from_topright_to_bottomleft"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/gd_shrink_from_topright_to_bottomleft.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="head_in"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/head_in.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="head_out"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/head_out.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="loading"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/loading.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="login_loading"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/login_loading.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="slide_in_up"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/slide_in_up.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="slide_out_down"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/slide_out_down.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="translucent_zoom_exit"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/translucent_zoom_exit.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="translucent_zoom_in"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/translucent_zoom_in.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="translucent_zoom_out"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/anim/translucent_zoom_out.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="frame_button_text_light"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/color/frame_button_text_light.xml"
+                qualifiers=""
+                type="color" />
+            <file
+                name="primary_text_light"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/color/primary_text_light.xml"
+                qualifiers=""
+                type="color" />
+            <file
+                name="secondary_text_light"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/color/secondary_text_light.xml"
+                qualifiers=""
+                type="color" />
+            <file
+                name="about"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/about.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="about_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/about_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_search_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/btn_search_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="clearwords_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/clearwords_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="frame_button_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/frame_button_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="frame_icon_post"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/frame_icon_post.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="frame_icon_search"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/frame_icon_search.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="frame_icon_tweet"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/frame_icon_tweet.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="gd_quick_action_bar_item"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/gd_quick_action_bar_item.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="gd_quick_action_grid_selector"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/gd_quick_action_grid_selector.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="head_back"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/head_back.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="head_favorite"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/head_favorite.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="head_home"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/head_home.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="head_refresh"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/head_refresh.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="head_text_light"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/head_text_light.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="listview_item_selector"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/listview_item_selector.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="login_btn_selector"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/login_btn_selector.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="login_checkbox_selector"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/login_checkbox_selector.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="login_close_button"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/login_close_button.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="pref_checkbox_selector_style"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/pref_checkbox_selector_style.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="preview_button"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/preview_button.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="selector_btn_black"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/selector_btn_black.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="selector_btn_green"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/selector_btn_green.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="selector_btn_yellow"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/selector_btn_yellow.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="selector_rbtn_black"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/selector_rbtn_black.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="shape_conor_fff1f2f3"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/shape_conor_fff1f2f3.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="start_background"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/start_background.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="table_above_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/table_above_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="table_below_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/table_below_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="table_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/table_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="table_mid_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/table_mid_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="tweet_custom_loading"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/tweet_custom_loading.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="welcome"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/welcome.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_active"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_active.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_atme"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_atme.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_audio"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_audio.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_comment"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_comment.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_detail"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_detail.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_face"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_face.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_favorite"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_favorite.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_favorite2"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_favorite2.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_keyboard"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_keyboard.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_mail"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_mail.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_more"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_more.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_news"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_news.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_option"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_option.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_photo"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_photo.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_question"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_question.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_relation_add"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_relation_add.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_relation_del"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_relation_del.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_set"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_set.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_share"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_share.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_soft"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_soft.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_bar_tweet"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_bar_tweet.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_button_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_button_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_dface_border"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/widget_dface_border.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="_back"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/_back.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="_edit"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/_edit.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="_ok"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/_ok.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="_pointer"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/_pointer.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="_shared"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/_shared.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="audio0"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/audio0.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="audio1"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/audio1.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="audio2"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/audio2.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="audio3"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/audio3.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="btn_search_bg_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/btn_search_bg_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="btn_search_bg_sel"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/btn_search_bg_sel.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="clearwords_bg_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/clearwords_bg_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="clearwords_bg_sel"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/clearwords_bg_sel.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="clearwords_icon"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/clearwords_icon.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="close"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/close.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="dialog_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/dialog_bg.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="edit_search_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/edit_search_bg.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f001"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f001.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f002"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f002.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f003"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f003.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f004"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f004.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f005"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f005.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f006"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f006.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f007"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f007.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f008"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f008.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f009"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f009.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f010"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f010.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f011"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f011.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f012"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f012.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f013"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f013.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f014"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f014.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f015"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f015.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f016"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f016.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f017"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f017.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f018"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f018.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f019"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f019.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f020"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f020.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f021"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f021.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f022"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f022.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f023"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f023.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f024"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f024.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f025"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f025.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f026"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f026.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f027"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f027.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f028"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f028.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f029"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f029.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f030"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f030.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f031"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f031.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f032"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f032.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f033"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f033.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f034"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f034.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f035"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f035.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f036"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f036.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f037"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f037.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f038"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f038.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f039"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f039.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f040"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f040.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f041"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f041.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f042"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f042.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f043"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f043.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f044"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f044.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f045"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f045.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f046"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f046.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f047"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f047.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f048"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f048.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f049"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f049.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f050"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f050.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f051"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f051.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f052"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f052.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f053"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f053.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f054"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f054.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f055"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f055.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f056"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f056.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f057"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f057.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f058"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f058.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f059"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f059.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f060"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f060.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f061"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f061.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f062"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f062.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f063"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f063.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f064"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f064.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f065"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f065.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f067"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f067.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f068"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f068.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f069"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f069.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f070"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f070.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f071"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f071.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f072"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f072.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f073"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f073.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f074"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f074.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f075"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f075.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f076"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f076.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f077"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f077.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f078"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f078.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f079"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f079.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f080"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f080.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f081"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f081.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f082"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f082.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f083"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f083.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f084"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f084.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f085"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f085.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f086"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f086.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f087"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f087.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f088"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f088.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f089"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f089.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f090"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f090.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f091"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f091.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f092"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f092.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f093"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f093.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f094"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f094.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f095"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f095.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f096"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f096.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f097"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f097.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f098"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f098.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f099"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f099.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f100"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f100.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f101"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f101.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f103"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f103.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f104"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f104.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="f105"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/f105.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="folder"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/folder.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="frame_button_cutline"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/frame_button_cutline.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="frame_button_n"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/frame_button_n.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="frame_button_p"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/frame_button_p.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="frame_icon_post_n"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/frame_icon_post_n.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="frame_icon_post_p"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/frame_icon_post_p.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="frame_icon_search_n"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/frame_icon_search_n.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="frame_icon_search_p"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/frame_icon_search_p.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="frame_icon_tweet_n"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/frame_icon_tweet_n.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="frame_icon_tweet_p"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/frame_icon_tweet_p.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="frame_logo_active"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/frame_logo_active.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="frame_logo_news"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/frame_logo_news.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="frame_logo_post"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/frame_logo_post.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="frame_logo_tweet"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/frame_logo_tweet.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="garbage"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/garbage.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="gd_quick_action_arrow_up"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/gd_quick_action_arrow_up.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="gd_quick_action_bar_arrow_down"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/gd_quick_action_bar_arrow_down.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="gd_quick_action_bar_background"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/gd_quick_action_bar_background.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="gd_quick_action_bar_bottom_frame"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/gd_quick_action_bar_bottom_frame.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="gd_quick_action_bar_grip_left"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/gd_quick_action_bar_grip_left.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="gd_quick_action_bar_grip_right"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/gd_quick_action_bar_grip_right.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="gd_quick_action_bar_item_normal"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/gd_quick_action_bar_item_normal.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="gd_quick_action_bar_item_pressed"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/gd_quick_action_bar_item_pressed.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="gd_quick_action_bar_item_selected"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/gd_quick_action_bar_item_selected.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="gd_quick_action_grid_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/gd_quick_action_grid_bg.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="gd_quick_action_grid_selector_focused"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/gd_quick_action_grid_selector_focused.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="gd_quick_action_grid_selector_pressed"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/gd_quick_action_grid_selector_pressed.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="gd_quick_action_top_frame"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/gd_quick_action_top_frame.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="head_back_normal"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/head_back_normal.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="head_back_selected"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/head_back_selected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="head_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/head_bg.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="head_favorite_n"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/head_favorite_n.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="head_favorite_p"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/head_favorite_p.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="head_favorite_y"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/head_favorite_y.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="head_home_normal"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/head_home_normal.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="head_home_selected"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/head_home_selected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="head_refresh_normal"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/head_refresh_normal.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="head_refresh_selected"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/head_refresh_selected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_dialog_menu"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ic_dialog_menu.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_about"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ic_menu_about.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_cache"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ic_menu_cache.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_email"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ic_menu_email.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_exit"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ic_menu_exit.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_login"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ic_menu_login.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_logout"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ic_menu_logout.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_myinfo"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ic_menu_myinfo.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_picnoshow"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ic_menu_picnoshow.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_picshow"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ic_menu_picshow.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_setting"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ic_menu_setting.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_software"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ic_menu_software.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_menu_sweep"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ic_menu_sweep.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_pulltorefresh_arrow"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ic_pulltorefresh_arrow.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_edit"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_edit.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_game"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_game.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_magnifier"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_magnifier.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_man"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_man.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_people"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_people.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_qrcode"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_qrcode.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_tweet"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_tweet.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="icon"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/icon.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="icon_apps"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/icon_apps.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="icon_arrow_left"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/icon_arrow_left.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="icon_arrow_right"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/icon_arrow_right.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="icon_gear"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/icon_gear.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="icon_home"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/icon_home.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="icon_person"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/icon_person.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="icon_search"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/icon_search.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="image_loading"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/image_loading.jpg"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="line_blue"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/line_blue.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="line_bluegray"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/line_bluegray.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="listview_divider_line"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/listview_divider_line.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="listview_item_selector_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/listview_item_selector_bg.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="loading_0"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/loading_0.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="loading_1"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/loading_1.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="loading_2"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/loading_2.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="loading_3"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/loading_3.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="loading_4"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/loading_4.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="loading_5"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/loading_5.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="loading_6"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/loading_6.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="loading_7"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/loading_7.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="loading_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/loading_bg.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_bg.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_button"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_button.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_button_press"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_button_press.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_checkbox_selected"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_checkbox_selected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_checkbox_unselected"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_checkbox_unselected.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_close_button_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_close_button_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_close_button_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_close_button_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_line"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_line.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_00"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_00.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_01"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_01.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_02"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_02.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_03"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_03.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_04"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_04.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_05"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_05.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_06"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_06.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_07"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_07.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_08"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_08.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_09"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_09.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_10"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_10.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_11"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_11.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_12"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_12.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_13"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_13.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_14"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_14.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_15"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_15.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_16"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_16.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_17"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_17.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_18"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_18.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_loading_19"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_loading_19.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="login_user_table_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/login_user_table_bg.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="new_data_toast"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/new_data_toast.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="new_folder"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/new_folder.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="pref_category_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/pref_category_bg.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="pref_icon_more"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/pref_icon_more.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="preview_button_n"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/preview_button_n.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="preview_button_p"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/preview_button_p.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="qq_weibo_logo"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/qq_weibo_logo.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="qrcode_scan_line"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/qrcode_scan_line.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="reply_editbox_bg1"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/reply_editbox_bg1.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="reply_editbox_bg2"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/reply_editbox_bg2.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="reply_editbox_bg3"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/reply_editbox_bg3.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="reply_edittext_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/reply_edittext_bg.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="report"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/report.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="review_bg_blue"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/review_bg_blue.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="review_bg_gray"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/review_bg_gray.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="review_bg_left"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/review_bg_left.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="review_bg_right"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/review_bg_right.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="review_bg_top"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/review_bg_top.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="save_image"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/save_image.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="share"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/share.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="sina_weibo_logo"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/sina_weibo_logo.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="table_above_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/table_above_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="table_above_sel"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/table_above_sel.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="table_below_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/table_below_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="table_below_sel"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/table_below_sel.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="table_bg_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/table_bg_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="table_bg_sel"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/table_bg_sel.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="table_mid_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/table_mid_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="table_mid_sel"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/table_mid_sel.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="tweet_amp1"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/tweet_amp1.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="tweet_amp2"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/tweet_amp2.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="tweet_amp3"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/tweet_amp3.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="tweet_amp4"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/tweet_amp4.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="tweet_amp5"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/tweet_amp5.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="tweet_amp6"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/tweet_amp6.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="tweet_amp7"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/tweet_amp7.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="tweet_confirm_dialog_load"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/tweet_confirm_dialog_load.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="tweet_rcd_cancel_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/tweet_rcd_cancel_bg.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="tweet_rcd_cancel_icon"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/tweet_rcd_cancel_icon.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="tweet_voice_rcd_hint"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/tweet_voice_rcd_hint.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="tweet_voice_rcd_hint_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/tweet_voice_rcd_hint_bg.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="tweet_voice_to_short"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/tweet_voice_to_short.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="userinfo_dialog_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/userinfo_dialog_bg.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_active_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_active_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_active_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_active_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_atme_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_atme_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_atme_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_atme_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_bg_n"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_bg_n.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_bg_p"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_bg_p.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_comment_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_comment_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_comment_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_comment_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_cut_off"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_cut_off.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_detail_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_detail_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_detail_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_detail_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_face_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_face_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_face_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_face_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_favorite_n"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_favorite_n.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_favorite_p"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_favorite_p.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_favorite_y"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_favorite_y.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_keyboard_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_keyboard_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_keyboard_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_keyboard_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_mail_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_mail_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_mail_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_mail_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_more_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_more_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_more_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_more_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_news_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_news_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_news_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_news_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_option_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_option_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_option_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_option_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_photo_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_photo_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_photo_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_photo_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_question_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_question_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_question_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_question_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_recorder_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_recorder_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_recorder_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_recorder_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_relation_add_n"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_relation_add_n.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_relation_add_p"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_relation_add_p.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_relation_del_n"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_relation_del_n.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_relation_del_p"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_relation_del_p.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_set_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_set_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_set_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_set_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_share_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_share_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_share_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_share_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_soft_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_soft_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_soft_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_soft_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_tweet_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_tweet_nor.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_bar_tweet_over"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_bar_tweet_over.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_button_bg_nor"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_button_bg_nor.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_button_bg_sel"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_button_bg_sel.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_comment_count_icon"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_comment_count_icon.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_count_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_count_bg.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_count_bg2"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_count_bg2.9.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_dface"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_dface.jpg"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_dface_border_n"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_dface_border_n.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_dface_border_p"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_dface_border_p.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_dface_loading"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_dface_loading.jpg"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_gender_man"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_gender_man.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_gender_woman"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_gender_woman.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_head_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_head_bg.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_head_cur_n"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_head_cur_n.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_head_cur_p"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_head_cur_p.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_original_icon"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_original_icon.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_redirect_icon"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_redirect_icon.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_repaste_icon"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_repaste_icon.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_right_icon"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_right_icon.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="widget_today_icon"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/widget_today_icon.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="icon"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-ldpi/icon.png"
+                qualifiers="ldpi"
+                type="drawable" />
+            <file
+                name="icon"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-mdpi/icon.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="about"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/about.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="active_listitem"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/active_listitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="blog_detail"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/blog_detail.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="blog_detail_footer"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/blog_detail_footer.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="blog_detail_header"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/blog_detail_header.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="blog_listitem"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/blog_listitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="capture"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/capture.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="capture_header"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/capture_header.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="comment_list"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/comment_list.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="comment_listitem"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/comment_listitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="comment_pub"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/comment_pub.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="comment_pub_header"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/comment_pub_header.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="comment_refer"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/comment_refer.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="comment_reply"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/comment_reply.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="favorite_listitem"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/favorite_listitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="feedback"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/feedback.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="file_path_chooser"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/file_path_chooser.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="file_path_listitem"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/file_path_listitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="frame_active"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/frame_active.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="frame_cdv1"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/frame_cdv1.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="frame_cdv2"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/frame_cdv2.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="frame_cdv3"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/frame_cdv3.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="frame_cdv4"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/frame_cdv4.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="frame_news"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/frame_news.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="frame_question"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/frame_question.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="frame_software"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/frame_software.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="frame_tweet"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/frame_tweet.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="friend_listitem"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/friend_listitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="gd_quick_action_bar"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/gd_quick_action_bar.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="gd_quick_action_bar_item"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/gd_quick_action_bar_item.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="gd_quick_action_grid"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/gd_quick_action_grid.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="gd_quick_action_grid_item"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/gd_quick_action_grid_item.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="image_dialog"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/image_dialog.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="image_zoom_dialog"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/image_zoom_dialog.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="listview_footer"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/listview_footer.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="loadingdialog"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/loadingdialog.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="login_dialog"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/login_dialog.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="main"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="main_footer"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/main_footer.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="main_header"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/main_header.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="message_detail"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/message_detail.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="message_detail_footer"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/message_detail_footer.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="message_detail_header"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/message_detail_header.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="message_detail_listitem"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/message_detail_listitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="message_forward"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/message_forward.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="message_listitem"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/message_listitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="message_pub"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/message_pub.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="new_data_toast"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/new_data_toast.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="news_detail"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/news_detail.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="news_detail_footer"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/news_detail_footer.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="news_detail_header"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/news_detail_header.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="news_listitem"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/news_listitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="normal_loading"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/normal_loading.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="preference"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/preference.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="preference_category"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/preference_category.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="preference_icon_more"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/preference_icon_more.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="pull_to_refresh_head"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/pull_to_refresh_head.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="question_detail"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/question_detail.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="question_detail_footer"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/question_detail_footer.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="question_detail_header"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/question_detail_header.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="question_listitem"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/question_listitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="question_pub"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/question_pub.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="question_pub_header"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/question_pub_header.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="question_tag"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/question_tag.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="report"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/report.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="screen_shot_share"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/screen_shot_share.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="search"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/search.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="search_listitem"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/search_listitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="setting"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/setting.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="signin"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/signin.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="software_detail"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/software_detail.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="software_listitem"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/software_listitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="softwarecatalog_listitem"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/softwarecatalog_listitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="start"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/start.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="tweet_detail"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/tweet_detail.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="tweet_detail_content"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/tweet_detail_content.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="tweet_detail_footer"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/tweet_detail_footer.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="tweet_detail_header"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/tweet_detail_header.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="tweet_listitem"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/tweet_listitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="tweet_pub"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/tweet_pub.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="tweet_pub_footer"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/tweet_pub_footer.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="tweet_pub_header"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/tweet_pub_header.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="tweet_pub_voice_rcd_hint_window"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/tweet_pub_voice_rcd_hint_window.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="update_progress"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/update_progress.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="user_center"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/user_center.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="user_center_content"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/user_center_content.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="user_center_footer"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/user_center_footer.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="user_center_header"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/user_center_header.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="user_favorite"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/user_favorite.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="user_friend"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/user_friend.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="user_info"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/user_info.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="widget_bar_option_menu"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/widget_bar_option_menu.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="main_menu"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/menu/main_menu.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="beep"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/raw/beep.ogg"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="newdatatoast"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/raw/newdatatoast.wav"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="notificationsound"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/raw/notificationsound.wav"
+                qualifiers=""
+                type="raw" />
+            <file
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/arrays.xml"
+                qualifiers="" >
+                <string-array name="comment_options_2" >
+                    <item>
+回复
+                    </item>
+                    <item>
+删除
+                    </item>
+                </string-array>
+                <string-array name="report_reason" >
+                    <item>
+广告
+                    </item>
+                    <item>
+色情
+                    </item>
+                    <item>
+翻墙
+                    </item>
+                    <item>
+非正常话题
+                    </item>
+                </string-array>
+                <string-array name="comment_options_1" >
+                    <item>
+回复
+                    </item>
+                </string-array>
+                <string-array name="app_share_items" >
+                    <item>
+新浪微博
+                    </item>
+                    <item>
+腾讯微博
+                    </item>
+                    <item>
+微信朋友圈
+                    </item>
+                    <item>
+截图分享
+                    </item>
+                    <item>
+更多...
+                    </item>
+                </string-array>
+                <string-array name="post_pub_options" >
+                    <item>
+提问
+                    </item>
+                    <item>
+分享
+                    </item>
+                    <item>
+综合
+                    </item>
+                    <item>
+角色
+                    </item>
+                    <item>
+官网
+                    </item>
+                </string-array>
+                <string-array name="head_titles" >
+                    <item>
+首页
+                    </item>
+                    <item>
+攻略
+                    </item>
+                    <item>
+社区
+                    </item>
+                    <item>
+百宝箱
+                    </item>
+                    <item>
+留言
+                    </item>
+                </string-array>
+                <string-array name="path_op_title" >
+                    <item>
+重命名
+                    </item>
+                    <item>
+删除
+                    </item>
+                </string-array>
+                <string-array name="message_list_options" >
+                    <item>
+回复
+                    </item>
+                    <item>
+转发
+                    </item>
+                    <item>
+删除
+                    </item>
+                </string-array>
+                <string-array name="message_detail_options" >
+                    <item>
+转发
+                    </item>
+                    <item>
+删除
+                    </item>
+                </string-array>
+                <string-array name="favorite_options" >
+                    <item>
+取消收藏
+                    </item>
+                </string-array>
+            </file>
+            <file
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/colors.xml"
+                qualifiers="" >
+                <color name="dim_foreground_light_inverse_disabled" >#80bebebe
+                </color>
+                <color name="face_bg" >#eef1f4
+                </color>
+                <color name="listitem_green" >#ffe3ffc6
+                </color>
+                <color name="dim_foreground_light" >#808080
+                </color>
+                <color name="result_minor_text" >#ffc0c0c0
+                </color>
+                <color name="bright_foreground_light" >#ff000000
+                </color>
+                <color name="listitem_blue" >#0e5986
+                </color>
+                <color name="dim_foreground_light_disabled" >#80323232
+                </color>
+                <color name="frame_button_text_nor" >#033a5c
+                </color>
+                <color name="dim_foreground_light_inverse" >#ff006eaa
+                </color>
+                <color name="graywhite" >#F5F5F5
+                </color>
+                <color name="author_text" >#0e5986
+                </color>
+                <color name="pink" >#FFC0CB
+                </color>
+                <color name="weight_bar_buttonup" >#A4A9AE
+                </color>
+                <color name="head_text" >#0e5986
+                </color>
+                <color name="transparent" >#00000000
+                </color>
+                <color name="possible_result_points" >#c0ffbd21
+                </color>
+                <color name="ff40ab54" >#ff40ab54
+                </color>
+                <color name="bright_foreground_light_inverse" >#ffffffff
+                </color>
+                <color name="status_text" >#ffffffff
+                </color>
+                <color name="viewfinder_laser" >#ffcc0000
+                </color>
+                <color name="green" >#008000
+                </color>
+                <color name="teal" >#1FA67A
+                </color>
+                <color name="blue" >#0000FF
+                </color>
+                <color name="orange" >#FFA500
+                </color>
+                <color name="gold" >#FFD700
+                </color>
+                <color name="weight_bar_buttondown" >#63A3D7
+                </color>
+                <color name="listitem_white" >#ffffffff
+                </color>
+                <color name="gray" >#808080
+                </color>
+                <color name="purple" >#800080
+                </color>
+                <color name="encode_view" >#ffffffff
+                </color>
+                <color name="white" >#FFFFFF
+                </color>
+                <color name="result_view" >#b0000000
+                </color>
+                <color name="fff1f2f3" >#fff1f2f3
+                </color>
+                <color name="listitem_black" >#ff000000
+                </color>
+                <color name="lightblue" >#0083FF
+                </color>
+                <color name="black" >#000000
+                </color>
+                <color name="full_transparent" >#00000000
+                </color>
+                <color name="dark_gray" >#333333
+                </color>
+                <color name="grayslate" >#708090
+                </color>
+                <color name="viewfinder_mask" >#60000000
+                </color>
+                <color name="result_points" >#c099cc00
+                </color>
+                <color name="red" >#FF0000
+                </color>
+                <color name="yellow" >#FFFF00
+                </color>
+                <color name="listitem_yellow" >#fffaffbf
+                </color>
+                <color name="bright_foreground_light_disabled" >#80000000
+                </color>
+                <color name="listitem_greenyellow" >#ff87b869
+                </color>
+                <color name="listitem_transparent" >#00000000
+                </color>
+                <color name="half_transparent" >#aa000000
+                </color>
+                <color name="listitem_gray" >#ff9da19e
+                </color>
+                <color name="frame_button_text_select" >#FFFFFF
+                </color>
+                <color name="lemonyellow" >#FFFACD
+                </color>
+                <color name="contents_text" >#ff000000
+                </color>
+                <color name="result_text" >#ffffffff
+                </color>
+            </file>
+            <file
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/dimens.xml"
+                qualifiers="" >
+                <dimen name="text_size_31" >31.0dip
+                </dimen>
+                <dimen name="text_size_32" >32.0dip
+                </dimen>
+                <dimen name="text_size_8" >8.0dip
+                </dimen>
+                <dimen name="text_size_9" >9.0dip
+                </dimen>
+                <dimen name="text_size_7" >7.0dip
+                </dimen>
+                <dimen name="dialog_right_margin" >10dp
+                </dimen>
+                <dimen name="text_size_30" >30.0dip
+                </dimen>
+                <dimen name="dialog_left_margin" >10dp
+                </dimen>
+                <dimen name="text_size_20" >20.0dip
+                </dimen>
+                <dimen name="text_size_21" >21.0dip
+                </dimen>
+                <dimen name="text_size_22" >22.0dip
+                </dimen>
+                <dimen name="text_size_23" >23.0dip
+                </dimen>
+                <dimen name="dialog_btn_close_top_margin" >10dp
+                </dimen>
+                <dimen name="text_size_24" >24.0dip
+                </dimen>
+                <dimen name="text_size_25" >25.0dip
+                </dimen>
+                <dimen name="text_size_26" >26.0dip
+                </dimen>
+                <dimen name="text_size_27" >27.0dip
+                </dimen>
+                <dimen name="gd_arrow_offset" >5dp
+                </dimen>
+                <dimen name="dialog_title_height" >30dp
+                </dimen>
+                <dimen name="space_30" >30.0dip
+                </dimen>
+                <dimen name="text_size_28" >28.0dip
+                </dimen>
+                <dimen name="text_size_29" >29.0dip
+                </dimen>
+                <dimen name="text_size_10" >10.0dip
+                </dimen>
+                <dimen name="text_size_11" >11.0dip
+                </dimen>
+                <dimen name="text_size_12" >12.0dip
+                </dimen>
+                <dimen name="text_size_13" >13.0dip
+                </dimen>
+                <dimen name="text_size_14" >14.0dip
+                </dimen>
+                <dimen name="text_size_15" >15.0dip
+                </dimen>
+                <dimen name="text_size_16" >16.0dip
+                </dimen>
+                <dimen name="dialog_bottom_margin" >10dp
+                </dimen>
+                <dimen name="space_21" >21.0dip
+                </dimen>
+                <dimen name="space_22" >22.0dip
+                </dimen>
+                <dimen name="space_20" >20.0dip
+                </dimen>
+                <dimen name="space_7" >7.0dip
+                </dimen>
+                <dimen name="space_8" >8.0dip
+                </dimen>
+                <dimen name="space_9" >9.0dip
+                </dimen>
+                <dimen name="text_size_17" >17.0dip
+                </dimen>
+                <dimen name="space_29" >29.0dip
+                </dimen>
+                <dimen name="text_size_18" >18.0dip
+                </dimen>
+                <dimen name="text_size_19" >19.0dip
+                </dimen>
+                <dimen name="space_27" >27.0dip
+                </dimen>
+                <dimen name="space_28" >28.0dip
+                </dimen>
+                <dimen name="space_25" >25.0dip
+                </dimen>
+                <dimen name="space_26" >26.0dip
+                </dimen>
+                <dimen name="space_23" >23.0dip
+                </dimen>
+                <dimen name="space_24" >24.0dip
+                </dimen>
+                <dimen name="dialog_top_margin" >30dp
+                </dimen>
+                <dimen name="dialog_btn_close_right_margin" >10dp
+                </dimen>
+                <dimen name="space_3" >3.0dip
+                </dimen>
+                <dimen name="space_4" >4.0dip
+                </dimen>
+                <dimen name="space_5" >5.0dip
+                </dimen>
+                <dimen name="space_6" >6.0dip
+                </dimen>
+                <dimen name="space_1" >1.0dip
+                </dimen>
+                <dimen name="space_2" >2.0dip
+                </dimen>
+                <dimen name="space_10" >10.0dip
+                </dimen>
+                <dimen name="space_11" >11.0dip
+                </dimen>
+                <dimen name="dialog_title_logo_left_margin" >5dp
+                </dimen>
+                <dimen name="space_18" >18.0dip
+                </dimen>
+                <dimen name="space_19" >19.0dip
+                </dimen>
+                <dimen name="space_16" >16.0dip
+                </dimen>
+                <dimen name="space_17" >17.0dip
+                </dimen>
+                <dimen name="space_14" >14.0dip
+                </dimen>
+                <dimen name="space_15" >15.0dip
+                </dimen>
+                <dimen name="space_12" >12.0dip
+                </dimen>
+                <dimen name="space_13" >13.0dip
+                </dimen>
+            </file>
+            <file
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/ids.xml"
+                qualifiers="" >
+                <item
+                    name="return_scan_result"
+                    type="id"/>
+                <item
+                    name="decode_failed"
+                    type="id"/>
+                <item
+                    name="launch_product_query"
+                    type="id"/>
+                <item
+                    name="decode_succeeded"
+                    type="id"/>
+                <item
+                    name="restart_preview"
+                    type="id"/>
+                <item
+                    name="decode"
+                    type="id"/>
+                <item
+                    name="quit"
+                    type="id"/>
+            </file>
+            <file
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/messages.xml"
+                qualifiers="" >
+                <string name="OAUTH_AccessToken_SXPIRED" >授权已过期，请重新授权登录
+                </string>
+                <string name="network_not_connected" >网络连接失败，请检查网络设置
+                </string>
+                <string name="xml_parser_failed" >数据解析异常
+                </string>
+                <string name="msg_read_detail_fail" >无法获取文章信息
+                </string>
+                <string name="Weibo_Share_Success" >微博分享成功
+                </string>
+                <string name="msg_login_email_error" >无效的邮箱地址
+                </string>
+                <string name="sure" >确定
+                </string>
+                <string name="io_exception_error" >文件流异常
+                </string>
+                <string name="delete_blog" >确定删除该博客吗？
+                </string>
+                <string name="Weibo_Message_NULL" >分享数据不能为空
+                </string>
+                <string name="load_more" >更多
+                </string>
+                <string name="load_error" >加载数据出错
+                </string>
+                <string name="msg_load_is_null" >读取失败，可能已被删除
+                </string>
+                <string name="Weibo_Share_Error" >微博分享失败
+                </string>
+                <string name="msg_login_success" >登录成功
+                </string>
+                <string name="Weibo_Message_LONG" >已超出140个字
+                </string>
+                <string name="choose_image" >请选择图片文件！
+                </string>
+                <string name="sinalogin_check_pass" >密码不能为空
+                </string>
+                <string name="new_data_toast_none" >没有新更新
+                </string>
+                <string name="sharing" >分享中...
+                </string>
+                <string name="OAUTH_ERROR" >服务器验证失败
+                </string>
+                <string name="cancle" >取消
+                </string>
+                <string name="msg_login_error" >用户未登录 或 密码错误
+                </string>
+                <string name="select" >选择
+                </string>
+                <string name="republish_tweet" >网络超时，是否重新发布动弹？
+                </string>
+                <string name="msg_login_pwd_null" >请输入密码
+                </string>
+                <string name="share" >分享
+                </string>
+                <string name="msg_load_userface_fail" >用户头像加载失败
+                </string>
+                <string name="app_error" >应用程序错误
+                </string>
+                <string name="http_status_code_error" >网络异常，错误码：%d
+                </string>
+                <string name="delete_image" >确定删除该图片吗？
+                </string>
+                <string name="http_exception_error" >网络异常，请求超时
+                </string>
+                <string name="clearwords" >清除文字吗？
+                </string>
+                <string name="sinalogin_check_account" >账号不能为空
+                </string>
+                <string name="socket_exception_error" >网络异常，读取数据超时
+                </string>
+                <string name="delete_tweet" >确定删除该动弹吗？
+                </string>
+                <string name="msg_login_email_null" >请输入邮箱
+                </string>
+                <string name="msg_noaccess_delete" >您没有删除权限
+                </string>
+                <string name="msg_load_image_fail" >图片加载失败
+                </string>
+                <string name="sinalogin_check_server" >服务器验证中...
+                </string>
+                <string name="new_data_toast_message" >有 %d 条更新
+                </string>
+                <string name="submit_report" >提交报告
+                </string>
+                <string name="msg_login_fail" >登录失败
+                </string>
+                <string name="load_full" >已加载全部
+                </string>
+                <string name="Weibo_Share_Repeat" >已经分享过了
+                </string>
+                <string name="OAUTH_AccessToken_ACCESS" >用户授权登录成功
+                </string>
+                <string name="app_run_code_error" >应用程序运行时异常
+                </string>
+                <string name="load_ing" >加载中···
+                </string>
+                <string name="msg_load_audio_fail" >读取语音文件失败
+                </string>
+                <string name="load_empty" >暂无数据
+                </string>
+                <string name="app_error_message" >很抱歉，应用程序出现错误，即将退出。\n请提交错误报告，我们会尽快修复这个问题！
+                </string>
+                <string name="publishing" >发布中...
+                </string>
+                <string name="OAUTH_RequestToken_ERROR" >第三方应用验证失败
+                </string>
+                <string name="OAUTH_RequestToken_ACCESS" >第三方应用验证成功
+                </string>
+                <string name="app_menu_surelogout" >确定退出程序吗？
+                </string>
+                <string name="OAUTH_AccessToken_ERROR" >用户授权登录失败
+                </string>
+            </file>
+            <file
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/strings.xml"
+                qualifiers="" >
+                <string name="frame_title_news_lastest" >最新资讯
+                </string>
+                <string name="user_friend_follower" >关注(%d)
+                </string>
+                <string name="news_detail_head_title" >新闻正文
+                </string>
+                <string name="frame_title_news_recommend" >推荐阅读
+                </string>
+                <string name="login_dialog_account_hint" >输入账号/邮箱
+                </string>
+                <string name="question_detail_head_title" >帖子正文
+                </string>
+                <string name="img_from_album" >手机相册
+                </string>
+                <string name="com_txt_search" >搜索
+                </string>
+                <string name="tweet_detail_head_title" >微博详情
+                </string>
+                <string name="frame_title_tweet_send" >发个微博
+                </string>
+                <string name="main_menu_community" >社区
+                </string>
+                <string name="main_menu_exit" >退出程序
+                </string>
+                <string name="frame_title_question_job" >角色
+                </string>
+                <string name="tweet_chatfooter_cancel_rcd" >手指上滑，取消发送
+                </string>
+                <string name="footbar_share" >分享
+                </string>
+                <string name="tweet_chatfooter_cancel_rcd_release" >松开手指，取消发送
+                </string>
+                <string name="main_menu_about" >关于我们
+                </string>
+                <string name="frame_title_active_atme" >我
+                </string>
+                <string name="msg_camera_framework_bug" >抱歉，Android相机出现问题。您可能需要重启设备。
+                </string>
+                <string name="footbar_comment" >评论
+                </string>
+                <string name="pull_to_refresh_release_label" >松开可以刷新
+                </string>
+                <string name="img_from_camera" >手机拍照
+                </string>
+                <string name="frame_title_question_share" >分享
+                </string>
+                <string name="user_friend_fans" >粉丝(%d)
+                </string>
+                <string name="footbar_refresh" >刷新
+                </string>
+                <string name="comment_reply_title" >---共有 %d 条评论---
+                </string>
+                <string name="main_menu_sweep" >扫一扫
+                </string>
+                <string name="main_menu_software" >推荐游戏
+                </string>
+                <string name="login_dialog_login" >登  录
+                </string>
+                <string name="pull_to_refresh_tap_label" >下拉可以刷新
+                </string>
+                <string name="main_menu_myinfo" >我的资料
+                </string>
+                <string name="question_pub_head_title" >我要发帖
+                </string>
+                <string name="comment_pub_head_title" >评论回复
+                </string>
+                <string name="main_menu_email" >意见反馈
+                </string>
+                <string name="setting_head_title" >系统设置
+                </string>
+                <string name="frame_title_question_site" >官网
+                </string>
+                <string name="receiver_widgetupdate" >com.tencent.sgz.action.APPWIDGET_UPDATE
+                </string>
+                <string name="login_dialog_reg" >注册帐号
+                </string>
+                <string name="pull_to_refresh_refreshing_label" >加载中...
+                </string>
+                <string name="frame_title_active_myself" >我自己
+                </string>
+                <string name="user_friend_head_title" >我的好友
+                </string>
+                <string name="main_menu_logout" >注销登录
+                </string>
+                <string name="main_menu_search" >搜索
+                </string>
+                <string name="login_dialog_rememberPW" >记住密码:
+                </string>
+                <string name="receiver_tweetpub" >com.tencent.sgz.action.APP_TWEETPUB
+                </string>
+                <string name="login_dialog_account" >账号:
+                </string>
+                <string name="frame_title_news_blog" >最新攻略
+                </string>
+                <string name="login_dialog_autoLogin" >自动登录:
+                </string>
+                <string name="main_menu_picshow" >显示图片
+                </string>
+                <string name="main_menu_setting" >系统设置
+                </string>
+                <string name="frame_title_question_other" >综合
+                </string>
+                <string name="main_menu_picnoshow" >隐藏图片
+                </string>
+                <string name="main_menu_appbox" >百宝箱
+                </string>
+                <string name="com_txt_about" >关于
+                </string>
+                <string name="footbar_more" >更多
+                </string>
+                <string name="main_menu_home" >首页
+                </string>
+                <string name="footbar_favorite" >收藏
+                </string>
+                <string name="user_center_head_title" >用户空间
+                </string>
+                <string name="blog_detail_head_title" >攻略正文
+                </string>
+                <string name="main_menu_manual" >攻略
+                </string>
+                <string name="frame_title_active_message" >留言
+                </string>
+                <string name="frame_title_active_comment" >评论
+                </string>
+                <string name="pull_to_refresh_update" >最近更新：
+                </string>
+                <string name="login_dialog_password" >密码:
+                </string>
+                <string name="main_menu_icenter" >个人中心
+                </string>
+                <string name="main_menu_login" >用户登录
+                </string>
+                <string name="frame_title_question_ask" >问答
+                </string>
+                <string name="frame_title_tweet_hot" >热门微博
+                </string>
+                <string name="login_dialog_password_hint" >输入密码
+                </string>
+                <string name="login_dialog_rememberMe" >记住我的登录信息
+                </string>
+                <string name="frame_title_tweet_lastest" >最新微博
+                </string>
+                <string name="news_detail_lable_pub" >发布于
+                </string>
+                <string name="app_name" >赤壁乱舞
+                </string>
+                <string name="tweet_pub_head_title" >发个微博
+                </string>
+                <string name="main_menu_cache" >清除缓存
+                </string>
+                <string name="comment_list_head_title" >网友评论
+                </string>
+                <string name="login_dialog_logo" >赤壁乱舞
+                </string>
+                <string name="ui_insert_image" >插入图片
+                </string>
+                <string name="software_detail_head_title" >游戏详情
+                </string>
+                <string name="frame_title_active_lastest" >最新动态
+                </string>
+                <string name="tweet_chatfooter_too_short" >录音时间太短
+                </string>
+                <string name="pull_to_refresh_pull_label" >下拉可以刷新
+                </string>
+                <string name="comment_pub_content_hint" >输入评论
+                </string>
+                <string name="capture_head_title" >扫一扫
+                </string>
+                <string name="frame_title_tweet_my" >我的微博
+                </string>
+                <string name="message_detail_head_title" >我和%s的对话
+                </string>
+                <string name="comment_listitem_type" >发布于
+                </string>
+            </file>
+            <file
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/styles.xml"
+                qualifiers="" >
+
+                <style
+                    name="App.Preference.ListSeparator.TextView.Light"
+                    parent="@android:style/Widget" >
+                    <item name="android:textColor">
+#ffffffff
+                    </item>
+                    <item name="android:background">
+@drawable/pref_category_bg
+                    </item>
+                    <item name="android:layout_width">
+50dip
+                    </item>
+                    <item name="android:layout_height">
+56dip
+                    </item>
+                    <item name="android:clickable">
+true
+                    </item>
+                    <item name="android:scaleType">
+fitCenter
+                    </item>
+                </style>
+
+                <style name="GreenDroid.Widget.QuickAction.Grid" >
+                    <item name="android:padding">
+7dp
+                    </item>
+                    <item name="android:listSelector">
+@drawable/gd_quick_action_grid_selector
+                    </item>
+                    <item name="android:background">
+@drawable/gd_quick_action_grid_bg
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                    <item name="android:fadingEdgeLength">
+0dp
+                    </item>
+                    <item name="android:stretchMode">
+columnWidth
+                    </item>
+                    <item name="android:verticalSpacing">
+7dp
+                    </item>
+                    <item name="android:numColumns">
+3
+                    </item>
+                </style>
+
+                <style name="detail_cut_line" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+2.0dip
+                    </item>
+                    <item name="android:layout_marginTop">
+8.0dip
+                    </item>
+                    <item name="android:layout_marginBottom">
+10.0dip
+                    </item>
+                    <item name="android:layout_marginLeft">
+6.0dip
+                    </item>
+                    <item name="android:layout_marginRight">
+6.0dip
+                    </item>
+                    <item name="android:background">
+@drawable/line_bluegray
+                    </item>
+                </style>
+
+                <style
+                    name="tweet_largeCustomProgressBar"
+                    parent="@android:style/Widget.ProgressBar" >
+                    <item name="android:indeterminateDrawable">
+@drawable/tweet_custom_loading
+                    </item>
+                </style>
+
+                <style name="GreenDroid.Animation.PopDown.Center" >
+                    <item name="@android:windowEnterAnimation">
+@anim/gd_grow_from_top
+                    </item>
+                    <item name="@android:windowExitAnimation">
+@anim/gd_shrink_from_bottom
+                    </item>
+                </style>
+
+                <style name="widget_cdv" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+fill_parent
+                    </item>
+                    <item name="android:layout_weight">
+1
+                    </item>
+                </style>
+
+                <style
+                    name="main_footbar_radio"
+                    parent="footbar" >
+                    <item name="android:padding">
+0dip
+                    </item>
+                    <item name="android:background">
+@drawable/selector_rbtn_black
+                    </item>
+                </style>
+
+                <style name="GreenDroid.Widget.QuickAction.Bar" />
+
+                <style
+                    name="user_center_footbar"
+                    parent="footbar" >
+                    <item name="android:textSize">
+@dimen/text_size_12
+                    </item>
+                    <item name="android:gravity">
+left|center
+                    </item>
+                    <item name="android:padding">
+0dip
+                    </item>
+                </style>
+
+                <style
+                    name="ContentOverlay"
+                    parent="android:style/Theme.Dialog" >
+                    <item name="android:windowNoTitle">
+true
+                    </item>
+                    <item name="android:windowIsTranslucent">
+true
+                    </item>
+                    <item name="android:windowBackground">
+@color/full_transparent
+                    </item>
+                    <item name="android:windowAnimationStyle">
+@android:style/Animation.Translucent
+                    </item>
+                    <item name="android:windowContentOverlay">
+@null
+                    </item>
+                    <item name="android:backgroundDimEnabled">
+false
+                    </item>
+                </style>
+
+                <style
+                    name="Dialog"
+                    parent="@android:style/Theme.Dialog" >
+                    <item name="android:windowBackground">
+@color/full_transparent
+                    </item>
+                    <item name="android:windowFrame">
+@null
+                    </item>
+                    <item name="android:windowNoTitle">
+true
+                    </item>
+                    <item name="android:windowIsFloating">
+true
+                    </item>
+                    <item name="android:windowIsTranslucent">
+false
+                    </item>
+                    <item name="android:windowContentOverlay">
+@null
+                    </item>
+                    <item name="android:background">
+@null
+                    </item>
+                    <item name="android:backgroundDimEnabled">
+true
+                    </item>
+                </style>
+
+                <style
+                    name="loading_small"
+                    parent="@android:style/Widget.ProgressBar.Small" >
+                    <item name="android:indeterminateDrawable">
+@anim/loading
+                    </item>
+                    <item name="android:layout_width">
+21dip
+                    </item>
+                    <item name="android:layout_height">
+21dip
+                    </item>
+                    <item name="android:layout_gravity">
+center_vertical
+                    </item>
+                </style>
+
+                <style
+                    name="GreenDroid.Widget.QuickAction.Bar.Item"
+                    parent="@style/GreenDroid.Widget.QuickAction.Item" >
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:minWidth">
+80dp
+                    </item>
+                    <item name="android:background">
+@drawable/gd_quick_action_bar_item
+                    </item>
+                </style>
+
+                <style name="main_footbar_image" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:layout_weight">
+1
+                    </item>
+                    <item name="android:background">
+@color/dark_gray
+                    </item>
+                    <item name="android:clickable">
+true
+                    </item>
+                </style>
+
+                <style
+                    name="popupMenu"
+                    parent="android:Animation" >
+                    <item name="@android:windowEnterAnimation">
+@anim/head_in
+                    </item>
+  //进入时的动画   
+                    <item name="@android:windowExitAnimation">
+@anim/head_out
+                    </item>
+    //退出时的动画   
+                </style>
+
+                <style name="GreenDroid.Widget.QuickAction" />
+
+                <style name="GreenDroid.Animation.PopDown" />
+
+                <style
+                    name="GenericProgressIndicator"
+                    parent="@android:style/Widget.ProgressBar.Small" >
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:indeterminate">
+true
+                    </item>
+                </style>
+
+                <style
+                    name="Animation.ZoomLight"
+                    parent="@style/Animation" >
+                    <item name="android:activityOpenEnterAnimation">
+@anim/translucent_zoom_in
+                    </item>
+                    <item name="android:activityOpenExitAnimation">
+@null
+                    </item>
+                    <item name="android:activityCloseEnterAnimation">
+@null
+                    </item>
+                    <item name="android:activityCloseExitAnimation">
+@anim/translucent_zoom_exit
+                    </item>
+                </style>
+
+                <style
+                    name="Theme.ZoomLight"
+                    parent="@android:style/Theme.NoTitleBar" >
+                    <item name="android:windowAnimationStyle">
+@style/Animation.ZoomLight
+                    </item>
+                    <item name="android:windowContentOverlay">
+@null
+                    </item>
+                </style>
+
+                <style name="main_footbar_btn" >
+                    <item name="android:layout_width">
+match_parent
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:background">
+@drawable/selector_rbtn_black
+                    </item>
+                    <item name="android:padding">
+0dip
+                    </item>
+                    <item name="android:layout_weight">
+1
+                    </item>
+                </style>
+
+                <style name="detail_head_title" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:layout_weight">
+1
+                    </item>
+                    <item name="android:layout_gravity">
+center
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                    <item name="android:textSize">
+@dimen/text_size_20
+                    </item>
+                    <item name="android:textColor">
+@color/white
+                    </item>
+                    <item name="android:textStyle">
+bold
+                    </item>
+                    <item name="android:shadowColor">
+#ffffffff
+                    </item>
+                    <item name="android:shadowDx">
+1
+                    </item>
+                    <item name="android:shadowDy">
+1
+                    </item>
+                    <item name="android:shadowRadius">
+1
+                    </item>
+                </style>
+
+                <style
+                    name="Animation.Translucent"
+                    parent="@style/Animation" >
+                    <item name="android:windowEnterAnimation">
+@anim/translucent_zoom_out
+                    </item>
+                    <item name="android:windowExitAnimation">
+@anim/translucent_zoom_exit
+                    </item>
+                </style>
+
+                <style name="GreenDroid.Widget" />
+
+                <style name="frame_button" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+fill_parent
+                    </item>
+                    <item name="android:layout_weight">
+1
+                    </item>
+                    <item name="android:background">
+@color/teal
+                    </item>
+                    <item name="android:textColor">
+@color/white
+                    </item>
+                </style>
+
+                <style
+                    name="GenericProgressBackground"
+                    parent="android:Theme" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+fill_parent
+                    </item>
+                    <item name="android:background">
+#DD111111
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                </style>
+
+                <style name="GreenDroid.Animation.PopUp.Center" >
+                    <item name="@android:windowEnterAnimation">
+@anim/gd_grow_from_bottom
+                    </item>
+                    <item name="@android:windowExitAnimation">
+@anim/gd_shrink_from_top
+                    </item>
+                </style>
+
+                <style name="widget_listview" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+fill_parent
+                    </item>
+                    <item name="android:layout_weight">
+1
+                    </item>
+                    <item name="android:listSelector">
+@drawable/listview_item_selector
+                    </item>
+                    <item name="android:divider">
+@drawable/listview_divider_line
+                    </item>
+                    <item name="android:dividerHeight">
+1.0dip
+                    </item>
+                    <item name="android:fadingEdge">
+none
+                    </item>
+                    <item name="android:scrollingCache">
+false
+                    </item>
+                </style>
+
+                <style name="frame_button_cutline" >
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                </style>
+
+                <style
+                    name="Theme.Preference"
+                    parent="@android:style/Theme.Light.NoTitleBar" >
+                    <item name="android:textAppearanceLarge">
+@style/App.Preference.TextAppearance.Large
+                    </item>
+                    <item name="android:textAppearanceSmall">
+@style/App.Preference.TextAppearance.Small
+                    </item>
+                    <item name="android:listSeparatorTextViewStyle">
+@style/App.Preference.ListSeparator.TextView.Light
+                    </item>
+                    <item name="android:checkboxStyle">
+@style/App.Preference.CheckBox
+                    </item>
+                    <item name="android:windowAnimationStyle">
+@style/Animation.ZoomLight
+                    </item>
+                    <item name="android:windowContentOverlay">
+@null
+                    </item>
+                </style>
+
+                <style name="main_head_title" >
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:textSize">
+@dimen/text_size_19
+                    </item>
+                    <item name="android:textColor">
+@color/head_text
+                    </item>
+                    <item name="android:textStyle">
+bold
+                    </item>
+                    <item name="android:shadowColor">
+#ffffffff
+                    </item>
+                    <item name="android:shadowDx">
+1
+                    </item>
+                    <item name="android:shadowDy">
+1
+                    </item>
+                    <item name="android:shadowRadius">
+1
+                    </item>
+                </style>
+
+                <style name="footbar" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+fill_parent
+                    </item>
+                    <item name="android:layout_weight">
+1
+                    </item>
+                    <item name="android:textSize">
+@dimen/text_size_10
+                    </item>
+                    <item name="android:textColor">
+@color/white
+                    </item>
+                    <item name="android:singleLine">
+true
+                    </item>
+                    <item name="android:ellipsize">
+marquee
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                    <item name="android:button">
+@null
+                    </item>
+                    <item name="android:paddingTop">
+@dimen/space_1
+                    </item>
+                    <item name="android:paddingBottom">
+@dimen/space_3
+                    </item>
+                </style>
+
+                <style name="GreenDroid" />
+
+                <style name="user_face_image" >
+                    <item name="android:layout_width">
+40.0dip
+                    </item>
+                    <item name="android:layout_height">
+40.0dip
+                    </item>
+                    <item name="android:scaleType">
+fitCenter
+                    </item>
+                    <item name="android:padding">
+1.0dip
+                    </item>
+                    <item name="android:clickable">
+true
+                    </item>
+                    <item name="android:background">
+@drawable/widget_dface_border
+                    </item>
+                    <item name="android:src">
+@drawable/widget_dface_loading
+                    </item>
+                </style>
+
+                <style name="Animation" />
+
+                <style name="GreenDroid.Animation" />
+
+                <style
+                    name="GreenDroid.Widget.QuickAction.Grid.Item"
+                    parent="@style/GreenDroid.Widget.QuickAction.Item" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+65dp
+                    </item>
+                </style>
+
+                <style name="GreenDroid.Animation.PopDown.Left" >
+                    <item name="@android:windowEnterAnimation">
+@anim/gd_grow_from_topleft_to_bottomright
+                    </item>
+                    <item name="@android:windowExitAnimation">
+@anim/gd_shrink_from_bottomright_to_topleft
+                    </item>
+                </style>
+
+                <style
+                    name="Theme.SlideTop"
+                    parent="@android:style/Theme.NoTitleBar" >
+                    <item name="android:windowAnimationStyle">
+@style/Animation.SlideTop
+                    </item>
+                    <item name="android:windowContentOverlay">
+@null
+                    </item>
+                </style>
+
+                <style name="GreenDroid.Animation.PopUp.Left" >
+                    <item name="@android:windowEnterAnimation">
+@anim/gd_grow_from_bottomleft_to_topright
+                    </item>
+                    <item name="@android:windowExitAnimation">
+@anim/gd_shrink_from_topright_to_bottomleft
+                    </item>
+                </style>
+
+                <style name="GreenDroid.Animation.PopDown.Right" >
+                    <item name="@android:windowEnterAnimation">
+@anim/gd_grow_from_topright_to_bottomleft
+                    </item>
+                    <item name="@android:windowExitAnimation">
+@anim/gd_shrink_from_bottomleft_to_topright
+                    </item>
+                </style>
+
+                <style
+                    name="App.Preference.TextAppearance.Large"
+                    parent="@android:style/TextAppearance.Large" >
+                    <item name="android:textColor">
+@color/primary_text_light
+                    </item>
+                </style>
+
+                <style
+                    name="Theme.ZoomLight.Fullscreen"
+                    parent="@android:style/Theme.NoTitleBar.Fullscreen" >
+                    <item name="android:windowAnimationStyle">
+@style/Animation.ZoomLight
+                    </item>
+                    <item name="android:windowContentOverlay">
+@null
+                    </item>
+                </style>
+
+                <style name="GreenDroid.Widget.QuickAction.Item" >
+                    <item name="android:layout_height">
+fill_parent
+                    </item>
+                    <item name="android:paddingRight">
+10dp
+                    </item>
+                    <item name="android:paddingLeft">
+10dp
+                    </item>
+                    <item name="android:drawablePadding">
+5dp
+                    </item>
+                    <item name="android:textSize">
+14sp
+                    </item>
+                    <item name="android:textColor">
+#333
+                    </item>
+                </style>
+
+                <style
+                    name="Theme.FullTranslucent"
+                    parent="@android:style/Theme.Translucent" >
+                    <item name="android:windowBackground">
+@color/full_transparent
+                    </item>
+                    <item name="android:windowNoTitle">
+true
+                    </item>
+                    <item name="android:windowAnimationStyle">
+@style/Animation.Translucent
+                    </item>
+                    <item name="android:windowContentOverlay">
+@null
+                    </item>
+                </style>
+
+                <style
+                    name="App.Preference.CheckBox"
+                    parent="@android:style/Widget.CompoundButton.CheckBox" >
+                    <item name="android:button">
+@drawable/pref_checkbox_selector_style
+                    </item>
+                </style>
+
+                <style name="tab_button" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+fill_parent
+                    </item>
+                    <item name="android:layout_weight">
+1
+                    </item>
+                    <item name="android:button">
+@null
+                    </item>
+                    <item name="android:singleLine">
+true
+                    </item>
+                    <item name="android:textSize">
+@dimen/text_size_14
+                    </item>
+                    <item name="android:textColor">
+#ffffffff
+                    </item>
+                    <item name="android:ellipsize">
+marquee
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                    <item name="android:background">
+@drawable/frame_button_bg
+                    </item>
+                </style>
+
+                <style name="GreenDroid.Animation.PopUp" />
+
+                <style name="btn_text" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:textColor">
+#ffffff
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                    <item name="android:layout_margin">
+0dp
+                    </item>
+                    <item name="android:textSize">
+@dimen/text_size_20
+                    </item>
+                    <item name="android:textStyle">
+bold
+                    </item>
+                    <item name="android:shadowColor">
+#000000
+                    </item>
+                    <item name="android:shadowDx">
+1
+                    </item>
+                    <item name="android:shadowDy">
+1
+                    </item>
+                    <item name="android:shadowRadius">
+2
+                    </item>
+                </style>
+
+                <style
+                    name="App.Preference.TextAppearance.Small"
+                    parent="@android:style/TextAppearance.Small" >
+                    <item name="android:textColor">
+@color/secondary_text_light
+                    </item>
+                </style>
+
+                <style name="GreenDroid.Animation.PopUp.Right" >
+                    <item name="@android:windowEnterAnimation">
+@anim/gd_grow_from_bottomright_to_topleft
+                    </item>
+                    <item name="@android:windowExitAnimation">
+@anim/gd_shrink_from_topleft_to_bottomright
+                    </item>
+                </style>
+
+                <style
+                    name="Theme.HalfTranslucent"
+                    parent="@android:style/Theme.Translucent" >
+                    <item name="android:windowBackground">
+@color/half_transparent
+                    </item>
+                    <item name="android:windowNoTitle">
+true
+                    </item>
+                    <item name="android:windowAnimationStyle">
+@style/Animation.Translucent
+                    </item>
+                    <item name="android:windowContentOverlay">
+@null
+                    </item>
+                </style>
+
+                <style name="main_footbar_cutline" >
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                </style>
+
+                <style
+                    name="Animation.SlideTop"
+                    parent="@style/Animation" >
+                    <item name="android:activityOpenEnterAnimation">
+@anim/slide_in_up
+                    </item>
+                    <item name="android:activityOpenExitAnimation">
+@null
+                    </item>
+                    <item name="android:activityCloseEnterAnimation">
+@null
+                    </item>
+                    <item name="android:activityCloseExitAnimation">
+@anim/slide_out_down
+                    </item>
+                </style>
+
+                <style
+                    name="Theme.NoTitleBar"
+                    parent="@android:style/Theme.NoTitleBar" >
+                    <item name="android:windowContentOverlay">
+@null
+                    </item>
+                </style>
+            </file>
+            <file
+                name="config"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/xml/config.xml"
+                qualifiers=""
+                type="xml" />
+            <file
+                name="preferences"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/xml/preferences.xml"
+                qualifiers=""
+                type="xml" />
+        </source>
+        <source path="/Users/levin/Dev/workspace/android/n3gz/app/build/res/rs/debug" />
+        <source path="/Users/levin/Dev/workspace/android/n3gz/app/build/res/generated/debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/levin/Dev/workspace/android/n3gz/app/src/debug/res" />
+    </dataSet>
+
+</merger>
