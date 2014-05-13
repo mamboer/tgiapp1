@@ -6,6 +6,7 @@ import java.util.List;
 import com.tencent.sgz.common.FileUtils;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.ui.Main;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 /**
@@ -33,7 +35,7 @@ public class AppStart extends Activity {
         super.onCreate(savedInstanceState);
        
         final View view = View.inflate(this, R.layout.start, null);
-		LinearLayout wellcome = (LinearLayout) view.findViewById(R.id.app_start_view);
+        FrameLayout wellcome = (FrameLayout) view.findViewById(R.id.app_start_view);
 		check(wellcome);
 		setContentView(view);
         
@@ -72,7 +74,7 @@ public class AppStart extends Activity {
      * 检查是否需要换图片
      * @param view
      */
-    private void check(LinearLayout view) {
+    private void check(FrameLayout view) {
     	String path = FileUtils.getAppCache(this, "wellcomeback");
     	List<File> files = FileUtils.listPathFiles(path);
     	if (!files.isEmpty()) {
