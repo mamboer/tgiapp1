@@ -83,7 +83,7 @@ import android.widget.TextView;
  * @version 1.0
  * @created 2014-5-9
  */
-public class Main extends BaseActivity {
+public class Main extends BaseCDVActivity {
 	
 	public static final int QUICKACTION_LOGIN_OR_LOGOUT = 0;
 	public static final int QUICKACTION_USERINFO = 1;
@@ -231,6 +231,8 @@ public class Main extends BaseActivity {
 		
 		this.initWebview();
 
+        //this.initCordovaWebview();
+
 		// 检查新版本
 		if (appContext.isCheckUp()) {
 			UpdateManager.getUpdateManager().checkAppUpdate(this, false);
@@ -293,18 +295,32 @@ public class Main extends BaseActivity {
 	 * 初始化webview
 	 */
 	private void initWebview(){
-		WebView cdv = (WebView)findViewById(R.id.cdv5);
-		cdv.loadUrl("file:///android_asset/www/1.html");//file:///android_asset/www/1.html
-		WebSettings ws = cdv.getSettings();
-		ws.setJavaScriptEnabled(true);
-		ws.setSupportZoom(true);
-		ws.setBuiltInZoomControls(true);
-		ws.setDefaultFontSize(15);
-        UIHelper.addWebImageShow(this, cdv);
-        cdv.setWebViewClient(UIHelper.getWebViewClient());
+		WebView cdv1 = (WebView)findViewById(R.id.cdv5);
+        cdv1.setWebViewClient(UIHelper.getWebViewClient());
+        WebSettings ws = cdv1.getSettings();
+        ws.setJavaScriptEnabled(true);
+        ws.setAllowFileAccess(true);
+        ws.setSupportZoom(true);
+        ws.setBuiltInZoomControls(true);
+        ws.setDefaultFontSize(15);
+        UIHelper.addWebImageShow(this, cdv1);
+
+        cdv1.loadUrl("http://hero.qq.com/act/a20140430duxinshu/index.html");//file:///android_asset/www/1.html
+
 	}
-	
-	/**
+
+    /**
+     * 初始化webview
+     */
+    private void initCordovaWebview(){
+        //this.cdv = (CordovaWebView)findViewById(R.id.cdv5_a);
+        //cdv.loadUrl("http://faso.me");//file:///android_asset/www/1.html
+
+    }
+
+
+
+    /**
 	 * 初始化快捷栏
 	 */
 	private void initQuickActionGrid() {

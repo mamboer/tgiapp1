@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merger>
 
+    <dataSet config="unspecified" >
+        <source path="/Users/levin/Dev/workspace/android/n3gz/app/build/exploded-aar/n3gz/cordova/unspecified/res" >
+            <file
+                name="splash"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/build/exploded-aar/n3gz/cordova/unspecified/res/drawable/splash.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="icon"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/build/exploded-aar/n3gz/cordova/unspecified/res/drawable-hdpi/icon.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="icon"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/build/exploded-aar/n3gz/cordova/unspecified/res/drawable-ldpi/icon.png"
+                qualifiers="ldpi"
+                type="drawable" />
+            <file
+                name="icon"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/build/exploded-aar/n3gz/cordova/unspecified/res/drawable-mdpi/icon.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="main"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/build/exploded-aar/n3gz/cordova/unspecified/res/layout/main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                path="/Users/levin/Dev/workspace/android/n3gz/app/build/exploded-aar/n3gz/cordova/unspecified/res/values/values.xml"
+                qualifiers="" >
+                <string name="go" >Snap
+                </string>
+                <string name="app_name" >Cordova
+                </string>
+            </file>
+            <file
+                name="config"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/build/exploded-aar/n3gz/cordova/unspecified/res/xml/config.xml"
+                qualifiers=""
+                type="xml" />
+        </source>
+    </dataSet>
     <dataSet config="main" >
         <source path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res" >
             <file

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/levin/Dev/workspace/android/n3gz/cordova/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="app_name">Cordova</string>
+    <string name="go">Snap</string>
+
+</resources>

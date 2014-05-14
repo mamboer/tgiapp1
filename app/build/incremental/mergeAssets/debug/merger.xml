@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merger>
 
+    <dataSet config="unspecified" >
+        <source path="/Users/levin/Dev/workspace/android/n3gz/app/build/exploded-aar/n3gz/cordova/unspecified/assets" >
+            <file
+                name="www/cordova.js"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/build/exploded-aar/n3gz/cordova/unspecified/assets/www/cordova.js" />
+            <file
+                name="www/index.html"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/build/exploded-aar/n3gz/cordova/unspecified/assets/www/index.html" />
+        </source>
+    </dataSet>
     <dataSet config="main" >
         <source path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/assets" >
             <file
@@ -84,6 +94,9 @@
             <file
                 name="www/img/3.jpg"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/assets/www/img/3.jpg" />
+            <file
+                name="www/index.html"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/assets/www/index.html" />
             <file
                 name="www/js/controllers/base.js"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/assets/www/js/controllers/base.js" />

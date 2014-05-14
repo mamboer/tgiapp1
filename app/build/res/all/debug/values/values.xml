@@ -272,6 +272,10 @@
     <string name="frame_title_tweet_lastest">最新微博</string>
     <string name="frame_title_tweet_my">我的微博</string>
     <string name="frame_title_tweet_send">发个微博</string>
+    <!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/build/exploded-aar/n3gz/cordova/unspecified/res/values/values.xml -->
+    <eat-comment />
+
+    <string name="go">Snap</string>
     <!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/messages.xml -->
     <eat-comment />
 
