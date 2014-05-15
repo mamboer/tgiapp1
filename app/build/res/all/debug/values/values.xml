@@ -26,7 +26,7 @@
         <item>攻略</item>
         <item>社区</item>
         <item>百宝箱</item>
-        <item>留言</item>
+        <item>个人中心</item>
     </string-array>
     <string-array name="message_detail_options">
         <item>转发</item>
@@ -73,6 +73,7 @@
     <color name="face_bg">#eef1f4</color>
     <color name="ff40ab54">#ff40ab54</color>
     <color name="fff1f2f3">#fff1f2f3</color>
+    <color name="foot_bg_on">#594a3f</color>
     <color name="frame_button_text_nor">#033a5c</color>
     <color name="frame_button_text_select">#FFFFFF</color>
     <color name="full_transparent">#00000000</color>
@@ -82,6 +83,7 @@
     <color name="graywhite">#F5F5F5</color>
     <color name="green">#008000</color>
     <color name="half_transparent">#aa000000</color>
+    <color name="head_bg">#523c29</color>
     <color name="head_text">#0e5986</color>
     <color name="lemonyellow">#FFFACD</color>
     <color name="lightblue">#0083FF</color>
@@ -93,6 +95,8 @@
     <color name="listitem_transparent">#00000000</color>
     <color name="listitem_white">#ffffffff</color>
     <color name="listitem_yellow">#fffaffbf</color>
+    <color name="lite_gray">#DDDDDD</color>
+    <color name="liter_gray">#c1c1c1</color>
     <color name="orange">#FFA500</color>
     <color name="pink">#FFC0CB</color>
     <color name="possible_result_points">#c0ffbd21</color>
@@ -638,7 +642,6 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/text_size_20</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:shadowColor">#ffffffff</item>
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
@@ -650,12 +653,12 @@
         <item name="android:layout_height">fill_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:textSize">@dimen/text_size_10</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/footer_rbtn_text</item>
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">marquee</item>
         <item name="android:gravity">center</item>
         <item name="android:button">@null</item>
-        <item name="android:paddingTop">@dimen/space_1</item>
+        <item name="android:paddingTop">@dimen/space_2</item>
         <item name="android:paddingBottom">@dimen/space_3</item>
     </style>
 
@@ -705,16 +708,43 @@
         <item name="android:background">@drawable/selector_rbtn_black</item>
     </style>
 
+    <style name="main_footer">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/footer_bg</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="main_head">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">50dip</item>
+        <item name="android:background">@color/head_bg</item>
+    </style>
+
+    <style name="main_head_pattern">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@drawable/head_bg_pattern</item>
+        <item name="android:gravity">center</item>
+    </style>
+
     <style name="main_head_title">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/text_size_19</item>
-        <item name="android:textColor">@color/head_text</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
         <item name="android:shadowColor">#ffffffff</item>
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">5.0dip</item>
+        <!--
+        <item name="android:layout_toRightOf">@id/main_head_logo</item>
+        <item name="android:layout_toLeftOf">@id/main_head_search</item>
+        -->
     </style>
 
     <style name="popupMenu" parent="android:Animation">

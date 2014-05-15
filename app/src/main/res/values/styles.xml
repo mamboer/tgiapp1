@@ -174,12 +174,12 @@
         <item name="android:layout_height">fill_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:textSize">@dimen/text_size_10</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/footer_rbtn_text</item>
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">marquee</item>
         <item name="android:gravity">center</item>  
         <item name="android:button">@null</item>  
-        <item name="android:paddingTop">@dimen/space_1</item>
+        <item name="android:paddingTop">@dimen/space_2</item>
         <item name="android:paddingBottom">@dimen/space_3</item>
     </style>
     <style name="user_center_footbar" parent="footbar">
@@ -187,7 +187,13 @@
         <item name="android:gravity">left|center</item>
         <item name="android:padding">0dip</item>
     </style>
-	
+	<style name="main_footer">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/footer_bg</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+	</style>
     <style name="main_footbar_radio" parent="footbar">
         <item name="android:padding">0dip</item>
         <item name="android:background">@drawable/selector_rbtn_black</item>
@@ -210,16 +216,33 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+    <style name="main_head">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">50dip</item>
+        <item name="android:background">@color/head_bg</item>
+    </style>
+    <style name="main_head_pattern">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@drawable/head_bg_pattern</item>
+        <item name="android:gravity">center</item>
+    </style>
    	<style name="main_head_title">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:textSize">@dimen/text_size_19</item>
-		<item name="android:textColor">@color/head_text</item>
-		<item name="android:textStyle">bold</item>
+		<item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
 		<item name="android:shadowColor">#ffffffff</item>
 		<item name="android:shadowDx">1</item>
 		<item name="android:shadowDy">1</item>
 		<item name="android:shadowRadius">1</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">5.0dip</item>
+        <!--
+        <item name="android:layout_toRightOf">@id/main_head_logo</item>
+        <item name="android:layout_toLeftOf">@id/main_head_search</item>
+        -->
     </style>
    	
     <style name="user_face_image">
@@ -297,7 +320,6 @@
 		<item name="android:gravity">center</item>
 		<item name="android:textSize">@dimen/text_size_20</item>
 		<item name="android:textColor">@color/white</item>
-		<item name="android:textStyle">bold</item>
 		<item name="android:shadowColor">#ffffffff</item>
 		<item name="android:shadowDx">1</item>
 		<item name="android:shadowDy">1</item>

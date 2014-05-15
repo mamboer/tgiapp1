@@ -40,7 +40,7 @@
         <item>攻略</item>
         <item>社区</item>
         <item>百宝箱</item>
-        <item>留言</item>
+        <item>个人中心</item>
     </string-array>
     <string-array name="path_op_title">
         <item>重命名</item>

@@ -191,6 +191,41 @@
                 qualifiers=""
                 type="drawable" />
             <file
+                name="btn_appbox_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/btn_appbox_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_community_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/btn_community_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_home_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/btn_home_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_icenter_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/btn_icenter_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_manual_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/btn_manual_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_more_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/btn_more_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_qrcode_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/btn_qrcode_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
                 name="btn_search_bg"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/btn_search_bg.xml"
                 qualifiers=""
@@ -198,6 +233,11 @@
             <file
                 name="clearwords_bg"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/clearwords_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="footer_bg"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/footer_bg.xml"
                 qualifiers=""
                 type="drawable" />
             <file
@@ -233,6 +273,11 @@
             <file
                 name="head_back"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/head_back.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="head_bg_pattern"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/head_bg_pattern.xml"
                 qualifiers=""
                 type="drawable" />
             <file
@@ -1326,6 +1371,26 @@
                 qualifiers="hdpi"
                 type="drawable" />
             <file
+                name="ico_appbox"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_appbox.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_appbox_on"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_appbox_on.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_community"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_community.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_community_on"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_community_on.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
                 name="ico_edit"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_edit.png"
                 qualifiers="hdpi"
@@ -1333,6 +1398,26 @@
             <file
                 name="ico_game"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_game.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_home"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_home.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_home_on"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_home_on.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_icenter"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_icenter.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_icenter_on"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_icenter_on.png"
                 qualifiers="hdpi"
                 type="drawable" />
             <file
@@ -1346,6 +1431,26 @@
                 qualifiers="hdpi"
                 type="drawable" />
             <file
+                name="ico_manual"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_manual.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_manual_on"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_manual_on.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_more"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_more.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_more_on"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_more_on.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
                 name="ico_people"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_people.png"
                 qualifiers="hdpi"
@@ -1353,6 +1458,21 @@
             <file
                 name="ico_qrcode"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_qrcode.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_qrcode_on"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_qrcode_on.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_search"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_search.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_search_on"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_search_on.png"
                 qualifiers="hdpi"
                 type="drawable" />
             <file
@@ -1626,6 +1746,26 @@
                 qualifiers="hdpi"
                 type="drawable" />
             <file
+                name="p1"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/p1.jpg"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="p2"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/p2.jpg"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="p4"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/p4.jpg"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="p5"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/p5.jpg"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
                 name="pref_category_bg"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/pref_category_bg.9.png"
                 qualifiers="hdpi"
@@ -1823,6 +1963,11 @@
             <file
                 name="tweet_voice_to_short"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/tweet_voice_to_short.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ui_hd"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ui_hd.png"
                 qualifiers="hdpi"
                 type="drawable" />
             <file
@@ -2151,8 +2296,48 @@
                 qualifiers="ldpi"
                 type="drawable" />
             <file
+                name="p1"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-ldpi/p1.jpg"
+                qualifiers="ldpi"
+                type="drawable" />
+            <file
+                name="p2"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-ldpi/p2.jpg"
+                qualifiers="ldpi"
+                type="drawable" />
+            <file
+                name="p4"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-ldpi/p4.jpg"
+                qualifiers="ldpi"
+                type="drawable" />
+            <file
+                name="p5"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-ldpi/p5.jpg"
+                qualifiers="ldpi"
+                type="drawable" />
+            <file
                 name="icon"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-mdpi/icon.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="p1"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-mdpi/p1.jpg"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="p2"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-mdpi/p2.jpg"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="p4"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-mdpi/p4.jpg"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="p5"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-mdpi/p5.jpg"
                 qualifiers="mdpi"
                 type="drawable" />
             <file
@@ -2268,6 +2453,11 @@
             <file
                 name="frame_cdv4"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/frame_cdv4.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="frame_icenter"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/frame_icenter.xml"
                 qualifiers=""
                 type="layout" />
             <file
@@ -2713,7 +2903,7 @@
 百宝箱
                     </item>
                     <item>
-留言
+个人中心
                     </item>
                 </string-array>
                 <string-array name="path_op_title" >
@@ -2766,6 +2956,8 @@
                 </color>
                 <color name="listitem_blue" >#0e5986
                 </color>
+                <color name="liter_gray" >#c1c1c1
+                </color>
                 <color name="dim_foreground_light_disabled" >#80323232
                 </color>
                 <color name="frame_button_text_nor" >#033a5c
@@ -2791,6 +2983,8 @@
                 <color name="bright_foreground_light_inverse" >#ffffffff
                 </color>
                 <color name="status_text" >#ffffffff
+                </color>
+                <color name="foot_bg_on" >#594a3f
                 </color>
                 <color name="viewfinder_laser" >#ffcc0000
                 </color>
@@ -2834,9 +3028,13 @@
                 </color>
                 <color name="viewfinder_mask" >#60000000
                 </color>
+                <color name="lite_gray" >#DDDDDD
+                </color>
                 <color name="result_points" >#c099cc00
                 </color>
                 <color name="red" >#FF0000
+                </color>
+                <color name="head_bg" >#523c29
                 </color>
                 <color name="yellow" >#FFFF00
                 </color>
@@ -3648,9 +3846,6 @@ center
                     <item name="android:textColor">
 @color/white
                     </item>
-                    <item name="android:textStyle">
-bold
-                    </item>
                     <item name="android:shadowColor">
 #ffffffff
                     </item>
@@ -3783,7 +3978,7 @@ wrap_content
 
                 <style name="main_head_title" >
                     <item name="android:layout_width">
-wrap_content
+fill_parent
                     </item>
                     <item name="android:layout_height">
 wrap_content
@@ -3792,10 +3987,10 @@ wrap_content
 @dimen/text_size_19
                     </item>
                     <item name="android:textColor">
-@color/head_text
+@color/white
                     </item>
-                    <item name="android:textStyle">
-bold
+                    <item name="android:gravity">
+center
                     </item>
                     <item name="android:shadowColor">
 #ffffffff
@@ -3809,6 +4004,16 @@ bold
                     <item name="android:shadowRadius">
 1
                     </item>
+                    <item name="android:layout_centerVertical">
+true
+                    </item>
+                    <item name="android:layout_marginLeft">
+5.0dip
+                    </item>
+                    <!--
+        <item name="android:layout_toRightOf">@id/main_head_logo</item>
+        <item name="android:layout_toLeftOf">@id/main_head_search</item>
+                    -->
                 </style>
 
                 <style name="footbar" >
@@ -3825,7 +4030,7 @@ fill_parent
 @dimen/text_size_10
                     </item>
                     <item name="android:textColor">
-@color/white
+@color/footer_rbtn_text
                     </item>
                     <item name="android:singleLine">
 true
@@ -3840,7 +4045,7 @@ center
 @null
                     </item>
                     <item name="android:paddingTop">
-@dimen/space_1
+@dimen/space_2
                     </item>
                     <item name="android:paddingBottom">
 @dimen/space_3
@@ -3897,6 +4102,21 @@ fill_parent
                     </item>
                 </style>
 
+                <style name="main_head_pattern" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+fill_parent
+                    </item>
+                    <item name="android:background">
+@drawable/head_bg_pattern
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                </style>
+
                 <style
                     name="Theme.SlideTop"
                     parent="@android:style/Theme.NoTitleBar" >
@@ -3914,6 +4134,24 @@ fill_parent
                     </item>
                     <item name="@android:windowExitAnimation">
 @anim/gd_shrink_from_topright_to_bottomleft
+                    </item>
+                </style>
+
+                <style name="main_footer" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:background">
+@drawable/footer_bg
+                    </item>
+                    <item name="android:gravity">
+center_vertical
+                    </item>
+                    <item name="android:orientation">
+horizontal
                     </item>
                 </style>
 
@@ -4021,6 +4259,18 @@ center
                     </item>
                     <item name="android:background">
 @drawable/frame_button_bg
+                    </item>
+                </style>
+
+                <style name="main_head" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+50dip
+                    </item>
+                    <item name="android:background">
+@color/head_bg
                     </item>
                 </style>
 
@@ -4140,6 +4390,16 @@ wrap_content
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/xml/preferences.xml"
                 qualifiers=""
                 type="xml" />
+            <file
+                name="footer_rbtn_text"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/color/footer_rbtn_text.xml"
+                qualifiers=""
+                type="color" />
+            <file
+                name="btn_search_bg1"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/btn_search_bg1.xml"
+                qualifiers=""
+                type="drawable" />
         </source>
         <source path="/Users/levin/Dev/workspace/android/n3gz/app/build/res/rs/debug" />
         <source path="/Users/levin/Dev/workspace/android/n3gz/app/build/res/generated/debug" />

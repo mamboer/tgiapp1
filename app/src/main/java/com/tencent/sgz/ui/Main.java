@@ -83,7 +83,7 @@ import android.widget.TextView;
  * @version 1.0
  * @created 2014-5-9
  */
-public class Main extends BaseCDVActivity {
+public class Main extends BaseActivity {
 	
 	public static final int QUICKACTION_LOGIN_OR_LOGOUT = 0;
 	public static final int QUICKACTION_USERINFO = 1;
@@ -228,10 +228,6 @@ public class Main extends BaseCDVActivity {
 		this.initBadgeView();
 		this.initQuickActionGrid();
 		this.initFrameListView();
-		
-		this.initWebview();
-
-        //this.initCordovaWebview();
 
 		// 检查新版本
 		if (appContext.isCheckUp()) {
@@ -291,33 +287,6 @@ public class Main extends BaseCDVActivity {
 			mScrollLayout.scrollToScreen(3);
 		}
 	}
-	/**
-	 * 初始化webview
-	 */
-	private void initWebview(){
-		WebView cdv1 = (WebView)findViewById(R.id.cdv5);
-        cdv1.setWebViewClient(UIHelper.getWebViewClient());
-        WebSettings ws = cdv1.getSettings();
-        ws.setJavaScriptEnabled(true);
-        ws.setAllowFileAccess(true);
-        ws.setSupportZoom(true);
-        ws.setBuiltInZoomControls(true);
-        ws.setDefaultFontSize(15);
-        UIHelper.addWebImageShow(this, cdv1);
-
-        cdv1.loadUrl("http://hero.qq.com/act/a20140430duxinshu/index.html");//file:///android_asset/www/1.html
-
-	}
-
-    /**
-     * 初始化webview
-     */
-    private void initCordovaWebview(){
-        //this.cdv = (CordovaWebView)findViewById(R.id.cdv5_a);
-        //cdv.loadUrl("http://faso.me");//file:///android_asset/www/1.html
-
-    }
-
 
 
     /**
@@ -1077,6 +1046,13 @@ public class Main extends BaseCDVActivity {
 				UIHelper.showTweetPub(Main.this);
 			}
 		});
+
+        mHeadLogo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                UIHelper.showCapture(Main.this);
+            }
+        });
+
 	}
 
 	/**
@@ -1144,7 +1120,7 @@ public class Main extends BaseCDVActivity {
 		mButtons = new RadioButton[mViewCount];
 
 		for (int i = 0; i < mViewCount; i++) {
-			mButtons[i] = (RadioButton) linearLayout.getChildAt(i * 2);
+			mButtons[i] = (RadioButton) linearLayout.getChildAt(i);
 			mButtons[i].setTag(i);
 			mButtons[i].setChecked(false);
 			mButtons[i].setOnClickListener(new View.OnClickListener() {
@@ -1153,24 +1129,27 @@ public class Main extends BaseCDVActivity {
 					// 点击当前项刷新
 					if (mCurSel == pos) {
 						switch (pos) {
-						case 0:// 资讯+博客
-							if (lvNews.getVisibility() == View.VISIBLE)
-								lvNews.clickRefresh();
-							else
-								lvBlog.clickRefresh();
-							break;
-						case 1:// 问答
-							lvQuestion.clickRefresh();
-							break;
-						case 2:// 动弹
-							lvTweet.clickRefresh();
-							break;
-						case 3:// 动态+留言
-							if (lvActive.getVisibility() == View.VISIBLE)
-								lvActive.clickRefresh();
-							else
-								lvMsg.clickRefresh();
-							break;
+                            case 0:// 资讯+博客
+                                if (lvNews.getVisibility() == View.VISIBLE)
+                                    lvNews.clickRefresh();
+                                else
+                                    lvBlog.clickRefresh();
+                                break;
+                            case 1:// 问答
+                                lvQuestion.clickRefresh();
+                                break;
+                            case 2:// 动弹
+                                lvTweet.clickRefresh();
+                                break;
+                            case 3:// 动态+留言
+                                if (lvActive.getVisibility() == View.VISIBLE)
+                                    lvActive.clickRefresh();
+                                else
+                                    lvMsg.clickRefresh();
+                                break;
+                            case 4://icenter
+
+                                break;
 						}
 					}
 					mScrollLayout.snapToScreen(pos);
@@ -1217,7 +1196,8 @@ public class Main extends BaseCDVActivity {
 							}
 							break;
 						case 3:// 动态
-								// 判断登录
+							// 判断登录
+                            /*
 							if (!appContext.isLogin()) {
 								if (lvActive.getVisibility() == View.VISIBLE
 										&& lvActiveData.isEmpty()) {
@@ -1235,6 +1215,8 @@ public class Main extends BaseCDVActivity {
 								UIHelper.showLoginDialog(Main.this);
 								break;
 							}
+							*/
+                            /*
 							// 处理通知信息
 							if (bv_atme.isShown())
 								frameActiveBtnOnClick(framebtn_Active_atme,
@@ -1256,8 +1238,16 @@ public class Main extends BaseCDVActivity {
 									&& lvMsgData.isEmpty())
 								loadLvMsgData(0, lvMsgHandler,
 										UIHelper.LISTVIEW_ACTION_INIT);
+							*/
 							break;
-						}
+                            case 4://icenter
+                                // 判断登录
+                                if (!appContext.isLogin()) {
+                                    UIHelper.showLoginDialog(Main.this);
+                                    break;
+                                }
+                                break;
+						}//switch
 						setCurPoint(viewIndex);
 					}
 				});
@@ -1312,22 +1302,22 @@ public class Main extends BaseCDVActivity {
 		mHeadTitle.setText(mHeadTitles[index]);
 		mCurSel = index;
 
-		mHead_search.setVisibility(View.GONE);
+		//mHead_search.setVisibility(View.GONE);
 		mHeadPub_post.setVisibility(View.GONE);
 		mHeadPub_tweet.setVisibility(View.GONE);
 		// 头部logo、发帖、发动弹按钮显示
 		if (index == 0) {
-			mHeadLogo.setImageResource(R.drawable.icon_home);
-			mHead_search.setVisibility(View.VISIBLE);
+			//mHeadLogo.setImageResource(R.drawable.icon_home);
+			//mHead_search.setVisibility(View.VISIBLE);
 		} else if (index == 1) {
-			mHeadLogo.setImageResource(R.drawable.ico_game);
-			mHeadPub_post.setVisibility(View.VISIBLE);
+			//mHeadLogo.setImageResource(R.drawable.ico_game);
+			//mHeadPub_post.setVisibility(View.VISIBLE);
 		} else if (index == 2) {
-			mHeadLogo.setImageResource(R.drawable.ico_people);
-			mHeadPub_tweet.setVisibility(View.VISIBLE);
+			//mHeadLogo.setImageResource(R.drawable.ico_people);
+			//mHeadPub_tweet.setVisibility(View.VISIBLE);
 		} else if (index == 3) {
-			mHeadLogo.setImageResource(R.drawable.icon_apps);
-			mHeadPub_tweet.setVisibility(View.VISIBLE);
+			//mHeadLogo.setImageResource(R.drawable.icon_apps);
+			//mHeadPub_tweet.setVisibility(View.VISIBLE);
 		}
 	}
 

@@ -449,7 +449,11 @@ public class AppContext extends Application {
 	 * @throws ApiException
 	 */
 	public NewsList getNewsList(int catalog, int pageIndex, boolean isRefresh) throws AppException {
-		NewsList list = null;
+
+        //TODO:
+        return new NewsList();
+        /*
+        NewsList list = null;
 		String key = "newslist_"+catalog+"_"+pageIndex+"_"+PAGE_SIZE;
 		if(isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
 			try{
@@ -472,6 +476,7 @@ public class AppContext extends Application {
 				list = new NewsList();
 		}
 		return list;
+		*/
 	}
 	
 	/**
@@ -547,7 +552,9 @@ public class AppContext extends Application {
 	 * @throws AppException
 	 */
 	public BlogList getBlogList(String type, int pageIndex, boolean isRefresh) throws AppException {
-		BlogList list = null;
+		return new BlogList();
+		/*
+        BlogList list = null;
 		String key = "bloglist_"+type+"_"+pageIndex+"_"+PAGE_SIZE;
 		if(isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
 			try{
@@ -570,6 +577,7 @@ public class AppContext extends Application {
 				list = new BlogList();
 		}
 		return list;
+		*/
 	}
 	
 	/**
@@ -742,7 +750,9 @@ public class AppContext extends Application {
 	 * @throws ApiException
 	 */
 	public PostList getPostList(int catalog, int pageIndex, boolean isRefresh) throws AppException {
-		PostList list = null;
+		return new PostList();
+		/*
+        PostList list = null;
 		String key = "postlist_"+catalog+"_"+pageIndex+"_"+PAGE_SIZE;
 		if(isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {		
 			try{
@@ -765,6 +775,7 @@ public class AppContext extends Application {
 				list = new PostList();
 		}
 		return list;
+		*/
 	}
 	
 	/**
@@ -840,7 +851,9 @@ public class AppContext extends Application {
 	 * @throws AppException
 	 */
 	public TweetList getTweetList(int catalog, int pageIndex, boolean isRefresh) throws AppException {
-		TweetList list = null;
+		return new TweetList();
+		/*
+        TweetList list = null;
 		String key = "tweetlist_"+catalog+"_"+pageIndex+"_"+PAGE_SIZE;		
 		if(isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
 			try{
@@ -863,6 +876,7 @@ public class AppContext extends Application {
 				list = new TweetList();
 		}
 		return list;
+		*/
 	}
 	
 	/**
@@ -906,7 +920,9 @@ public class AppContext extends Application {
 	 * @throws AppException
 	 */
 	public ActiveList getActiveList(int catalog, int pageIndex, boolean isRefresh) throws AppException {
-		ActiveList list = null;
+		return new ActiveList();
+		/*
+        ActiveList list = null;
 		String key = "activelist_"+loginUid+"_"+catalog+"_"+pageIndex+"_"+PAGE_SIZE;
 		if(isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
 			try{
@@ -929,6 +945,7 @@ public class AppContext extends Application {
 				list = new ActiveList();
 		}
 		return list;
+		*/
 	}
 	
 	/**
@@ -938,7 +955,9 @@ public class AppContext extends Application {
 	 * @throws AppException
 	 */
 	public MessageList getMessageList(int pageIndex, boolean isRefresh) throws AppException {
-		MessageList list = null;
+		return new MessageList();
+		/*
+        MessageList list = null;
 		String key = "messagelist_"+loginUid+"_"+pageIndex+"_"+PAGE_SIZE;
 		if(isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
 			try{
@@ -961,6 +980,7 @@ public class AppContext extends Application {
 				list = new MessageList();
 		}
 		return list;
+		*/
 	}
 	
 	/**
@@ -971,7 +991,9 @@ public class AppContext extends Application {
 	 * @throws AppException
 	 */
 	public BlogCommentList getBlogCommentList(int id, int pageIndex, boolean isRefresh) throws AppException {
-		BlogCommentList list = null;
+		return new BlogCommentList();
+		/*
+        BlogCommentList list = null;
 		String key = "blogcommentlist_"+id+"_"+pageIndex+"_"+PAGE_SIZE;		
 		if(isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
 			try{
@@ -994,6 +1016,7 @@ public class AppContext extends Application {
 				list = new BlogCommentList();
 		}
 		return list;
+	    */
 	}
 	
 	/**
@@ -1005,7 +1028,9 @@ public class AppContext extends Application {
 	 * @throws AppException
 	 */
 	public CommentList getCommentList(int catalog, int id, int pageIndex, boolean isRefresh) throws AppException {
-		CommentList list = null;
+		return new CommentList();
+		/*
+        CommentList list = null;
 		String key = "commentlist_"+catalog+"_"+id+"_"+pageIndex+"_"+PAGE_SIZE;		
 		if(isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
 			try{
@@ -1028,6 +1053,7 @@ public class AppContext extends Application {
 				list = new CommentList();
 		}
 		return list;
+		*/
 	}
 	
 	/**
@@ -1040,7 +1066,8 @@ public class AppContext extends Application {
 	 * @throws AppException
 	 */
 	public SearchList getSearchList(String catalog, String content, int pageIndex, int pageSize) throws AppException {
-		return ApiClient.getSearchList(this, catalog, content, pageIndex, pageSize);
+		return new SearchList();
+		//return ApiClient.getSearchList(this, catalog, content, pageIndex, pageSize);
 	}
 	
 	/**

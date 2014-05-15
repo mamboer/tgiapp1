@@ -1,51 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_linearlayout_footer"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/dark_gray"
-    android:gravity="center_vertical"
-    android:orientation="horizontal" >
+    style="@style/main_footer">
 
 	<RadioButton
 	    android:id="@+id/main_footbar_news"
 	    style="@style/main_footbar_radio"
-	    android:drawableTop="@drawable/icon_home"
+	    android:drawableTop="@drawable/btn_home_bg"
 	    android:text="@string/main_menu_home" />
-
-	<ImageView
-		style="@style/main_footbar_cutline"
-		android:src="@drawable/widget_bar_cut_off"/>
 
 	<RadioButton
 	    android:id="@+id/main_footbar_question"
 	    style="@style/main_footbar_radio"
-	    android:drawableTop="@drawable/ico_game"
+	    android:drawableTop="@drawable/btn_manual_bg"
 	    android:text="@string/main_menu_manual" />
-
-	<ImageView
-		style="@style/main_footbar_cutline"
-		android:src="@drawable/widget_bar_cut_off"/>
 
 	<RadioButton
 	    android:id="@+id/main_footbar_tweet"
 	    style="@style/main_footbar_radio"
-	    android:drawableTop="@drawable/ico_people"
+	    android:drawableTop="@drawable/btn_community_bg"
 	    android:text="@string/main_menu_community" />
-
-	<ImageView
-		style="@style/main_footbar_cutline"
-		android:src="@drawable/widget_bar_cut_off"/>
 
 	<RadioButton
 	    android:id="@+id/main_footbar_active"
 	    style="@style/main_footbar_radio"
-	    android:drawableTop="@drawable/icon_apps"
+	    android:drawableTop="@drawable/btn_appbox_bg"
 	    android:text="@string/main_menu_appbox" />
 
-	<ImageView
-		style="@style/main_footbar_cutline"
-		android:src="@drawable/widget_bar_cut_off"/>
+    <RadioButton
+        android:id="@+id/main_footbar_icenter"
+        style="@style/main_footbar_radio"
+        android:drawableTop="@drawable/btn_icenter_bg"
+        android:text="@string/main_menu_icenter" />
 
 	<Button
 	    android:id="@+id/main_footbar_setting"
@@ -54,7 +40,8 @@
 	    android:text="@string/main_menu_icenter"
 	    android:textAppearance="?android:attr/textAppearance"
 	    android:textColor="@color/white"
-	    android:textSize="@dimen/text_size_10" />
+	    android:textSize="@dimen/text_size_10"
+        android:visibility="gone"/>
 
 </LinearLayout>
 <!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/main_footer.xml -->

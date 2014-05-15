@@ -1,65 +1,78 @@
-<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_relativelayout_header"
-    android:layout_width="fill_parent"
-    android:layout_height="40dip"
-    android:background="@color/dark_gray" >
-  	
-    <ImageView
-        android:id="@+id/main_head_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="5.0dip"
-        android:src="@drawable/icon_home" />
-    
-    <TextView
-        android:id="@+id/main_head_title"
-        style="@style/main_head_title"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="5.0dip"
-        android:layout_toRightOf="@id/main_head_logo"
-        android:text="@string/app_name"
-        android:textColor="@color/white" />
-	
-   	<ProgressBar 
-   	    android:id="@+id/main_head_progress" 
-   	    style="@style/GenericProgressIndicator"
-   	    android:layout_toRightOf="@id/main_head_title"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="5.0dip"
-        android:visibility="gone"/>
+    style="@style/main_head">
 
-    
-    <ImageButton
-        android:id="@+id/main_head_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="2.0dip"
-        android:background="@drawable/icon_search" />
-   	
-    <ImageButton
-    	android:id="@+id/main_head_pub_post"
-  		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_centerVertical="true"
-		android:layout_alignParentRight="true"
-		android:layout_marginRight="2.0dip"
-		style="@style/main_footbar_btn"
-        android:src="@drawable/ico_edit"
-		android:visibility="gone"/>
-		
-    <ImageButton
-    	android:id="@+id/main_head_pub_tweet"
-	  	android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_centerVertical="true"
-		android:layout_alignParentRight="true"
-		android:layout_marginRight="2.0dip"
-		style="@style/main_footbar_btn"
-        android:src="@drawable/ico_tweet"
-        android:visibility="gone"
-		/>
-</RelativeLayout>
+    <RelativeLayout
+        style="@style/main_head_pattern">
+
+        <!--put the textview at flont so that other elements can stay on top of it-->
+
+        <TextView
+            android:id="@+id/main_head_title"
+            style="@style/main_head_title"
+            android:text="@string/app_name"/>
+
+        <ImageView
+            android:id="@+id/main_head_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8.0dip"
+            android:src="@drawable/btn_qrcode_bg" />
+
+        <ProgressBar
+            android:id="@+id/main_head_progress"
+            style="@style/GenericProgressIndicator"
+            android:layout_toRightOf="@id/main_head_title"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5.0dip"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="right">
+            <ImageButton
+                android:id="@+id/main_head_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10.0dip"
+                android:background="@drawable/btn_search_bg" />
+
+            <ImageButton
+                android:id="@+id/main_head_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10.0dip"
+                android:background="@drawable/btn_more_bg" />
+
+            <ImageButton
+                android:id="@+id/main_head_pub_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="2.0dip"
+                style="@style/main_footbar_btn"
+                android:src="@drawable/ico_edit"
+                android:visibility="gone"/>
+
+            <ImageButton
+                android:id="@+id/main_head_pub_tweet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="2.0dip"
+                style="@style/main_footbar_btn"
+                android:src="@drawable/ico_tweet"
+                android:visibility="gone"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

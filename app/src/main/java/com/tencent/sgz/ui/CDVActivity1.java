@@ -25,7 +25,6 @@ public class CDVActivity1 extends Activity implements CordovaInterface {
 		setContentView(R.layout.frame_cdv1);
 		cordova_webview = (CordovaWebView) findViewById(R.id.cdv1);
 		// Config.init(this);
-		//file:///android_asset/www/views/home/index.html
 		String url = "1.html";
 		cordova_webview.loadUrl(url, 5000);
 	}

@@ -8,7 +8,8 @@
    		android:layout_height="35.0dip" 
    		android:orientation="horizontal"
    		android:background="@color/teal"  
-   		android:gravity="center_vertical">
+   		android:gravity="center_vertical"
+        android:visibility="gone">
        	<Button 
 	        android:id="@+id/frame_btn_active_lastest"
 			style="@style/frame_button"
@@ -45,11 +46,21 @@
 	
 	<com.tencent.sgz.widget.PullToRefreshListView
 	  	android:id="@+id/frame_listview_active"
-	    style="@style/widget_listview"/>
+	    style="@style/widget_listview"
+        android:visibility="gone"/>
 	
 	<com.tencent.sgz.widget.PullToRefreshListView
 	  	android:id="@+id/frame_listview_message"
 	    style="@style/widget_listview"
 	    android:divider="@null"
 		android:visibility="gone"/>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/p4"
+            android:scaleType="fitStart"/>
+    </ScrollView>
 </LinearLayout>

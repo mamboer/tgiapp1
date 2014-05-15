@@ -4,6 +4,8 @@
 	<color name="black">#000000</color>
 	<color name="dark_gray">#333333</color>
 	<color name="gray">#808080</color>
+    <color name="liter_gray">#c1c1c1</color>
+    <color name="lite_gray">#DDDDDD</color>
 	<color name="red">#FF0000</color>
 	<color name="gold">#FFD700</color>
 	<color name="yellow">#FFFF00</color>
@@ -31,7 +33,9 @@
     <color name="dim_foreground_light_inverse_disabled">#80bebebe</color>
     
     <color name="head_text">#0e5986</color>
+    <color name="head_bg">#523c29</color>
     <color name="author_text">#0e5986</color>
+    <color name="foot_bg_on">#594a3f</color>
     
     <color name="face_bg">#eef1f4</color>
     
