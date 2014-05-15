@@ -6,9 +6,11 @@
   	android:background="@color/white">
   	<FrameLayout 
         android:layout_width="fill_parent" 
-        android:layout_height="40.dip"
+        android:layout_height="40dip"
         android:paddingLeft="2dip"
         android:paddingRight="2dip"
+        android:paddingTop="@dimen/space_3"
+        android:paddingBottom="@dimen/space_3"
         android:background="@color/dark_gray">
         <TextView 
             style="@style/detail_head_title"

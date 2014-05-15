@@ -236,11 +236,6 @@
                 qualifiers=""
                 type="drawable" />
             <file
-                name="footer_bg"
-                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/footer_bg.xml"
-                qualifiers=""
-                type="drawable" />
-            <file
                 name="frame_button_bg"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/frame_button_bg.xml"
                 qualifiers=""
@@ -2998,6 +2993,8 @@
                 </color>
                 <color name="gold" >#FFD700
                 </color>
+                <color name="page_bg" >#eaecee
+                </color>
                 <color name="weight_bar_buttondown" >#63A3D7
                 </color>
                 <color name="listitem_white" >#ffffffff
@@ -3622,8 +3619,8 @@ fill_parent
                 <style
                     name="main_footbar_radio"
                     parent="footbar" >
-                    <item name="android:padding">
-0dip
+                    <item name="android:paddingTop">
+2dip
                     </item>
                     <item name="android:background">
 @drawable/selector_rbtn_black
@@ -4144,9 +4141,6 @@ fill_parent
                     <item name="android:layout_height">
 wrap_content
                     </item>
-                    <item name="android:background">
-@drawable/footer_bg
-                    </item>
                     <item name="android:gravity">
 center_vertical
                     </item>
@@ -4398,6 +4392,46 @@ wrap_content
             <file
                 name="btn_search_bg1"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/btn_search_bg1.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/border_view_attrs.xml"
+                qualifiers="" >
+                <declare-styleable name="BorderFrameLayout" >
+                    <attr
+                        name="leftBorderWidth"
+                        format="dimension" />
+                    <attr
+                        name="leftBorderColor"
+                        format="color" />
+                    <attr
+                        name="topBorderWidth"
+                        format="dimension" />
+                    <attr
+                        name="topBorderColor"
+                        format="color" />
+                    <attr
+                        name="rightBorderWidth"
+                        format="dimension" />
+                    <attr
+                        name="rightBorderColor"
+                        format="color" />
+                    <attr
+                        name="bottomBorderWidth"
+                        format="dimension" />
+                    <attr
+                        name="bottomBorderColor"
+                        format="color" />
+                </declare-styleable>
+            </file>
+            <file
+                name="layer_rbtn_footer"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/layer_rbtn_footer.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="layer_rbtn_footer_on"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/layer_rbtn_footer_on.xml"
                 qualifiers=""
                 type="drawable" />
         </source>

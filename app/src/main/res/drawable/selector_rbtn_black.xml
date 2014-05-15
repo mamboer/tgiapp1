@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
 
-  	<item android:state_pressed="true">
-        <shape>
-		    <solid android:color="@color/foot_bg_on" />
-		</shape>
-    </item>
-    <item android:state_checked="true">
-        <shape>
-		    <solid android:color="@color/foot_bg_on" />
-		</shape>
-    </item>
-    <item>
-        <shape>
-		    <solid android:color="@color/white" />
-		</shape>
-    </item>
+  	<item android:state_pressed="true" android:drawable="@drawable/layer_rbtn_footer_on"></item>
+    <item android:state_checked="true" android:drawable="@drawable/layer_rbtn_footer_on"></item>
+    <item android:drawable="@drawable/layer_rbtn_footer"></item>
 
 </selector>
