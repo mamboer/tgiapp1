@@ -387,7 +387,7 @@ public final class Capture extends Activity implements SurfaceHolder.Callback {
 	 */
 	private void showDialog(final String msg) {
 		new AlertDialog.Builder(Capture.this).setTitle("扫描结果").
-		setMessage("非tencent提供活动签到二维码\n内容：" + msg).
+		setMessage("TODO：扫描功能正在完善中！！\n内容：" + msg).
 		setPositiveButton("复制", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				mProgress.dismiss();

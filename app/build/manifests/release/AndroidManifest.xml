@@ -1,0 +1,76 @@
+<!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/AndroidManifest.xml --><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="25" android:versionName="1.0.0" package="com.tencent.sgz">
+
+    <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="15"/>
+
+    <application android:icon="@drawable/icon" android:label="@string/app_name" android:name="com.tencent.sgz.AppContext">
+        <activity android:name="com.tencent.sgz.AppStart" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.About" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.FeedBack" android:screenOrientation="portrait" android:theme="@style/Theme.HalfTranslucent" android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.ReportUi" android:screenOrientation="portrait" android:theme="@style/Theme.HalfTranslucent" android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.Main" android:screenOrientation="portrait" android:theme="@style/Theme.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.LoginDialog" android:screenOrientation="portrait" android:theme="@style/Theme.HalfTranslucent" android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.sgz.ui.NewsDetail" android:theme="@style/Theme.SlideTop"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.SoftwareLib" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.sgz.ui.SoftwareDetail" android:theme="@style/Theme.SlideTop"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.sgz.ui.BlogDetail" android:theme="@style/Theme.SlideTop"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.sgz.ui.QuestionTag" android:screenOrientation="portrait" android:theme="@style/Theme.SlideTop"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.sgz.ui.QuestionDetail" android:theme="@style/Theme.SlideTop"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.sgz.ui.QuestionPub" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight" android:windowSoftInputMode="stateVisible|adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.tencent.sgz.ui.TweetDetail" android:theme="@style/Theme.SlideTop"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.sgz.ui.TweetPub" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight" android:windowSoftInputMode="stateVisible|adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.sgz.ui.MessageDetail" android:screenOrientation="portrait" android:theme="@style/Theme.SlideTop"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.sgz.ui.MessagePub" android:screenOrientation="portrait" android:theme="@style/Theme.SlideTop" android:windowSoftInputMode="stateVisible|adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.sgz.ui.MessageForward" android:screenOrientation="portrait" android:theme="@style/Theme.SlideTop" android:windowSoftInputMode="stateVisible|adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.sgz.ui.CommentPub" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight" android:windowSoftInputMode="stateVisible|adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.Setting" android:screenOrientation="portrait" android:theme="@style/Theme.Preference"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.Search" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight" android:windowSoftInputMode="stateVisible|adjustResize"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.UserInfo" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.tencent.sgz.ui.UserCenter" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.UserFavorite" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.UserFriend" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.ImageDialog" android:screenOrientation="portrait" android:theme="@style/Theme.HalfTranslucent"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.ImageZoomDialog" android:theme="@style/Theme.ZoomLight.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.ScreenShotShare" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight.Fullscreen"/>
+        <activity android:label="@string/app_name" android:name="com.tencent.weibo.webview.OAuthV1AuthorizeWebView"/>
+        <activity android:name="com.tencent.sgz.common.QQWeiboHelper2"/>
+        <activity android:configChanges="orientation|keyboardHidden" android:name="com.tencent.sgz.ui.Capture" android:screenOrientation="portrait" android:stateNotNeeded="true" android:theme="@style/Theme.SlideTop" android:windowSoftInputMode="stateAlwaysHidden">
+        </activity>
+		<activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.Signin" android:screenOrientation="portrait" android:theme="@style/Theme.HalfTranslucent" android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+		<activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.CDVActivity1" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight" android:windowSoftInputMode="stateVisible|adjustResize"/>
+		<activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.CDVActivity2" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight" android:windowSoftInputMode="stateVisible|adjustResize"/>
+		<activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.CDVActivity3" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight" android:windowSoftInputMode="stateVisible|adjustResize"/>
+		<activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.CDVActivity4" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight" android:windowSoftInputMode="stateVisible|adjustResize"/>
+        <receiver android:name="com.tencent.sgz.ui.BroadCast">
+            <intent-filter>
+                <action android:name="com.tencent.sgz.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
+    <uses-feature android:name="android.hardware.screen.landscape"/>
+    <uses-feature android:name="android.hardware.wifi" android:required="false"/>
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true" android:xlargeScreens="true"/>
+
+</manifest>

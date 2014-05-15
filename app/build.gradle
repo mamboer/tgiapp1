@@ -4,15 +4,33 @@ android {
     compileSdkVersion 15
     buildToolsVersion "19.0.3"
 
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
     defaultConfig {
         minSdkVersion 10
         targetSdkVersion 15
+    }
+
+    signingConfigs {
+
+        release {
+            storeFile file("n3gz.jks")
+            storePassword "5611n3gz"
+            keyAlias "n3gz"
+            keyPassword "5611n3gz"
+        }
     }
 
     buildTypes {
         release {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.release
         }
     }
 

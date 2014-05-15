@@ -166,6 +166,11 @@
                 qualifiers=""
                 type="anim" />
             <file
+                name="footer_rbtn_text"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/color/footer_rbtn_text.xml"
+                qualifiers=""
+                type="color" />
+            <file
                 name="frame_button_text_light"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/color/frame_button_text_light.xml"
                 qualifiers=""
@@ -231,6 +236,11 @@
                 qualifiers=""
                 type="drawable" />
             <file
+                name="btn_search_bg1"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/btn_search_bg1.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
                 name="clearwords_bg"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/clearwords_bg.xml"
                 qualifiers=""
@@ -293,6 +303,16 @@
             <file
                 name="head_text_light"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/head_text_light.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="layer_rbtn_footer"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/layer_rbtn_footer.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="layer_rbtn_footer_on"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/layer_rbtn_footer_on.xml"
                 qualifiers=""
                 type="drawable" />
             <file
@@ -2935,6 +2955,36 @@
                 </string-array>
             </file>
             <file
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/border_view_attrs.xml"
+                qualifiers="" >
+                <declare-styleable name="BorderFrameLayout" >
+                    <attr
+                        name="leftBorderWidth"
+                        format="dimension" />
+                    <attr
+                        name="leftBorderColor"
+                        format="color" />
+                    <attr
+                        name="topBorderWidth"
+                        format="dimension" />
+                    <attr
+                        name="topBorderColor"
+                        format="color" />
+                    <attr
+                        name="rightBorderWidth"
+                        format="dimension" />
+                    <attr
+                        name="rightBorderColor"
+                        format="color" />
+                    <attr
+                        name="bottomBorderWidth"
+                        format="dimension" />
+                    <attr
+                        name="bottomBorderColor"
+                        format="color" />
+                </declare-styleable>
+            </file>
+            <file
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/colors.xml"
                 qualifiers="" >
                 <color name="dim_foreground_light_inverse_disabled" >#80bebebe
@@ -4384,56 +4434,6 @@ wrap_content
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/xml/preferences.xml"
                 qualifiers=""
                 type="xml" />
-            <file
-                name="footer_rbtn_text"
-                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/color/footer_rbtn_text.xml"
-                qualifiers=""
-                type="color" />
-            <file
-                name="btn_search_bg1"
-                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/btn_search_bg1.xml"
-                qualifiers=""
-                type="drawable" />
-            <file
-                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/border_view_attrs.xml"
-                qualifiers="" >
-                <declare-styleable name="BorderFrameLayout" >
-                    <attr
-                        name="leftBorderWidth"
-                        format="dimension" />
-                    <attr
-                        name="leftBorderColor"
-                        format="color" />
-                    <attr
-                        name="topBorderWidth"
-                        format="dimension" />
-                    <attr
-                        name="topBorderColor"
-                        format="color" />
-                    <attr
-                        name="rightBorderWidth"
-                        format="dimension" />
-                    <attr
-                        name="rightBorderColor"
-                        format="color" />
-                    <attr
-                        name="bottomBorderWidth"
-                        format="dimension" />
-                    <attr
-                        name="bottomBorderColor"
-                        format="color" />
-                </declare-styleable>
-            </file>
-            <file
-                name="layer_rbtn_footer"
-                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/layer_rbtn_footer.xml"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="layer_rbtn_footer_on"
-                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/layer_rbtn_footer_on.xml"
-                qualifiers=""
-                type="drawable" />
         </source>
         <source path="/Users/levin/Dev/workspace/android/n3gz/app/build/res/rs/debug" />
         <source path="/Users/levin/Dev/workspace/android/n3gz/app/build/res/generated/debug" />

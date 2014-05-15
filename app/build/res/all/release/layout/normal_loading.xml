@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    style="@style/GenericProgressBackground"
+    android:id="@+id/loadingPanel">
+    <ProgressBar style="@style/GenericProgressIndicator"/>
+
+</RelativeLayout>
+<!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/normal_loading.xml -->

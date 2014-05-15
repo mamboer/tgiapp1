@@ -1,0 +1,2 @@
+# do a custom build
+$ MODULES="zepto event ajax form ie detect" npm run-script dist
