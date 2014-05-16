@@ -16,7 +16,7 @@ import android.util.Xml;
  * 动态实体类
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-3-21
+ * @created 2014-4-21
  */
 public class Active extends Entity {
 

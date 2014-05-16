@@ -14,7 +14,7 @@ import android.widget.Toast;
  * 新数据Toast提示控件(带音乐播放)
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-8-30
+ * @created 2014-8-30
  */
 public class NewDataToast extends Toast{
 	

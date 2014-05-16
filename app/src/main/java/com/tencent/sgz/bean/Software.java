@@ -15,7 +15,7 @@ import android.util.Xml;
  * 软件实体类
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-3-21
+ * @created 2014-4-21
  */
 public class Software extends Entity {
 

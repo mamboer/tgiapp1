@@ -24,7 +24,7 @@ import android.widget.Toast;
  * 应用程序异常类：用于捕获异常和提示错误信息
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-3-21
+ * @created 2014-4-21
  */
 public class AppException extends Exception implements UncaughtExceptionHandler{
 

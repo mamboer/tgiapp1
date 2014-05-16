@@ -21,7 +21,7 @@ import android.util.Xml;
  * 二维码扫描实体类
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2014-3-17
+ * @created 2014-4-17
  */
 @SuppressWarnings("serial")
 public class Barcode extends Entity implements Serializable{

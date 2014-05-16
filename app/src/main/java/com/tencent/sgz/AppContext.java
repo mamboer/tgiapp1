@@ -64,7 +64,7 @@ import android.webkit.CacheManager;
  * 全局应用程序类：用于保存和调用全局应用配置及访问网络数据
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-3-21
+ * @created 2014-4-21
  */
 public class AppContext extends Application {
 	

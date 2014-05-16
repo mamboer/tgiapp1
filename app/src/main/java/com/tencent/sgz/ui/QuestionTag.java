@@ -28,7 +28,7 @@ import android.widget.TextView;
  * Tag相关帖子列表
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-8-27
+ * @created 2014-8-27
  */
 public class QuestionTag extends BaseActivity{
 	

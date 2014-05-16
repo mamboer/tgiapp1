@@ -20,7 +20,7 @@ import android.widget.TextView;
  * 问答Adapter类
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-3-21
+ * @created 2014-4-21
  */
 public class ListViewQuestionAdapter extends BaseAdapter {
 	private Context 					context;//运行上下文

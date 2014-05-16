@@ -16,7 +16,7 @@ import android.widget.TextView;
  * 用户收藏Adapter类
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-5-24
+ * @created 2014-5-24
  */
 public class ListViewFavoriteAdapter extends BaseAdapter {
 	private Context 					context;//运行上下文

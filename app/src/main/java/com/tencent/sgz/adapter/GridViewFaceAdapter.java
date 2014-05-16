@@ -13,7 +13,7 @@ import android.widget.ImageView;
  * 用户表情Adapter类
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-8-9
+ * @created 2014-8-9
  */
 public class GridViewFaceAdapter extends BaseAdapter
 {

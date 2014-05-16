@@ -37,7 +37,7 @@ import android.widget.ViewSwitcher;
  * 留言详情
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-3-21
+ * @created 2014-4-21
  */
 public class MessageDetail extends BaseActivity{
 	

@@ -40,7 +40,7 @@ import android.widget.Toast;
  * 应用程序更新工具包
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.1
- * @created 2012-6-29
+ * @created 2014-6-29
  */
 public class UpdateManager {
 

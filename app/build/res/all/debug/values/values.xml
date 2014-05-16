@@ -79,6 +79,7 @@
     <color name="full_transparent">#00000000</color>
     <color name="gold">#FFD700</color>
     <color name="gray">#808080</color>
+    <color name="gray_level4">#e1e3e5</color>
     <color name="grayslate">#708090</color>
     <color name="graywhite">#F5F5F5</color>
     <color name="green">#008000</color>
@@ -317,9 +318,11 @@
     <eat-comment />
 
     <string name="login_dialog_account">账号:</string>
-    <string name="login_dialog_account_hint">输入账号/邮箱</string>
+    <string name="login_dialog_account_hint">请输入QQ号</string>
     <string name="login_dialog_autoLogin">自动登录:</string>
     <string name="login_dialog_login">登  录</string>
+    <string name="login_dialog_login_qq">QQ快速登录</string>
+    <string name="login_dialog_login_wx">微信快速登录</string>
     <string name="login_dialog_logo">赤壁乱舞</string>
     <string name="login_dialog_password">密码:</string>
     <string name="login_dialog_password_hint">输入密码</string>

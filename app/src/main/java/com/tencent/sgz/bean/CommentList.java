@@ -19,7 +19,7 @@ import android.util.Xml;
  * 评论列表实体类
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-3-21
+ * @created 2014-4-21
  */
 public class CommentList extends Entity{
 

@@ -4,7 +4,7 @@ package com.tencent.sgz.bean;
  * 微博认证信息类：OAuth认证返回的数据集合
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-3-21
+ * @created 2014-4-21
  */
 public class AccessInfo 
 {

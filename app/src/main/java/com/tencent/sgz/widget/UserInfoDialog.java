@@ -10,7 +10,7 @@ import android.view.WindowManager.LayoutParams;
  * 用户信息对话框控件
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-7-2
+ * @created 2014-7-2
  */
 public class UserInfoDialog extends Dialog {
 	

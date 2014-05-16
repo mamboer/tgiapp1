@@ -17,7 +17,7 @@ import android.util.Xml;
  * 动弹实体类
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-3-21
+ * @created 2014-4-21
  * @changed 2014-01-21
  * @difference
  * 	1.添加语音动弹属性

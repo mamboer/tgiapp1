@@ -18,7 +18,7 @@ import android.view.Window;
  * Android各版本的兼容方法
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-8-6
+ * @created 2014-8-6
  */
 public class MethodsCompat {
 	

@@ -25,7 +25,7 @@ import android.widget.ImageView;
  * bmpManager.loadBitmap(imageURL, imageView);
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-6-25
+ * @created 2014-6-25
  */
 public class BitmapManager {  
 	  

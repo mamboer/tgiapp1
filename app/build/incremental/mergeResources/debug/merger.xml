@@ -3069,6 +3069,8 @@
                 </color>
                 <color name="full_transparent" >#00000000
                 </color>
+                <color name="gray_level4" >#e1e3e5
+                </color>
                 <color name="dark_gray" >#333333
                 </color>
                 <color name="grayslate" >#708090
@@ -3392,7 +3394,7 @@
                 </string>
                 <string name="frame_title_news_recommend" >推荐阅读
                 </string>
-                <string name="login_dialog_account_hint" >输入账号/邮箱
+                <string name="login_dialog_account_hint" >请输入QQ号
                 </string>
                 <string name="question_detail_head_title" >帖子正文
                 </string>
@@ -3457,6 +3459,8 @@
                 <string name="frame_title_question_site" >官网
                 </string>
                 <string name="receiver_widgetupdate" >com.tencent.sgz.action.APPWIDGET_UPDATE
+                </string>
+                <string name="login_dialog_login_wx" >微信快速登录
                 </string>
                 <string name="login_dialog_reg" >注册帐号
                 </string>
@@ -3539,6 +3543,8 @@
                 <string name="login_dialog_logo" >赤壁乱舞
                 </string>
                 <string name="ui_insert_image" >插入图片
+                </string>
+                <string name="login_dialog_login_qq" >QQ快速登录
                 </string>
                 <string name="software_detail_head_title" >游戏详情
                 </string>
@@ -4434,6 +4440,41 @@ wrap_content
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/xml/preferences.xml"
                 qualifiers=""
                 type="xml" />
+            <file
+                name="tgclogo"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/tgclogo.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="layer_login_border"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/layer_login_border.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="selector_btn_gray"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/selector_btn_gray.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="login"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/login.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="selector_btn_blue"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/selector_btn_blue.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ico_wx"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_wx.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_qq"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_qq.png"
+                qualifiers="hdpi"
+                type="drawable" />
         </source>
         <source path="/Users/levin/Dev/workspace/android/n3gz/app/build/res/rs/debug" />
         <source path="/Users/levin/Dev/workspace/android/n3gz/app/build/res/generated/debug" />

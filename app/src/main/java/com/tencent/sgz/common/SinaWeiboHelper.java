@@ -19,7 +19,7 @@ import android.widget.Toast;
  * 新浪微博帮助类
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
- * @created 2012-3-22
+ * @created 2014-4-22
  */
 public class SinaWeiboHelper {
 
