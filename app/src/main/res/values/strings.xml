@@ -100,4 +100,24 @@
 
     <string name="receiver_widgetupdate">com.tencent.sgz.action.APPWIDGET_UPDATE</string>
     <string name="receiver_tweetpub">com.tencent.sgz.action.APP_TWEETPUB</string>
+
+    <string name="lbl_ok">确认</string>
+    <string name="lbl_scan_qrcode">扫描二维码</string>
+
+    <integer name="wtlogin_appid">563046901</integer>
+    <string name="wtlogin_errtip_requireuid">请输入登录账号！</string>
+    <string name="wtlogin_errtip_requirepwd">请输入登录密码！</string>
+    <string name="wtlogin_errtip_param">输入参数有误，请检查！</string>
+    <string name="wtlogin_errtip_quicklogin_version">4.6以上版本手Q才能支持快速登录</string>
+    <string name="wtlogin_errtip_requirevcode">请输入验证码</string>
+    <string name="wtlogin_errtip_vcode">验证码有误，请重新输入！</string>
+    <string name="wtlogin_verifycode">验证码</string>
+    <string name="wtlogin_verifycode_next">看不清，换一个</string>
+    <string name="wtlogin_deviceprotect">登录设备保护</string>
+    <string name="wtlogin_deviceprotect_notice">你已开启“登录设备保护”，当前设备需求通过密保手机短信验证才能登录。</string>
+    <string name="wtlogin_deviceprotect_phone">密保手机号码:  </string>
+    <string name="wtlogin_beginverify">开始验证</string>
+    <string name="wtlogin_devlock_smsverify">手机短信验证</string>
+    <string name="wtlogin_verifycode_getitagain">重新获取</string>
+    <string name="wtlogin_loginok">登录成功</string>
 </resources>

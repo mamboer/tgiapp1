@@ -11,9 +11,12 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.URLEncoder;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
 
+import com.google.inject.AbstractModule;
+import com.google.inject.Module;
 import com.tencent.sgz.api.ApiClient;
 import com.tencent.sgz.bean.ActiveList;
 import com.tencent.sgz.bean.Barcode;
@@ -46,6 +49,8 @@ import com.tencent.sgz.common.ImageUtils;
 import com.tencent.sgz.common.MethodsCompat;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
+import com.tencent.sgz.ui.Login;
+
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -59,6 +64,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.webkit.CacheManager;
+
+import roboguice.activity.RoboActivity;
+import roboguice.inject.RoboApplicationProvider;
 
 /**
  * 全局应用程序类：用于保存和调用全局应用配置及访问网络数据

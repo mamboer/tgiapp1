@@ -14,11 +14,11 @@ public final class R {
 	public static final class id {
 	}
 	public static final class layout {
-		public static final int main = 0x7f030027;
+		public static final int main = 0x7f03002f;
 	}
 	public static final class string {
-		public static final int app_name = 0x7f0b000e;
-		public static final int go = 0x7f0b0035;
+		public static final int app_name = 0x7f0c000e;
+		public static final int go = 0x7f0c0035;
 	}
 	public static final class xml {
 		public static final int config = 0x7f050000;

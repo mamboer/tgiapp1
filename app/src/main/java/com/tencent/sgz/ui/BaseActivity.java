@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 
+import roboguice.activity.RoboActivity;
+
 /**
  * 应用程序Activity的基类
  * 
@@ -13,7 +15,7 @@ import android.view.View;
  * @version 1.0
  * @created 2014-5-11
  */
-public class BaseActivity extends Activity {
+public class BaseActivity extends RoboActivity {
 
 	// 是否允许全屏
 	private boolean allowFullScreen = true;

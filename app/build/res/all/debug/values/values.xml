@@ -54,6 +54,12 @@
         <item>翻墙</item>
         <item>非正常话题</item>
     </string-array>
+    <!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/roboguice.xml -->
+    <eat-comment />
+
+    <string-array name="roboguice_modules">
+        <item>com.tencent.sgz.RoboguiceIocModule</item>
+    </string-array>
     <!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/colors.xml -->
     <eat-comment />
 
@@ -208,6 +214,10 @@
     <item name="quit" type="id"/>
     <item name="restart_preview" type="id"/>
     <item name="return_scan_result" type="id"/>
+    <!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <integer name="wtlogin_appid">563046901</integer>
     <!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/messages.xml -->
     <eat-comment />
 
@@ -309,6 +319,14 @@
     <eat-comment />
 
     <string name="io_exception_error">文件流异常</string>
+    <!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="lbl_ok">确认</string>
+    <string name="lbl_scan_qrcode">扫描二维码</string>
+    <!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/messages.xml -->
+    <eat-comment />
+
     <string name="load_empty">暂无数据</string>
     <string name="load_error">加载数据出错</string>
     <string name="load_full">已加载全部</string>
@@ -428,6 +446,21 @@
     <string name="user_friend_fans">粉丝(%d)</string>
     <string name="user_friend_follower">关注(%d)</string>
     <string name="user_friend_head_title">我的好友</string>
+    <string name="wtlogin_beginverify">开始验证</string>
+    <string name="wtlogin_deviceprotect">登录设备保护</string>
+    <string name="wtlogin_deviceprotect_notice">你已开启“登录设备保护”，当前设备需求通过密保手机短信验证才能登录。</string>
+    <string name="wtlogin_deviceprotect_phone">密保手机号码:  </string>
+    <string name="wtlogin_devlock_smsverify">手机短信验证</string>
+    <string name="wtlogin_errtip_param">输入参数有误，请检查！</string>
+    <string name="wtlogin_errtip_quicklogin_version">4.6以上版本手Q才能支持快速登录</string>
+    <string name="wtlogin_errtip_requirepwd">请输入登录密码！</string>
+    <string name="wtlogin_errtip_requireuid">请输入登录账号！</string>
+    <string name="wtlogin_errtip_requirevcode">请输入验证码</string>
+    <string name="wtlogin_errtip_vcode">验证码有误，请重新输入！</string>
+    <string name="wtlogin_loginok">登录成功</string>
+    <string name="wtlogin_verifycode">验证码</string>
+    <string name="wtlogin_verifycode_getitagain">重新获取</string>
+    <string name="wtlogin_verifycode_next">看不清，换一个</string>
     <!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/messages.xml -->
     <eat-comment />
 

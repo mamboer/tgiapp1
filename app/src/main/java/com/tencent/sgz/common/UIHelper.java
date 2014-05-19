@@ -153,6 +153,22 @@ public class UIHelper {
 		context.startActivity(intent);
 	}
 
+    /**
+     * 显示登录页面
+     *
+     * @param context
+     */
+    public static void showLoginPage(Context context) {
+        Intent intent = new Intent(context, Login.class);
+        if (context instanceof Main)
+            intent.putExtra("LOGINTYPE", Login.LOGIN_MAIN);
+        else if (context instanceof Setting)
+            intent.putExtra("LOGINTYPE", Login.LOGIN_SETTING);
+        else
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
 	/**
 	 * 显示新闻详情
 	 * 

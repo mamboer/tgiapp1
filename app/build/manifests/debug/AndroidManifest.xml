@@ -45,6 +45,48 @@
 		<activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.CDVActivity2" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight" android:windowSoftInputMode="stateVisible|adjustResize"/>
 		<activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.CDVActivity3" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight" android:windowSoftInputMode="stateVisible|adjustResize"/>
 		<activity android:configChanges="keyboardHidden|orientation" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.CDVActivity4" android:screenOrientation="portrait" android:theme="@style/Theme.ZoomLight" android:windowSoftInputMode="stateVisible|adjustResize"/>
+
+        <!--S wtlogin-->
+        <activity android:label="@string/login_dialog_login" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.Login" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="oicq.wtlogin_sdk_demo.QUICKLOGIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/login_dialog_login_qq" android:name="com.tencent.sgz.ui.LoginQuick">
+            <intent-filter>
+                <action android:name="oicq.wtlogin_sdk_demo.QUICKLOGIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/wtlogin_verifycode" android:name="com.tencent.sgz.ui.LoginVCode">
+        </activity>
+        <activity android:label="@string/wtlogin_loginok" android:name="com.tencent.sgz.ui.LoginOk">
+        </activity>
+        <activity android:label="@string/lbl_scan_qrcode" android:name="com.tencent.sgz.ui.LoginQRCode">
+        </activity>
+        <activity android:label="DeviceLock" android:launchMode="singleTask" android:name="com.tencent.sgz.ui.DeviceLock">
+        </activity>
+        <activity android:label="@string/wtlogin_deviceprotect" android:name="com.tencent.sgz.ui.DeviceProtect">
+        </activity>
+        <activity android:label="DeviceLockVerify" android:name="com.tencent.sgz.ui.DeviceLockVerify">
+        </activity>
+
+        <!-- 非手Q是不可以有这个声明的:经咨询kinkahuang,下面配置只是给手Q用的，所以直接注释掉 -->
+        <!--
+        <permission android:name="oicq.wlogin_sdk.permission.WloginProvider.READ"></permission>
+        <permission android:name="oicq.wlogin_sdk.permission.WloginProvider.WRITE" ></permission>
+        <provider
+            android:name="oicq.wlogin_sdk.request.WloginProvider"
+            android:authorities="oicq.wlogin_sdk.WloginProvider"
+            android:readPermission="oicq.wlogin_sdk.permission.WloginProvider.READ"
+            android:writePermission="oicq.wlogin_sdk.permission.WloginProvider.WRITE" >
+        </provider>
+        -->
+        <!--E wtlogin-->
+
         <receiver android:name="com.tencent.sgz.ui.BroadCast">
             <intent-filter>
                 <action android:name="com.tencent.sgz.action.APPWIDGET_UPDATE"/>

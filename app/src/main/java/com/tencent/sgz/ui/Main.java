@@ -1243,7 +1243,7 @@ public class Main extends BaseActivity {
                             case 4://icenter
                                 // 判断登录
                                 if (!appContext.isLogin()) {
-                                    UIHelper.showLoginDialog(Main.this);
+                                    UIHelper.showLoginPage(Main.this);
                                     break;
                                 }
                                 break;

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/page_bg"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+        android:paddingLeft="2dip"
+        android:paddingRight="2dip"
+        android:paddingTop="@dimen/space_3"
+        android:paddingBottom="@dimen/space_3"
+        android:background="@color/dark_gray">
+        <TextView
+            style="@style/detail_head_title"
+            android:text="@string/wtlogin_devlock_smsverify"/>
+        <ImageView
+            android:id="@+id/wt_login_btnclose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:clickable="true"
+            android:background="@drawable/icon_arrow_left"
+            android:onClick="back"/>
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/space_10"
+        android:paddingRight="@dimen/space_10"
+        android:paddingTop="@dimen/space_15"
+        android:paddingBottom="@dimen/space_15"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dip"
+            android:paddingTop="15dip"
+            android:paddingLeft="@dimen/space_10"
+            android:paddingRight="@dimen/space_10"
+            android:layout_marginBottom="@dimen/space_15"
+            android:background="@drawable/layer_login_border">
+
+            <EditText
+                android:id="@+id/wtlogin_SMSCode"
+                android:layout_width="200px"
+                android:layout_height="45dip"
+                android:inputType="number"
+                android:paddingLeft="5dip"
+                android:layout_weight=".5"
+                android:hint="@string/wtlogin_errtip_requirevcode"
+                />
+
+            <Button
+                android:id="@+id/wtlogin_resendSMS"
+                android:layout_width="120dip"
+                style="@style/btn_text"
+                android:background="@drawable/selector_btn_gray"
+                android:text="@string/wtlogin_verifycode_getitagain"
+                android:gravity="center"
+                android:layout_marginLeft="10dip"
+                android:textSize="16sp"
+                android:layout_alignParentRight="true"
+                android:layout_weight=".5"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/wtlogin_verifySMS"
+            style="@style/btn_text"
+            android:background="@drawable/selector_btn_blue"
+            android:text="@string/lbl_ok"/>
+
+    </LinearLayout>
+
+</LinearLayout>

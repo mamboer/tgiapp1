@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
+import roboguice.activity.RoboActivity;
+
 /**
  * 带cordova的Activity的基类
  * 
@@ -21,7 +23,7 @@ import android.view.View;
  * @version 1.0
  * @created 2014-5-9
  */
-public class BaseCDVActivity extends Activity implements CordovaInterface {
+public class BaseCDVActivity extends RoboActivity implements CordovaInterface {
 
 	// 是否允许全屏
 	private boolean allowFullScreen = true;
