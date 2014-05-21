@@ -73,6 +73,7 @@
 			android:id="@+id/frame_btn_software_china"
 			style="@style/frame_button"
          	android:text="国产"/>
+
 	</LinearLayout>
 	
     <com.tencent.sgz.widget.ScrollLayout   

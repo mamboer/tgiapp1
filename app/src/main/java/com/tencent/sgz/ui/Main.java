@@ -62,6 +62,7 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -70,11 +71,15 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
+import android.database.Cursor;
+import android.widget.Toast;
 
 /**
  * 应用程序首页
@@ -200,7 +205,14 @@ public class Main extends BaseActivity {
 	private int curClearNoticeType = 0;
 
 	private TweetReceiver tweetReceiver;// 动弹发布接收器
-	private AppContext appContext;// 全局Context
+
+    //img switcher
+    ImageSwitcher imgSlider_switcher;
+    ImageView imgSlider_view;
+    float imgSlider_initialX;
+    int imgSlider_position=0;
+    int[] imgSlider_data = new int[]{R.drawable.icon,R.drawable.icon_gear,R.drawable.icon_home,R.drawable.icon_apps};
+    int imgSlider_cnt = imgSlider_data.length;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -213,7 +225,6 @@ public class Main extends BaseActivity {
 		filter.addAction(getString(R.string.receiver_tweetpub));
 		registerReceiver(tweetReceiver, filter);
 
-		appContext = (AppContext) getApplication();
 		// 网络连接判断
 		if (!appContext.isNetworkConnected())
 			UIHelper.ToastMessage(this, R.string.network_not_connected);
@@ -228,6 +239,10 @@ public class Main extends BaseActivity {
 		this.initBadgeView();
 		this.initQuickActionGrid();
 		this.initFrameListView();
+
+        this.initImageSwitcher();
+
+
 
 		// 检查新版本
 		if (appContext.isCheckUp()) {
@@ -353,6 +368,55 @@ public class Main extends BaseActivity {
 			}
 		}.start();
 	}
+
+    private void initImageSwitcher(){
+        imgSlider_switcher = (ImageSwitcher)findViewById(R.id.imgSlider_switcher);
+        imgSlider_view = (ImageView)findViewById(R.id.imgSlider_view);
+        imgSlider_view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+
+                    case MotionEvent.ACTION_DOWN:
+                        imgSlider_initialX = motionEvent.getX();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        float finalX = motionEvent.getX();
+                        if (imgSlider_initialX > finalX)
+                        {
+                            Log.d("imgSlider","slide to left");
+                            if(imgSlider_position==imgSlider_cnt){
+                                imgSlider_position = 0;
+                            }
+
+                            imgSlider_view.setBackgroundResource(imgSlider_data[imgSlider_position]);
+                            imgSlider_switcher.showNext();
+
+                            Toast.makeText(getApplicationContext(), "Next Image",
+                                    Toast.LENGTH_LONG).show();
+                            imgSlider_position++;
+                        }
+                        else
+                        {
+                            Log.d("imgSlider","slide to right");
+                            if(imgSlider_position<0){
+                                imgSlider_position=imgSlider_cnt-1;
+                            }
+
+                            imgSlider_view.setBackgroundResource(imgSlider_data[imgSlider_position]);
+                            imgSlider_switcher.showNext();
+
+                            Toast.makeText(getApplicationContext(), "Prev Image",
+                                    Toast.LENGTH_LONG).show();
+                            imgSlider_position--;
+
+                        }
+                        break;
+                }
+                return false;
+            }
+        });
+    }
 
 	/**
 	 * 初始化所有ListView
@@ -1248,41 +1312,6 @@ public class Main extends BaseActivity {
                                 }
                                 break;
 						}//switch
-						setCurPoint(viewIndex);
-					}
-				});
-	}
-	
-	private void initPageScroll1() {
-		mScrollLayout = (ScrollLayout) findViewById(R.id.main_scrolllayout);
-
-		LinearLayout linearLayout = (LinearLayout) findViewById(R.id.main_linearlayout_footer);
-		mHeadTitles = getResources().getStringArray(R.array.head_titles);
-		mViewCount = mScrollLayout.getChildCount();
-		mButtons = new RadioButton[mViewCount];
-
-		for (int i = 0; i < mViewCount; i++) {
-			mButtons[i] = (RadioButton) linearLayout.getChildAt(i * 2);
-			mButtons[i].setTag(i);
-			mButtons[i].setChecked(false);
-			mButtons[i].setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-					int pos = (Integer) (v.getTag());
-					mScrollLayout.snapToScreen(pos);
-				}
-			});
-		}
-
-		// 设置第一显示屏
-		mCurSel = 0;
-		mButtons[mCurSel].setChecked(true);
-
-		mScrollLayout
-				.SetOnViewChangeListener(new ScrollLayout.OnViewChangeListener() {
-					public void OnViewChange(int viewIndex) {
-						// 切换列表视图-如果列表数据为空：加载数据
-						
-						
 						setCurPoint(viewIndex);
 					}
 				});

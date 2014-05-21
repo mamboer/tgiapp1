@@ -86,7 +86,11 @@ public class AppContext extends Application {
 	private boolean login = false;	//登录状态
 	private int loginUid = 0;	//登录用户的id
 	private Hashtable<String, Object> memCacheRegion = new Hashtable<String, Object>();
-	
+    /**
+     * Application Contenxt singleton instance
+     */
+    public static AppContext Instance = null;
+
 	private String saveImagePath;//保存图片路径
 	
 	private Handler unLoginHandler = new Handler(){
@@ -111,6 +115,9 @@ public class AppContext extends Application {
 	 * 初始化
 	 */
 	private void init(){
+        if (Instance==null){
+            Instance = this;
+        }
 		//设置保存图片的路径
 		saveImagePath = getProperty(AppConfig.SAVE_IMAGE_PATH);
 		if(StringUtils.isEmpty(saveImagePath)){

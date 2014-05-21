@@ -1,6 +1,9 @@
 package com.tencent.sgz.ui;
 
+import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppManager;
+import com.tencent.sgz.widget.LoadingDialog;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -24,10 +27,18 @@ public class BaseActivity extends RoboActivity {
 	private boolean allowDestroy = true;
 
 	private View view;
+    /**
+     * loading dialog
+     */
+    protected LoadingDialog loadingDialog;
+
+    protected AppContext appContext;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+        appContext =AppContext.Instance;
+        loadingDialog = new LoadingDialog(this);
 		allowFullScreen = true;
 		// 添加Activity到堆栈
 		AppManager.getAppManager().addActivity(this);
@@ -37,6 +48,8 @@ public class BaseActivity extends RoboActivity {
 	protected void onDestroy() {
 		super.onDestroy();
 
+        // 移除loading dialog
+        loadingDialog.dismiss();
 		// 结束Activity&从堆栈中移除
 		AppManager.getAppManager().finishActivity(this);
 	}

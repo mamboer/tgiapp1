@@ -8,8 +8,8 @@ package org.apache.cordova;
 
 public final class R {
 	public static final class drawable {
-		public static final int icon = 0x7f0200dc;
-		public static final int splash = 0x7f020138;
+		public static final int icon = 0x7f0200dd;
+		public static final int splash = 0x7f020139;
 	}
 	public static final class id {
 	}

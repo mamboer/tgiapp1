@@ -60,7 +60,7 @@ public class UserInfo extends BaseActivity {
 	private LinearLayout favorites_ll;
 	private LinearLayout followers_ll;
 	private LinearLayout fans_ll;
-	private LoadingDialog loading;
+
 	private MyInformation user;
 	private Handler mHandler;
 
@@ -110,8 +110,8 @@ public class UserInfo extends BaseActivity {
 	private void initData() {
 		mHandler = new Handler() {
 			public void handleMessage(Message msg) {
-				if (loading != null)
-					loading.dismiss();
+				if (loadingDialog != null)
+                    loadingDialog.hide();
 				if (msg.what == 1 && msg.obj != null) {
 					user = (MyInformation) msg.obj;
 
@@ -148,8 +148,7 @@ public class UserInfo extends BaseActivity {
 	}
 
 	private void loadUserInfoThread(final boolean isRefresh) {
-		loading = new LoadingDialog(this);
-		loading.show();
+		loadingDialog.show();
 
 		new Thread() {
 			public void run() {
@@ -341,8 +340,7 @@ public class UserInfo extends BaseActivity {
 	private void uploadNewPhoto() {
 		final Handler handler = new Handler() {
 			public void handleMessage(Message msg) {
-				if (loading != null)
-					loading.dismiss();
+                loadingDialog.hide();
 				if (msg.what == 1 && msg.obj != null) {
 					Result res = (Result) msg.obj;
 					// 提示信息
@@ -357,10 +355,8 @@ public class UserInfo extends BaseActivity {
 			}
 		};
 
-		if (loading != null) {
-			loading.setLoadText("正在上传头像···");
-			loading.show();
-		}
+        loadingDialog.showWithText("正在上传头像···");
+
 
 		new Thread() {
 			public void run() {
@@ -369,8 +365,9 @@ public class UserInfo extends BaseActivity {
 					protraitBitmap = ImageUtils.loadImgThumbnail(protraitPath,
 							200, 200);
 				} else {
-					loading.setLoadText("图像不存在，上传失败·");
-					loading.hide();
+
+                    loadingDialog.setLoadText("图像不存在，上传失败·");
+                    loadingDialog.hide();
 				}
 
 				if (protraitBitmap != null) {
@@ -388,8 +385,8 @@ public class UserInfo extends BaseActivity {
 						msg.what = 1;
 						msg.obj = res;
 					} catch (AppException e) {
-						loading.setLoadText("上传出错·");
-						loading.hide();
+                        loadingDialog.setLoadText("上传出错·");
+                        loadingDialog.hide();
 						msg.what = -1;
 						msg.obj = e;
 					} catch (IOException e) {
@@ -397,8 +394,8 @@ public class UserInfo extends BaseActivity {
 					}
 					handler.sendMessage(msg);
 				} else {
-					loading.setLoadText("图像不存在，上传失败·");
-					loading.hide();
+                    loadingDialog.setLoadText("图像不存在，上传失败·");
+                    loadingDialog.hide();
 				}
 			};
 		}.start();
