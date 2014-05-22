@@ -47,6 +47,9 @@
     <color name="weight_bar_buttondown">#63A3D7</color>
     <color name="weight_bar_buttonup">#A4A9AE</color>
     
+    <!--分割线-->
+    <color name="devider_line_bg1">#eaeaeb</color>
+    
     <color name="listitem_transparent">#00000000</color>
     <color name="listitem_black">#ff000000</color>
     <color name="listitem_white">#ffffffff</color>
@@ -70,5 +73,10 @@
 	<color name="transparent">#00000000</color>
 	<color name="viewfinder_laser">#ffcc0000</color> <!-- Android standard ICS color -->
 	<color name="viewfinder_mask">#60000000</color>
-	
+
+    <!-- 首页相关 -->
+    <color name="notice_badge_text">#d64700</color>
+	<color name="cate_badge_bg">#e38121</color>
+    <color name="cate_badge_bg1">#449fe5</color>
+    <color name="cate_badge_bg2">#4dbb22</color>
 </resources>

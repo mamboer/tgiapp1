@@ -69,8 +69,12 @@
     <color name="bright_foreground_light">#ff000000</color>
     <color name="bright_foreground_light_disabled">#80000000</color>
     <color name="bright_foreground_light_inverse">#ffffffff</color>
+    <color name="cate_badge_bg">#e38121</color>
+    <color name="cate_badge_bg1">#449fe5</color>
+    <color name="cate_badge_bg2">#4dbb22</color>
     <color name="contents_text">#ff000000</color>
     <color name="dark_gray">#333333</color>
+    <color name="devider_line_bg1">#eaeaeb</color>
     <color name="dim_foreground_light">#808080</color>
     <color name="dim_foreground_light_disabled">#80323232</color>
     <color name="dim_foreground_light_inverse">#ff006eaa</color>
@@ -104,6 +108,7 @@
     <color name="listitem_yellow">#fffaffbf</color>
     <color name="lite_gray">#DDDDDD</color>
     <color name="liter_gray">#c1c1c1</color>
+    <color name="notice_badge_text">#d64700</color>
     <color name="orange">#FFA500</color>
     <color name="page_bg">#eaecee</color>
     <color name="pink">#FFC0CB</color>
@@ -753,6 +758,14 @@
         <item name="android:shadowRadius">1</item>
     </style>
 
+    <style name="dot_style">
+        <item name="android:layout_width">5dip</item>
+        <item name="android:layout_height">5dip</item>
+        <item name="android:background">@drawable/dot_normal</item>
+        <item name="android:layout_marginLeft">1.5dip</item>
+        <item name="android:layout_marginRight">1.5dip</item>
+    </style>
+
     <style name="footbar">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">fill_parent</item>
@@ -779,6 +792,117 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+    <!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/styles.home.xml -->
+    <eat-comment />
+
+    <style name="home_news_listitem" />
+
+    <style name="home_news_listitem.badge">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:minWidth">32dp</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:background">@drawable/layer_cate_badge</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="home_news_listitem.badge.blue">
+        <item name="android:background">@drawable/layer_cate_badge_blue</item>
+    </style>
+
+    <style name="home_news_listitem.badge.green">
+        <item name="android:background">@drawable/layer_cate_badge_green</item>
+    </style>
+
+    <style name="home_news_listitem.bd">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="home_news_listitem.btn">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="home_news_listitem.desc">
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:paddingTop">10dp</item>
+    </style>
+
+    <style name="home_news_listitem.ft">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical|right</item>
+    </style>
+
+    <style name="home_news_listitem.hd">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="home_news_listitem.inner">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/layer_login_border</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+
+    <style name="home_news_listitem.split">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/devider_line_bg1</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="home_news_listitem.time">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="home_news_listitem.tit">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_17</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">left</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="home_news_listitem.wrap">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/styles.xml -->
+    <eat-comment />
 
     <style name="loading_small" parent="@android:style/Widget.ProgressBar.Small">
         <item name="android:indeterminateDrawable">@anim/loading</item>
@@ -851,10 +975,93 @@
         -->
     </style>
 
+    <style name="notice">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+
+    <style name="notice_arr">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:src">@drawable/ico_arr_left</item>
+        <item name="android:layout_marginRight">-5dp</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="notice_badge">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:minWidth">32dp</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/notice_badge_text</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@drawable/layer_notice_badge</item>
+    </style>
+
+    <style name="notice_txt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
     <style name="popupMenu" parent="android:Animation">
         <item name="@android:windowEnterAnimation">@anim/head_in</item>
   //进入时的动画           <item name="@android:windowExitAnimation">@anim/head_out</item>
     //退出时的动画   </style>
+
+    <style name="shortcut_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="shortcut_button_badge">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:paddingLeft">3dp</item>
+        <item name="android:paddingRight">3dp</item>
+        <item name="android:layout_marginTop">-5dp</item>
+        <item name="android:layout_marginRight">-5dp</item>
+        <item name="android:minWidth">16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:background">@drawable/layer_badge</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+    <style name="shortcut_button_img">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+    <style name="shortcut_button_txt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:gravity">center</item>
+    </style>
 
     <style name="tab_button">
         <item name="android:layout_width">fill_parent</item>

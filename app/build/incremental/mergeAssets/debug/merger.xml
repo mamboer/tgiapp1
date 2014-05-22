@@ -226,6 +226,9 @@
             <file
                 name="www/views/i/setting.html"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/assets/www/views/i/setting.html" />
+            <file
+                name="www/imgslider.json"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/assets/www/imgslider.json" />
         </source>
     </dataSet>
     <dataSet config="debug" >

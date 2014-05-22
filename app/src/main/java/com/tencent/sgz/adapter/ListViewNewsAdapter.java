@@ -31,6 +31,8 @@ public class ListViewNewsAdapter extends BaseAdapter {
 		    public TextView date;  
 		    public TextView count;
 		    public ImageView flag;
+            public TextView cntVote;
+            public TextView cate;
 	 }  
 
 	/**
@@ -78,6 +80,8 @@ public class ListViewNewsAdapter extends BaseAdapter {
 			listItemView.count= (TextView)convertView.findViewById(R.id.news_listitem_commentCount);
 			listItemView.date= (TextView)convertView.findViewById(R.id.news_listitem_date);
 			listItemView.flag= (ImageView)convertView.findViewById(R.id.news_listitem_flag);
+            listItemView.cate = (TextView)convertView.findViewById(R.id.news_listitem_cate);
+            listItemView.cntVote = (TextView)convertView.findViewById(R.id.news_listitem_voteCount);
 			
 			//设置控件集到convertView
 			convertView.setTag(listItemView);
@@ -93,11 +97,15 @@ public class ListViewNewsAdapter extends BaseAdapter {
 		listItemView.author.setText(news.getAuthor());
 		listItemView.date.setText(StringUtils.friendly_time(news.getPubDate()));
 		listItemView.count.setText(news.getCommentCount()+"");
+        listItemView.cntVote.setText(news.getCntVote()+"");
+        listItemView.cate.setText(news.getCateName());
+
+        /*
 		if(StringUtils.isToday(news.getPubDate()))
 			listItemView.flag.setVisibility(View.VISIBLE);
 		else
 			listItemView.flag.setVisibility(View.GONE);
-		
+		*/
 		return convertView;
 	}
 }

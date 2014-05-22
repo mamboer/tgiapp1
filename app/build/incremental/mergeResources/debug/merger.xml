@@ -261,6 +261,16 @@
                 qualifiers=""
                 type="drawable" />
             <file
+                name="dot_focus"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/dot_focus.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="dot_normal"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/dot_normal.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
                 name="frame_button_bg"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/frame_button_bg.xml"
                 qualifiers=""
@@ -1906,6 +1916,26 @@
                 qualifiers="hdpi"
                 type="drawable" />
             <file
+                name="s1"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/s1.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="s2"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/s2.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="s3"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/s3.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="s4"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/s4.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
                 name="save_image"
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/save_image.png"
                 qualifiers="hdpi"
@@ -3134,6 +3164,10 @@
                 </color>
                 <color name="dim_foreground_light_inverse" >#ff006eaa
                 </color>
+                <color name="cate_badge_bg2" >#4dbb22
+                </color>
+                <color name="cate_badge_bg1" >#449fe5
+                </color>
                 <color name="graywhite" >#F5F5F5
                 </color>
                 <color name="author_text" >#0e5986
@@ -3180,7 +3214,11 @@
                 </color>
                 <color name="encode_view" >#ffffffff
                 </color>
+                <color name="devider_line_bg1" >#eaeaeb
+                </color>
                 <color name="white" >#FFFFFF
+                </color>
+                <color name="cate_badge_bg" >#e38121
                 </color>
                 <color name="result_view" >#b0000000
                 </color>
@@ -3195,6 +3233,8 @@
                 <color name="full_transparent" >#00000000
                 </color>
                 <color name="gray_level4" >#e1e3e5
+                </color>
+                <color name="notice_badge_text" >#d64700
                 </color>
                 <color name="dark_gray" >#333333
                 </color>
@@ -3944,6 +3984,24 @@ fill_parent
                     </item>
                 </style>
 
+                <style name="shortcut_button_txt" >
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:layout_centerHorizontal">
+true
+                    </item>
+                    <item name="android:layout_marginTop">
+32dp
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                </style>
+
                 <style name="GreenDroid.Widget.QuickAction.Bar" />
 
                 <style
@@ -4029,6 +4087,33 @@ center_vertical
                     </item>
                 </style>
 
+                <style name="notice_badge" >
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:layout_height">
+20dp
+                    </item>
+                    <item name="android:minWidth">
+32dp
+                    </item>
+                    <item name="android:textSize">
+10sp
+                    </item>
+                    <item name="android:textColor">
+@color/notice_badge_text
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                    <item name="android:layout_centerVertical">
+true
+                    </item>
+                    <item name="android:background">
+@drawable/layer_notice_badge
+                    </item>
+                </style>
+
                 <style
                     name="GreenDroid.Widget.QuickAction.Bar.Item"
                     parent="@style/GreenDroid.Widget.QuickAction.Item" >
@@ -4040,6 +4125,24 @@ wrap_content
                     </item>
                     <item name="android:background">
 @drawable/gd_quick_action_bar_item
+                    </item>
+                </style>
+
+                <style name="dot_style" >
+                    <item name="android:layout_width">
+5dip
+                    </item>
+                    <item name="android:layout_height">
+5dip
+                    </item>
+                    <item name="android:background">
+@drawable/dot_normal
+                    </item>
+                    <item name="android:layout_marginLeft">
+1.5dip
+                    </item>
+                    <item name="android:layout_marginRight">
+1.5dip
                     </item>
                 </style>
 
@@ -4394,6 +4497,27 @@ true
 
                 <style name="Animation" />
 
+                <style name="shortcut_button" >
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:layout_height">
+fill_parent
+                    </item>
+                    <item name="android:layout_centerHorizontal">
+true
+                    </item>
+                    <item name="android:gravity">
+center_vertical
+                    </item>
+                    <item name="android:layout_weight">
+1
+                    </item>
+                    <item name="android:textColor">
+@color/black
+                    </item>
+                </style>
+
                 <style name="GreenDroid.Animation" />
 
                 <style
@@ -4428,6 +4552,24 @@ fill_parent
                     </item>
                     <item name="android:gravity">
 center
+                    </item>
+                </style>
+
+                <style name="notice" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+fill_parent
+                    </item>
+                    <item name="android:orientation">
+horizontal
+                    </item>
+                    <item name="android:paddingLeft">
+10dp
+                    </item>
+                    <item name="android:paddingRight">
+10dp
                     </item>
                 </style>
 
@@ -4491,6 +4633,33 @@ horizontal
                     </item>
                     <item name="android:windowContentOverlay">
 @null
+                    </item>
+                </style>
+
+                <style name="notice_txt" >
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:layout_height">
+20dp
+                    </item>
+                    <item name="android:textSize">
+12sp
+                    </item>
+                    <item name="android:textColor">
+@color/black
+                    </item>
+                    <item name="android:layout_marginLeft">
+10dp
+                    </item>
+                    <item name="android:layout_marginRight">
+30dp
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                    <item name="android:layout_centerVertical">
+true
                     </item>
                 </style>
 
@@ -4573,6 +4742,30 @@ center
                     </item>
                 </style>
 
+                <style name="shortcut_button_img" >
+                    <item name="android:layout_width">
+30dp
+                    </item>
+                    <item name="android:layout_height">
+30dp
+                    </item>
+                    <item name="android:background">
+@color/transparent
+                    </item>
+                    <item name="android:padding">
+0dp
+                    </item>
+                    <item name="android:layout_margin">
+0dp
+                    </item>
+                    <item name="android:layout_centerHorizontal">
+true
+                    </item>
+                    <item name="android:scaleType">
+fitXY
+                    </item>
+                </style>
+
                 <style name="main_head" >
                     <item name="android:layout_width">
 fill_parent
@@ -4586,6 +4779,33 @@ fill_parent
                 </style>
 
                 <style name="GreenDroid.Animation.PopUp" />
+
+                <style name="notice_arr" >
+                    <item name="android:layout_width">
+20dp
+                    </item>
+                    <item name="android:layout_height">
+20dp
+                    </item>
+                    <item name="android:background">
+@color/transparent
+                    </item>
+                    <item name="android:layout_alignParentRight">
+true
+                    </item>
+                    <item name="android:layout_centerVertical">
+true
+                    </item>
+                    <item name="android:src">
+@drawable/ico_arr_left
+                    </item>
+                    <item name="android:layout_marginRight">
+-5dp
+                    </item>
+                    <item name="android:scaleType">
+fitCenter
+                    </item>
+                </style>
 
                 <style name="btn_text" >
                     <item name="android:layout_width">
@@ -4666,6 +4886,45 @@ wrap_content
                     </item>
                 </style>
 
+                <style name="shortcut_button_badge" >
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:layout_height">
+16dp
+                    </item>
+                    <item name="android:paddingLeft">
+3dp
+                    </item>
+                    <item name="android:paddingRight">
+3dp
+                    </item>
+                    <item name="android:layout_marginTop">
+-5dp
+                    </item>
+                    <item name="android:layout_marginRight">
+-5dp
+                    </item>
+                    <item name="android:minWidth">
+16dp
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                    <item name="android:textColor">
+@color/white
+                    </item>
+                    <item name="android:textSize">
+12sp
+                    </item>
+                    <item name="android:background">
+@drawable/layer_badge
+                    </item>
+                    <item name="android:scaleType">
+fitXY
+                    </item>
+                </style>
+
                 <style
                     name="Animation.SlideTop"
                     parent="@style/Animation" >
@@ -4701,6 +4960,314 @@ wrap_content
                 path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/xml/preferences.xml"
                 qualifiers=""
                 type="xml" />
+            <file
+                name="ico_shortcut_more"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_shortcut_more.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_shortcut_hot"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_shortcut_hot.gif"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_shortcut_hero"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_shortcut_hero.gif"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_shortcut_gift"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_shortcut_gift.gif"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="layer_badge"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/layer_badge.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="layer_notice_badge"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/layer_notice_badge.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ico_arr_left"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_arr_left.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="home_news_listitem"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/layout/home_news_listitem.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="layer_cate_badge"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/layer_cate_badge.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/values/styles.home.xml"
+                qualifiers="" >
+
+                <style name="home_news_listitem.bd" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:orientation">
+horizontal
+                    </item>
+                    <item name="android:gravity">
+center_vertical
+                    </item>
+                </style>
+
+                <style name="home_news_listitem.badge.green" >
+                    <item name="android:background">
+@drawable/layer_cate_badge_green
+                    </item>
+                </style>
+
+                <style name="home_news_listitem.badge" >
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:layout_height">
+20dp
+                    </item>
+                    <item name="android:minWidth">
+32dp
+                    </item>
+                    <item name="android:textSize">
+10sp
+                    </item>
+                    <item name="android:textColor">
+@color/white
+                    </item>
+                    <item name="android:layout_marginLeft">
+5dp
+                    </item>
+                    <item name="android:background">
+@drawable/layer_cate_badge
+                    </item>
+                    <item name="android:gravity">
+center
+                    </item>
+                </style>
+
+                <style name="home_news_listitem.tit" >
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:textSize">
+@dimen/text_size_17
+                    </item>
+                    <item name="android:textColor">
+@color/black
+                    </item>
+                    <item name="android:gravity">
+left
+                    </item>
+                    <item name="android:scrollHorizontally">
+true
+                    </item>
+                    <item name="android:ellipsize">
+end
+                    </item>
+                    <item name="android:maxLines">
+1
+                    </item>
+                    <item name="android:layout_weight">
+1
+                    </item>
+                </style>
+
+                <style name="home_news_listitem.split" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+1dp
+                    </item>
+                    <item name="android:background">
+@color/devider_line_bg1
+                    </item>
+                    <item name="android:layout_marginTop">
+10dp
+                    </item>
+                    <item name="android:layout_marginBottom">
+10dp
+                    </item>
+                </style>
+
+                <style name="home_news_listitem.btn" >
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:orientation">
+horizontal
+                    </item>
+                    <item name="android:gravity">
+center_vertical
+                    </item>
+                </style>
+
+                <style name="home_news_listitem.desc" >
+                    <item name="android:scrollHorizontally">
+true
+                    </item>
+                    <item name="android:ellipsize">
+end
+                    </item>
+                    <item name="android:maxLines">
+2
+                    </item>
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:textSize">
+@dimen/text_size_12
+                    </item>
+                    <item name="android:textColor">
+@color/gray
+                    </item>
+                    <item name="android:paddingTop">
+10dp
+                    </item>
+                </style>
+
+                <style name="home_news_listitem.badge.blue" >
+                    <item name="android:background">
+@drawable/layer_cate_badge_blue
+                    </item>
+                </style>
+
+                <style name="home_news_listitem.ft" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:orientation">
+horizontal
+                    </item>
+                    <item name="android:gravity">
+center_vertical|right
+                    </item>
+                </style>
+
+                <style name="home_news_listitem.hd" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:orientation">
+horizontal
+                    </item>
+                    <item name="android:gravity">
+center_vertical
+                    </item>
+                </style>
+
+                <style name="home_news_listitem.inner" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:background">
+@drawable/layer_login_border
+                    </item>
+                    <item name="android:orientation">
+vertical
+                    </item>
+                    <item name="android:paddingTop">
+15dp
+                    </item>
+                    <item name="android:paddingBottom">
+15dp
+                    </item>
+                    <item name="android:paddingLeft">
+10dp
+                    </item>
+                    <item name="android:paddingRight">
+10dp
+                    </item>
+                    <item name="android:layout_marginLeft">
+10dp
+                    </item>
+                    <item name="android:layout_marginRight">
+10dp
+                    </item>
+                </style>
+
+                <style name="home_news_listitem.wrap" >
+                    <item name="android:layout_width">
+fill_parent
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                </style>
+
+                <style name="home_news_listitem.time" >
+                    <item name="android:layout_width">
+wrap_content
+                    </item>
+                    <item name="android:layout_height">
+wrap_content
+                    </item>
+                    <item name="android:textSize">
+@dimen/text_size_12
+                    </item>
+                    <item name="android:textColor">
+@color/gray
+                    </item>
+                    <item name="android:layout_alignParentLeft">
+true
+                    </item>
+                    <item name="android:layout_weight">
+1
+                    </item>
+                </style>
+
+                <style name="home_news_listitem" />
+            </file>
+            <file
+                name="ico_news_heart"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_news_heart.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ico_news_bubble"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable-hdpi/ico_news_bubble.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="layer_cate_badge_green"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/layer_cate_badge_green.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="layer_cate_badge_blue"
+                path="/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/layer_cate_badge_blue.xml"
+                qualifiers=""
+                type="drawable" />
         </source>
         <source path="/Users/levin/Dev/workspace/android/n3gz/app/build/res/rs/debug" />
         <source path="/Users/levin/Dev/workspace/android/n3gz/app/build/res/generated/debug" />

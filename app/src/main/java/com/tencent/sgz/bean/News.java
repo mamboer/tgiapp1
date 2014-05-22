@@ -58,6 +58,8 @@ public class News extends Entity{
 	private int favorite;
 	private NewsType newType;
 	private List<Relative> relatives;
+    private String cateName;
+    private int cntVote;
 
 	public News(){
 		this.newType = new NewsType();
@@ -74,7 +76,11 @@ public class News extends Entity{
 		public String title;
 		public String url;
 	} 
-	
+
+    public void setCateName(String cName){this.cateName=cName;}
+    public String getCateName(){return this.cateName;}
+    public void setCntVote(int cVote){this.cntVote=cVote;}
+    public int getCntVote(){return this.cntVote;}
 	public List<Relative> getRelatives() {
 		return relatives;
 	}
