@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
-	android:src="@drawable/about"
-	android:scaleType="fitStart"/>
-<!-- From: file:/Users/levin/Dev/workspace/android/n3gz/app/src/main/res/drawable/about_bg.xml -->
