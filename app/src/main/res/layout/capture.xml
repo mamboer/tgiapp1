@@ -1,42 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 二维码扫描主界面 -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:oncon="http://schemas.android.com/apk/res/com.sitech.oncon.barcode"
+    xmlns:oncon="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="@color/page_bg">
 
     <SurfaceView
         android:id="@+id/preview_view"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"/>
 
     <com.barcode.core.ViewfinderView
         android:id="@+id/viewfinder_view"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"/>
 
     <include
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
         layout="@layout/capture_header" />
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="50dip"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/status_view"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
-            android:background="@color/transparent"
-            android:text="将二维码放入框内，即可自动完成扫描"
-            android:textColor="@color/status_text"
-            android:textSize="15sp" />
+            android:orientation="vertical"
+            android:layout_marginBottom="45dp">
+            <TextView
+                android:id="@+id/status_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:background="@color/transparent"
+                android:text="将二维码放入框内"
+                android:textColor="@color/status_text"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/status_view1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:background="@color/transparent"
+                android:text="即可自动扫描"
+                android:textColor="@color/status_text"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:background="@color/black"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ico_qrcode_gallery"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="相册"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ico_qrcode_light"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="开灯"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ico_qrcode_myqrcodes"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="我的二维码"/>
+            </LinearLayout>
+            
+        </LinearLayout>
+
     </LinearLayout>
 
 </FrameLayout>

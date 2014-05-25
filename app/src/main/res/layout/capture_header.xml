@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
    	android:layout_width="fill_parent"
-    android:layout_height="40dip"
-    android:paddingLeft="2dip"
-    android:paddingRight="2dip"
-    android:paddingTop="@dimen/space_3"
-    android:paddingBottom="@dimen/space_3"
-   	android:gravity="center_vertical"
+    android:layout_height="50dip"
+    android:paddingLeft="10dip"
+    android:paddingRight="10dip"
+    android:gravity="center_vertical"
    	android:orientation="horizontal"
-   	android:background="@color/dark_gray">
+   	android:background="@color/black">
    	<ImageView 
    	        android:id="@+id/capture_back"
             android:layout_width="wrap_content" 

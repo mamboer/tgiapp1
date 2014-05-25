@@ -548,6 +548,9 @@ public class Main extends BaseActivity {
      */
     private void initNewsListViewTest() {
 
+        ScrollView sv = (ScrollView)findViewById(R.id.home_news_scrollView);
+        sv.smoothScrollTo(0,0);
+
         ArrayList<News> lvNewsData1 = new ArrayList<News>();
 
         lvNewsData1.add(getTestNews(1));
@@ -591,8 +594,7 @@ public class Main extends BaseActivity {
             }
         });
 
-        ScrollView sv = (ScrollView)findViewById(R.id.home_news_scrollView);
-        sv.smoothScrollTo(0,0);
+
 
     }
 
@@ -2582,8 +2584,7 @@ public class Main extends BaseActivity {
     @Override
     protected void onStart() {
         slider_scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-
-        slider_scheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 1, 2, TimeUnit.SECONDS);
+        slider_scheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 1, 4, TimeUnit.SECONDS);
         super.onStart();
     }
 

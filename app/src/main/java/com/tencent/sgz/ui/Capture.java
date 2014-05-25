@@ -126,7 +126,7 @@ public final class Capture extends Activity implements SurfaceHolder.Callback {
 		ac = (AppContext)getApplication();
 		hasSurface = false;
 		inactivityTimer = new InactivityTimer(this);
-		cameraManager = new CameraManager(getApplication());
+		cameraManager = new CameraManager(getApplication(),getResources().getInteger(R.integer.offsetTop_scan_qrcode));
 		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
 		viewfinderView.setCameraManager(cameraManager);
 		back = (ImageView) findViewById(R.id.capture_back);

@@ -50,6 +50,7 @@ public final class CameraManager {
 	private boolean previewing;
 	private int requestedFramingRectWidth;
 	private int requestedFramingRectHeight;
+    private int framingRectOffsetTop;
 	/**
 	 * Preview frames are delivered here, which we pass on to the registered
 	 * handler. Make sure to clear the handler so it will only receive one
@@ -63,7 +64,15 @@ public final class CameraManager {
 		previewCallback = new PreviewCallback(configManager);
 	}
 
-	/**
+    public CameraManager(Context context,int frameRectOffsetTop) {
+        this.framingRectOffsetTop = frameRectOffsetTop;
+        this.context = context;
+        this.configManager = new CameraConfigurationManager(context);
+        previewCallback = new PreviewCallback(configManager);
+    }
+
+
+    /**
 	 * Opens the camera driver and initializes the hardware parameters.
 	 * 
 	 * @param holder
@@ -233,6 +242,9 @@ public final class CameraManager {
 			int height = width;
 			int leftOffset = (screenResolution.x - width) / 2;
 			int topOffset = (screenResolution.y - width) / 2;
+            if(this.framingRectOffsetTop>0){
+                topOffset = this.framingRectOffsetTop;
+            }
 			framingRect = new Rect(leftOffset, topOffset, leftOffset + width,
 					topOffset + height);
 		}
