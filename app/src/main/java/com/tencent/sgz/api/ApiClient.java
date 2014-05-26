@@ -100,7 +100,7 @@ public class ApiClient {
 	
 	private static String getUserAgent(AppContext appContext) {
 		if(appUserAgent == null || appUserAgent == "") {
-			StringBuilder ua = new StringBuilder("OSChina.NET");
+			StringBuilder ua = new StringBuilder("3gz.qq.com");
 			ua.append('/'+appContext.getPackageInfo().versionName+'_'+appContext.getPackageInfo().versionCode);//App版本
 			ua.append("/Android");//手机系统平台
 			ua.append("/"+android.os.Build.VERSION.RELEASE);//手机系统版本

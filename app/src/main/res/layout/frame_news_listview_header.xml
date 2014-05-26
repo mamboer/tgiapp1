@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/page_bg">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="115dp" >
+
+            <!--android.support.v4.view.ViewPager-->
+            <com.tencent.sgz.widget.SmartViewPager
+                android:id="@+id/vp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="35dip"
+                android:layout_gravity="bottom"
+                android:background="#11000000"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="中国家庭院校园区域名字体现"
+                    android:textColor="#ffffff"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dip"
+                    android:gravity="center" >
+
+                    <View
+                        android:id="@+id/v_dot0"
+                        style="@style/dot_style"
+                        android:background="@drawable/dot_focus" />
+
+                    <View
+                        android:id="@+id/v_dot1"
+                        style="@style/dot_style" />
+
+                    <View
+                        android:id="@+id/v_dot2"
+                        style="@style/dot_style" />
+
+                    <View
+                        android:id="@+id/v_dot3"
+                        style="@style/dot_style" />
+
+                    <View
+                        android:id="@+id/v_dot4"
+                        style="@style/dot_style" />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+        <!--shortcut entries-->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:visibility="visible">
+
+            <RelativeLayout
+                style="@style/shortcut_button">
+
+                <ImageButton
+                    style="@style/shortcut_button_img"
+                    android:id="@+id/shortcut_btn_hot"
+                    android:src="@drawable/ico_shortcut_hot" />
+
+                <TextView
+                    style="@style/shortcut_button_txt"
+                    android:text="热点" />
+
+                <TextView
+                    style="@style/shortcut_button_badge"
+                    android:layout_alignRight="@+id/shortcut_btn_hot"
+                    android:text="10"/>
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:background="@color/devider_line_bg1"/>
+
+            <RelativeLayout
+                style="@style/shortcut_button">
+
+                <ImageButton
+                    style="@style/shortcut_button_img"
+                    android:id="@+id/shortcut_btn_hero"
+                    android:src="@drawable/ico_shortcut_hero" />
+
+                <TextView
+                    style="@style/shortcut_button_txt"
+                    android:text="英雄" />
+
+                <TextView
+                    style="@style/shortcut_button_badge"
+                    android:layout_alignRight="@+id/shortcut_btn_hero"
+                    android:text="2"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:background="@color/devider_line_bg1"/>
+
+            <RelativeLayout
+                style="@style/shortcut_button">
+
+                <ImageButton
+                    style="@style/shortcut_button_img"
+                    android:id="@+id/shortcut_btn_gift"
+                    android:src="@drawable/ico_shortcut_gift" />
+
+                <TextView
+                    style="@style/shortcut_button_txt"
+                    android:text="礼包" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:background="@color/devider_line_bg1"/>
+
+            <RelativeLayout
+                style="@style/shortcut_button">
+
+                <ImageButton
+                    style="@style/shortcut_button_img"
+                    android:id="@+id/shortcut_btn_more"
+                    android:src="@drawable/ico_shortcut_more" />
+
+                <TextView
+                    style="@style/shortcut_button_txt"
+                    android:text="更多" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/devider_line_bg1"/>
+        <!--/shortcurt entries-->
+
+        <!--notices-->
+        <com.tencent.sgz.widget.BorderLinearLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:bottomBorderColor="@color/devider_line_bg1"
+            app:bottomBorderWidth="1dp"
+            android:layout_width="fill_parent"
+            android:background="@color/white"
+            android:layout_height="40dp"
+            >
+
+            <RelativeLayout
+                style="@style/notice">
+
+                <TextView
+                    android:id="@+id/notice_badge"
+                    style="@style/notice_badge"
+                    android:text="公告"/>
+
+
+                <TextView
+                    style="@style/notice_txt"
+
+                    android:layout_toRightOf="@+id/notice_badge"
+                    android:text="庆祝游戏开服，送豪华礼包！！"
+                    />
+
+                <ImageView
+                    style="@style/notice_arr"
+                    />
+
+            </RelativeLayout>
+
+        </com.tencent.sgz.widget.BorderLinearLayout>
+        <!--/notices-->
+
+    </LinearLayout>
+
+</LinearLayout>

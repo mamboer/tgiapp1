@@ -10,6 +10,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Properties;
@@ -465,9 +467,6 @@ public class AppContext extends Application {
 	 */
 	public NewsList getNewsList(int catalog, int pageIndex, boolean isRefresh) throws AppException {
 
-        //TODO:
-        return new NewsList();
-        /*
         NewsList list = null;
 		String key = "newslist_"+catalog+"_"+pageIndex+"_"+PAGE_SIZE;
 		if(isNetworkConnected() && (!isReadDataCache(key) || isRefresh)) {
@@ -491,7 +490,6 @@ public class AppContext extends Application {
 				list = new NewsList();
 		}
 		return list;
-		*/
 	}
 	
 	/**

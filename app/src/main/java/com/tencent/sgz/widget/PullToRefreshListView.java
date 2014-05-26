@@ -2,6 +2,7 @@ package com.tencent.sgz.widget;
 
 import com.tencent.sgz.R;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -25,7 +26,8 @@ import android.widget.TextView;
  */
 public class PullToRefreshListView extends ListView implements OnScrollListener {  
 	   
-    private final static String TAG = "PullToRefreshListView";  
+    private final static String TAG = "PullToRefreshListView";
+    private final static String DefaultHeadViewLayoutName = "pull_to_refresh_head";
     
     // 下拉刷新标志   
     private final static int PULL_To_REFRESH = 0; 
@@ -42,14 +44,17 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
     private TextView tipsTextview;  
     private TextView lastUpdatedTextView;  
     private ImageView arrowImageView;  
-    private ProgressBar progressBar;  
+    private ProgressBar progressBar;
+
     // 用来设置箭头图标动画效果   
     private RotateAnimation animation;  
     private RotateAnimation reverseAnimation;  
   
     // 用于保证startY的值在一个完整的touch事件中只被记录一次   
     private boolean isRecored;  
-  
+
+    private String headViewLayoutName;
+    private int headViewId;
     private int headContentWidth;  
     private int headContentHeight;  
     private int headContentOriginalTopPadding;
@@ -64,18 +69,27 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
   
     public OnRefreshListener refreshListener;  
     
-    public PullToRefreshListView(Context context, AttributeSet attrs) {  
-        super(context, attrs);  
-        init(context);  
+    public PullToRefreshListView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context,attrs);
     }  
     
-    public PullToRefreshListView(Context context, AttributeSet attrs, int defStyle) {  
-        super(context, attrs, defStyle);  
-        init(context);  
+    public PullToRefreshListView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init(context,attrs);
     }  
   
-    private void init(Context context) {   
-    	//设置滑动效果
+    private void init(Context context,AttributeSet attrs) {
+        //获取header view
+        TypedArray a = context.obtainStyledAttributes(attrs,
+                R.styleable.PullToRefreshListView);
+        this.headViewLayoutName = a.getString(R.styleable.PullToRefreshListView_headViewLayoutName);
+        if(this.headViewLayoutName==null){
+            this.headViewLayoutName = DefaultHeadViewLayoutName;
+        }
+        this.headViewId = context.getResources().getIdentifier(this.headViewLayoutName,"layout",context.getPackageName());
+
+        //设置滑动效果
         animation = new RotateAnimation(0, -180,  
                 RotateAnimation.RELATIVE_TO_SELF, 0.5f,  
                 RotateAnimation.RELATIVE_TO_SELF, 0.5f);  
@@ -91,14 +105,14 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
         reverseAnimation.setFillAfter(true);  
         
         inflater = LayoutInflater.from(context);  
-        headView = (LinearLayout) inflater.inflate(R.layout.pull_to_refresh_head, null);  
+        headView = (LinearLayout) inflater.inflate(this.headViewId,null);
   
         arrowImageView = (ImageView) headView.findViewById(R.id.head_arrowImageView);  
         arrowImageView.setMinimumWidth(50);  
         arrowImageView.setMinimumHeight(50);  
         progressBar = (ProgressBar) headView.findViewById(R.id.head_progressBar);  
         tipsTextview = (TextView) headView.findViewById(R.id.head_tipsTextView);  
-        lastUpdatedTextView = (TextView) headView.findViewById(R.id.head_lastUpdatedTextView);  
+        lastUpdatedTextView = (TextView) headView.findViewById(R.id.head_lastUpdatedTextView);
         
         headContentOriginalTopPadding = headView.getPaddingTop();  
         
@@ -349,6 +363,35 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
                     MeasureSpec.UNSPECIFIED);  
         }  
         child.measure(childWidthSpec, childHeightSpec);  
-    }  
-	  
+    }
+
+    //解决viewpager的冲突问题
+    // 滑动距离及坐标
+    private float xDistance, yDistance, xLast, yLast;
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                xDistance = yDistance = 0f;
+                xLast = ev.getX();
+                yLast = ev.getY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                final float curX = ev.getX();
+                final float curY = ev.getY();
+
+                xDistance += Math.abs(curX - xLast);
+                yDistance += Math.abs(curY - yLast);
+                xLast = curX;
+                yLast = curY;
+
+                if (xDistance > yDistance) {
+                    return false;   //表示向下传递事件
+                }
+        }
+
+        return super.onInterceptTouchEvent(ev);
+    }
+
+
 }

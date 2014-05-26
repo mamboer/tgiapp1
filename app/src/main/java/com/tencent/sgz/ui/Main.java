@@ -54,6 +54,7 @@ import com.tencent.sgz.widget.PullToRefreshListView;
 import com.tencent.sgz.widget.ScrollLayout;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -216,27 +217,6 @@ public class Main extends BaseActivity {
 
 	private TweetReceiver tweetReceiver;// 动弹发布接收器
 
-    //img switcher
-    private ViewPager slider_viewPager;
-    private List<ImageView> slider_imageViews;
-
-    private String[] slider_titles;
-    private int[] slider_imageResId;
-    private List<View> slider_dots;
-
-    private TextView slider_title;
-    private int slider_currentItem = 0;
-    // An ExecutorService that can schedule commands to run after a given delay,
-    // or to execute periodically.
-    private ScheduledExecutorService slider_scheduledExecutorService;
-
-
-    private Handler slider_handler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
-            slider_viewPager.setCurrentItem(slider_currentItem);
-        };
-    };
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -262,8 +242,6 @@ public class Main extends BaseActivity {
 		this.initBadgeView();
 		this.initQuickActionGrid();
 		this.initFrameListView();
-
-        this.initImageSlider();
 
         this.initShortcutMenu();
 
@@ -325,6 +303,7 @@ public class Main extends BaseActivity {
 		} else if (intent.getBooleanExtra("NOTICE", false)) {
 			// 查看最新信息
 			mScrollLayout.scrollToScreen(3);
+
 		}
 	}
 
@@ -394,83 +373,7 @@ public class Main extends BaseActivity {
 		}.start();
 	}
 
-    private void initImageSlider(){
-        slider_imageResId = new int[] { R.drawable.s1, R.drawable.s2, R.drawable.s3, R.drawable.s4};
-        slider_titles = new String[slider_imageResId.length];
-        slider_titles[0] = "图片标题1";
-        slider_titles[1] = "图片标题2";
-        slider_titles[2] = "图片标题3";
-        slider_titles[3] = "图片标题4";
 
-
-        slider_imageViews = new ArrayList<ImageView>();
-
-
-        for (int i = 0; i < slider_imageResId.length; i++) {
-            ImageView imageView = new ImageView(this);
-            imageView.setImageResource(slider_imageResId[i]);
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            slider_imageViews.add(imageView);
-        }
-
-        slider_dots = new ArrayList<View>();
-        slider_dots.add(findViewById(R.id.v_dot0));
-        slider_dots.add(findViewById(R.id.v_dot1));
-        slider_dots.add(findViewById(R.id.v_dot2));
-        slider_dots.add(findViewById(R.id.v_dot3));
-        slider_dots.add(findViewById(R.id.v_dot4));
-
-        slider_title = (TextView) findViewById(R.id.tv_title);
-        slider_title.setText(slider_titles[0]);//
-
-        //这里不用final会报错
-        final ViewPager slider_viewPager1 = (ViewPager) findViewById(R.id.vp);
-        slider_viewPager1.setAdapter(new MySliderAdapter());
-
-        slider_viewPager1.setOnPageChangeListener(new MySliderPageChangeListener());
-
-        slider_viewPager = slider_viewPager1;
-
-        /*
-
-        //http://stackoverflow.com/questions/8381697/viewpager-inside-a-scrollview-does-not-scroll-correclty/16224484#16224484
-        final ScrollView mScrollView = (ScrollView)findViewById(R.id.home_news_scrollView);
-        slider_viewPager1.setOnTouchListener(new View.OnTouchListener() {
-
-            int dragthreshold = 30;
-            int downX;
-            int downY;
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        downX = (int) event.getRawX();
-                        downY = (int) event.getRawY();
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        int distanceX = Math.abs((int) event.getRawX() - downX);
-                        int distanceY = Math.abs((int) event.getRawY() - downY);
-
-                        if (distanceY > distanceX && distanceY > dragthreshold) {
-                            slider_viewPager1.getParent().requestDisallowInterceptTouchEvent(false);
-                            mScrollView.getParent().requestDisallowInterceptTouchEvent(true);
-                        } else if (distanceX > distanceY && distanceX > dragthreshold) {
-                            slider_viewPager1.getParent().requestDisallowInterceptTouchEvent(true);
-                            mScrollView.getParent().requestDisallowInterceptTouchEvent(false);
-                        }
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        mScrollView.getParent().requestDisallowInterceptTouchEvent(false);
-                        slider_viewPager1.getParent().requestDisallowInterceptTouchEvent(false);
-                        break;
-                }
-                return false;
-            }
-
-        });*/
-    }
 
     private void initShortcutMenu(){
 
@@ -484,7 +387,6 @@ public class Main extends BaseActivity {
 	private void initFrameListView() {
 		// 初始化listview控件
 		this.initNewsListView();
-        this.initNewsListViewTest();
 		this.initBlogListView();
 		this.initQuestionListView();
 		this.initTweetListView();
@@ -521,89 +423,11 @@ public class Main extends BaseActivity {
 		}
 	}
 
-    private News getTestNews(int sn){
-
-        News tempNews = new News();
-        String desc = "序号"+sn+":大多数玩家都觉得突破不能跟等级挂钩，60级、89级、90级的小小第一次突破增加的属性其实应大多数玩家都觉得突破不能跟等级挂钩大多数玩家都觉得突破不能跟等级挂钩";
-        String title = "序号"+sn+"乱舞战役之战斗模式介绍";
-        int cntVote = (int)(sn+Math.random()*1000);
-        String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());;
-        String author = "LV"+sn;
-        int count = (int)(sn+(Math.random()*3000));
-        String cate = "分类"+sn;
-
-        tempNews.setBody(desc);
-        tempNews.setTitle(title);
-        tempNews.setCntVote(cntVote);
-        tempNews.setPubDate(date);
-        tempNews.setAuthor(author);
-        tempNews.setCommentCount(count);
-        tempNews.setCateName(cate);
-
-        return tempNews;
-
-    }
-    /**
-     * 初始化新闻列表
-     */
-    private void initNewsListViewTest() {
-
-        ScrollView sv = (ScrollView)findViewById(R.id.home_news_scrollView);
-        sv.smoothScrollTo(0,0);
-
-        ArrayList<News> lvNewsData1 = new ArrayList<News>();
-
-        lvNewsData1.add(getTestNews(1));
-        lvNewsData1.add(getTestNews(2));
-        lvNewsData1.add(getTestNews(3));
-        lvNewsData1.add(getTestNews(4));
-        lvNewsData1.add(getTestNews(5));
-        lvNewsData1.add(getTestNews(6));
-        lvNewsData1.add(getTestNews(7));
-        lvNewsData1.add(getTestNews(8));
-        lvNewsData1.add(getTestNews(9));
-        lvNewsData1.add(getTestNews(10));
-
-        ListViewForScrollView lvNews1 = (ListViewForScrollView)findViewById(R.id.home_news_listView);
-
-        ListViewNewsAdapter lvNewsAdapter1 = new ListViewNewsAdapter(this, lvNewsData1,
-                R.layout.home_news_listitem);
-
-        lvNews1.setAdapter(lvNewsAdapter1);
-        lvNews1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                // 点击头部、底部栏无效
-                if (position == 0 || view == lvNews_footer)
-                    return;
-
-                News news = null;
-                // 判断是否是TextView
-                if (view instanceof TextView) {
-                    news = (News) view.getTag();
-                } else {
-                    TextView tv = (TextView) view
-                            .findViewById(R.id.news_listitem_title);
-                    news = (News) tv.getTag();
-                }
-                if (news == null)
-                    return;
-
-                // 跳转到新闻详情
-                UIHelper.showNewsRedirect(view.getContext(), news);
-            }
-        });
-
-
-
-    }
-
 	/**
 	 * 初始化新闻列表
 	 */
 	private void initNewsListView() {
-		lvNewsAdapter = new ListViewNewsAdapter(this, lvNewsData,
-				R.layout.news_listitem);
+		lvNewsAdapter = new ListViewNewsAdapter(this, lvNewsData,R.layout.home_news_listitem,R.layout.frame_news_listview_header,-1);
 		lvNews_footer = getLayoutInflater().inflate(R.layout.listview_footer,
 				null);
 		lvNews_foot_more = (TextView) lvNews_footer
@@ -611,6 +435,7 @@ public class Main extends BaseActivity {
 		lvNews_foot_progress = (ProgressBar) lvNews_footer
 				.findViewById(R.id.listview_foot_progress);
 		lvNews = (PullToRefreshListView) findViewById(R.id.frame_listview_news);
+
 		lvNews.addFooterView(lvNews_footer);// 添加底部视图 必须在setAdapter前
 		lvNews.setAdapter(lvNewsAdapter);
 		lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -2583,99 +2408,32 @@ public class Main extends BaseActivity {
 
     @Override
     protected void onStart() {
-        slider_scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-        slider_scheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 1, 4, TimeUnit.SECONDS);
         super.onStart();
     }
 
     @Override
     protected void onStop() {
 
-        slider_scheduledExecutorService.shutdown();
+        lvNewsAdapter.stopImageSlider();
         super.onStop();
     }
 
 
-    private class ScrollTask implements Runnable {
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
 
-        public void run() {
-            synchronized (slider_viewPager) {
-                System.out.println("currentItem: " + slider_currentItem);
-                slider_currentItem = (slider_currentItem + 1) % slider_imageViews.size();
-                slider_handler.obtainMessage().sendToTarget();
+        if(lvNewsAdapter!=null && lvNewsAdapter.slider_touchTarget!=null){
+            boolean wasProcessed = lvNewsAdapter.slider_touchTarget.onTouchEvent(ev);
+
+            if (!wasProcessed) {
+                lvNewsAdapter.slider_touchTarget = null;
             }
+
+            return wasProcessed;
         }
 
+        return super.dispatchTouchEvent(ev);
     }
 
-    private class MySliderPageChangeListener implements ViewPager.OnPageChangeListener {
-        private int oldPosition = 0;
-
-        /**
-         * This method will be invoked when a new page becomes selected.
-         * position: Position index of the new selected page.
-         */
-        public void onPageSelected(int position) {
-            slider_currentItem = position;
-            slider_title.setText(slider_titles[position]);
-            slider_dots.get(oldPosition).setBackgroundResource(R.drawable.dot_normal);
-            slider_dots.get(position).setBackgroundResource(R.drawable.dot_focus);
-            oldPosition = position;
-        }
-
-        public void onPageScrollStateChanged(int arg0) {
-
-        }
-
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
-
-        }
-    }
-
-
-    private class MySliderAdapter extends PagerAdapter {
-
-        @Override
-        public int getCount() {
-            return slider_imageResId.length;
-        }
-
-        //TODO:
-        @Override
-        public Object instantiateItem(View arg0, int arg1) {
-            ((ViewPager) arg0).addView(slider_imageViews.get(arg1));
-            return slider_imageViews.get(arg1);
-        }
-
-        @Override
-        public void destroyItem(View arg0, int arg1, Object arg2) {
-            ((ViewPager) arg0).removeView((View) arg2);
-        }
-
-        @Override
-        public boolean isViewFromObject(View arg0, Object arg1) {
-            return arg0 == arg1;
-        }
-
-        @Override
-        public void restoreState(Parcelable arg0, ClassLoader arg1) {
-
-        }
-
-        @Override
-        public Parcelable saveState() {
-            return null;
-        }
-
-        @Override
-        public void startUpdate(View arg0) {
-
-        }
-
-        @Override
-        public void finishUpdate(View arg0) {
-
-        }
-    }
 	
 }

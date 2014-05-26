@@ -15,7 +15,7 @@ import com.tencent.sgz.common.StringUtils;
  */
 public class URLs implements Serializable {
 	
-	public final static String HOST = "www.3gz.qq.com";//192.168.1.213  www.3gz.qq.com
+	public final static String HOST = "rawgit.com";//192.168.1.213  www.3gz.qq.com https://raw.githubusercontent.com/mamboer/n3gz/master/app/src/main/assets/www/data/news_list.xml
 	public final static String HTTP = "http://";
 	public final static String HTTPS = "https://";
 	
@@ -25,7 +25,7 @@ public class URLs implements Serializable {
 	private final static String URL_API_HOST = HTTP + HOST + URL_SPLITTER;
 	public final static String LOGIN_VALIDATE_HTTP = HTTP + HOST + URL_SPLITTER + "action/api/login_validate";
 	public final static String LOGIN_VALIDATE_HTTPS = HTTPS + HOST + URL_SPLITTER + "action/api/login_validate";
-	public final static String NEWS_LIST = URL_API_HOST+"action/api/news_list";
+	public final static String NEWS_LIST = URL_API_HOST+"mamboer/n3gz/master/app/src/main/assets/www/data/news_list.xml";
 	public final static String NEWS_DETAIL = URL_API_HOST+"action/api/news_detail";
 	public final static String POST_LIST = URL_API_HOST+"action/api/post_list";
 	public final static String POST_DETAIL = URL_API_HOST+"action/api/post_detail";
@@ -64,10 +64,10 @@ public class URLs implements Serializable {
 	public final static String FAVORITE_DELETE = URL_API_HOST+"action/api/favorite_delete";
 	public final static String SEARCH_LIST = URL_API_HOST+"action/api/search_list";
 	public final static String PORTRAIT_UPDATE = URL_API_HOST+"action/api/portrait_update";
-	public final static String UPDATE_VERSION = URL_API_HOST+"MobileAppVersion.xml";
+	public final static String UPDATE_VERSION = URL_API_HOST+"mamboer/n3gz/master/app/src/main/assets/www/data/MobileAppVersion.xml";
 	public final static String REPORT = URL_API_HOST + "action/communityManage/report";
 	
-	private final static String URL_HOST = "tencent.net";
+	private final static String URL_HOST = "tencent.com";
 	private final static String URL_WWW_HOST = "www."+URL_HOST;
 	private final static String URL_MY_HOST = "my."+URL_HOST;
 	

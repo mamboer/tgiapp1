@@ -24,14 +24,17 @@ public class News extends Entity{
 	
 	public final static String NODE_ID = "id";
 	public final static String NODE_TITLE = "title";
+    public final static String NODE_DESC = "desc";
 	public final static String NODE_URL = "url";
 	public final static String NODE_BODY = "body";
 	public final static String NODE_AUTHORID = "authorid";
 	public final static String NODE_AUTHOR = "author";
 	public final static String NODE_PUBDATE = "pubDate";
 	public final static String NODE_COMMENTCOUNT = "commentCount";
+    public final static String NODE_VOTECOUNT = "voteCount";
 	public final static String NODE_FAVORITE = "favorite";
 	public final static String NODE_START = "news";
+    public final static String NODE_CATENAME = "cateName";
 	
 	public final static String NODE_SOFTWARELINK = "softwarelink";
 	public final static String NODE_SOFTWARENAME = "softwarename";
@@ -47,11 +50,13 @@ public class News extends Entity{
 	public final static int NEWSTYPE_BLOG = 0x03;//3 博客
 
 	private String title;
+    private String desc;
 	private String url;
 	private String body;
 	private String author;
 	private int authorId;
 	private int commentCount;
+    private int voteCount;
 	private String pubDate;
 	private String softwareLink;
 	private String softwareName;
@@ -59,7 +64,6 @@ public class News extends Entity{
 	private NewsType newType;
 	private List<Relative> relatives;
     private String cateName;
-    private int cntVote;
 
 	public News(){
 		this.newType = new NewsType();
@@ -79,8 +83,6 @@ public class News extends Entity{
 
     public void setCateName(String cName){this.cateName=cName;}
     public String getCateName(){return this.cateName;}
-    public void setCntVote(int cVote){this.cntVote=cVote;}
-    public int getCntVote(){return this.cntVote;}
 	public List<Relative> getRelatives() {
 		return relatives;
 	}
@@ -153,7 +155,15 @@ public class News extends Entity{
 	public void setCommentCount(int commentCount) {
 		this.commentCount = commentCount;
 	}
-	
+    public int getVoteCount() {
+        return voteCount;
+    }
+    public void setVoteCount(int voteCount) {
+        this.voteCount = voteCount;
+    }
+    public String getDesc(){return desc;}
+    public void setDesc(String desc){this.desc = desc;}
+
 	public static News parse(InputStream inputStream) throws IOException, AppException {
 		News news = null;
 		Relative relative = null;
@@ -179,9 +189,17 @@ public class News extends Entity{
 				            	news.id = StringUtils.toInt(xmlParser.nextText(),0);
 				            }
 				            else if(tag.equalsIgnoreCase(NODE_TITLE))
-				            {			            	
-				            	news.setTitle(xmlParser.nextText());
-				            }
+                            {
+                                news.setTitle(xmlParser.nextText());
+                            }
+                            else if(tag.equalsIgnoreCase(NODE_DESC))
+                            {
+                                news.setDesc(xmlParser.nextText());
+                            }
+                            else if(tag.equalsIgnoreCase(NODE_CATENAME))
+                            {
+                                news.setCateName(xmlParser.nextText());
+                            }
 				            else if(tag.equalsIgnoreCase(NODE_URL))
 				            {			            	
 				            	news.setUrl(xmlParser.nextText());
@@ -202,6 +220,10 @@ public class News extends Entity{
 				            {			            	
 				            	news.setCommentCount(StringUtils.toInt(xmlParser.nextText(),0));			            	
 				            }
+                            else if(tag.equalsIgnoreCase(NODE_VOTECOUNT))
+                            {
+                                news.setVoteCount(StringUtils.toInt(xmlParser.nextText(),0));
+                            }
 				            else if(tag.equalsIgnoreCase(NODE_PUBDATE))
 				            {			            	
 				            	news.setPubDate(xmlParser.nextText());      	

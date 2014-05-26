@@ -83,6 +83,13 @@ public class NewsList extends Entity{
 				            {			            	
 				            	news.setTitle(xmlParser.nextText());
 				            }
+                            else if(tag.equalsIgnoreCase(News.NODE_DESC))
+                            {
+                                news.setDesc(xmlParser.nextText());
+                            }else if(tag.equalsIgnoreCase(News.NODE_CATENAME))
+                            {
+                                news.setCateName(xmlParser.nextText());
+                            }
 				            else if(tag.equalsIgnoreCase(News.NODE_URL))
 				            {			            	
 				            	news.setUrl(xmlParser.nextText());
@@ -98,7 +105,10 @@ public class NewsList extends Entity{
 				            else if(tag.equalsIgnoreCase(News.NODE_COMMENTCOUNT))
 				            {			            	
 				            	news.setCommentCount(StringUtils.toInt(xmlParser.nextText(),0));			            	
-				            }
+				            }else if(tag.equalsIgnoreCase(News.NODE_VOTECOUNT))
+                            {
+                                news.setVoteCount(StringUtils.toInt(xmlParser.nextText(),0));
+                            }
 				            else if(tag.equalsIgnoreCase(News.NODE_PUBDATE))
 				            {			            	
 				            	news.setPubDate(xmlParser.nextText());	
