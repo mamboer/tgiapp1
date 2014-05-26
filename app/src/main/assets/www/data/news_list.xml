@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sgz>
+  <catalog>1</catalog>
+  <newsCount>0</newsCount>
+  <pagesize>10</pagesize>
+  <newslist>
+	<news>
+      <id>10002123</id>
+      <title><![CDATA[新闻标题新闻标题新闻标题新闻标题]]></title>
+	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
+      <commentCount>3</commentCount>
+	  <voteCount>3</voteCount>
+      <author><![CDATA[sgz]]></author>
+	  <authorid>991976</authorid>
+      <pubDate>2014-05-26 06:42:18</pubDate>
+      <url>http://hero.qq.com/act/a20140430duxinshu/index.html</url>
+	  <newstype>
+	    <type>0</type>
+	    <authoruid2>991976</authoruid2>
+	  </newstype>
+    </news>
+	<news>
+      <id>52151</id>
+      <title><![CDATA[新闻标题新闻标题新闻标题新闻标题]]></title>
+	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
+      <commentCount>1</commentCount>
+	  <voteCount>3</voteCount>
+      <author><![CDATA[sgz]]></author>
+	  <authorid>1</authorid>
+      <pubDate>2014-05-26 06:41:40</pubDate>
+      <url>http://hero.qq.com/act/a20140430duxinshu/index.html</url>
+	  <newstype>
+	    <type>3</type>
+	    <attachment>268813</attachment>		
+		<authoruid2>857752</authoruid2>
+	  </newstype>
+    </news>
+	<news>
+      <id>52150</id>
+      <title><![CDATA[新闻标题新闻标题新闻标题新闻标题]]></title>
+	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
+      <commentCount>0</commentCount>
+	  <voteCount>3</voteCount>
+      <author><![CDATA[sgz]]></author>
+	  <authorid>1</authorid>
+      <pubDate>2014-05-26 06:39:51</pubDate>
+      <url>http://hero.qq.com/act/a20140430duxinshu/index.html</url>
+	  <newstype>
+	    <type>1</type>
+	    <attachment>eventhub</attachment>		
+		<authoruid2>1</authoruid2>
+	  </newstype>
+    </news>
+	<news>
+      <id>52149</id>
+      <title><![CDATA[新闻标题新闻标题新闻标题新闻标题]]></title>
+	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
+      <commentCount>20</commentCount>
+	  <voteCount>3</voteCount>
+      <author><![CDATA[sgz]]></author>
+	  <authorid>1</authorid>
+      <pubDate>2014-05-26 06:33:25</pubDate>
+      <url>http://hero.qq.com/act/a20140430duxinshu/index.html</url>
+	  <newstype>
+	    <type>0</type>
+	    <authoruid2>1</authoruid2>
+	  </newstype>
+    </news>
+	<news>
+      <id>52148</id>
+      <title><![CDATA[不让装 Windows 8 国产系统都长啥样？]]></title>
+	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
+      <commentCount>86</commentCount>
+	  <voteCount>3</voteCount>
+      <author><![CDATA[sgz]]></author>
+	  <authorid>1</authorid>
+      <pubDate>2014-05-26 06:31:42</pubDate>
+      <url>http://hero.qq.com/act/a20140430duxinshu/index.html</url>
+	  <newstype>
+	    <type>0</type>
+	    		<authoruid2>1</authoruid2>
+	  </newstype>
+    </news>
+	<news>
+      <id>52147</id>
+      <title><![CDATA[SimThyr 3.3.0 发布，垂体甲状腺反馈控制模拟]]></title>
+	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
+      <commentCount>1</commentCount>
+	  <voteCount>3</voteCount>
+      <author><![CDATA[sgz]]></author>
+	  <authorid>1</authorid>
+      <pubDate>2014-05-26 06:26:14</pubDate>
+      <url>http://hero.qq.com/act/a20140430duxinshu/index.html</url>
+	  <newstype>
+	    <type>0</type>
+	    <authoruid2>1</authoruid2>
+	  </newstype>
+    </news>
+	<news>
+      <id>52146</id>
+      <title><![CDATA[Apache Tomcat 7.0.54/6.0.41 发布]]></title>
+	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
+      <commentCount>3</commentCount>
+	  <voteCount>3</voteCount>
+      <author><![CDATA[sgz]]></author>
+	  <authorid>1</authorid>
+      <pubDate>2014-05-26 06:15:11</pubDate>
+      <url>http://hero.qq.com/act/a20140430duxinshu/index.html</url>
+	  <newstype>
+	    <type>0</type>
+	   	<authoruid2>1</authoruid2>
+	  </newstype>
+    </news>
+	<news>
+      <id>52145</id>
+      <title><![CDATA[Task Coach 1.3.40 发布，个人事务管理工具]]></title>
+	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
+      <commentCount>2</commentCount>
+	  <voteCount>3</voteCount>
+      <author><![CDATA[sgz]]></author>
+	  <authorid>1</authorid>
+      <pubDate>2014-05-26 06:06:51</pubDate>
+      <url>http://hero.qq.com/act/a20140430duxinshu/index.html</url>
+	  <newstype>
+	    <type>0</type>
+	   	<authoruid2>1</authoruid2>
+	  </newstype>
+    </news>
+	<news>
+      <id>52144</id>
+      <title><![CDATA[Go! 0.5.0 发布，PHP 的 AOP 库]]></title>
+	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
+      <commentCount>4</commentCount>
+	  <voteCount>3</voteCount>
+      <author><![CDATA[sgz]]></author>
+	  <authorid>1</authorid>
+      <pubDate>2014-05-26 06:05:17</pubDate>
+      <url>http://hero.qq.com/act/a20140430duxinshu/index.html</url>
+	  <newstype>
+	    <type>0</type>
+	    <authoruid2>1</authoruid2>
+	  </newstype>
+    </news>
+	<news>
+      <id>52143</id>
+      <title><![CDATA[remoteEncFs 0.2.0 发布，加密远程文件系统]]></title>
+	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
+      <commentCount>0</commentCount>
+	  <voteCount>3</voteCount>
+      <author><![CDATA[sgz]]></author>
+	  <authorid>1</authorid>
+      <pubDate>2014-05-26 05:57:21</pubDate>
+      <url>http://hero.qq.com/act/a20140430duxinshu/index.html</url>
+	  <newstype>
+	    <type>0</type>
+	   	<authoruid2>1</authoruid2>
+	  </newstype>
+    </news>
+	</newslist>	
+<notice>
+	<atmeCount>0</atmeCount>
+	<msgCount>1</msgCount>
+	<reviewCount>0</reviewCount>
+	<newFansCount>0</newFansCount>
+</notice>
+</sgz>
