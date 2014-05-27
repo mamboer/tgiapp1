@@ -120,7 +120,6 @@ public class ListViewNewsAdapter extends BaseAdapter {
 	 */
 	public View getView(int position, View convertView, ViewGroup parent) {
 		//Log.d("method", "getView");
-
         //列表第一项
         if(position==0 && this.firstItemViewResource>0){
             if(convertView == null){
@@ -143,11 +142,13 @@ public class ListViewNewsAdapter extends BaseAdapter {
             }
             return convertView;
         }
-		
+
+        //TODO：position不为0，convertView还可能是列表第一项
+
 		//自定义视图
 		ListItemView  listItemView = null;
 		
-		if (convertView == null) {
+		if (convertView == null||convertView.getTag()==null) {
 			//获取list_item布局文件的视图
 			convertView = listContainer.inflate(this.itemViewResource, null);
 			
@@ -166,7 +167,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
 			convertView.setTag(listItemView);
 		}else {
 			listItemView = (ListItemView)convertView.getTag();
-		}	
+		}
 		
 		//设置文字和图片
 		News news = listItems.get(position);
