@@ -65,6 +65,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
     // An ExecutorService that can schedule commands to run after a given delay,
     // or to execute periodically.
     private ScheduledExecutorService slider_scheduledExecutorService;
+    private boolean slider_timer_started = false;
 
 
     private Handler slider_handler = new Handler() {
@@ -74,7 +75,6 @@ public class ListViewNewsAdapter extends BaseAdapter {
     };
 
     private MySliderPageChangeListener slider_pageChangeListener;
-    public View slider_touchTarget;
 
 	/**
 	 * 实例化Adapter
@@ -134,14 +134,16 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
         Log.e("LV",("列表元素位置："+position)+(",列表数据位置："+dataPosition));
 
+        this.stopImageSlider();
+
         //列表第一项
         if(position==0 && this.firstItemViewResource>0){
             if(firstItemView == null){
                 firstItemView = listContainer.inflate(this.firstItemViewResource,null);
                 //TODO:第一个元素视图的数据绑定
                 this.initImageSlider(firstItemView);
-                this.startImageSlider();
             }
+            this.startImageSlider();
             return firstItemView;
         }
 
@@ -204,12 +206,18 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
     //TODO:当轮播看不到时停止
     public void startImageSlider(){
+        if(slider_timer_started){
+            return;
+        }
         slider_scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-        slider_scheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 1, 4, TimeUnit.SECONDS);
+        //slider_scheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 1, context.getResources().getInteger(R.integer.home_slider_interval), TimeUnit.SECONDS);
     }
 
     public void stopImageSlider(){
-        slider_scheduledExecutorService.shutdown();
+        if(slider_scheduledExecutorService!=null) {
+            slider_scheduledExecutorService.shutdown();
+            slider_timer_started = false;
+        }
     }
 
     private void initImageSlider(View context){
@@ -306,8 +314,6 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
     private class MySliderPageChangeListener implements ViewPager.OnPageChangeListener {
         private int oldPosition = 0;
-        //http://dallasgutauckis.com/2013/04/30/android-putting-a-viewpager-inside-a-listview/
-        private int mPreviousState = ViewPager.SCROLL_STATE_IDLE;
 
         /**
          * This method will be invoked when a new page becomes selected.
@@ -323,18 +329,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
         }
         @Override
         public void onPageScrollStateChanged(int state) {
-            // All of this is to inhibit any scrollable container from consuming our touch events as the user is changing pages
-            if (mPreviousState == ViewPager.SCROLL_STATE_IDLE) {
-                if (state == ViewPager.SCROLL_STATE_DRAGGING) {
-                    slider_touchTarget = slider_viewPager;
-                }
-            } else {
-                if (state == ViewPager.SCROLL_STATE_IDLE || state == ViewPager.SCROLL_STATE_SETTLING) {
-                    slider_touchTarget = null;
-                }
-            }
 
-            mPreviousState = state;
         }
         @Override
         public void onPageScrolled(int arg0, float arg1, int arg2) {

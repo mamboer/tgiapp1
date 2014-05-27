@@ -79,7 +79,7 @@ public class SmartViewPager extends ViewPager {
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
             boolean allowScroll = Math.abs(distanceX) > Math.abs(distanceY);
-            Log.e("LV","SmartViewPager.allowScroll"+allowScroll);
+            //Log.e("LV","SmartViewPager.allowScroll"+allowScroll);
             return allowScroll;
         }
 

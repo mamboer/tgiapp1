@@ -2418,23 +2418,5 @@ public class Main extends BaseActivity {
         lvNewsAdapter.stopImageSlider();
         super.onStop();
     }
-
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-
-        if(lvNewsAdapter!=null && lvNewsAdapter.slider_touchTarget!=null){
-            boolean wasProcessed = lvNewsAdapter.slider_touchTarget.onTouchEvent(ev);
-
-            if (!wasProcessed) {
-                lvNewsAdapter.slider_touchTarget = null;
-            }
-
-            return wasProcessed;
-        }
-
-        return super.dispatchTouchEvent(ev);
-    }
-
 	
 }

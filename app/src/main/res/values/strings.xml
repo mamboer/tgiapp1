@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>    
     <string name="app_name">赤壁乱舞</string>
+
+    <integer name="home_slider_interval">6</integer>
     
     <string name="main_menu_login">用户登录</string>
     <string name="main_menu_logout">注销登录</string>
@@ -97,7 +99,7 @@
 
     <string name="lbl_ok">确认</string>
     <string name="lbl_scan_qrcode">扫描二维码</string>
-    <integer name="offsetTop_scan_qrcode">90</integer>
+    <integer name="offsetTop_scan_qrcode">100</integer>
 
     <integer name="wtlogin_appid">563046901</integer>
     <string name="wtlogin_errtip_requireuid">请输入登录账号！</string>

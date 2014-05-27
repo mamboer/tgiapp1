@@ -154,6 +154,7 @@ public class ScrollLayout extends ViewGroup {
 	public boolean onTouchEvent(MotionEvent event) {
 		//是否可滑动
 		if(!isScroll) {
+            Log.d("LV.ScrollLayout","不可滑动");
 			return false;
 		}
 		
@@ -227,9 +228,12 @@ public class ScrollLayout extends ViewGroup {
 	public boolean onInterceptTouchEvent(MotionEvent ev) {
 		//Log.e(TAG, "onInterceptTouchEvent-slop:" + mTouchSlop);
 		final int action = ev.getAction();
+        boolean doIntercept = false;
 		if ((action == MotionEvent.ACTION_MOVE)
 				&& (mTouchState != TOUCH_STATE_REST)) {
-			return true;
+			doIntercept = true;
+            Log.d("LV.ScrollLayout",doIntercept?"TouchEvent被拦截，不传给子元素":"TouchEvent未被拦截，传给子元素！");
+            return doIntercept;
 		}
 		final float x = ev.getX();
 		final float y = ev.getY();
@@ -251,7 +255,13 @@ public class ScrollLayout extends ViewGroup {
 			mTouchState = TOUCH_STATE_REST;
 			break;
 		}
-		return mTouchState != TOUCH_STATE_REST;
+
+        //doIntercept = (mTouchState != TOUCH_STATE_REST);
+        //TODO: hardcode to false for viewpager's sake
+        doIntercept = false;
+        Log.d("LV.ScrollLayout",doIntercept?"TouchEvent被拦截，不传给子元素":"TouchEvent未被拦截，传给子元素！");
+
+		return doIntercept;
 	}
 	
 	/**
