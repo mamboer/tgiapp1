@@ -4,6 +4,7 @@
     <style name="home_news_listitem.wrap">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
     </style>
     <style name="home_news_listitem.inner">
         <item name="android:layout_width">fill_parent</item>
@@ -16,6 +17,7 @@
         <item name="android:paddingRight">10dp</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
     </style>
     <style name="home_news_listitem.hd">
         <item name="android:layout_width">fill_parent</item>

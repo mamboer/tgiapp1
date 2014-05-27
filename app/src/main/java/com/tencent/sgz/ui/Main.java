@@ -403,6 +403,7 @@ public class Main extends BaseActivity {
 		// 初始化Handler
 		lvNewsHandler = this.getLvHandler(lvNews, lvNewsAdapter,
 				lvNews_foot_more, lvNews_foot_progress, AppContext.PAGE_SIZE);
+
 		lvBlogHandler = this.getLvHandler(lvBlog, lvBlogAdapter,
 				lvBlog_foot_more, lvBlog_foot_progress, AppContext.PAGE_SIZE);
 		lvQuestionHandler = this.getLvHandler(lvQuestion, lvQuestionAdapter,

@@ -39,7 +39,7 @@
 	    style="@style/widget_listview"
         app:headViewLayoutName="pull_to_refresh_head"
         android:divider="@color/transparent"
-        android:dividerHeight="10dp"
+        android:dividerHeight="0dp"
         android:paddingBottom="@dimen/space_10"
 	    />
 	

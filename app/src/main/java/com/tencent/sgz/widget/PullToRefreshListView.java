@@ -4,6 +4,7 @@ import com.tencent.sgz.R;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -62,6 +63,7 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
     private int startY;  
     private int firstItemIndex;  
     private int currentScrollState;
+    private boolean isScrolling;
   
     private int state;  
   
@@ -136,6 +138,18 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
   
     public void onScrollStateChanged(AbsListView view, int scrollState) {  
     	currentScrollState = scrollState;
+        switch (scrollState) {
+            case OnScrollListener.SCROLL_STATE_IDLE:
+                isScrolling = false;
+                break;
+            case OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
+                isScrolling = true;
+                break;
+            case OnScrollListener.SCROLL_STATE_FLING:
+                isScrolling = true;
+                break;
+        }//switch
+        Log.e("LV","PullToRefreshListView.isScrolling:"+isScrolling);
     }  
   
     public boolean onTouchEvent(MotionEvent event) {  

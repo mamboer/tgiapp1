@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -48,7 +49,8 @@ public class ListViewNewsAdapter extends BaseAdapter {
             public TextView desc;
 	 }
 
-    static LinearLayout firstItemView;
+    static View firstItemView;
+    static View lastItemView;
 
     //img switcher
     private ViewPager slider_viewPager;
@@ -67,7 +69,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
     private Handler slider_handler = new Handler() {
         public void handleMessage(android.os.Message msg) {
-            //slider_viewPager.setCurrentItem(slider_currentItem);
+            slider_viewPager.setCurrentItem(slider_currentItem);
         };
     };
 
@@ -104,7 +106,14 @@ public class ListViewNewsAdapter extends BaseAdapter {
     }
 
 	public int getCount() {
-		return listItems.size();
+		int itemSize = listItems.size();
+        if(this.firstItemViewResource>0){
+            itemSize+=1;
+        }
+        if(this.lastItemViewResource>0){
+            itemSize+=1;
+        }
+        return itemSize;
 	}
 
 	public Object getItem(int arg0) {
@@ -120,27 +129,28 @@ public class ListViewNewsAdapter extends BaseAdapter {
 	 */
 	public View getView(int position, View convertView, ViewGroup parent) {
 		//Log.d("method", "getView");
+
+        int dataPosition = this.firstItemViewResource>0?(position-1):position;
+
+        Log.e("LV",("列表元素位置："+position)+(",列表数据位置："+dataPosition));
+
         //列表第一项
         if(position==0 && this.firstItemViewResource>0){
-            if(convertView == null){
-                convertView = listContainer.inflate(this.firstItemViewResource,null);
+            if(firstItemView == null){
+                firstItemView = listContainer.inflate(this.firstItemViewResource,null);
                 //TODO:第一个元素视图的数据绑定
-                this.initImageSlider(convertView);
+                this.initImageSlider(firstItemView);
                 this.startImageSlider();
-            }else{
-
             }
-            return convertView;
+            return firstItemView;
         }
 
         if ( position == (getCount()-1) && this.lastItemViewResource > 0 ){
-            if(convertView == null){
-                convertView = listContainer.inflate(this.lastItemViewResource,null);
+            if(lastItemView == null){
+                lastItemView = listContainer.inflate(this.lastItemViewResource,null);
                 //TODO:最后一个元素视图的数据绑定
-            }else{
-
             }
-            return convertView;
+            return lastItemView;
         }
 
         //TODO：position不为0，convertView还可能是列表第一项
@@ -170,9 +180,10 @@ public class ListViewNewsAdapter extends BaseAdapter {
 		}
 		
 		//设置文字和图片
-		News news = listItems.get(position);
-		
-		listItemView.title.setText(news.getTitle());
+		News news = listItems.get(dataPosition);
+
+
+        listItemView.title.setText(news.getTitle());
 		listItemView.title.setTag(news);//设置隐藏参数(实体类)
 		listItemView.author.setText(news.getAuthor());
 		listItemView.date.setText(StringUtils.friendly_time(news.getPubDate()));
@@ -191,6 +202,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
 	}
 
 
+    //TODO:当轮播看不到时停止
     public void startImageSlider(){
         slider_scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
         slider_scheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 1, 4, TimeUnit.SECONDS);
@@ -301,6 +313,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
          * This method will be invoked when a new page becomes selected.
          * position: Position index of the new selected page.
          */
+        @Override
         public void onPageSelected(int position) {
             slider_currentItem = position;
             slider_title.setText(slider_titles[position]);
@@ -308,7 +321,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
             slider_dots.get(position).setBackgroundResource(R.drawable.dot_focus);
             oldPosition = position;
         }
-
+        @Override
         public void onPageScrollStateChanged(int state) {
             // All of this is to inhibit any scrollable container from consuming our touch events as the user is changing pages
             if (mPreviousState == ViewPager.SCROLL_STATE_IDLE) {
@@ -323,7 +336,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
             mPreviousState = state;
         }
-
+        @Override
         public void onPageScrolled(int arg0, float arg1, int arg2) {
 
         }

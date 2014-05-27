@@ -3,6 +3,7 @@ package com.tencent.sgz.widget;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
@@ -77,8 +78,11 @@ public class SmartViewPager extends ViewPager {
          */
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            return Math.abs(distanceX) > Math.abs(distanceY);
+            boolean allowScroll = Math.abs(distanceX) > Math.abs(distanceY);
+            Log.e("LV","SmartViewPager.allowScroll"+allowScroll);
+            return allowScroll;
         }
 
     }
+
 }
