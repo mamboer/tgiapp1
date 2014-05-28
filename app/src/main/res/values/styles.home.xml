@@ -104,4 +104,29 @@
 
     </style>
 
+    <!--S 分类菜单-->
+    <style name="homecate"></style>
+    <style name="homecate.tit">
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">#eaecee</item>
+    </style>
+    <!--E 分类菜单-->
+
+    <style name="Animation.SlideUpDown">
+
+        <!-- PopupWindow左右弹出的效果 -->
+        <item name="android:windowEnterAnimation">@anim/slide_down</item>
+        <item name="android:windowExitAnimation">@anim/slide_up</item>
+    </style>
+
+    <style name="Animation.FadeInOut">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
 </resources>

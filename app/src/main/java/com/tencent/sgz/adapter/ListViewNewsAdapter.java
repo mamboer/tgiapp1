@@ -142,6 +142,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
                 firstItemView = listContainer.inflate(this.firstItemViewResource,null);
                 //TODO:第一个元素视图的数据绑定
                 this.initImageSlider(firstItemView);
+                //绑定按钮事件
             }
             this.startImageSlider();
             return firstItemView;
@@ -210,7 +211,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
             return;
         }
         slider_scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-        //slider_scheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 1, context.getResources().getInteger(R.integer.home_slider_interval), TimeUnit.SECONDS);
+        slider_scheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 1, context.getResources().getInteger(R.integer.home_slider_interval), TimeUnit.SECONDS);
     }
 
     public void stopImageSlider(){

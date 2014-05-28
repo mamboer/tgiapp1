@@ -16,10 +16,13 @@
         <ImageView
             android:id="@+id/main_head_logo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:scaleType="center"
+            android:background="@color/transparent"
+            android:minWidth="35dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="8.0dip"
+            android:layout_marginLeft="4.0dip"
             android:src="@drawable/btn_qrcode_bg" />
 
         <ProgressBar
@@ -34,24 +37,30 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:gravity="right">
             <ImageButton
                 android:id="@+id/main_head_search"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10.0dip"
-                android:background="@drawable/btn_search_bg" />
+                android:layout_height="fill_parent"
+                android:layout_marginRight="5.0dip"
+                android:scaleType="center"
+                android:background="@color/transparent"
+                android:minWidth="35dp"
+                android:src="@drawable/btn_search_bg" />
 
             <ImageButton
                 android:id="@+id/main_head_more"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="10.0dip"
-                android:background="@drawable/btn_more_bg" />
+                android:layout_marginRight="5.0dip"
+                android:scaleType="center"
+                android:background="@color/transparent"
+                android:minWidth="35dp"
+                android:src="@drawable/btn_more_bg" />
 
             <ImageButton
                 android:id="@+id/main_head_pub_post"

@@ -4,6 +4,7 @@ import greendroid.widget.MyQuickAction;
 import greendroid.widget.QuickActionGrid;
 import greendroid.widget.QuickActionWidget;
 import greendroid.widget.QuickActionWidget.OnQuickActionClickListener;
+import roboguice.inject.InjectView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -73,6 +74,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.AbsListView;
@@ -84,8 +88,10 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -167,9 +173,10 @@ public class Main extends BaseActivity {
 	private RadioButton fbactive;
 	private Button fbSetting;
 
-	private Button framebtn_News_lastest;
-	private Button framebtn_News_blog;
-	private Button framebtn_News_recommend;
+	private Button framebtn_News_all;
+	private Button framebtn_News_news;
+	private Button framebtn_News_video;
+    private Button framebtn_News_event;
 	private Button framebtn_Question_ask;
 	private Button framebtn_Question_share;
 	private Button framebtn_Question_other;
@@ -216,6 +223,10 @@ public class Main extends BaseActivity {
 	private int curClearNoticeType = 0;
 
 	private TweetReceiver tweetReceiver;// 动弹发布接收器
+
+    @InjectView(R.id.main_head_more) ImageButton homeBtnMore;
+
+    private PopupWindow pw_homeMoreMenu;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -1051,7 +1062,8 @@ public class Main extends BaseActivity {
 	 * 初始化头部视图
 	 */
 	private void initHeadView() {
-		mHeadLogo = (ImageView) findViewById(R.id.main_head_logo);
+
+        mHeadLogo = (ImageView) findViewById(R.id.main_head_logo);
 		mHeadTitle = (TextView) findViewById(R.id.main_head_title);
 		mHeadProgress = (ProgressBar) findViewById(R.id.main_head_progress);
 		mHead_search = (ImageButton) findViewById(R.id.main_head_search);
@@ -1081,7 +1093,60 @@ public class Main extends BaseActivity {
             }
         });
 
-	}
+        //更多菜单 http://blog.csdn.net/mad1989/article/details/9024977
+        //获取自定义布局文件pop.xml的视图
+        View customView = getLayoutInflater().inflate(R.layout.home_more_menu,
+                null, false);
+        // 创建PopupWindow实例,200,150分别是宽度和高度
+        pw_homeMoreMenu = new PopupWindow(customView,getWindowManager().getDefaultDisplay().getWidth(),55);
+        // 设置动画效果 [R.style.AnimationFade 是自己事先定义好的]
+        pw_homeMoreMenu.setAnimationStyle(R.style.Animation_FadeInOut);
+
+        // 自定义view添加触摸事件
+        customView.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (pw_homeMoreMenu != null && pw_homeMoreMenu.isShowing()) {
+                    pw_homeMoreMenu.dismiss();
+                    //pw_homeMoreMenu = null;
+                }
+
+                return false;
+            }
+        });
+
+        homeBtnMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!pw_homeMoreMenu.isShowing()) {
+                    // 设置显示位置
+                    pw_homeMoreMenu.showAsDropDown(homeBtnMore, 0, 0);
+                }else{
+                    pw_homeMoreMenu.dismiss();
+                }
+
+            }
+        });
+
+        framebtn_News_all = (Button) customView.findViewById(R.id.frame_btn_news_all);
+        framebtn_News_news = (Button) customView.findViewById(R.id.frame_btn_news_news);
+        framebtn_News_video = (Button) customView.findViewById(R.id.frame_btn_news_video);
+        framebtn_News_event = (Button) customView.findViewById(R.id.frame_btn_news_event);
+
+        // 设置首选择项
+        framebtn_News_all.setEnabled(false);
+        // 资讯+博客
+        framebtn_News_all.setOnClickListener(frameNewsBtnClick(
+                framebtn_News_all, NewsList.CATALOG_ALL));
+        framebtn_News_news.setOnClickListener(frameNewsBtnClick(
+                framebtn_News_news, BlogList.CATALOG_LATEST));
+        framebtn_News_video.setOnClickListener(frameNewsBtnClick(
+                framebtn_News_video, BlogList.CATALOG_RECOMMEND));
+        framebtn_News_event.setOnClickListener(frameNewsBtnClick(
+                framebtn_News_event, BlogList.CATALOG_RECOMMEND));
+
+    }
 
 	/**
 	 * 初始化底部栏
@@ -1319,9 +1384,7 @@ public class Main extends BaseActivity {
 	 */
 	private void initFrameButton() {
 		// 初始化按钮控件
-		framebtn_News_lastest = (Button) findViewById(R.id.frame_btn_news_lastest);
-		framebtn_News_blog = (Button) findViewById(R.id.frame_btn_news_blog);
-		framebtn_News_recommend = (Button) findViewById(R.id.frame_btn_news_recommend);
+
 		framebtn_Question_ask = (Button) findViewById(R.id.frame_btn_question_ask);
 		framebtn_Question_share = (Button) findViewById(R.id.frame_btn_question_share);
 		framebtn_Question_other = (Button) findViewById(R.id.frame_btn_question_other);
@@ -1336,17 +1399,11 @@ public class Main extends BaseActivity {
 		framebtn_Active_myself = (Button) findViewById(R.id.frame_btn_active_myself);
 		framebtn_Active_message = (Button) findViewById(R.id.frame_btn_active_message);
 		// 设置首选择项
-		framebtn_News_lastest.setEnabled(false);
+
 		framebtn_Question_ask.setEnabled(false);
 		framebtn_Tweet_lastest.setEnabled(false);
 		framebtn_Active_lastest.setEnabled(false);
-		// 资讯+博客
-		framebtn_News_lastest.setOnClickListener(frameNewsBtnClick(
-				framebtn_News_lastest, NewsList.CATALOG_ALL));
-		framebtn_News_blog.setOnClickListener(frameNewsBtnClick(
-				framebtn_News_blog, BlogList.CATALOG_LATEST));
-		framebtn_News_recommend.setOnClickListener(frameNewsBtnClick(
-				framebtn_News_recommend, BlogList.CATALOG_RECOMMEND));
+
 		// 问答
 		framebtn_Question_ask.setOnClickListener(frameQuestionBtnClick(
 				framebtn_Question_ask, PostList.CATALOG_ASK));
@@ -1401,26 +1458,32 @@ public class Main extends BaseActivity {
 			final int catalog) {
 		return new View.OnClickListener() {
 			public void onClick(View v) {
-				if (btn == framebtn_News_lastest) {
-					framebtn_News_lastest.setEnabled(false);
+				if (btn == framebtn_News_all) {
+					framebtn_News_all.setEnabled(false);
 				} else {
-					framebtn_News_lastest.setEnabled(true);
+					framebtn_News_all.setEnabled(true);
 				}
-				if (btn == framebtn_News_blog) {
-					framebtn_News_blog.setEnabled(false);
+				if (btn == framebtn_News_news) {
+					framebtn_News_news.setEnabled(false);
 				} else {
-					framebtn_News_blog.setEnabled(true);
+					framebtn_News_news.setEnabled(true);
 				}
-				if (btn == framebtn_News_recommend) {
-					framebtn_News_recommend.setEnabled(false);
+				if (btn == framebtn_News_video) {
+					framebtn_News_video.setEnabled(false);
 				} else {
-					framebtn_News_recommend.setEnabled(true);
+					framebtn_News_video.setEnabled(true);
 				}
+
+                if (btn == framebtn_News_event) {
+                    framebtn_News_event.setEnabled(false);
+                } else {
+                    framebtn_News_event.setEnabled(true);
+                }
 
 				curNewsCatalog = catalog;
 
 				// 非新闻列表
-				if (btn == framebtn_News_lastest) {
+				if (btn == framebtn_News_all) {
 					lvNews.setVisibility(View.VISIBLE);
 					lvBlog.setVisibility(View.GONE);
 
@@ -1433,6 +1496,10 @@ public class Main extends BaseActivity {
 					loadLvBlogData(curNewsCatalog, 0, lvBlogHandler,
 							UIHelper.LISTVIEW_ACTION_CHANGE_CATALOG);
 				}
+                //隐藏菜单
+                if(pw_homeMoreMenu!=null && pw_homeMoreMenu.isShowing()){
+                    pw_homeMoreMenu.dismiss();
+                }
 			}
 		};
 	}

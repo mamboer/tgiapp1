@@ -23,9 +23,10 @@
     <string name="main_menu_appbox">百宝箱</string>
     <string name="main_menu_icenter">个人中心</string>
     
-    <string name="frame_title_news_lastest">最新资讯</string>
-    <string name="frame_title_news_blog">最新攻略</string>
-    <string name="frame_title_news_recommend">推荐阅读</string>
+    <string name="frame_title_news_all">全部</string>
+    <string name="frame_title_news_news">新闻</string>
+    <string name="frame_title_news_video">视频</string>
+    <string name="frame_title_news_event">活动</string>
     <string name="frame_title_question_ask">问答</string>
     <string name="frame_title_question_share">分享</string>
     <string name="frame_title_question_other">综合</string>
@@ -99,7 +100,7 @@
 
     <string name="lbl_ok">确认</string>
     <string name="lbl_scan_qrcode">扫描二维码</string>
-    <integer name="offsetTop_scan_qrcode">100</integer>
+    <integer name="offsetTop_scan_qrcode">120</integer>
 
     <integer name="wtlogin_appid">563046901</integer>
     <string name="wtlogin_errtip_requireuid">请输入登录账号！</string>

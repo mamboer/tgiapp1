@@ -7,6 +7,7 @@
     <color name="liter_gray">#c1c1c1</color>
     <color name="lite_gray">#DDDDDD</color>
     <color name="gray_level4">#e1e3e5</color>
+    <color name="gray_level5">#eaeaeb</color>
 	<color name="red">#FF0000</color>
 	<color name="gold">#FFD700</color>
 	<color name="yellow">#FFFF00</color>
@@ -38,6 +39,7 @@
     <color name="author_text">#0e5986</color>
     <color name="foot_bg_on">#594a3f</color>
     <color name="page_bg">#eaecee</color>
+    <color name="bright_bg_btntext">#1f1f1f</color>
     
     <color name="face_bg">#eef1f4</color>
     

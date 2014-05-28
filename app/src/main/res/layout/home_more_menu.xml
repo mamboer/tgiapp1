@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frame_home_menu"
+    android:layout_width="fill_parent"
+    android:layout_height="55dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="54dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/frame_btn_news_all"
+            style="@style/frame_button"
+            android:text="@string/frame_title_news_all"/>
+
+        <View
+            android:layout_height="fill_parent"
+            android:layout_width="@dimen/space_1"
+            android:background="@color/gray_level5"></View>
+
+        <Button
+            android:id="@+id/frame_btn_news_news"
+            style="@style/frame_button"
+            android:text="@string/frame_title_news_news"/>
+        <View
+            android:layout_height="fill_parent"
+            android:layout_width="@dimen/space_1"
+            android:background="@color/gray_level5"></View>
+        <Button
+            android:id="@+id/frame_btn_news_video"
+            style="@style/frame_button"
+            android:text="@string/frame_title_news_video"/>
+        <View
+            android:layout_height="fill_parent"
+            android:layout_width="@dimen/space_1"
+            android:background="@color/gray_level5"></View>
+        <Button
+            android:id="@+id/frame_btn_news_event"
+            style="@style/frame_button"
+            android:text="@string/frame_title_news_event"/>
+    </LinearLayout>
+
+    <View
+        android:layout_alignParentBottom="true"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/space_1"
+        android:background="@color/gray_level4"></View>
+
+</RelativeLayout>

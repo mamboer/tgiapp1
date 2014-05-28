@@ -146,6 +146,7 @@
                 android:background="@color/devider_line_bg1"/>
 
             <RelativeLayout
+                android:id="@+id/frame_home_btnmore"
                 style="@style/shortcut_button">
 
                 <ImageButton
