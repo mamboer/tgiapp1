@@ -147,10 +147,12 @@
 
             <RelativeLayout
                 android:id="@+id/frame_home_btnmore"
+                android:clickable="true"
                 style="@style/shortcut_button">
 
                 <ImageButton
                     style="@style/shortcut_button_img"
+                    android:clickable="false"
                     android:id="@+id/shortcut_btn_more"
                     android:src="@drawable/ico_shortcut_more" />
 

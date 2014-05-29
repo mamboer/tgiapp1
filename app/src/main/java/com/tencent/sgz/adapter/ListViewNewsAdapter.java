@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import com.tencent.sgz.R;
 import com.tencent.sgz.bean.News;
 import com.tencent.sgz.common.StringUtils;
+import com.tencent.sgz.common.UIHelper;
 
 import android.content.Context;
 import android.os.Handler;
@@ -16,13 +17,17 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -143,6 +148,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
                 //TODO:第一个元素视图的数据绑定
                 this.initImageSlider(firstItemView);
                 //绑定按钮事件
+                this.initShortcutBtns(firstItemView);
             }
             this.startImageSlider();
             return firstItemView;
@@ -382,6 +388,51 @@ public class ListViewNewsAdapter extends BaseAdapter {
         public void finishUpdate(View arg0) {
 
         }
+    }
+
+    private PopupWindow pwCateMoreMenu;
+    private void initShortcutBtns(View parent){
+
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+
+        final RelativeLayout btnCateMore =  (RelativeLayout)parent.findViewById(R.id.frame_home_btnmore);
+        View customView = inflater.inflate(R.layout.home_more_cate, null, false);
+
+        WindowManager winManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+
+        final int pwOffsetTop = 112;
+
+        // 创建PopupWindow实例,200,150分别是宽度和高度
+        pwCateMoreMenu = new PopupWindow(customView,winManager.getDefaultDisplay().getWidth(),winManager.getDefaultDisplay().getHeight()-pwOffsetTop);
+        // 设置动画效果 [R.style.AnimationFade 是自己事先定义好的]
+        pwCateMoreMenu.setAnimationStyle(R.style.Animation_FadeInOut);
+
+        ArrayList<View> cateBtnViews = UIHelper.getViewsByTag((ViewGroup)customView,"catebtn");
+
+        for (View cateBtnView : cateBtnViews) {
+            cateBtnView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (pwCateMoreMenu != null && pwCateMoreMenu.isShowing()) {
+                        pwCateMoreMenu.dismiss();
+                        //pw_homeMoreMenu = null;
+                    }
+                }
+            });
+        }
+
+        btnCateMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!pwCateMoreMenu.isShowing()) {
+                    // 设置显示位置
+                    pwCateMoreMenu.showAtLocation(btnCateMore, Gravity.TOP|Gravity.LEFT,0,pwOffsetTop);
+                }else{
+                    pwCateMoreMenu.dismiss();
+                }
+
+            }
+        });
     }
 
 }

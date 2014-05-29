@@ -5,6 +5,7 @@ import greendroid.widget.QuickAction;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -1747,5 +1748,23 @@ public class UIHelper {
         myListView.setLayoutParams(params);
         // print height of adapter on log
         Log.i("height of listItem:", String.valueOf(totalHeight));
+    }
+
+    public static ArrayList<View> getViewsByTag(ViewGroup root, String tag){
+        ArrayList<View> views = new ArrayList<View>();
+        final int childCount = root.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            final View child = root.getChildAt(i);
+            if (child instanceof ViewGroup) {
+                views.addAll(getViewsByTag((ViewGroup) child, tag));
+            }
+
+            final Object tagObj = child.getTag();
+            if (tagObj != null && tagObj.equals(tag)) {
+                views.add(child);
+            }
+
+        }
+        return views;
     }
 }
