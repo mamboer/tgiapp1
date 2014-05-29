@@ -8,6 +8,8 @@ import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
 import com.tencent.sgz.adapter.ListViewQuestionAdapter;
+import com.tencent.sgz.bean.News;
+import com.tencent.sgz.bean.NewsList;
 import com.tencent.sgz.bean.Notice;
 import com.tencent.sgz.bean.Post;
 import com.tencent.sgz.bean.PostList;
@@ -38,7 +40,7 @@ public class QuestionTag extends BaseActivity{
 	
 	private PullToRefreshListView lvQuestion;
 	private ListViewQuestionAdapter lvQuestionAdapter;
-	private List<Post> lvQuestionData = new ArrayList<Post>();
+	private List<News> lvQuestionData = new ArrayList<News>();
 	private View lvQuestion_footer;
 	private TextView lvQuestion_foot_more;
 	private ProgressBar lvQuestion_foot_progress;
@@ -74,7 +76,7 @@ public class QuestionTag extends BaseActivity{
 		mHome.setOnClickListener(homeClickListener);
 		mHeadTitle.setText(curTag);
 		
-		lvQuestionAdapter = new ListViewQuestionAdapter(this, lvQuestionData, R.layout.question_listitem);        
+		lvQuestionAdapter = new ListViewQuestionAdapter(this, lvQuestionData, R.layout.question_listitem,R.layout.frame_question_listview_header,-1);
         lvQuestion_footer = getLayoutInflater().inflate(R.layout.listview_footer, null);
         lvQuestion_foot_more = (TextView)lvQuestion_footer.findViewById(R.id.listview_foot_more);
         lvQuestion_foot_progress = (ProgressBar)lvQuestion_footer.findViewById(R.id.listview_foot_progress);
@@ -91,7 +93,7 @@ public class QuestionTag extends BaseActivity{
         		if(view instanceof TextView){
         			post = (Post)view.getTag();
         		}else{
-        			TextView tv = (TextView)view.findViewById(R.id.question_listitem_title);
+        			TextView tv = (TextView)view.findViewById(R.id.news_listitem_title);
         			post = (Post)tv.getTag();
         		}
         		if(post == null) return;
@@ -148,7 +150,7 @@ public class QuestionTag extends BaseActivity{
 					
 					headButtonSwitch(DATA_LOAD_COMPLETE);
 					
-					PostList list = (PostList)msg.obj;
+					NewsList list = (NewsList)msg.obj;
 					Notice notice = list.getNotice();
 					//处理listview数据
 					switch (msg.arg1) {
@@ -156,14 +158,14 @@ public class QuestionTag extends BaseActivity{
 					case UIHelper.LISTVIEW_ACTION_REFRESH:
 						lvQuestionSumData = msg.what;
 						lvQuestionData.clear();//先清除原有数据
-						lvQuestionData.addAll(list.getPostlist());
+						lvQuestionData.addAll(list.getNewslist());
 						break;
 					case UIHelper.LISTVIEW_ACTION_SCROLL:
 						lvQuestionSumData += msg.what;
 						if(lvQuestionData.size() > 0){
-							for(Post p1 : list.getPostlist()){
+							for(News p1 : list.getNewslist()){
 								boolean b = false;
-								for(Post p2 : lvQuestionData){
+								for(News p2 : lvQuestionData){
 									if(p1.getId() == p2.getId() && p1.getAuthorId() == p2.getAuthorId()){
 										b = true;
 										break;
@@ -172,7 +174,7 @@ public class QuestionTag extends BaseActivity{
 								if(!b) lvQuestionData.add(p1);
 							}
 						}else{
-							lvQuestionData.addAll(list.getPostlist());
+							lvQuestionData.addAll(list.getNewslist());
 						}
 						break;
 					}						

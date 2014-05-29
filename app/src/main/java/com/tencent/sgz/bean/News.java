@@ -35,6 +35,7 @@ public class News extends Entity{
 	public final static String NODE_FAVORITE = "favorite";
 	public final static String NODE_START = "news";
     public final static String NODE_CATENAME = "cateName";
+    public final static String NODE_FACE = "portrait";
 	
 	public final static String NODE_SOFTWARELINK = "softwarelink";
 	public final static String NODE_SOFTWARENAME = "softwarename";
@@ -64,6 +65,7 @@ public class News extends Entity{
 	private NewsType newType;
 	private List<Relative> relatives;
     private String cateName;
+    private String face;
 
 	public News(){
 		this.newType = new NewsType();
@@ -163,6 +165,12 @@ public class News extends Entity{
     }
     public String getDesc(){return desc;}
     public void setDesc(String desc){this.desc = desc;}
+    public String getFace() {
+        return face;
+    }
+    public void setFace(String face) {
+        this.face = face;
+    }
 
 	public static News parse(InputStream inputStream) throws IOException, AppException {
 		News news = null;
@@ -204,6 +212,10 @@ public class News extends Entity{
 				            {			            	
 				            	news.setUrl(xmlParser.nextText());
 				            }
+                            else if(tag.equalsIgnoreCase(NODE_FACE))
+                            {
+                                news.setFace(xmlParser.nextText());
+                            }
 				            else if(tag.equalsIgnoreCase(NODE_BODY))
 				            {			            	
 				            	news.setBody(xmlParser.nextText());

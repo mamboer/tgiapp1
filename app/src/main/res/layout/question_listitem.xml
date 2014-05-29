@@ -1,69 +1,146 @@
-<?xml version="1.0" encoding="utf-8"?>  
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
-    android:orientation="horizontal" 
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
-    android:descendantFocusability="blocksDescendants" 
-    android:paddingLeft="6dip"
-    android:paddingRight="6dip"
-    android:paddingTop="10dip"
-    android:paddingBottom="9dip">   
+<?xml version="1.0" encoding="utf-8"?>
 
-    <ImageView 
-    	android:id="@+id/question_listitem_userface"
-      	style="@style/user_face_image"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/home_news_listitem.wrap">
 
-	<LinearLayout
-    	android:layout_width="fill_parent" 
-    	android:layout_height="wrap_content"
-    	android:orientation="vertical"
-    	android:layout_marginLeft="6dip"> 
+    <LinearLayout
+        style="@style/home_news_listitem.inner">
 
-	    <TextView android:id="@+id/question_listitem_title" 
-	        android:layout_width="fill_parent" 
-	     	android:layout_height="wrap_content"
-	     	android:includeFontPadding="false"
-     		android:textStyle="bold"
-     		android:textSize="@dimen/text_size_15"
-	     	android:textColor="@color/listitem_black"
-	     	android:maxLines="2"
-	    	android:ellipsize="end"/> 	
-	
-	    <LinearLayout 
-	    	android:orientation="horizontal" 
-	        android:layout_width="fill_parent"  
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="8dip">   
-	        	       	
-	       	<TextView android:id="@+id/question_listitem_author"  
-	    		android:layout_width="wrap_content" 
-	           	android:layout_height="wrap_content" 
-	           	android:textSize="@dimen/text_size_10"
-	            android:textColor="@color/listitem_gray"/>
-	       	
-	       	<TextView android:id="@+id/question_listitem_date"  
-	    		android:layout_width="wrap_content" 
-	           	android:layout_height="wrap_content" 
-	           	android:layout_marginLeft="10dip"
-	           	android:textSize="@dimen/text_size_10"
-	            android:textColor="@color/listitem_gray"/>
-	            
-		    <ImageView 
-		      	android:layout_width="wrap_content" 
-		        android:layout_height="wrap_content"
-		        android:layout_marginLeft="10dip"
-		        android:layout_gravity="center_vertical"
-		        android:src="@drawable/widget_comment_count_icon"/>
-		        
-	       	<TextView android:id="@+id/question_listitem_count"  
-	    		android:layout_width="wrap_content" 
-	           	android:layout_height="wrap_content" 
-	           	android:layout_marginLeft="3dip"
-	           	android:textSize="@dimen/text_size_10"
-	            android:textColor="@color/listitem_gray"/>
-	            
-       	</LinearLayout>
-       	
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            >
+
+            <ImageView
+                android:id="@+id/news_listitem_face"
+                android:layout_width="75dp"
+                android:layout_height="55dp"
+                android:layout_marginRight="@dimen/space_15"
+                android:src="@drawable/p150x110"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/home_news_listitem.hd">
+                    <TextView
+                        android:id="@+id/news_listitem_title"
+                        style="@style/home_news_listitem.tit"
+                        android:text="赤壁乱舞突破与蓝耗详解赤壁乱舞突破与蓝耗详解"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="0">
+                        <TextView
+                            android:id="@+id/news_listitem_cate"
+                            style="@style/home_news_listitem.badge"
+                            android:text="活动"/>
+
+                        <TextView
+                            style="@style/home_news_listitem.badge.blue"
+                            android:text="视频"/>
+
+                        <TextView
+                            style="@style/home_news_listitem.badge.green"
+                            android:text="装备"/>
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/home_news_listitem.bd">
+                    <TextView
+                        android:id="@+id/news_listitem_body"
+                        style="@style/home_news_listitem.desc"
+                        android:text="大多数玩家都觉得突破不能跟等级挂钩，60级、89级、90级的小小第一次突破增加的属性其实应大多数玩家都觉得突破不能跟等级挂钩大多数玩家都觉得突破不能跟等级挂钩"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            style="@style/home_news_listitem.split"
+            />
+
+        <LinearLayout
+            style="@style/home_news_listitem.ft">
+            <TextView
+                android:id="@+id/news_listitem_date"
+                style="@style/home_news_listitem.time"
+                android:text="2014.05.03 18:09"/>
+
+            <LinearLayout
+                style="@style/home_news_listitem.btn"
+                >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ico_news_bubble" />
+
+                <TextView
+                    android:id="@+id/news_listitem_commentCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:layout_marginLeft="-2dp"
+                    android:text="18" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/home_news_listitem.btn"
+                android:layout_marginLeft="5dp"
+                >
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ico_news_heart" />
+
+                <TextView
+                    android:id="@+id/news_listitem_voteCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:layout_marginLeft="-2dp"
+                    android:text="77" />
+
+            </LinearLayout>
+
+            <!--Temp fields for ListViewNewsAdapter-->
+
+            <TextView android:id="@+id/news_listitem_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_10"
+                android:textColor="@color/listitem_gray"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/news_listitem_flag"
+                android:layout_width="14.0dip"
+                android:layout_height="14.0dip"
+                android:layout_marginRight="2dip"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/widget_today_icon"
+                android:visibility="gone"/>
+
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout> 
+</LinearLayout>

@@ -46,17 +46,10 @@
     
 	<com.tencent.sgz.widget.PullToRefreshListView
 	  	android:id="@+id/frame_listview_question"
-	    style="@style/widget_listview"
-        android:visibility="gone"/>
+        android:divider="@color/transparent"
+        android:dividerHeight="0dp"
+        android:paddingBottom="@dimen/space_10"
+	    style="@style/widget_listview"/>
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/p2"
-            android:scaleType="fitStart"/>
-    </ScrollView>
 	
 </LinearLayout>

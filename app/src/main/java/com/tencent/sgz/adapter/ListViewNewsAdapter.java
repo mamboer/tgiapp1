@@ -400,7 +400,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
         WindowManager winManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
 
-        final int pwOffsetTop = 112;
+        final int pwOffsetTop = 0;
 
         // 创建PopupWindow实例,200,150分别是宽度和高度
         pwCateMoreMenu = new PopupWindow(customView,winManager.getDefaultDisplay().getWidth(),winManager.getDefaultDisplay().getHeight()-pwOffsetTop);

@@ -148,7 +148,7 @@ public class Main extends BaseActivity {
 
 	private List<News> lvNewsData = new ArrayList<News>();
 	private List<Blog> lvBlogData = new ArrayList<Blog>();
-	private List<Post> lvQuestionData = new ArrayList<Post>();
+	private List<News> lvQuestionData = new ArrayList<News>();
 	private List<Tweet> lvTweetData = new ArrayList<Tweet>();
 	private List<Active> lvActiveData = new ArrayList<Active>();
 	private List<Messages> lvMsgData = new ArrayList<Messages>();
@@ -604,7 +604,7 @@ public class Main extends BaseActivity {
 	 */
 	private void initQuestionListView() {
 		lvQuestionAdapter = new ListViewQuestionAdapter(this, lvQuestionData,
-				R.layout.question_listitem);
+				R.layout.question_listitem,R.layout.frame_question_listview_header,-1);
 		lvQuestion_footer = getLayoutInflater().inflate(
 				R.layout.listview_footer, null);
 		lvQuestion_foot_more = (TextView) lvQuestion_footer
@@ -622,21 +622,22 @@ public class Main extends BaseActivity {
 						if (position == 0 || view == lvQuestion_footer)
 							return;
 
-						Post post = null;
+						News post = null;
 						// 判断是否是TextView
 						if (view instanceof TextView) {
-							post = (Post) view.getTag();
+                            post = (News) view.getTag();
 						} else {
 							TextView tv = (TextView) view
-									.findViewById(R.id.question_listitem_title);
-							post = (Post) tv.getTag();
+									.findViewById(R.id.news_listitem_title);
+							post = (News) tv.getTag();
 						}
 						if (post == null)
 							return;
 
+                        UIHelper.showNewsRedirect(view.getContext(), post);
 						// 跳转到问答详情
-						UIHelper.showQuestionDetail(view.getContext(),
-								post.getId());
+						//UIHelper.showQuestionDetail(view.getContext(),
+						//		post.getId());
 					}
 				});
 		lvQuestion.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -1777,14 +1778,14 @@ public class Main extends BaseActivity {
 				lvBlogData.addAll(blist.getBloglist());
 				break;
 			case UIHelper.LISTVIEW_DATATYPE_POST:
-				PostList plist = (PostList) obj;
+				NewsList plist = (NewsList) obj;
 				notice = plist.getNotice();
 				lvQuestionSumData = what;
 				if (actiontype == UIHelper.LISTVIEW_ACTION_REFRESH) {
 					if (lvQuestionData.size() > 0) {
-						for (Post post1 : plist.getPostlist()) {
+						for (News post1 : plist.getNewslist()) {
 							boolean b = false;
-							for (Post post2 : lvQuestionData) {
+							for (News post2 : lvQuestionData) {
 								if (post1.getId() == post2.getId()) {
 									b = true;
 									break;
@@ -1798,7 +1799,7 @@ public class Main extends BaseActivity {
 					}
 				}
 				lvQuestionData.clear();// 先清除原有数据
-				lvQuestionData.addAll(plist.getPostlist());
+				lvQuestionData.addAll(plist.getNewslist());
 				break;
 			case UIHelper.LISTVIEW_DATATYPE_TWEET:
 				TweetList tlist = (TweetList) obj;
@@ -1932,13 +1933,13 @@ public class Main extends BaseActivity {
 				}
 				break;
 			case UIHelper.LISTVIEW_DATATYPE_POST:
-				PostList plist = (PostList) obj;
+				NewsList plist = (NewsList) obj;
 				notice = plist.getNotice();
 				lvQuestionSumData += what;
 				if (lvQuestionData.size() > 0) {
-					for (Post post1 : plist.getPostlist()) {
+					for (News post1 : plist.getNewslist()) {
 						boolean b = false;
-						for (Post post2 : lvQuestionData) {
+						for (News post2 : lvQuestionData) {
 							if (post1.getId() == post2.getId()) {
 								b = true;
 								break;
@@ -1948,7 +1949,7 @@ public class Main extends BaseActivity {
 							lvQuestionData.add(post1);
 					}
 				} else {
-					lvQuestionData.addAll(plist.getPostlist());
+					lvQuestionData.addAll(plist.getNewslist());
 				}
 				break;
 			case UIHelper.LISTVIEW_DATATYPE_TWEET:
@@ -2129,7 +2130,7 @@ public class Main extends BaseActivity {
 						|| action == UIHelper.LISTVIEW_ACTION_SCROLL)
 					isRefresh = true;
 				try {
-					PostList list = appContext.getPostList(catalog, pageIndex,
+					NewsList list = appContext.getNewsList(catalog, pageIndex,
 							isRefresh);
 					msg.what = list.getPageSize();
 					msg.obj = list;

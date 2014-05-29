@@ -27,7 +27,7 @@ public class URLs implements Serializable {
 	public final static String LOGIN_VALIDATE_HTTPS = HTTPS + HOST + URL_SPLITTER + "action/api/login_validate";
 	public final static String NEWS_LIST = URL_API_HOST+"mamboer/n3gz/master/app/src/main/assets/www/data/news_list.xml";
 	public final static String NEWS_DETAIL = URL_API_HOST+"action/api/news_detail";
-	public final static String POST_LIST = URL_API_HOST+"action/api/post_list";
+	public final static String POST_LIST = URL_API_HOST+"mamboer/n3gz/master/app/src/main/assets/www/data/news_list.xml";//http://www.oschina.net/action/api/post_list?catalog=1&pageIndex=1&pageSize=10
 	public final static String POST_DETAIL = URL_API_HOST+"action/api/post_detail";
 	public final static String POST_PUB = URL_API_HOST+"action/api/post_pub";
 	public final static String TWEET_LIST = URL_API_HOST+"action/api/tweet_list";
