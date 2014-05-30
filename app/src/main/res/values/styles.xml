@@ -324,6 +324,10 @@
         <item name="android:scaleType">fitXY</item>
     </style>
 
+    <style name="shortcut_button_badge.green">
+        <item name="android:background">@drawable/layer_cate_badge_green</item>
+    </style>
+
     <style name="notice">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">fill_parent</item>

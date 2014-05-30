@@ -41,6 +41,8 @@
     <string name="frame_title_active_comment">评论</string>
     <string name="frame_title_active_myself">我自己</string>
     <string name="frame_title_active_message">留言</string>
+
+    <string name="community_url">http://bbs.g.qq.com/forum.php?mod=forumdisplay&amp;fid=12388</string>
     
     <string name="footbar_refresh">刷新</string>
     <string name="footbar_comment">评论</string>

@@ -7,16 +7,19 @@
     android:gravity="center_vertical"
    	android:orientation="horizontal"
    	android:background="@color/black">
+    <TextView
+        android:id="@+id/tweet_detail_head_title"
+        style="@style/detail_head_title"
+        android:layout_gravity="center"
+        android:text="@string/capture_head_title"/>
    	<ImageView 
    	        android:id="@+id/capture_back"
             android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" 
+            android:layout_height="fill_parent"
             android:layout_gravity="left|center" 
-            android:clickable="true" 
-            android:background="@drawable/icon_arrow_left"/>
-   	<TextView 
-   	    android:id="@+id/tweet_detail_head_title"
-   		style="@style/detail_head_title"
-   		android:layout_gravity="center"
-   		android:text="@string/capture_head_title"/>
+            android:clickable="true"
+            android:src="@drawable/ico_arrow_left"
+            android:scaleType="center"
+            android:minWidth="40dp"/>
+
 </FrameLayout>

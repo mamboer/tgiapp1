@@ -36,6 +36,11 @@ public class ListViewActiveAdapter extends MyBaseAdapter {
 
 	private final static String AT_HOST_PRE = "http://t.qq.com";
 	private final static String MAIN_HOST = "http://www.3gz.qq.com";
+
+    private int                         firstItemViewResource = -1;//自定义第一个元素的视图资源
+    private int                         lastItemViewResource = -1;//最后一个元素的视图资源
+    static View firstItemView;
+    static View lastItemView;
 	
 	static class ListItemView { // 自定义控件集合
 		public ImageView userface;
@@ -67,21 +72,42 @@ public class ListViewActiveAdapter extends MyBaseAdapter {
 	 * @param context
 	 * @param data
 	 * @param resource
-	 * @param isFaceClickEnable
+	 * @param faceClickEnable
 	 */
 	public ListViewActiveAdapter(Context context, List<Active> data,
 			int resource, boolean faceClickEnable) {
-		this.context = context;
-		this.listContainer = LayoutInflater.from(context); // 创建视图容器并设置上下文
-		this.itemViewResource = resource;
-		this.listItems = data;
-		this.bmpManager = new BitmapManager(BitmapFactory.decodeResource(
-				context.getResources(), R.drawable.widget_dface_loading));
-		this.faceClickEnable = faceClickEnable;
+        this(context,data,resource,-1,-1,faceClickEnable);
 	}
 
+    /**
+     * 实例化Adapter
+     *
+     * @param context
+     * @param data
+     * @param resource
+     * @param faceClickEnable
+     */
+    public ListViewActiveAdapter(Context context, List<Active> data,int resource,int firstItemViewResource,int lastItemViewResource, boolean faceClickEnable) {
+        this.context = context;
+        this.listContainer = LayoutInflater.from(context); // 创建视图容器并设置上下文
+        this.itemViewResource = resource;
+        this.listItems = data;
+        this.bmpManager = new BitmapManager(BitmapFactory.decodeResource(
+                context.getResources(), R.drawable.widget_dface_loading));
+        this.faceClickEnable = faceClickEnable;
+        this.firstItemViewResource = firstItemViewResource;
+        this.lastItemViewResource = lastItemViewResource;
+    }
+
 	public int getCount() {
-		return listItems.size();
+        int itemSize = listItems.size();
+        if(this.firstItemViewResource>0){
+            itemSize+=1;
+        }
+        if(this.lastItemViewResource>0){
+            itemSize+=1;
+        }
+        return itemSize;
 	}
 
 	public Object getItem(int arg0) {
@@ -96,12 +122,29 @@ public class ListViewActiveAdapter extends MyBaseAdapter {
 	 * ListView Item设置
 	 */
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// Log.d("method", "getView");
+        int dataPosition = this.firstItemViewResource>0?(position-1):position;
+
+        //列表第一项
+        if(position==0 && this.firstItemViewResource>0){
+            if(firstItemView == null){
+                firstItemView = listContainer.inflate(this.firstItemViewResource,null);
+                //TODO:第一个元素视图的数据绑定
+            }
+            return firstItemView;
+        }
+
+        if ( position == (getCount()-1) && this.lastItemViewResource > 0 ){
+            if(lastItemView == null){
+                lastItemView = listContainer.inflate(this.lastItemViewResource,null);
+                //TODO:最后一个元素视图的数据绑定
+            }
+            return lastItemView;
+        }
 
 		// 自定义视图
 		ListItemView listItemView = null;
 
-		if (convertView == null) {
+		if (convertView == null||convertView.getTag()==null) {
 			// 获取list_item布局文件的视图
 			convertView = listContainer.inflate(this.itemViewResource, null);
 

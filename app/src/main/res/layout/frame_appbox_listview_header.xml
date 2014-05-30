@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg">
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:background="@color/white"
+        android:stretchColumns="*"
+        android:layout_height="wrap_content">
+        <TableRow>
+            <LinearLayout
+                android:background="@color/page_bg"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    style="@style/shortcut_button">
+
+                    <ImageButton
+                        style="@style/shortcut_button_img"
+                        android:id="@+id/shortcut_btn_hot2"
+                        android:src="@drawable/ico_cate_intro" />
+
+                    <TextView
+                        style="@style/shortcut_button_txt.style1"
+                        android:text="游戏介绍" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/page_bg"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:tag="catebtn"
+                    style="@style/shortcut_button">
+
+                    <ImageButton
+                        style="@style/shortcut_button_img"
+                        android:id="@+id/shortcut_btn_hero2"
+                        android:src="@drawable/ico_cate_wujiang" />
+
+                    <TextView
+                        style="@style/shortcut_button_txt.style1"
+                        android:text="武将" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/page_bg"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    style="@style/shortcut_button">
+
+                    <ImageButton
+                        style="@style/shortcut_button_img"
+                        android:id="@+id/shortcut_btn_gift2"
+                        android:src="@drawable/ico_cate_war" />
+
+                    <TextView
+                        style="@style/shortcut_button_txt.style1"
+                        android:text="乱舞战" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/page_bg"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:id="@+id/frame_home_btnmore2"
+                    style="@style/shortcut_button">
+
+                    <ImageButton
+                        style="@style/shortcut_button_img"
+                        android:id="@+id/shortcut_btn_more2"
+                        android:src="@drawable/ico_appbox_wallpaper" />
+
+                    <TextView
+                        style="@style/shortcut_button_txt.style1"
+                        android:text="壁纸" />
+                </RelativeLayout>
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow>
+            <LinearLayout
+                android:background="@color/page_bg"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    style="@style/shortcut_button">
+
+                    <ImageButton
+                        style="@style/shortcut_button_img"
+                        android:id="@+id/shortcut_btn_hot3"
+                        android:src="@drawable/ico_appbox_qrcode" />
+
+                    <TextView
+                        style="@style/shortcut_button_txt.style1"
+                        android:text="扫一扫" />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/page_bg"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    android:tag="catebtn"
+                    style="@style/shortcut_button">
+
+                    <ImageButton
+                        style="@style/shortcut_button_img"
+                        android:id="@+id/shortcut_btn_hero3"
+                        android:src="@drawable/ico_cate_wujiang" />
+
+                    <TextView
+                        style="@style/shortcut_button_txt.style1"
+                        android:text="阵容" />
+
+                    <TextView
+                        style="@style/shortcut_button_badge"
+                        android:layout_alignRight="@+id/shortcut_btn_hero3"
+                        android:text="N"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/page_bg"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    android:layout_margin="0.5dp"
+                    android:background="@color/white"
+                    style="@style/shortcut_button">
+
+                    <ImageButton
+                        style="@style/shortcut_button_img"
+                        android:id="@+id/shortcut_btn_gift3"
+                        android:src="@drawable/ico_cate_war" />
+
+                    <TextView
+                        style="@style/shortcut_button_txt.style1"
+                        android:text="礼包" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:stretchColumns="*"
+        android:layout_height="wrap_content">
+        <TableRow>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    android:layout_margin="0.5dp"
+                    style="@style/shortcut_button">
+
+                    <ImageButton
+                        style="@style/shortcut_button_img"
+                        android:id="@+id/shortcut_btn_hot0"
+                        android:src="@drawable/ico_cate_intro" />
+
+                    <TextView
+                        style="@style/shortcut_button_txt.style1"
+                        android:text="游戏XXXX" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:layout_margin="0.5dp"
+                    android:tag="catebtn"
+                    style="@style/shortcut_button">
+
+                    <ImageButton
+                        style="@style/shortcut_button_img"
+                        android:id="@+id/shortcut_btn_hero0"
+                        android:src="@drawable/ico_cate_wujiang" />
+
+                    <TextView
+                        style="@style/shortcut_button_txt.style1"
+                        android:text="游戏YYYYY" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    android:layout_margin="0.5dp"
+                    style="@style/shortcut_button">
+
+                    <ImageButton
+                        style="@style/shortcut_button_img"
+                        android:id="@+id/shortcut_btn_gift0"
+                        android:src="@drawable/ico_cate_war" />
+
+                    <TextView
+                        style="@style/shortcut_button_txt.style1"
+                        android:text="游戏ZZZZ" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    android:layout_margin="0.5dp"
+                    style="@style/shortcut_button">
+
+                    <ImageButton
+                        style="@style/shortcut_button_img"
+                        android:id="@+id/shortcut_btn_gift4"
+                        android:src="@drawable/ico_cate_war" />
+
+                    <TextView
+                        style="@style/shortcut_button_txt.style1"
+                        android:text="游戏AAAA" />
+
+                    <ImageView
+                        style="@style/shortcut_button_badge.green"
+                        android:layout_alignRight="@+id/shortcut_btn_gift4"
+                        android:src="@drawable/ico_badge_darr"
+                        android:scaleType="center"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

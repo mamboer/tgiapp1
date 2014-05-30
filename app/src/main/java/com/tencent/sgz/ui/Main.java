@@ -79,6 +79,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
@@ -225,6 +226,7 @@ public class Main extends BaseActivity {
 	private TweetReceiver tweetReceiver;// 动弹发布接收器
 
     @InjectView(R.id.main_head_more) ImageButton homeBtnMore;
+    @InjectView(R.id.wv_frame_community) WebView wvCommunity;
 
     private PopupWindow pw_homeMoreMenu;
 
@@ -290,6 +292,7 @@ public class Main extends BaseActivity {
 		//TODO:跟踪调查
 		try{
 			unregisterReceiver(tweetReceiver);
+            wvCommunity.destroy();
 		}catch(Exception e){}
 	}
 	
@@ -420,8 +423,10 @@ public class Main extends BaseActivity {
 		lvQuestionHandler = this.getLvHandler(lvQuestion, lvQuestionAdapter,
 				lvQuestion_foot_more, lvQuestion_foot_progress,
 				AppContext.PAGE_SIZE);
+        /*
 		lvTweetHandler = this.getLvHandler(lvTweet, lvTweetAdapter,
 				lvTweet_foot_more, lvTweet_foot_progress, AppContext.PAGE_SIZE);
+				*/
 		lvActiveHandler = this.getLvHandler(lvActive, lvActiveAdapter,
 				lvActive_foot_more, lvActive_foot_progress,
 				AppContext.PAGE_SIZE);
@@ -689,6 +694,7 @@ public class Main extends BaseActivity {
 	 * 初始化动弹列表
 	 */
 	private void initTweetListView() {
+        /*
 		lvTweetAdapter = new ListViewTweetAdapter(this, lvTweetData,R.layout.tweet_listitem);
 		lvTweet_footer = getLayoutInflater().inflate(R.layout.listview_footer,null);
 		lvTweet_foot_more = (TextView) lvTweet_footer.findViewById(R.id.listview_foot_more);
@@ -818,14 +824,29 @@ public class Main extends BaseActivity {
 						UIHelper.LISTVIEW_ACTION_REFRESH);
 			}
 		});
+		*/
+        WebSettings webSettings = wvCommunity.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setAllowContentAccess(true);
+        webSettings.setAllowFileAccess(true);
+        webSettings.setLoadsImagesAutomatically(true);
+        wvCommunity.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+        });
+
+        //wvCommunity.loadUrl(this.getString(R.string.community_url));
+
 	}
 
 	/**
 	 * 初始化动态列表
 	 */
 	private void initActiveListView() {
-		lvActiveAdapter = new ListViewActiveAdapter(this, lvActiveData,
-				R.layout.active_listitem);
+		lvActiveAdapter = new ListViewActiveAdapter(this, lvActiveData,R.layout.active_listitem,R.layout.frame_appbox_listview_header,-1,true);
 		lvActive_footer = getLayoutInflater().inflate(R.layout.listview_footer,
 				null);
 		lvActive_foot_more = (TextView) lvActive_footer
@@ -1233,7 +1254,9 @@ public class Main extends BaseActivity {
                                 lvQuestion.clickRefresh();
                                 break;
                             case 2:// 动弹
-                                lvTweet.clickRefresh();
+                                //wvCommunity.stopLoading();
+                                //wvCommunity.loadUrl(getString(R.string.community_url));
+                                //lvTweet.clickRefresh();
                                 break;
                             case 3:// 动态+留言
                                 if (lvActive.getVisibility() == View.VISIBLE)
@@ -1283,13 +1306,21 @@ public class Main extends BaseActivity {
 							}
 							break;
 						case 2:// 动弹
+                            /*
 							if (lvTweetData.isEmpty()) {
 								loadLvTweetData(curTweetCatalog, 0,
 										lvTweetHandler,
 										UIHelper.LISTVIEW_ACTION_INIT);
 							}
+							*/
+                            wvCommunity.stopLoading();
+                            wvCommunity.loadUrl(getString(R.string.community_url));
 							break;
 						case 3:// 动态
+                            lvActive_foot_more
+                                    .setVisibility(View.GONE);
+                            lvActive_foot_progress
+                                    .setVisibility(View.GONE);
 							// 判断登录
                             /*
 							if (!appContext.isLogin()) {
@@ -2198,8 +2229,10 @@ public class Main extends BaseActivity {
 	 */
 	private void loadLvActiveData(final int catalog, final int pageIndex,
 			final Handler handler, final int action) {
-		mHeadProgress.setVisibility(ProgressBar.VISIBLE);
-		new Thread() {
+
+        mHeadProgress.setVisibility(ProgressBar.VISIBLE);
+
+        new Thread() {
 			public void run() {
 				Message msg = new Message();
 				boolean isRefresh = false;

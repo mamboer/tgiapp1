@@ -249,7 +249,7 @@
 
         <TextView
             style="@style/homecate.tit"
-            android:text="资料|攻略"
+            android:text="资料&amp;攻略"
             />
 
         <TableLayout

@@ -41,8 +41,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
 	private List<News> 					listItems;//数据集合
 	private LayoutInflater 				listContainer;//视图容器
 	private int 						itemViewResource;//自定义项视图源
-    private int                         firstItemViewResource = -1;//自定义第一个元素的视图资源
-    private int                         lastItemViewResource = -1;//最后一个元素的视图资源
+
 	static class ListItemView{				//自定义控件集合  
 	        public TextView title;  
 		    public TextView author;
@@ -54,6 +53,8 @@ public class ListViewNewsAdapter extends BaseAdapter {
             public TextView desc;
 	 }
 
+    private int                         firstItemViewResource = -1;//自定义第一个元素的视图资源
+    private int                         lastItemViewResource = -1;//最后一个元素的视图资源
     static View firstItemView;
     static View lastItemView;
 
@@ -88,11 +89,8 @@ public class ListViewNewsAdapter extends BaseAdapter {
 	 * @param resource
 	 */
 	public ListViewNewsAdapter(Context context, List<News> data,int resource) {
-		this.context = context;			
-		this.listContainer = LayoutInflater.from(context);	//创建视图容器并设置上下文
-		this.itemViewResource = resource;
 
-		this.listItems = data;
+        this(context,data,resource,-1,-1);
 	}
 
     /**

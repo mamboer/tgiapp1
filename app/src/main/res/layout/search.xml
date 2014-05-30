@@ -11,16 +11,18 @@
         android:paddingRight="2dip"
         android:paddingTop="@dimen/space_3"
         android:paddingBottom="@dimen/space_3"
-        android:background="@color/dark_gray">
+        android:background="@color/black">
         <TextView 
             style="@style/detail_head_title"
             android:text="@string/com_txt_search"/>
         <ImageView 
             android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" 
+            android:layout_height="fill_parent"
             android:layout_gravity="left|center" 
             android:clickable="true" 
-            android:background="@drawable/icon_arrow_left"
+            android:src="@drawable/ico_arrow_left"
+            android:scaleType="center"
+            android:minWidth="40dp"
             android:onClick="back"/>
     </FrameLayout>
 
