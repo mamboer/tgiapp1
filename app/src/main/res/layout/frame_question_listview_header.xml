@@ -6,46 +6,60 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:gravity="center"
         android:background="@color/white">
-        <RelativeLayout
-            android:id="@+id/frame_question_hdbtn"
-            android:layout_width="fill_parent"
-            android:layout_height="59dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="center"
             android:clickable="true"
-            android:paddingLeft="@dimen/space_20">
-            <ImageView
-                android:id="@+id/frame_question_hdimg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ico_cate_manual"/>
+            android:id="@+id/frame_question_hdbtn1"
+            android:layout_weight="1">
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/frame_question_hdimg"
-                android:layout_marginLeft="@dimen/space_15"
-                android:textColor="@color/bright_bg_btntext"
-                android:textSize="@dimen/text_size_17"
-                android:text="官方指南"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ico_arr_left"
-                android:layout_alignParentRight="true"/>
-        </RelativeLayout>
-
+                android:layout_height="43dp"
+                android:gravity="center"
+                android:textColor="@color/tab_highlight_bg"
+                android:text="推荐攻略">
+            </TextView>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@color/tab_highlight_bg">
+            </View>
+        </LinearLayout>
         <View
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
+            android:layout_width="1dp"
+            android:layout_height="14dp"
+
             android:background="@color/gray_level4">
-
         </View>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:id="@+id/frame_question_hdbtn2"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="43dp"
+                android:gravity="center"
+                android:textColor="@color/bright_bg_btntext"
+                android:text="官方指南">
+            </TextView>
+            <View
 
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@color/white">
+            </View>
+        </LinearLayout>
     </LinearLayout>
 
     <View

@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -178,7 +179,7 @@ public class ListViewQuestionAdapter extends BaseAdapter {
 	}
 
     private void initFirstItemViewActions(View parent){
-        RelativeLayout topBtn = (RelativeLayout) parent.findViewById(R.id.frame_question_hdbtn);
+        LinearLayout topBtn = (LinearLayout) parent.findViewById(R.id.frame_question_hdbtn1);
         topBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

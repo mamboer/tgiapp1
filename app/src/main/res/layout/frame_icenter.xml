@@ -2,17 +2,97 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:background="@color/page_bg"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/p5"
-            android:scaleType="fitStart"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:background="@drawable/layer_login_border"
+                android:padding="10dp"
+                android:layout_marginBottom="@dimen/space_10"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/widget_dface"/>
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:orientation="vertical"
+                    android:layout_gravity="top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="未知用户"
+                        android:textSize="@dimen/text_size_17"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/bright_bg_btntext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="QQ号：未知用户"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:background="@drawable/layer_login_border"
+                android:padding="10dp"
+                android:layout_marginBottom="@dimen/space_10"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/icenter_mico_msg"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/mico_msg"/>
+                <LinearLayout
+                    android:layout_toRightOf="@+id/icenter_mico_msg"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/space_10"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="消息中心"
+                        android:textSize="@dimen/text_size_15"
+                        android:layout_marginRight="@dimen/space_10"
+                        android:textColor="@color/bright_bg_btntext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        style="@style/badge"
+
+                        android:text="2"/>
+
+                </LinearLayout>
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ico_arr_right"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>

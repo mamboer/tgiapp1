@@ -394,6 +394,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
 
         final RelativeLayout btnCateMore =  (RelativeLayout)parent.findViewById(R.id.frame_home_btnmore);
+        final ImageView btnBack = (ImageView)parent.findViewById(R.id.home_more_cate_back);
         View customView = inflater.inflate(R.layout.home_more_cate, null, false);
 
         WindowManager winManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -429,6 +430,13 @@ public class ListViewNewsAdapter extends BaseAdapter {
                     pwCateMoreMenu.dismiss();
                 }
 
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pwCateMoreMenu.dismiss();
             }
         });
     }

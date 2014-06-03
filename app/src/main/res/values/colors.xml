@@ -40,6 +40,7 @@
     <color name="foot_bg_on">#594a3f</color>
     <color name="page_bg">#eaecee</color>
     <color name="bright_bg_btntext">#1f1f1f</color>
+    <color name="tab_highlight_bg">#aa7a51</color>
     
     <color name="face_bg">#eef1f4</color>
     
