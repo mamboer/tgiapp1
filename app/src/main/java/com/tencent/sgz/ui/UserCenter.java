@@ -86,7 +86,7 @@ public class UserCenter extends BaseActivity{
 	private int curLvActiveDataState;
 	private int curLvBlogDataState;	
 	
-	private int _uid;
+	private long _uid;
 	private int _hisuid;
 	private String _hisname;
 	private String _username;
@@ -281,7 +281,7 @@ public class UserCenter extends BaseActivity{
         		
         		final AppContext ac = (AppContext)getApplication();
 				//操作--删除
-        		final int uid = ac.getLoginUid();
+        		final long uid = ac.getLoginUid();
         		//判断该博客是否是当前登录用户发表的
         		if(uid == blog.getAuthorId())
         		{

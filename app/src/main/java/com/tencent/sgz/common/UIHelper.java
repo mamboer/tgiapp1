@@ -241,7 +241,7 @@ public class UIHelper {
 		context.startActivityForResult(intent, REQUEST_CODE_FOR_RESULT);
 	}
 
-	public static void showTweetPub(Activity context, String atme, int atuid) {
+	public static void showTweetPub(Activity context, String atme, long atuid) {
 		Intent intent = new Intent(context, TweetPub.class);
 		intent.putExtra("at_me", atme);
 		intent.putExtra("at_uid", atuid);
@@ -406,7 +406,7 @@ public class UIHelper {
 	 * @param friendName
 	 *            对方名称
 	 */
-	public static void showMessagePub(Activity context, int friendId,
+	public static void showMessagePub(Activity context, long friendId,
 			String friendName) {
 		Intent intent = new Intent();
 		intent.putExtra("user_id",
@@ -864,11 +864,10 @@ public class UIHelper {
 	 * 显示用户动态
 	 * 
 	 * @param context
-	 * @param uid
 	 * @param hisuid
 	 * @param hisname
 	 */
-	public static void showUserCenter(Context context, int hisuid,
+	public static void showUserCenter(Context context, long hisuid,
 			String hisname) {
 		Intent intent = new Intent(context, UserCenter.class);
 		intent.putExtra("his_id", hisuid);
@@ -1394,6 +1393,36 @@ public class UIHelper {
 		Intent intent = new Intent(context, About.class);
 		context.startActivity(intent);
 	}
+
+    /**
+     * 显示关于消息中心
+     *
+     * @param context
+     */
+    public static void showMsgCenter(Context context) {
+        Intent intent = new Intent(context, MsgCenter.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 显示活动提醒
+     *
+     * @param context
+     */
+    public static void showEventCenter(Context context) {
+        Intent intent = new Intent(context, EventNotice.class);
+        context.startActivity(intent);
+    }
+
+    /**
+     * 显示用户收藏
+     *
+     * @param context
+     */
+    public static void showUserFavor(Context context) {
+        Intent intent = new Intent(context, UserFavor.class);
+        context.startActivity(intent);
+    }
 
 	/**
 	 * 显示用户反馈

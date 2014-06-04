@@ -120,7 +120,7 @@ public class QuestionDetail extends BaseActivity {
 	
 	private int _catalog;
 	private int _id;
-	private int _uid;
+	private long _uid;
 	private String _content;
 	private int _isPostToMyZone;
 	
@@ -452,7 +452,7 @@ public class QuestionDetail extends BaseActivity {
 				UIHelper.showLoginDialog(QuestionDetail.this);
 				return;
 			}
-			final int uid = ac.getLoginUid();
+			final long uid = ac.getLoginUid();
 						
 			final Handler handler = new Handler(){
 				public void handleMessage(Message msg) {
@@ -580,7 +580,7 @@ public class QuestionDetail extends BaseActivity {
         		
         		final AppContext ac = (AppContext)getApplication();
 				//操作--回复 & 删除
-        		int uid = ac.getLoginUid();
+        		long uid = ac.getLoginUid();
         		//判断该评论是否是当前登录用户发表的：true--有删除操作  false--没有删除操作
         		if(uid == com.getAuthorId())
         		{

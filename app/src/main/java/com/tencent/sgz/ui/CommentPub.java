@@ -43,7 +43,7 @@ public class CommentPub extends BaseActivity{
 	
 	private int _catalog;
 	private int _id;
-	private int _uid;
+	private long _uid;
 	private String _content;
 	private int _isPostToMyZone;
 	

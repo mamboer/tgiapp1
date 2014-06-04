@@ -44,7 +44,10 @@ import com.tencent.sgz.bean.PostList;
 import com.tencent.sgz.bean.Result;
 import com.tencent.sgz.bean.Tweet;
 import com.tencent.sgz.bean.TweetList;
+import com.tencent.sgz.bean.User;
+import com.tencent.sgz.common.BitmapManager;
 import com.tencent.sgz.common.FileUtils;
+import com.tencent.sgz.common.ImageUtils;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.common.UpdateManager;
@@ -60,7 +63,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -130,7 +136,7 @@ public class Main extends BaseActivity {
 
 	private int curNewsCatalog = NewsList.CATALOG_ALL;
 	private int curQuestionCatalog = PostList.CATALOG_ASK;
-	private int curTweetCatalog = TweetList.CATALOG_LASTEST;
+	private long curTweetCatalog = TweetList.CATALOG_LASTEST;
 	private int curActiveCatalog = ActiveList.CATALOG_LASTEST;
 
 	private PullToRefreshListView lvNews;
@@ -228,12 +234,24 @@ public class Main extends BaseActivity {
     @InjectView(R.id.main_head_more) ImageButton homeBtnMore;
     @InjectView(R.id.wv_frame_community) WebView wvCommunity;
 
+    //个人中心页面
+    @InjectView(R.id.wt_login_btn_login) Button btnLogin;
+    @InjectView(R.id.wt_login_btn_logoff) Button btnLogoff;
+    @InjectView(R.id.icenter_userId) TextView txtUserId;
+    @InjectView(R.id.icenter_userName) TextView txtUserName;
+    @InjectView(R.id.icenter_userAvatar) ImageView imgUserAvatar;
+
     private PopupWindow pw_homeMoreMenu;
+    private BitmapManager bitmapManager;
+    private Bitmap defaultUserAvatar;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+
+        defaultUserAvatar = BitmapFactory.decodeResource(getResources(), R.drawable.widget_dface);
+        bitmapManager = new BitmapManager(defaultUserAvatar);
 
 		// 注册广播接收器
 		tweetReceiver = new TweetReceiver();
@@ -313,7 +331,9 @@ public class Main extends BaseActivity {
 				if (lvMsgData.isEmpty()) {
 					this.loadLvMsgData(0, lvMsgHandler,UIHelper.LISTVIEW_ACTION_INIT);
 				}
-			}
+			} else if (mCurSel== 4){
+                this.initICenter();
+            }
 		} else if (intent.getBooleanExtra("NOTICE", false)) {
 			// 查看最新信息
 			mScrollLayout.scrollToScreen(3);
@@ -408,7 +428,65 @@ public class Main extends BaseActivity {
 		this.initMsgListView();
 		// 加载listview数据
 		this.initFrameListViewData();
+
+        // 初始化个人中心
+        this.initICenter();
 	}
+
+    //初始化个人中心
+    private void initICenter(){
+
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            UIHelper.showLoginPage(Main.this);
+            }
+        });
+        btnLogoff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                appContext.cleanLoginInfo();
+                updateICenter();
+            }
+        });
+
+        this.updateICenter();
+
+    }
+
+    private void updateICenter(){
+        btnLogin.setVisibility(View.GONE);
+        btnLogoff.setVisibility(View.GONE);
+
+        /*
+        btnLogin.setVisibility(View.VISIBLE);
+        imgUserAvatar.setImageResource(R.drawable.widget_dface);
+        txtUserId.setText("QQ号：未知用户");
+        txtUserName.setText("未知用户");
+        */
+
+
+        // 判断登录
+        if (!appContext.isLogin()) {
+            btnLogin.setVisibility(View.VISIBLE);
+            imgUserAvatar.setImageResource(R.drawable.widget_dface);
+            txtUserId.setText("QQ号：未知用户");
+            txtUserName.setText("未知用户");
+
+            return;
+        }
+
+        //已登录
+        //获取登录信息
+        User user = this.appContext.getLoginInfo();
+        btnLogoff.setVisibility(View.VISIBLE);
+        txtUserId.setText("QQ号：" + user.getUid());
+        txtUserName.setText(user.getName());
+        bitmapManager.loadBitmap(user.getFace(),imgUserAvatar);
+
+
+    }
 
 	/**
 	 * 初始化所有ListView数据
@@ -1366,11 +1444,7 @@ public class Main extends BaseActivity {
 							*/
 							break;
                             case 4://icenter
-                                // 判断登录
-                                if (!appContext.isLogin()) {
-                                    UIHelper.showLoginPage(Main.this);
-                                    break;
-                                }
+
                                 break;
 						}//switch
 						setCurPoint(viewIndex);
@@ -1455,7 +1529,7 @@ public class Main extends BaseActivity {
 		framebtn_Tweet_my.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				// 判断登录
-				int uid = appContext.getLoginUid();
+				long uid = appContext.getLoginUid();
 				if (uid == 0) {
 					UIHelper.showLoginDialog(Main.this);
 					return;
@@ -2190,7 +2264,7 @@ public class Main extends BaseActivity {
 	 * @param action
 	 *            动作标识
 	 */
-	private void loadLvTweetData(final int catalog, final int pageIndex,
+	private void loadLvTweetData(final long catalog, final int pageIndex,
 			final Handler handler, final int action) {
 		mHeadProgress.setVisibility(ProgressBar.VISIBLE);
 		new Thread() {
@@ -2295,7 +2369,7 @@ public class Main extends BaseActivity {
 	 * 轮询通知信息
 	 */
 	private void foreachUserNotice() {
-		final int uid = appContext.getLoginUid();
+		final long uid = appContext.getLoginUid();
 		final Handler handler = new Handler() {
 			public void handleMessage(Message msg) {
 				if (msg.what == 1) {
@@ -2335,7 +2409,7 @@ public class Main extends BaseActivity {
 	 *            1:@我的信息 2:未读消息 3:评论个数 4:新粉丝个数
 	 */
 	private void ClearNotice(final int type) {
-		final int uid = appContext.getLoginUid();
+		final long uid = appContext.getLoginUid();
 		final Handler handler = new Handler() {
 			public void handleMessage(Message msg) {
 				if (msg.what == 1 && msg.obj != null) {
@@ -2518,6 +2592,18 @@ public class Main extends BaseActivity {
 
         lvNewsAdapter.stopImageSlider();
         super.onStop();
+    }
+
+    public void gotoMsgCenter(View preView){
+        UIHelper.showMsgCenter(this);
+    }
+
+    public void gotoUserFavor(View preView){
+        UIHelper.showUserFavor(this);
+    }
+
+    public void gotoSetting(View preView){
+
     }
 	
 }

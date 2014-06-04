@@ -45,7 +45,7 @@ public class Tweet extends Entity{
 	private String face;
 	private String body;
 	private String author;
-	private int authorId;
+	private long authorId;
 	private int commentCount;
 	private String pubDate;
 	private String imgSmall;
@@ -103,10 +103,10 @@ public class Tweet extends Entity{
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public int getAuthorId() {
+	public long getAuthorId() {
 		return authorId;
 	}
-	public void setAuthorId(int authorId) {
+	public void setAuthorId(long authorId) {
 		this.authorId = authorId;
 	}
 	public int getCommentCount() {

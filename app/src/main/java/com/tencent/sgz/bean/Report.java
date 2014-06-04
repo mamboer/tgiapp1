@@ -11,7 +11,7 @@ public class Report extends Entity{
 	public final static String REPORT_LINK = "link";
 	public final static String REPORT_REASON = "reason";
 	public final static String REPORT_OTHER_REASON = "otherreason";
-	private int reportId;
+	private long reportId;
 	private String linkAddress;
 	private String reason;
 	private String otherReason;
@@ -21,11 +21,11 @@ public class Report extends Entity{
 	public void setOtherReason(String otherReason) {
 		this.otherReason = otherReason;
 	}
-	public int getReportId() {
+	public long getReportId() {
 		return reportId;
 	}
 	
-	public void setReportId(int reportId) {
+	public void setReportId(long reportId) {
 		this.reportId = reportId;
 	}
 	public String getLinkAddress() {

@@ -57,6 +57,7 @@
     <string name="login_dialog_password_hint">输入密码</string>
     <string name="login_dialog_reg">注册帐号</string>
     <string name="login_dialog_login">登  录</string>
+    <string name="login_dialog_logoff">退出登录</string>
     <string name="login_dialog_login_qq">QQ快速登录</string>
     <string name="login_dialog_login_wx">微信快速登录</string>
     <string name="login_dialog_rememberPW">记住密码:</string>

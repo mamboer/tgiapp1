@@ -180,7 +180,7 @@ public class UserFavorite extends BaseActivity {
         		
         		final AppContext ac = (AppContext)getApplication();
 				//操作--删除
-        		final int uid = ac.getLoginUid();
+        		final long uid = ac.getLoginUid();
 
         		final Handler handler = new Handler(){
 					public void handleMessage(Message msg) {

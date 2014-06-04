@@ -68,8 +68,8 @@ public class MessageDetail extends BaseActivity{
 	private InputMethodManager imm;
 	private String tempMessageKey = AppConfig.TEMP_MESSAGE;
 	
-	private int _uid;
-	private int _friendid;
+	private long _uid;
+	private long _friendid;
 	private String _content;
 	
 	private final static int DATA_LOAD_ING = 0x001;

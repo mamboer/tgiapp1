@@ -281,6 +281,27 @@
         -->
         <!--E wtlogin-->
 
+        <!--S 个人中心-->
+        <activity
+            android:name=".ui.MsgCenter"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SlideTop" />
+        <activity
+            android:name=".ui.EventNotice"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SlideTop" />
+        <activity
+            android:name=".ui.UserFavor"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SlideTop" />
+        <!--E 个人中心-->
+
         <receiver android:name=".ui.BroadCast" >
             <intent-filter>
                 <action android:name="com.tencent.sgz.action.APPWIDGET_UPDATE" />

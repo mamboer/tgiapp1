@@ -410,7 +410,7 @@ public class ApiClient {
 	
 	/**
 	 * 检查版本更新
-	 * @param url
+	 * @param appContext
 	 * @return
 	 */
 	public static Update checkVersion(AppContext appContext) throws AppException {
@@ -461,7 +461,7 @@ public class ApiClient {
 	
 	/**
 	 * 登录， 自动处理cookie
-	 * @param url
+	 * @param appContext
 	 * @param username
 	 * @param pwd
 	 * @return
@@ -494,7 +494,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static MyInformation myInformation(AppContext appContext, int uid) throws AppException {
+	public static MyInformation myInformation(AppContext appContext, long uid) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("uid", uid);
 				
@@ -515,7 +515,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static Result updatePortrait(AppContext appContext, int uid, File portrait) throws AppException {
+	public static Result updatePortrait(AppContext appContext, long uid, File portrait) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("uid", uid);
 		
@@ -541,7 +541,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static UserInformation information(AppContext appContext, int uid, int hisuid, String hisname, int pageIndex, int pageSize) throws AppException {
+	public static UserInformation information(AppContext appContext, long uid, long hisuid, String hisname, int pageIndex, int pageSize) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("uid", uid);
 		params.put("hisuid", hisuid);
@@ -566,7 +566,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static Result updateRelation(AppContext appContext, int uid, int hisuid, int newrelation) throws AppException {
+	public static Result updateRelation(AppContext appContext, long uid, long hisuid, int newrelation) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("uid", uid);
 		params.put("hisuid", hisuid);
@@ -587,7 +587,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static Notice getUserNotice(AppContext appContext, int uid) throws AppException {
+	public static Notice getUserNotice(AppContext appContext, long uid) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("uid", uid);
 				
@@ -607,7 +607,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static Result noticeClear(AppContext appContext, int uid, int type) throws AppException {
+	public static Result noticeClear(AppContext appContext, long uid, int type) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("uid", uid);
 		params.put("type", type);
@@ -630,7 +630,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static FriendList getFriendList(AppContext appContext, final int uid, final int relation, final int pageIndex, final int pageSize) throws AppException {
+	public static FriendList getFriendList(AppContext appContext, final long uid, final int relation, final int pageIndex, final int pageSize) throws AppException {
 		String newUrl = _MakeURL(URLs.FRIENDS_LIST, new HashMap<String, Object>(){{
 			put("uid", uid);
 			put("relation", relation);
@@ -649,7 +649,7 @@ public class ApiClient {
 	
 	/**
 	 * 获取资讯列表
-	 * @param url
+	 * @param appContext
 	 * @param catalog
 	 * @param pageIndex
 	 * @param pageSize
@@ -674,7 +674,7 @@ public class ApiClient {
 	
 	/**
 	 * 获取资讯的详情
-	 * @param url
+	 * @param appContext
 	 * @param news_id
 	 * @return
 	 * @throws AppException
@@ -702,7 +702,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static BlogList getUserBlogList(AppContext appContext, final int authoruid, final String authorname, final int uid, final int pageIndex, final int pageSize) throws AppException {
+	public static BlogList getUserBlogList(AppContext appContext, final long authoruid, final String authorname, final long uid, final int pageIndex, final int pageSize) throws AppException {
 		String newUrl = _MakeURL(URLs.USERBLOG_LIST, new HashMap<String, Object>(){{
 			put("authoruid", authoruid);
 			put("authorname", URLEncoder.encode(authorname));
@@ -752,7 +752,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static Result delBlog(AppContext appContext, int uid, int authoruid, int id) throws AppException {
+	public static Result delBlog(AppContext appContext, long uid, long authoruid, int id) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("uid", uid);
 		params.put("authoruid", authoruid);
@@ -789,7 +789,7 @@ public class ApiClient {
 	
 	/**
 	 * 获取帖子列表
-	 * @param url
+	 * @param appContext
 	 * @param catalog
 	 * @param pageIndex
 	 * @return
@@ -813,8 +813,8 @@ public class ApiClient {
 	
 	/**
 	 * 通过Tag获取帖子列表
-	 * @param url
-	 * @param catalog
+	 * @param appContext
+	 * @param tag
 	 * @param pageIndex
 	 * @return
 	 * @throws AppException
@@ -836,7 +836,7 @@ public class ApiClient {
 	
 	/**
 	 * 获取帖子的详情
-	 * @param url
+	 * @param appContext
 	 * @param post_id
 	 * @return
 	 * @throws AppException
@@ -922,7 +922,7 @@ public class ApiClient {
 	
 	/**
 	 * 发动弹
-	 * @param Tweet-uid & msg & image
+	 * @param tweet
 	 * @return
 	 * @throws AppException
 	 */
@@ -1024,7 +1024,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static Result pubMessage(AppContext appContext, int uid, int receiver, String content) throws AppException {
+	public static Result pubMessage(AppContext appContext, long uid, long receiver, String content) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("uid", uid);
 		params.put("receiver", receiver);
@@ -1042,7 +1042,7 @@ public class ApiClient {
 	/**
 	 * 转发留言
 	 * @param uid 登录用户uid
-	 * @param receiver 接受者的用户名
+	 * @param receiverName 接受者的用户名
 	 * @param content 消息内容，注意不能超过250个字符
 	 * @return
 	 * @throws AppException
@@ -1069,7 +1069,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static Result delMessage(AppContext appContext, int uid, int friendid) throws AppException {
+	public static Result delMessage(AppContext appContext, long uid, long friendid) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("uid", uid);
 		params.put("friendid", friendid);
@@ -1115,7 +1115,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static Result pubBlogComment(AppContext appContext, int blog, int uid, String content) throws AppException {
+	public static Result pubBlogComment(AppContext appContext, int blog, long uid, String content) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("blog", blog);
 		params.put("uid", uid);
@@ -1140,7 +1140,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static Result replyBlogComment(AppContext appContext, int blog, int uid, String content, int reply_id, int objuid) throws AppException {
+	public static Result replyBlogComment(AppContext appContext, int blog, long uid, String content, int reply_id, int objuid) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("blog", blog);
 		params.put("uid", uid);
@@ -1167,7 +1167,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static Result delBlogComment(AppContext appContext, int uid, int blogid, int replyid, int authorid, int owneruid) throws AppException {
+	public static Result delBlogComment(AppContext appContext, long uid, int blogid, int replyid, long authorid, long owneruid) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("uid", uid);
 		params.put("blogid", blogid);		
@@ -1220,7 +1220,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static Result pubComment(AppContext appContext, int catalog, int id, int uid, String content, int isPostToMyZone) throws AppException {
+	public static Result pubComment(AppContext appContext, int catalog, int id, long uid, String content, int isPostToMyZone) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("catalog", catalog);
 		params.put("id", id);
@@ -1248,7 +1248,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static Result replyComment(AppContext appContext, int id, int catalog, int replyid, int authorid, int uid, String content) throws AppException {
+	public static Result replyComment(AppContext appContext, int id, int catalog, int replyid, long authorid, long uid, String content) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("catalog", catalog);
 		params.put("id", id);
@@ -1300,7 +1300,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static FavoriteList getFavoriteList(AppContext appContext, final int uid, final int type, final int pageIndex, final int pageSize) throws AppException {
+	public static FavoriteList getFavoriteList(AppContext appContext, final long uid, final int type, final int pageIndex, final int pageSize) throws AppException {
 		String newUrl = _MakeURL(URLs.FAVORITE_LIST, new HashMap<String, Object>(){{
 			put("uid", uid);
 			put("type", type);
@@ -1325,7 +1325,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static Result addFavorite(AppContext appContext, int uid, int objid, int type) throws AppException {
+	public static Result addFavorite(AppContext appContext, long uid, int objid, int type) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("uid", uid);
 		params.put("objid", objid);
@@ -1348,7 +1348,7 @@ public class ApiClient {
 	 * @return
 	 * @throws AppException
 	 */
-	public static Result delFavorite(AppContext appContext, int uid, int objid, int type) throws AppException {
+	public static Result delFavorite(AppContext appContext, long uid, int objid, int type) throws AppException {
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("uid", uid);
 		params.put("objid", objid);

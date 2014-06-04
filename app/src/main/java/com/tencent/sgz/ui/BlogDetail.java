@@ -120,7 +120,7 @@ public class BlogDetail extends BaseActivity {
 	private String tempCommentKey = AppConfig.TEMP_COMMENT;
 	
 	private int _id;
-	private int _uid;
+	private long _uid;
 	private String _content;
 	
 	private GestureDetector gd;
@@ -452,7 +452,7 @@ public class BlogDetail extends BaseActivity {
 				UIHelper.showLoginDialog(BlogDetail.this);
 				return;
 			}
-			final int uid = ac.getLoginUid();
+			final long uid = ac.getLoginUid();
 						
 			final Handler handler = new Handler(){
 				public void handleMessage(Message msg) {
@@ -580,7 +580,7 @@ public class BlogDetail extends BaseActivity {
         		
         		final AppContext ac = (AppContext)getApplication();
 				//操作--回复 & 删除        		
-        		final int uid = ac.getLoginUid();
+        		final long uid = ac.getLoginUid();
         		//判断当前登录用户是否是博主 或者 该评论是否是当前登录用户发表的：true--有删除操作  false--没有删除操作
         		if(uid == com.getAuthorId() || (blogDetail != null && uid == blogDetail.getAuthorId()))
         		{

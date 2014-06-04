@@ -380,13 +380,20 @@
 	    <item name="android:gravity">center</item>
 	    <item name="android:layout_margin">0dp</item>
 	    <item name="android:textSize">@dimen/text_size_20</item>
-	    <item name="android:textStyle">bold</item>
+	    <item name="android:textStyle">normal</item>
+        <!--
 	    <item name="android:shadowColor">#000000</item>
 	    <item name="android:shadowDx">1</item>
 	    <item name="android:shadowDy">1</item>
 	    <item name="android:shadowRadius">2</item>
+	    -->
     </style>
-    
+    <style name="btn_text.brightbg">
+        <item name="android:textColor">@color/bright_bg_btntext</item>
+    </style>
+    <style name="btn_text.highlight">
+        <item name="android:textColor">#ff3600</item>
+    </style>
     <style name="widget_listview">
         <item name="android:layout_width">fill_parent</item>
    		<item name="android:layout_height">fill_parent</item>

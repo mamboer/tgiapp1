@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/page_bg"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        style="@style/main_head">
+        <RelativeLayout
+            style="@style/main_head_pattern">
+            <TextView
+                android:id="@+id/msgcenter_head_title"
+                style="@style/detail_head_title"
+                android:layout_gravity="center"
+                android:layout_centerVertical="true"
+                android:text="活动提醒"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="left|center"
+                android:clickable="true"
+                android:onClick="back"
+                android:src="@drawable/ico_arrow_left"
+                android:scaleType="center"
+                android:minWidth="40dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <include layout="@layout/msg_center_noticeitem"></include>
+
+            <include layout="@layout/msg_center_noticeitem"></include>
+
+            <include layout="@layout/msg_center_noticeitem"></include>
+
+            <include layout="@layout/msg_center_noticeitem"></include>
+            </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

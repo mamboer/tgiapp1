@@ -305,7 +305,7 @@ public class SoftwareDetail extends BaseActivity {
 				UIHelper.showLoginDialog(SoftwareDetail.this);
 				return;
 			}
-			final int uid = ac.getLoginUid();
+			final long uid = ac.getLoginUid();
 
 			final Handler handler = new Handler() {
 				public void handleMessage(Message msg) {

@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.Gravity;
@@ -99,9 +100,15 @@ public class LoginOk extends BaseActivity {
             mAgeText.setText("年龄:" + mAge);
             mFaceImage = (ImageView) findViewById(R.id.user_pic);
             if (mFace != null && mFace.length()>0) {
-                Bitmap bitmap = LoginQuick.returnBitMap(mFace); // 走的是HTTP代理，如果超时可能是代理不通
-                if (bitmap != null)
-                    mFaceImage.setImageBitmap(bitmap);
+
+                try {
+                    Bitmap bitmap = LoginQuick.returnBitMap(mFace); // 走的是HTTP代理，如果超时可能是代理不通
+                    if (bitmap != null)
+                        mFaceImage.setImageBitmap(bitmap);
+                }catch (Exception e){
+                    util.LOGW("LoginQuick.returnBitMap",e.toString());
+                }
+                //mFaceImage.setImageURI((Uri.parse(mFace)));
             }
 
             // 获取用户本地票据

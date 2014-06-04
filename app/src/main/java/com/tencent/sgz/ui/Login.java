@@ -24,10 +24,12 @@ import android.widget.Toast;
 
 import com.google.inject.Inject;
 import com.tencent.sgz.R;
+import com.tencent.sgz.bean.User;
 import com.tencent.sgz.common.*;
 
 import org.json.JSONObject;
 
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
@@ -194,11 +196,11 @@ public class Login extends BaseActivity{
                     // 登陆
                     WUserSigInfo sigInfo = new WUserSigInfo();
 
-				/*
-				 * 使用异步接口时，需要判断异步接口的返回值
-				 * 如果为util.E_PENDING，会有相应的回调函数或者OnException异常回调
-				 * 其它值，说明接口调用错误或者没有按照指定逻辑调用，此时不会调用回调函数
-				 */
+                    /*
+                     * 使用异步接口时，需要判断异步接口的返回值
+                     * 如果为util.E_PENDING，会有相应的回调函数或者OnException异常回调
+                     * 其它值，说明接口调用错误或者没有按照指定逻辑调用，此时不会调用回调函数
+                     */
                     if (mLoginHelper.IsNeedLoginWithPasswd(uname, mAppid)) {
                         ret = mLoginHelper.GetStWithPasswd(uname, mAppid, 0x1, mMainSigMap, pwd, sigInfo);
                     } else {
@@ -288,7 +290,7 @@ public class Login extends BaseActivity{
                 ticket = mLoginHelper.GetLocalTicket(userAccount, dwSrcAppid, WtloginHelper.SigType.WLOGIN_PSKEY);
                 util.LOGI("pskey: " + util.buf_to_string(ticket._sig));
 
-                loginSucess(userAccount, userSigInfo);
+                loginSuccess(userAccount, userSigInfo);
             } else {
                 showDialog(Login.this, errMsg);
             }
@@ -313,7 +315,7 @@ public class Login extends BaseActivity{
                 ticket = mLoginHelper.GetLocalTicket(userAccount, dwSrcAppid, WtloginHelper.SigType.WLOGIN_PSKEY);
                 util.LOGI("pskey: " + util.buf_to_string(ticket._sig));
 
-                loginSucess(userAccount, userSigInfo);
+                loginSuccess(userAccount, userSigInfo);
             } else if (ret == 0xF) {
                 // 可能A2过期，或者用户修改密码导致A2失效
                 showDialog(Login.this, "让用户输密码登录");
@@ -337,7 +339,7 @@ public class Login extends BaseActivity{
                 util.LOGI("userSigInfo " + userSigInfo._seqence);
 
                 if (resultCode == util.S_SUCCESS) {
-                    loginSucess(userAccount, userSigInfo);
+                    loginSuccess(userAccount, userSigInfo);
                 } else {
                     showDialog(Login.this, errMsg);
                 }
@@ -413,16 +415,17 @@ public class Login extends BaseActivity{
         return prompt_value;
     }
 
-    private void loginSucess(String userAccount, WUserSigInfo userSigInfo) {
+    private void loginSuccess(String userAccount, WUserSigInfo userSigInfo) {
         Login.userSigInfo = userSigInfo;
 
         WloginSimpleInfo info = new WloginSimpleInfo();
         mLoginHelper.GetBasicUserInfo(userAccount, info);
 
-        // util.LOGI("头像：" + util.buf_to_string(info._face) + ", " + new String(info._img_url));
+        util.LOGI("loginSuccess,头像：" + util.buf_to_string(info._face) + ", " + new String(info._img_url));
 
         Intent intent = new Intent();
-        intent.setClass(Login.this, LoginOk.class);
+        intent.setClass(Login.this, Main.class);
+        intent.putExtra("LOGIN", true);
         intent.putExtra("RET", 0);
         intent.putExtra("ACCOUNT", userAccount);
         intent.putExtra("UIN", new Long(info._uin).toString());
@@ -439,6 +442,16 @@ public class Login extends BaseActivity{
 
         Integer age = (int) info._age[0];
         intent.putExtra("AGE", age.toString());
+
+        User user = new User();
+        user.setAccount(userAccount);
+        user.setUid(info._uin);
+        user.setName(new String(info._nick));
+        user.setFace(new String(info._img_url));
+        user.setRememberMe(true);
+
+        this.appContext.saveLoginInfo(user);
+
         startActivity(intent);
     }
 

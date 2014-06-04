@@ -27,7 +27,7 @@ public class User extends Base {
 	public final static int	RELATION_TYPE_NULL = 0x03;//互不关注
 	public final static int	RELATION_TYPE_FANS_ME = 0x04;//只有他关注我
 	
-	private int uid;
+	private long uid;
 	private String location;
 	private String name;
 	private int followers;
@@ -89,10 +89,10 @@ public class User extends Base {
 	public void setLatestonline(String latestonline) {
 		this.latestonline = latestonline;
 	}
-	public int getUid() {
+	public long getUid() {
 		return uid;
 	}
-	public void setUid(int uid) {
+	public void setUid(long uid) {
 		this.uid = uid;
 	}
 	public String getLocation() {

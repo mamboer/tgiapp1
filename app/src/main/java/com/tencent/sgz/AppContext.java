@@ -86,7 +86,7 @@ public class AppContext extends Application {
 	private static final int CACHE_TIME = 60*60000;//缓存失效时间
 	
 	private boolean login = false;	//登录状态
-	private int loginUid = 0;	//登录用户的id
+	private long loginUid = 0;	//登录用户的id
 	private Hashtable<String, Object> memCacheRegion = new Hashtable<String, Object>();
     /**
      * Application Contenxt singleton instance
@@ -232,7 +232,7 @@ public class AppContext extends Application {
 	 * 获取登录用户id
 	 * @return
 	 */
-	public int getLoginUid() {
+	public long getLoginUid() {
 		return this.loginUid;
 	}
 	
@@ -318,7 +318,7 @@ public class AppContext extends Application {
 	 * @return
 	 * @throws AppException
 	 */
-	public UserInformation getInformation(int uid, int hisuid, String hisname, int pageIndex, boolean isRefresh) throws AppException {
+	public UserInformation getInformation(long uid, long hisuid, String hisname, int pageIndex, boolean isRefresh) throws AppException {
 		String _hisname = ""; 
 		if(!StringUtils.isEmpty(hisname)){
 			_hisname = hisname;
@@ -356,7 +356,7 @@ public class AppContext extends Application {
 	 * @return
 	 * @throws AppException
 	 */
-	public Result updateRelation(int uid, int hisuid, int newrelation) throws AppException {
+	public Result updateRelation(long uid, long hisuid, int newrelation) throws AppException {
 		return ApiClient.updateRelation(this, uid, hisuid, newrelation);
 	}
 	
@@ -377,7 +377,7 @@ public class AppContext extends Application {
 	 * @return
 	 * @throws AppException
 	 */
-	public Result noticeClear(int uid, int type) throws AppException {
+	public Result noticeClear(long uid, int type) throws AppException {
 		return ApiClient.noticeClear(this, uid, type);
 	}
 	
@@ -387,7 +387,7 @@ public class AppContext extends Application {
 	 * @return
 	 * @throws AppException
 	 */
-	public Notice getUserNotice(int uid) throws AppException {
+	public Notice getUserNotice(long uid) throws AppException {
 		return ApiClient.getUserNotice(this, uid);
 	}
 	
@@ -461,9 +461,9 @@ public class AppContext extends Application {
 	 * 新闻列表
 	 * @param catalog
 	 * @param pageIndex
-	 * @param pageSize
+	 * @param isRefresh
 	 * @return
-	 * @throws ApiException
+	 * @throws AppException
 	 */
 	public NewsList getNewsList(int catalog, int pageIndex, boolean isRefresh) throws AppException {
 
@@ -496,7 +496,7 @@ public class AppContext extends Application {
 	 * 新闻详情
 	 * @param news_id
 	 * @return
-	 * @throws ApiException
+	 * @throws AppException
 	 */
 	public News getNews(int news_id, boolean isRefresh) throws AppException {		
 		News news = null;
@@ -760,7 +760,7 @@ public class AppContext extends Application {
 	 * @param catalog
 	 * @param pageIndex
 	 * @return
-	 * @throws ApiException
+	 * @throws AppException
 	 */
 	public PostList getPostList(int catalog, int pageIndex, boolean isRefresh) throws AppException {
 		return new PostList();
@@ -796,7 +796,7 @@ public class AppContext extends Application {
 	 * @param tag
 	 * @param pageIndex
 	 * @return
-	 * @throws ApiException
+	 * @throws AppException
 	 */
 	public PostList getPostListByTag(String tag, int pageIndex, boolean isRefresh) throws AppException {
 		PostList list = null;
@@ -828,7 +828,7 @@ public class AppContext extends Application {
 	 * 读取帖子详情
 	 * @param post_id
 	 * @return
-	 * @throws ApiException
+	 * @throws AppException
 	 */
 	public Post getPost(int post_id, boolean isRefresh) throws AppException {		
 		Post post = null;
@@ -863,7 +863,7 @@ public class AppContext extends Application {
 	 * @return
 	 * @throws AppException
 	 */
-	public TweetList getTweetList(int catalog, int pageIndex, boolean isRefresh) throws AppException {
+	public TweetList getTweetList(long catalog, int pageIndex, boolean isRefresh) throws AppException {
 		return new TweetList();
 		/*
         TweetList list = null;
@@ -1122,7 +1122,7 @@ public class AppContext extends Application {
 	 * @return
 	 * @throws AppException
 	 */
-	public Result pubMessage(int uid, int receiver, String content) throws AppException {
+	public Result pubMessage(long uid, long receiver, String content) throws AppException {
 		return ApiClient.pubMessage(this, uid, receiver, content);
 	}
 	
@@ -1145,7 +1145,7 @@ public class AppContext extends Application {
 	 * @return
 	 * @throws AppException
 	 */
-	public Result delMessage(int uid, int friendid) throws AppException {
+	public Result delMessage(long uid, long friendid) throws AppException {
 		return ApiClient.delMessage(this, uid, friendid);
 	}
 	
@@ -1159,7 +1159,7 @@ public class AppContext extends Application {
 	 * @return
 	 * @throws AppException
 	 */
-	public Result pubComment(int catalog, int id, int uid, String content, int isPostToMyZone) throws AppException {
+	public Result pubComment(int catalog, int id, long uid, String content, int isPostToMyZone) throws AppException {
 		return ApiClient.pubComment(this, catalog, id, uid, content, isPostToMyZone);
 	}
 	
@@ -1174,7 +1174,7 @@ public class AppContext extends Application {
 	 * @return
 	 * @throws AppException
 	 */
-	public Result replyComment(int id, int catalog, int replyid, int authorid, int uid, String content) throws AppException {
+	public Result replyComment(int id, int catalog, int replyid, long authorid, long uid, String content) throws AppException {
 		return ApiClient.replyComment(this, id, catalog, replyid, authorid, uid, content);
 	}
 	
@@ -1199,7 +1199,7 @@ public class AppContext extends Application {
 	 * @return
 	 * @throws AppException
 	 */
-	public Result pubBlogComment(int blog, int uid, String content) throws AppException {
+	public Result pubBlogComment(int blog, long uid, String content) throws AppException {
 		return ApiClient.pubBlogComment(this, blog, uid, content);
 	}
 	
@@ -1213,7 +1213,7 @@ public class AppContext extends Application {
 	 * @return
 	 * @throws AppException
 	 */
-	public Result replyBlogComment(int blog, int uid, String content, int reply_id, int objuid) throws AppException {
+	public Result replyBlogComment(int blog, long uid, String content, int reply_id, int objuid) throws AppException {
 		return ApiClient.replyBlogComment(this, blog, uid, content, reply_id, objuid);
 	}
 	
@@ -1227,7 +1227,7 @@ public class AppContext extends Application {
 	 * @return
 	 * @throws AppException
 	 */
-	public Result delBlogComment(int uid, int blogid, int replyid, int authorid, int owneruid) throws AppException {
+	public Result delBlogComment(long uid, int blogid, int replyid, long authorid, long owneruid) throws AppException {
 		return ApiClient.delBlogComment(this, uid, blogid, replyid, authorid, owneruid);
 	}
 	
@@ -1239,7 +1239,7 @@ public class AppContext extends Application {
 	 * @return
 	 * @throws AppException
 	 */
-	public Result delBlog(int uid, int authoruid, int id) throws AppException { 	
+	public Result delBlog(long uid, long authoruid, int id) throws AppException {
 		return ApiClient.delBlog(this, uid, authoruid, id);
 	}
 	
@@ -1271,7 +1271,7 @@ public class AppContext extends Application {
 	 * @return
 	 * @throws AppException
 	 */
-	public Result addFavorite(int uid, int objid, int type) throws AppException {
+	public Result addFavorite(long uid, int objid, int type) throws AppException {
 		return ApiClient.addFavorite(this, uid, objid, type);
 	}
 	
@@ -1283,14 +1283,13 @@ public class AppContext extends Application {
 	 * @return
 	 * @throws AppException
 	 */
-	public Result delFavorite(int uid, int objid, int type) throws AppException { 	
+	public Result delFavorite(long uid, int objid, int type) throws AppException {
 		return ApiClient.delFavorite(this, uid, objid, type);
 	}
 	
 	/**
 	 * 保存登录信息
-	 * @param username
-	 * @param pwd
+	 * @param user
 	 */
 	public void saveLoginInfo(final User user) {
 		this.loginUid = user.getUid();
@@ -1298,13 +1297,20 @@ public class AppContext extends Application {
 		setProperties(new Properties(){{
 			setProperty("user.uid", String.valueOf(user.getUid()));
 			setProperty("user.name", user.getName());
-			setProperty("user.face", FileUtils.getFileName(user.getFace()));//用户头像-文件名
+			setProperty("user.face", user.getFace());//用户头像-文件名
 			setProperty("user.account", user.getAccount());
+            /*
 			setProperty("user.pwd", CyptoUtils.encode("tencentApp3gz",user.getPwd()));
 			setProperty("user.location", user.getLocation());
 			setProperty("user.followers", String.valueOf(user.getFollowers()));
 			setProperty("user.fans", String.valueOf(user.getFans()));
 			setProperty("user.score", String.valueOf(user.getScore()));
+			*/
+            setProperty("user.pwd", CyptoUtils.encode("tencentApp3gz",""));
+            setProperty("user.location", "");
+            setProperty("user.followers", "0");
+            setProperty("user.fans", "0");
+            setProperty("user.score", "0");
 			setProperty("user.isRememberMe", String.valueOf(user.isRememberMe()));//是否记住我的信息
 		}});		
 	}
