@@ -1424,6 +1424,15 @@ public class UIHelper {
         context.startActivity(intent);
     }
 
+    /**
+     * 显示频道列表
+     * @param context
+     */
+    public static void showChannelList(Context context){
+        Intent intent = new Intent(context, ChannelList.class);
+        context.startActivity(intent);
+    }
+
 	/**
 	 * 显示用户反馈
 	 * 

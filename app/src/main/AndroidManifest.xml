@@ -5,7 +5,7 @@
     android:versionName="1.0.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="10"
         android:targetSdkVersion="19" />
 
     <application
@@ -47,6 +47,12 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.NoTitleBar" />
+        <activity
+            android:name=".ui.ChannelList"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SlideTop" />
         <activity
             android:name=".ui.LoginDialog"
             android:configChanges="keyboardHidden|orientation"

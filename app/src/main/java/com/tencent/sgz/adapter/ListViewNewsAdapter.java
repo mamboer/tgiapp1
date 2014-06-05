@@ -76,11 +76,13 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
     private Handler slider_handler = new Handler() {
         public void handleMessage(android.os.Message msg) {
+            Log.e("LV","slider_viewPager currentItem handler:"+slider_currentItem);
             slider_viewPager.setCurrentItem(slider_currentItem);
         };
     };
 
-    private MySliderPageChangeListener slider_pageChangeListener;
+    private MyDearViennaLiao_SliderPageChangeListener slider_pageChangeListener;
+    private ScrollTask slider_viennaLiaoScrollTask;
 
 	/**
 	 * 实例化Adapter
@@ -137,18 +139,16 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
         Log.e("LV",("列表元素位置："+position)+(",列表数据位置："+dataPosition));
 
-        this.stopImageSlider();
-
         //列表第一项
         if(position==0 && this.firstItemViewResource>0){
-            if(firstItemView == null){
-                firstItemView = listContainer.inflate(this.firstItemViewResource,null);
+            if(firstItemView == null) {
+                firstItemView = listContainer.inflate(this.firstItemViewResource, null);
                 //TODO:第一个元素视图的数据绑定
                 this.initImageSlider(firstItemView);
+                this.startImageSlider();
                 //绑定按钮事件
                 this.initShortcutBtns(firstItemView);
             }
-            this.startImageSlider();
             return firstItemView;
         }
 
@@ -214,12 +214,16 @@ public class ListViewNewsAdapter extends BaseAdapter {
         if(slider_timer_started){
             return;
         }
+        slider_viennaLiaoScrollTask = new ScrollTask();
         slider_scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-        slider_scheduledExecutorService.scheduleAtFixedRate(new ScrollTask(), 1, context.getResources().getInteger(R.integer.home_slider_interval), TimeUnit.SECONDS);
+        slider_scheduledExecutorService.scheduleAtFixedRate(slider_viennaLiaoScrollTask, 3, context.getResources().getInteger(R.integer.home_slider_interval), TimeUnit.SECONDS);
+
+        slider_timer_started = true;
+
     }
 
     public void stopImageSlider(){
-        if(slider_scheduledExecutorService!=null) {
+        if(slider_scheduledExecutorService!=null && !slider_scheduledExecutorService.isShutdown()) {
             slider_scheduledExecutorService.shutdown();
             slider_timer_started = false;
         }
@@ -249,20 +253,20 @@ public class ListViewNewsAdapter extends BaseAdapter {
         slider_dots.add(context.findViewById(R.id.v_dot1));
         slider_dots.add(context.findViewById(R.id.v_dot2));
         slider_dots.add(context.findViewById(R.id.v_dot3));
-        slider_dots.add(context.findViewById(R.id.v_dot4));
 
         slider_title = (TextView) context.findViewById(R.id.tv_title);
         slider_title.setText(slider_titles[0]);//
 
         //这里不用final会报错
         final ViewPager slider_viewPager1 = (ViewPager) context.findViewById(R.id.vp);
-        slider_viewPager1.setAdapter(new MySliderAdapter());
+        slider_viewPager1.setAdapter(new MyDearViennaLiao_SliderAdapter());
 
-        slider_pageChangeListener = new MySliderPageChangeListener();
+        slider_pageChangeListener = new MyDearViennaLiao_SliderPageChangeListener();
 
         slider_viewPager1.setOnPageChangeListener(slider_pageChangeListener);
 
         slider_viewPager = slider_viewPager1;
+
 
         /*
 
@@ -309,15 +313,16 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
         public void run() {
             synchronized (slider_viewPager) {
-                System.out.println("currentItem: " + slider_currentItem);
+
                 slider_currentItem = (slider_currentItem + 1) % slider_imageViews.size();
+                Log.e("LV","slider_viewPager currentItem:"+slider_currentItem);
                 slider_handler.obtainMessage().sendToTarget();
             }
         }
 
     }
 
-    private class MySliderPageChangeListener implements ViewPager.OnPageChangeListener {
+    private class MyDearViennaLiao_SliderPageChangeListener implements ViewPager.OnPageChangeListener {
         private int oldPosition = 0;
 
         /**
@@ -343,7 +348,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
     }
 
 
-    private class MySliderAdapter extends PagerAdapter {
+    private class MyDearViennaLiao_SliderAdapter extends PagerAdapter {
 
         @Override
         public int getCount() {
@@ -388,59 +393,17 @@ public class ListViewNewsAdapter extends BaseAdapter {
         }
     }
 
-    private PopupWindow pwCateMoreMenu;
     private void initShortcutBtns(View parent){
 
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
-
         final RelativeLayout btnCateMore =  (RelativeLayout)parent.findViewById(R.id.frame_home_btnmore);
-
-        View customView = inflater.inflate(R.layout.home_more_cate, null, false);
-
-        final ImageView btnBack = (ImageView)customView.findViewById(R.id.home_more_cate_back);
-
-        WindowManager winManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-
-        final int pwOffsetTop = 0;
-
-        // 创建PopupWindow实例,200,150分别是宽度和高度
-        pwCateMoreMenu = new PopupWindow(customView,winManager.getDefaultDisplay().getWidth(),winManager.getDefaultDisplay().getHeight()-pwOffsetTop);
-        // 设置动画效果 [R.style.AnimationFade 是自己事先定义好的]
-        pwCateMoreMenu.setAnimationStyle(R.style.Animation_FadeInOut);
-
-        ArrayList<View> cateBtnViews = UIHelper.getViewsByTag((ViewGroup)customView,"catebtn");
-
-        for (View cateBtnView : cateBtnViews) {
-            cateBtnView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (pwCateMoreMenu != null && pwCateMoreMenu.isShowing()) {
-                        pwCateMoreMenu.dismiss();
-                        //pw_homeMoreMenu = null;
-                    }
-                }
-            });
-        }
 
         btnCateMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!pwCateMoreMenu.isShowing()) {
-                    // 设置显示位置
-                    pwCateMoreMenu.showAtLocation(btnCateMore, Gravity.TOP|Gravity.LEFT,0,pwOffsetTop);
-                }else{
-                    pwCateMoreMenu.dismiss();
-                }
-
+                UIHelper.showChannelList(context);
             }
         });
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pwCateMoreMenu.dismiss();
-            }
-        });
     }
 
 }
