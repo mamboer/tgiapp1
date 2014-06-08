@@ -82,7 +82,7 @@
     <string name="user_friend_follower">关注(%d)</string>
     <string name="user_friend_fans">粉丝(%d)</string>
     
-    <string name="comment_list_head_title">网友评论</string>
+    <string name="comment_list_head_title">玩家评论</string>
     <string name="comment_listitem_type">发布于</string>
     <string name="comment_pub_head_title">评论回复</string>
     <string name="comment_pub_content_hint">输入评论</string>

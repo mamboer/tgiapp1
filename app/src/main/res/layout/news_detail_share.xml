@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="fill_parent"
+            android:background="#eaecee"
+            android:layout_height="32dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/space_10"
+            android:text="分享到"/>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/space_1"
+            android:background="@color/gray_level5"></View>
+        </LinearLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:background="@color/transparent"
+        android:stretchColumns="*"
+        android:layout_height="wrap_content">
+
+        <TableRow>
+
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_margin="@dimen/space_1"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    style="@style/snsshare_button">
+
+                    <ImageButton
+                        style="@style/snsshare_button_img"
+                        android:id="@+id/shortcut_btn_hot"
+                        android:src="@drawable/snsico_wxpyq" />
+
+                    <TextView
+                        style="@style/snsshare_button_txt.style1"
+                        android:text="朋友圈" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_margin="@dimen/space_1"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    style="@style/snsshare_button">
+
+                    <ImageButton
+                        style="@style/snsshare_button_img"
+                        android:id="@+id/shortcut_btn_hot1"
+                        android:src="@drawable/snsico_wxhy" />
+
+                    <TextView
+                        style="@style/snsshare_button_txt.style1"
+                        android:text="微信" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_margin="@dimen/space_1"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    style="@style/snsshare_button">
+
+                    <ImageButton
+                        style="@style/snsshare_button_img"
+                        android:id="@+id/shortcut_btn_hot2"
+                        android:src="@drawable/snsico_qq" />
+
+                    <TextView
+                        style="@style/snsshare_button_txt.style1"
+                        android:text="朋友圈" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_margin="@dimen/space_1"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    style="@style/snsshare_button">
+
+                    <ImageButton
+                        style="@style/snsshare_button_img"
+                        android:id="@+id/shortcut_btn_hot3"
+                        android:src="@drawable/snsico_qzone" />
+
+                    <TextView
+                        style="@style/snsshare_button_txt.style1"
+                        android:text="朋友圈" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+        </TableRow>
+        <TableRow>
+
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_margin="@dimen/space_1"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    style="@style/snsshare_button">
+
+                    <ImageButton
+                        style="@style/snsshare_button_img"
+                        android:id="@+id/shortcut_btn_hot4"
+                        android:src="@drawable/snsico_weiyun" />
+
+                    <TextView
+                        style="@style/snsshare_button_txt.style1"
+                        android:text="微云收藏" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_margin="@dimen/space_1"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    style="@style/snsshare_button">
+
+                    <ImageButton
+                        style="@style/snsshare_button_img"
+                        android:id="@+id/shortcut_btn_hot5"
+                        android:src="@drawable/snsico_mail" />
+
+                    <TextView
+                        style="@style/snsshare_button_txt.style1"
+                        android:text="邮件" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_margin="@dimen/space_1"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    style="@style/snsshare_button">
+
+                    <ImageButton
+                        style="@style/snsshare_button_img"
+                        android:id="@+id/shortcut_btn_hot6"
+                        android:src="@drawable/snsico_qqweibo" />
+
+                    <TextView
+                        style="@style/snsshare_button_txt.style1"
+                        android:text="腾讯微博" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_margin="@dimen/space_1"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:tag="catebtn"
+                    style="@style/snsshare_button">
+
+                    <ImageButton
+                        style="@style/snsshare_button_img"
+                        android:id="@+id/shortcut_btn_hot7"
+                        android:src="@drawable/snsico_sinaweibo" />
+
+                    <TextView
+                        style="@style/snsshare_button_txt.style1"
+                        android:text="新浪微博" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+        </TableRow>
+    </TableLayout>
+
+
+</LinearLayout>

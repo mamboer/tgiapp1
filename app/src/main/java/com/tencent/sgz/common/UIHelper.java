@@ -50,6 +50,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
@@ -185,6 +186,24 @@ public class UIHelper {
 		context.startActivity(intent);
 	}
 
+    /**
+     * 显示新闻详情
+     *
+     * @param context
+     * @param news
+     */
+    public static void showNewsDetailByInstance(Context context, News news) {
+        Intent intent = new Intent(context, NewsDetail.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("news_id",news.getId());
+        bundle.putSerializable("news",news);
+
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
+
 	/**
 	 * 显示帖子详情
 	 * 
@@ -276,12 +295,11 @@ public class UIHelper {
 	 * 新闻超链接点击跳转
 	 * 
 	 * @param context
-	 * @param newsId
-	 * @param newsType
-	 * @param objId
+	 * @param news
 	 */
 	public static void showNewsRedirect(Context context, News news) {
 		String url = news.getUrl();
+        /*
 		// url为空-旧方法
 		if (StringUtils.isEmpty(url)) {
 			int newsId = news.getId();
@@ -304,14 +322,19 @@ public class UIHelper {
 		} else {
 			showUrlRedirect(context, url);
 		}
+		*/
+        if(StringUtils.isEmpty(url)){
+            ToastMessage(context,"无法打开新闻，链接为空！！");
+            return;
+        }
+        showNewsDetailByInstance(context,news);
 	}
 
 	/**
 	 * 动态点击跳转到相关新闻、帖子等
 	 * 
 	 * @param context
-	 * @param id
-	 * @param catalog
+	 * @param active
 	 *            0其他 1新闻 2帖子 3动弹 4博客
 	 */
 	public static void showActiveRedirect(Context context, Active active) {
