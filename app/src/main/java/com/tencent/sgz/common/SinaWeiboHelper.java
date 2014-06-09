@@ -23,9 +23,9 @@ import android.widget.Toast;
  */
 public class SinaWeiboHelper {
 
-	private static final String CONSUMER_KEY = "3616966952";
-	private static final String CONSUMER_SECRET = "fd81f6d31427b467f49226e48a741e28";
-	private static final String REDIRECT_URL = "http://www.3gz.qq.com";
+	private static final String CONSUMER_KEY = "778354145";
+	private static final String CONSUMER_SECRET = "86fa68ee42adc0cf3689ceb817f47076";
+	private static final String REDIRECT_URL = "https://api.weibo.com/oauth2/default.html";
 	
 	public static final int OAUTH_ERROR = 0;
 	public static final int OAUTH_RequestToken_ACCESS = 1;

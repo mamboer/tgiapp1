@@ -39,6 +39,7 @@
                 android:layout_height="wrap_content"
                 >
                 <RelativeLayout
+                    android:id="@+id/snsBtnWXPYQ"
                     android:tag="catebtn"
                     style="@style/snsshare_button">
 
@@ -63,6 +64,7 @@
                 android:layout_height="wrap_content"
                 >
                 <RelativeLayout
+                    android:id="@+id/snsBtnWXHY"
                     android:tag="catebtn"
                     style="@style/snsshare_button">
 
@@ -87,6 +89,7 @@
                 android:layout_height="wrap_content"
                 >
                 <RelativeLayout
+                    android:id="@+id/snsBtnQQHY"
                     android:tag="catebtn"
                     style="@style/snsshare_button">
 
@@ -97,7 +100,7 @@
 
                     <TextView
                         style="@style/snsshare_button_txt.style1"
-                        android:text="朋友圈" />
+                        android:text="QQ好友" />
 
 
                 </RelativeLayout>
@@ -111,6 +114,7 @@
                 android:layout_height="wrap_content"
                 >
                 <RelativeLayout
+                    android:id="@+id/snsBtnQZone"
                     android:tag="catebtn"
                     style="@style/snsshare_button">
 
@@ -121,7 +125,7 @@
 
                     <TextView
                         style="@style/snsshare_button_txt.style1"
-                        android:text="朋友圈" />
+                        android:text="QQ空间" />
 
 
                 </RelativeLayout>
@@ -138,6 +142,7 @@
                 android:layout_height="wrap_content"
                 >
                 <RelativeLayout
+                    android:id="@+id/snsBtnWeiyun"
                     android:tag="catebtn"
                     style="@style/snsshare_button">
 
@@ -162,6 +167,7 @@
                 android:layout_height="wrap_content"
                 >
                 <RelativeLayout
+                    android:id="@+id/snsBtnMail"
                     android:tag="catebtn"
                     style="@style/snsshare_button">
 
@@ -186,6 +192,7 @@
                 android:layout_height="wrap_content"
                 >
                 <RelativeLayout
+                    android:id="@+id/snsBtnQQWeibo"
                     android:tag="catebtn"
                     style="@style/snsshare_button">
 
@@ -210,6 +217,7 @@
                 android:layout_height="wrap_content"
                 >
                 <RelativeLayout
+                    android:id="@+id/snsBtnSinaWeibo"
                     android:tag="catebtn"
                     style="@style/snsshare_button">
 

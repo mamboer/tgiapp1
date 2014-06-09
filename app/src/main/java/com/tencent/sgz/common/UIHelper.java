@@ -67,6 +67,7 @@ import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
 import android.text.style.URLSpan;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MotionEvent;
@@ -409,7 +410,7 @@ public class UIHelper {
 	 * 显示留言对话页面
 	 * 
 	 * @param context
-	 * @param catalog
+	 * @param friendname
 	 * @param friendid
 	 */
 	public static void showMessageDetail(Context context, int friendid,
@@ -475,6 +476,124 @@ public class UIHelper {
 		intent.putExtra(Intent.EXTRA_TEXT, title + " " + url);
 		context.startActivity(Intent.createChooser(intent, "选择分享"));
 	}
+
+    private static View shareDialogView;
+    private static PopupWindow pwShareMenu;
+    private static int shareDialogViewHeight;
+    /**
+     * 分享到'新浪微博'或'腾讯微博'的对话框
+     *
+     * @param context
+     *            当前Activity
+     * @param title
+     *            分享的标题
+     * @param url
+     *            分享的链接
+     */
+    public static void showShareDialog1(final Activity context,View anchor,
+                                       final String title, final String url) {
+
+        if (shareDialogView==null){
+
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            //更多菜单 http://blog.csdn.net/mad1989/article/details/9024977
+            //获取自定义布局文件pop.xml的视图
+            shareDialogView = inflater.inflate(R.layout.news_detail_share,
+                    null, false);
+            // 创建PopupWindow实例
+            pwShareMenu = new PopupWindow(shareDialogView, ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+
+            // 设置动画效果 [R.style.AnimationFade 是自己事先定义好的]
+            pwShareMenu.setAnimationStyle(R.style.Animation_FadeInOut);
+            pwShareMenu.setFocusable(true);
+            pwShareMenu.setTouchable(true);
+
+            //触摸popupwindow外部，可以消失。必须设置背景
+            pwShareMenu.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.transparent));
+            pwShareMenu.setOutsideTouchable(true);
+            pwShareMenu.update();
+
+
+            // 自定义view添加点击事件
+            AppConfig cfgHelper = AppConfig.getAppConfig(context);
+            final AccessInfo access = cfgHelper.getAccessInfo();
+            ArrayList<View> cateBtnViews = UIHelper.getViewsByTag((ViewGroup)shareDialogView,"catebtn");
+
+            for (View cateBtnView : cateBtnViews) {
+                cateBtnView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        switch (view.getId()){
+                            case R.id.snsBtnSinaWeibo:
+                                //sina weibo
+                                // 分享的内容
+                                final String shareMessage = title + " " + url;
+                                // 初始化微博
+                                if (SinaWeiboHelper.isWeiboNull()) {
+                                    SinaWeiboHelper.initWeibo();
+                                }
+                                // 判断之前是否登陆过
+                                if (access != null) {
+                                    SinaWeiboHelper.progressDialog = new ProgressDialog(
+                                            context);
+                                    SinaWeiboHelper.progressDialog
+                                            .setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                                    SinaWeiboHelper.progressDialog
+                                            .setMessage(context
+                                                    .getString(R.string.sharing));
+                                    SinaWeiboHelper.progressDialog
+                                            .setCancelable(true);
+                                    SinaWeiboHelper.progressDialog.show();
+                                    new Thread() {
+                                        public void run() {
+                                            SinaWeiboHelper.setAccessToken(
+                                                    access.getAccessToken(),
+                                                    access.getAccessSecret(),
+                                                    access.getExpiresIn());
+                                            SinaWeiboHelper.shareMessage(context,
+                                                    shareMessage);
+                                        }
+                                    }.start();
+                                } else {
+                                    SinaWeiboHelper
+                                            .authorize(context, shareMessage);
+                                }
+                                break;
+                            case R.id.snsBtnQQWeibo:
+                                // qq weibo
+                                QQWeiboHelper.shareToQQ(context, title, url);
+                                break;
+                            case R.id.snsBtnWXPYQ:
+                                // 微信朋友圈
+                                WXFriendsHelper.shareToWXFriends(context, title, url);
+                                break;
+                            case R.id.snsBtnWXHY:
+                                //微信好友
+                                WXFriendsHelper.shareToWXFriends(context, title, url);
+                                break;
+                            default:
+                                ToastMessage(context,"功能正在实现中");
+                                break;
+                        }
+                    }
+                });
+            }
+
+            // get dialog height
+            shareDialogView.measure(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+            shareDialogViewHeight = shareDialogView.getMeasuredHeight();
+
+        }
+        int[] location      = new int[2];
+
+        anchor.getLocationOnScreen(location);
+
+
+
+        pwShareMenu.showAtLocation(anchor, Gravity.NO_GRAVITY,location[0],location[1]-shareDialogViewHeight);
+
+    }
 
 	/**
 	 * 分享到'新浪微博'或'腾讯微博'的对话框

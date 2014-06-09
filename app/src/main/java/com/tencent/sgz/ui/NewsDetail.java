@@ -32,6 +32,7 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebSettings;
@@ -43,6 +44,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -108,6 +110,8 @@ public class NewsDetail extends BaseActivity {
 
 	private GestureDetector gd;
 	private boolean isFullScreen;
+
+    private PopupWindow pwShareMenu;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -371,8 +375,13 @@ public class NewsDetail extends BaseActivity {
 				return;
 			}
 			// 分享到
+            /*
 			UIHelper.showShareDialog(NewsDetail.this, newsDetail.getTitle(),
 					newsDetail.getUrl());
+					*/
+            View anchor = findViewById(R.id.news_detail_footer);
+            UIHelper.showShareDialog1(NewsDetail.this,anchor, newsDetail.getTitle(),
+                    newsDetail.getUrl());
 		}
 	};
 
