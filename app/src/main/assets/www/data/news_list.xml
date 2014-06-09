@@ -8,7 +8,7 @@
       <id>10002123</id>
       <title><![CDATA[新闻标题新闻标题新闻标题新闻标题]]></title>
 	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
-	  <cateName><![CDATA[分类]]></cateName>
+	  <cateName><![CDATA[活动]]></cateName>
       <commentCount>3</commentCount>
 	  <voteCount>3</voteCount>
       <author><![CDATA[sgz]]></author>
@@ -25,7 +25,7 @@
       <title><![CDATA[新闻标题新闻标题新闻标题新闻标题]]></title>
 	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
       <portrait>https://avatars3.githubusercontent.com/u/85879?s=460</portrait>
-	  <cateName><![CDATA[分类]]></cateName>
+	  <cateName><![CDATA[视频]]></cateName>
       <commentCount>1</commentCount>
 	  <voteCount>3</voteCount>
       <author><![CDATA[sgz]]></author>
@@ -43,7 +43,7 @@
       <title><![CDATA[新闻标题新闻标题新闻标题新闻标题]]></title>
 	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
       <portrait>https://avatars3.githubusercontent.com/u/85879?s=460</portrait>
-	  <cateName><![CDATA[分类]]></cateName>
+	  <cateName><![CDATA[活动]]></cateName>
       <commentCount>0</commentCount>
 	  <voteCount>3</voteCount>
       <author><![CDATA[sgz]]></author>
@@ -61,7 +61,7 @@
       <title><![CDATA[新闻标题新闻标题新闻标题新闻标题]]></title>
 	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
       <portrait>https://avatars3.githubusercontent.com/u/85879?s=460</portrait>
-	  <cateName><![CDATA[分类]]></cateName>
+	  <cateName><![CDATA[视频]]></cateName>
       <commentCount>20</commentCount>
 	  <voteCount>3</voteCount>
       <author><![CDATA[sgz]]></author>
@@ -78,7 +78,7 @@
       <title><![CDATA[不让装 Windows 8 国产系统都长啥样？]]></title>
 	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
       <portrait>https://avatars3.githubusercontent.com/u/85879?s=460</portrait>
-	  <cateName><![CDATA[分类]]></cateName>
+	  <cateName><![CDATA[资讯]]></cateName>
       <commentCount>86</commentCount>
 	  <voteCount>3</voteCount>
       <author><![CDATA[sgz]]></author>
@@ -95,7 +95,7 @@
       <title><![CDATA[SimThyr 3.3.0 发布，垂体甲状腺反馈控制模拟]]></title>
 	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
       <portrait>https://avatars3.githubusercontent.com/u/85879?s=460</portrait>
-	  <cateName><![CDATA[分类]]></cateName>
+	  <cateName><![CDATA[资讯]]></cateName>
       <commentCount>1</commentCount>
 	  <voteCount>3</voteCount>
       <author><![CDATA[sgz]]></author>
@@ -111,7 +111,7 @@
       <id>52146</id>
       <title><![CDATA[Apache Tomcat 7.0.54/6.0.41 发布]]></title>
 	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
-	  <cateName><![CDATA[分类]]></cateName>
+	  <cateName><![CDATA[资讯]]></cateName>
       <commentCount>3</commentCount>
 	  <voteCount>3</voteCount>
       <author><![CDATA[sgz]]></author>
@@ -127,7 +127,7 @@
       <id>52145</id>
       <title><![CDATA[Task Coach 1.3.40 发布，个人事务管理工具]]></title>
 	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
-	  <cateName><![CDATA[分类]]></cateName>
+	  <cateName><![CDATA[资讯]]></cateName>
       <commentCount>2</commentCount>
 	  <voteCount>3</voteCount>
       <author><![CDATA[sgz]]></author>
@@ -143,7 +143,7 @@
       <id>52144</id>
       <title><![CDATA[Go! 0.5.0 发布，PHP 的 AOP 库]]></title>
 	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
-	  <cateName><![CDATA[分类]]></cateName>
+	  <cateName><![CDATA[资讯]]></cateName>
       <commentCount>4</commentCount>
 	  <voteCount>3</voteCount>
       <author><![CDATA[sgz]]></author>
@@ -160,7 +160,7 @@
       <title><![CDATA[remoteEncFs 0.2.0 发布，加密远程文件系统]]></title>
 	  <desc><![CDATA[新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述新闻描述]]></desc>
       <portrait>https://avatars3.githubusercontent.com/u/85879?s=460</portrait>
-	  <cateName><![CDATA[分类]]></cateName>
+	  <cateName><![CDATA[资讯]]></cateName>
       <commentCount>0</commentCount>
 	  <voteCount>3</voteCount>
       <author><![CDATA[sgz]]></author>
