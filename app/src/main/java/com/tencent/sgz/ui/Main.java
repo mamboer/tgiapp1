@@ -905,7 +905,7 @@ public class Main extends BaseActivity {
 		*/
         WebSettings webSettings = wvCommunity.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webSettings.setAllowContentAccess(true);
+        //webSettings.setAllowContentAccess(true);
         webSettings.setAllowFileAccess(true);
         webSettings.setLoadsImagesAutomatically(true);
         wvCommunity.setWebViewClient(new WebViewClient(){
@@ -1189,7 +1189,11 @@ public class Main extends BaseActivity {
 
         mHeadLogo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                UIHelper.showCapture(Main.this);
+                //UIHelper.showCapture(Main.this);
+                News news = new News();
+                news.setUrl("http://ttxd.qq.com/act/a20140521tg/index.htm");
+
+                UIHelper.showNewsDetailByInstance(Main.this,news,"一个小游戏",true);
             }
         });
 

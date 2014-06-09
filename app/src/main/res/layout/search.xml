@@ -5,63 +5,65 @@
   	android:orientation="vertical"
   	android:background="@color/white">
   	<FrameLayout 
-        android:layout_width="fill_parent" 
-        android:layout_height="40dip"
-        android:paddingLeft="2dip"
-        android:paddingRight="2dip"
-        android:paddingTop="@dimen/space_3"
-        android:paddingBottom="@dimen/space_3"
-        android:background="@color/black">
-        <TextView 
-            style="@style/detail_head_title"
-            android:text="@string/com_txt_search"/>
-        <ImageView 
-            android:layout_width="wrap_content" 
-            android:layout_height="fill_parent"
-            android:layout_gravity="left|center" 
-            android:clickable="true" 
-            android:src="@drawable/ico_arrow_left"
-            android:scaleType="center"
-            android:minWidth="40dp"
-            android:onClick="back"/>
+        style="@style/main_head">
+        <RelativeLayout
+            style="@style/main_head_pattern">
+            <TextView
+                style="@style/detail_head_title"
+                android:layout_gravity="center"
+                android:layout_centerVertical="true"
+                android:text="@string/com_txt_search"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="left|center"
+                android:clickable="true"
+                android:onClick="back"
+                android:src="@drawable/ico_arrow_left"
+                android:scaleType="center"
+                android:minWidth="40dp"/>
+        </RelativeLayout>
     </FrameLayout>
 
-	<FrameLayout
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:background="@color/white"
-	    android:orientation="horizontal"
-        android:paddingTop="@dimen/space_5"
-        android:paddingBottom="@dimen/space_5"
-	    android:paddingLeft="5dip"
-	    android:paddingRight="5dip" >
+    <FrameLayout
+        android:background="@drawable/layer_login_border"
+        android:layout_margin="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-		<EditText
-	        android:id="@+id/search_editer"
-	        android:layout_width="fill_parent"
-	        android:layout_height="30dip"
-	        android:layout_gravity="left|center"
-	        android:layout_marginRight="36dip"
-	        android:singleLine="true"
-	        android:focusable="true" 
-	        android:focusableInTouchMode="true"
-	        android:imeOptions="actionSearch"
-	        android:background="@drawable/edit_search_bg"
-	        android:hint="输入搜索内容"/>			
-	   	<Button 
-	   		android:id="@+id/search_btn"
-		   	android:layout_width="wrap_content" 
-	      	android:layout_height="30dip" 
-	      	android:layout_gravity="right|center"
-	      	android:background="@drawable/btn_search_bg1"/>
-   	   	<ProgressBar 
-			android:id="@+id/search_progress" 
-			style="@style/loading_small"
-			android:layout_gravity="right|center"
-			android:layout_marginRight="8dip"
-			android:background="@color/white"
-			android:visibility="gone"/>
-	</FrameLayout>
+        <EditText
+            android:id="@+id/search_editer"
+            android:layout_width="fill_parent"
+            android:layout_height="32dip"
+            android:singleLine="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:imeOptions="actionSearch"
+            android:background="@color/transparent"
+            android:paddingRight="@dimen/space_10"
+            android:paddingLeft="@dimen/space_10"
+            android:drawableRight="@drawable/mico_search"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_15"
+            android:hint="搜索"/>
+
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="35dp"
+            android:layout_height="30dip"
+            android:layout_gravity="right|center"
+            android:background="@color/transparent"/>
+
+        <ProgressBar
+            android:id="@+id/search_progress"
+            style="@style/GenericProgressIndicator"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="10dip"
+            android:background="@color/white"
+            android:visibility="gone"/>
+
+    </FrameLayout>
 
 	<LinearLayout
 	    android:id="@+id/search_ll" 

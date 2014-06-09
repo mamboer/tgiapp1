@@ -194,10 +194,22 @@ public class UIHelper {
      * @param news
      */
     public static void showNewsDetailByInstance(Context context, News news) {
+        showNewsDetailByInstance(context,news,"",false);
+    }
+
+    /**
+     * 显示新闻详情
+     *
+     * @param context
+     * @param news
+     */
+    public static void showNewsDetailByInstance(Context context, News news,String title,boolean hideFootbar) {
         Intent intent = new Intent(context, NewsDetail.class);
 
         Bundle bundle = new Bundle();
         bundle.putInt("news_id",news.getId());
+        bundle.putString("title",title);
+        bundle.putBoolean("hideFootbar",hideFootbar);
         bundle.putSerializable("news",news);
 
         intent.putExtras(bundle);
@@ -1947,4 +1959,9 @@ public class UIHelper {
         }
         return views;
     }
+
+    public static void showCommonWebView(Context context,String url,String title,boolean showFootbar){
+
+    }
+
 }

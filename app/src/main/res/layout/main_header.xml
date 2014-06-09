@@ -23,7 +23,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="4.0dip"
-            android:src="@drawable/btn_qrcode_bg" />
+            android:src="@drawable/btn_playgame_bg" />
 
         <ProgressBar
             android:id="@+id/main_head_progress"

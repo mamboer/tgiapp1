@@ -53,7 +53,6 @@ import com.google.zxing.common.HybridBinarizer;
 
 /**
  * 扫描二维码
- * @author 火蚁（http://my.tencent/badstyle）
  *
  */
 @SuppressWarnings("deprecation")

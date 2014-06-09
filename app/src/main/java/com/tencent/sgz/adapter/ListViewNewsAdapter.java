@@ -179,6 +179,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
             listItemView.cate = (TextView)convertView.findViewById(R.id.news_listitem_cate);
             listItemView.cntVote = (TextView)convertView.findViewById(R.id.news_listitem_voteCount);
             listItemView.desc = (TextView)convertView.findViewById(R.id.news_listitem_body);
+
 			
 			//设置控件集到convertView
 			convertView.setTag(listItemView);
@@ -190,14 +191,23 @@ public class ListViewNewsAdapter extends BaseAdapter {
 		News news = listItems.get(dataPosition);
 
 
+        String cateName = news.getCateName();
+
         listItemView.title.setText(news.getTitle());
 		listItemView.title.setTag(news);//设置隐藏参数(实体类)
 		listItemView.author.setText(news.getAuthor());
 		listItemView.date.setText(StringUtils.friendly_time(news.getPubDate()));
 		listItemView.count.setText(news.getCommentCount()+"");
         listItemView.cntVote.setText(news.getVoteCount()+"");
-        listItemView.cate.setText(news.getCateName());
+        listItemView.cate.setText(cateName);
         listItemView.desc.setText(news.getDesc());
+
+        // 分类badge设置：TODO:放到配置文件中
+        if (cateName.equals("资讯")){
+            listItemView.cate.setBackgroundResource(R.drawable.layer_cate_badge_blue);
+        } else if(cateName.equals("视频") ){
+            listItemView.cate.setBackgroundResource(R.drawable.layer_cate_badge_green);
+        }
 
         /*
 		if(StringUtils.isToday(news.getPubDate()))

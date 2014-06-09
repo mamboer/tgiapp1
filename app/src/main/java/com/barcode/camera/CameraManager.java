@@ -59,9 +59,7 @@ public final class CameraManager {
 	private final PreviewCallback previewCallback;
 
 	public CameraManager(Context context) {
-		this.context = context;
-		this.configManager = new CameraConfigurationManager(context);
-		previewCallback = new PreviewCallback(configManager);
+        this(context,0);
 	}
 
     public CameraManager(Context context,int frameRectOffsetTop) {
@@ -242,9 +240,7 @@ public final class CameraManager {
 			int height = width;
 			int leftOffset = (screenResolution.x - width) / 2;
 			int topOffset = (screenResolution.y - width) / 2;
-            if(this.framingRectOffsetTop>0){
-                topOffset = this.framingRectOffsetTop;
-            }
+            topOffset += this.framingRectOffsetTop;
 			framingRect = new Rect(leftOffset, topOffset, leftOffset + width,
 					topOffset + height);
 		}

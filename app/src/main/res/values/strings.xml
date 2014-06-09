@@ -103,7 +103,7 @@
 
     <string name="lbl_ok">确认</string>
     <string name="lbl_scan_qrcode">扫描二维码</string>
-    <integer name="offsetTop_scan_qrcode">120</integer>
+    <integer name="offsetTop_scan_qrcode">-30</integer>
 
     <integer name="wtlogin_appid">563046901</integer>
     <string name="wtlogin_errtip_requireuid">请输入登录账号！</string>

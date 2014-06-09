@@ -108,6 +108,9 @@ public class NewsDetail extends BaseActivity {
 	private String _content;
 	private int _isPostToMyZone;
 
+    private String customTitle;
+    private boolean hideFootbar;
+
 	private GestureDetector gd;
 	private boolean isFullScreen;
 
@@ -132,8 +135,13 @@ public class NewsDetail extends BaseActivity {
 	// 初始化视图控件
 	@SuppressLint("SetJavaScriptEnabled")
 	private void initView() {
-		newsId = getIntent().getIntExtra("news_id", 0);
-        newsDetail  = (News)getIntent().getSerializableExtra("news");
+
+        Intent intent = getIntent();
+
+		newsId = intent.getIntExtra("news_id", 0);
+        newsDetail  = (News)intent.getSerializableExtra("news");
+        customTitle =intent.getStringExtra("title");
+        hideFootbar = intent.getBooleanExtra("hideFootbar",false);
 
 		if (newsId > 0)
 			tempCommentKey = AppConfig.TEMP_COMMENT + "_"
@@ -177,6 +185,14 @@ public class NewsDetail extends BaseActivity {
 		bv_comment.setGravity(Gravity.CENTER);
 		bv_comment.setTextSize(8f);
 		bv_comment.setTextColor(Color.WHITE);
+
+        if(!customTitle.equals("")){
+            mHeadTitle.setText(customTitle);
+        }
+        if(hideFootbar){
+            mFooter.setVisibility(View.GONE);
+        }
+
 	}
 
 	// 初始化控件数据
@@ -413,7 +429,8 @@ public class NewsDetail extends BaseActivity {
 
 			final AppContext ac = (AppContext) getApplication();
 			if (!ac.isLogin()) {
-				UIHelper.showLoginDialog(NewsDetail.this);
+				//UIHelper.showLoginDialog(NewsDetail.this);
+                UIHelper.showLoginPage(NewsDetail.this);
 				return;
 			}
 			final long uid = ac.getLoginUid();

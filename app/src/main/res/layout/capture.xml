@@ -29,7 +29,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginBottom="45dp">
+            android:layout_marginBottom="75dp">
             <TextView
                 android:id="@+id/status_view"
                 android:layout_width="wrap_content"
