@@ -458,6 +458,7 @@ public class Main extends BaseActivity {
     private void updateICenter(){
         btnLogin.setVisibility(View.GONE);
         btnLogoff.setVisibility(View.GONE);
+        txtUserId.setVisibility(View.GONE);
 
         /*
         btnLogin.setVisibility(View.VISIBLE);
@@ -472,7 +473,7 @@ public class Main extends BaseActivity {
             btnLogin.setVisibility(View.VISIBLE);
             imgUserAvatar.setImageResource(R.drawable.widget_dface);
             txtUserId.setText("QQ号：未知用户");
-            txtUserName.setText("未知用户");
+            txtUserName.setText(this.getResources().getString(R.string.login_requiretip));
 
             return;
         }
@@ -481,6 +482,7 @@ public class Main extends BaseActivity {
         //获取登录信息
         User user = this.appContext.getLoginInfo();
         btnLogoff.setVisibility(View.VISIBLE);
+        txtUserId.setVisibility(View.VISIBLE);
         txtUserId.setText("QQ号：" + user.getUid());
         txtUserName.setText(user.getName());
         bitmapManager.loadBitmap(user.getFace(),imgUserAvatar);

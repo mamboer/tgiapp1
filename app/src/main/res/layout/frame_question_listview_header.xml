@@ -12,6 +12,7 @@
         android:gravity="center"
         android:background="@color/white">
         <LinearLayout
+            android:tag="filterBtn"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:orientation="vertical"
@@ -27,6 +28,7 @@
                 android:text="推荐攻略">
             </TextView>
             <View
+                android:id="@+id/frame_question_hdbtn1_bline"
                 android:layout_width="fill_parent"
                 android:layout_height="2dp"
                 android:background="@color/tab_highlight_bg">
@@ -39,6 +41,7 @@
             android:background="@color/gray_level4">
         </View>
         <LinearLayout
+            android:tag="filterBtn"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:orientation="vertical"
@@ -54,7 +57,7 @@
                 android:text="官方指南">
             </TextView>
             <View
-
+                android:id="@+id/frame_question_hdbtn2_bline"
                 android:layout_width="fill_parent"
                 android:layout_height="2dp"
                 android:background="@color/white">

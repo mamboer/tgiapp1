@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import com.tencent.sgz.R;
+import com.tencent.sgz.bean.News;
 import com.tencent.sgz.common.UIHelper;
 
 import java.util.ArrayList;
@@ -41,6 +42,10 @@ public class ChannelList extends BaseActivity {
             cateBtnView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    News news = new News();
+                    news.setUrl("http://hero.qq.com/act/a20140515bandage/temp/index.html");
+                    UIHelper.showNewsDetailByInstance(ChannelList.this,news);
                     back(view);
                 }
             });

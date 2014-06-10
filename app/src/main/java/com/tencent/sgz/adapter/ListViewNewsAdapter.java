@@ -137,10 +137,11 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
         int dataPosition = this.firstItemViewResource>0?(position-1):position;
 
-        Log.e("LV",("列表元素位置："+position)+(",列表数据位置："+dataPosition));
+        //Log.e("LV",("列表元素位置："+position)+(",列表数据位置："+dataPosition));
 
         //列表第一项
         if(position==0 && this.firstItemViewResource>0){
+            //TODO:参考convertView.setTag
             if(firstItemView == null) {
                 firstItemView = listContainer.inflate(this.firstItemViewResource, null);
                 //TODO:第一个元素视图的数据绑定
@@ -148,6 +149,8 @@ public class ListViewNewsAdapter extends BaseAdapter {
                 this.startImageSlider();
                 //绑定按钮事件
                 this.initShortcutBtns(firstItemView);
+                //公告
+                this.initNotice(firstItemView);
             }
             return firstItemView;
         }
@@ -367,14 +370,24 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
         //TODO:
         @Override
-        public Object instantiateItem(View arg0, int arg1) {
-            ((ViewPager) arg0).addView(slider_imageViews.get(arg1));
-            return slider_imageViews.get(arg1);
+        public Object instantiateItem(ViewGroup arg0, int arg1) {
+
+            View view = slider_imageViews.get(arg1);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    News news = new News();
+                    news.setUrl("http://ttxd.qq.com/webplat/info/news_version3/7367/7750/7757/m6160/201406/264617.shtml");
+                    UIHelper.showNewsDetailByInstance(context,news);
+                }
+            });
+            arg0.addView(view);
+            return view;
         }
 
         @Override
-        public void destroyItem(View arg0, int arg1, Object arg2) {
-            ((ViewPager) arg0).removeView((View) arg2);
+        public void destroyItem(ViewGroup arg0, int arg1, Object arg2) {
+            arg0.removeView((View) arg2);
         }
 
         @Override
@@ -393,12 +406,12 @@ public class ListViewNewsAdapter extends BaseAdapter {
         }
 
         @Override
-        public void startUpdate(View arg0) {
+        public void startUpdate(ViewGroup arg0) {
 
         }
 
         @Override
-        public void finishUpdate(View arg0) {
+        public void finishUpdate(ViewGroup arg0) {
 
         }
     }
@@ -414,6 +427,43 @@ public class ListViewNewsAdapter extends BaseAdapter {
             }
         });
 
+        ArrayList<View> cateBtnViews = UIHelper.getViewsByTag((ViewGroup)parent,"catebtn");
+
+        for (View cateBtnView : cateBtnViews) {
+            cateBtnView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //TODO:
+                    String testUrl = "http://ttxd.qq.com/webplat/info/news_version3/7367/7750/7756/m6160/201406/264642.shtml";
+                    News news = new News();
+                    news.setUrl(testUrl);
+                    UIHelper.showNewsDetailByInstance(context,news);
+                }
+            });
+        }
+
     }
+
+    private void initNotice(View parent){
+
+
+        ArrayList<View> noticeViews = UIHelper.getViewsByTag((ViewGroup)parent,"notice");
+
+        for (View view : noticeViews) {
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //TODO:
+                    String testUrl = " http://ttxd.qq.com/webplat/info/news_version3/7367/7750/7756/m6160/201406/264819.shtml";
+                    News news = new News();
+                    news.setUrl(testUrl);
+                    UIHelper.showNewsDetailByInstance(context,news);
+                }
+            });
+        }
+
+    }
+
+
 
 }

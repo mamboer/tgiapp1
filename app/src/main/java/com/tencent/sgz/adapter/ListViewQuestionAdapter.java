@@ -1,5 +1,6 @@
 package com.tencent.sgz.adapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.tencent.sgz.R;
@@ -109,7 +110,7 @@ public class ListViewQuestionAdapter extends BaseAdapter {
 
         int dataPosition = this.firstItemViewResource>0?(position-1):position;
 
-        Log.e("LV", ("列表元素位置：" + position) + (",列表数据位置：" + dataPosition));
+        //Log.e("LV", ("列表元素位置：" + position) + (",列表数据位置：" + dataPosition));
 
         //列表第一项
         if(position==0 && this.firstItemViewResource>0){
@@ -156,7 +157,7 @@ public class ListViewQuestionAdapter extends BaseAdapter {
 
         //设置文字和图片
         News news = listItems.get(dataPosition);
-
+        String cateName = news.getCateName();
 
         listItemView.title.setText(news.getTitle());
         listItemView.title.setTag(news);//设置隐藏参数(实体类)
@@ -164,7 +165,7 @@ public class ListViewQuestionAdapter extends BaseAdapter {
         listItemView.date.setText(StringUtils.friendly_time(news.getPubDate()));
         listItemView.count.setText(news.getCommentCount()+"");
         listItemView.cntVote.setText(news.getVoteCount() + "");
-        listItemView.cate.setText(news.getCateName());
+        listItemView.cate.setText(cateName);
         listItemView.desc.setText(news.getDesc());
 
         String faceURL = news.getFace();
@@ -174,19 +175,48 @@ public class ListViewQuestionAdapter extends BaseAdapter {
         }else {
             bmpManager.loadBitmap(faceURL, listItemView.face);
         }
+
+        // 分类badge设置：TODO:放到配置文件中
+        if (cateName.equals("资讯")){
+            listItemView.cate.setBackgroundResource(R.drawable.layer_cate_badge_blue);
+        } else if(cateName.equals("视频") ){
+            listItemView.cate.setBackgroundResource(R.drawable.layer_cate_badge_green);
+        }
 		
 		return convertView;
 	}
 
     private void initFirstItemViewActions(View parent){
-        LinearLayout topBtn = (LinearLayout) parent.findViewById(R.id.frame_question_hdbtn1);
-        topBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
+        final View bottomLine1 = parent.findViewById(R.id.frame_question_hdbtn1_bline);
+        final View bottomLine2 = parent.findViewById(R.id.frame_question_hdbtn2_bline);
+
+        ArrayList<View> cateBtnViews = UIHelper.getViewsByTag((ViewGroup)parent,"filterBtn");
+
+        for (View cateBtnView : cateBtnViews) {
+            cateBtnView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
 
-            }
-        });
+                    bottomLine1.setBackgroundColor(context.getResources().getColor(R.color.white));
+                    bottomLine2.setBackgroundColor(context.getResources().getColor(R.color.white));
+
+                    switch (view.getId()){
+                        case R.id.frame_question_hdbtn1:
+                            bottomLine1.setBackgroundColor(context.getResources().getColor(R.color.tab_highlight_bg));
+                            break;
+                        case R.id.frame_question_hdbtn2:
+                            bottomLine2.setBackgroundColor(context.getResources().getColor(R.color.tab_highlight_bg));
+                            break;
+                    }
+
+
+                }
+            });
+        }
+
     }
+
 
 }

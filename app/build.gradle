@@ -48,6 +48,7 @@ android {
 
 dependencies {
     compile project(':cordova')
+    compile project(':swipelistview')
     compile 'org.roboguice:roboguice:2.0'
     compile files('libs/wlogin_sdk.jar')
     compile files('libs/Android_SDK_v1.2_Fix.jar')

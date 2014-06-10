@@ -1,23 +1,33 @@
 package com.tencent.sgz.adapter;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.tencent.sgz.R;
 import com.tencent.sgz.bean.Active;
+import com.tencent.sgz.bean.News;
 import com.tencent.sgz.bean.Tweet;
 import com.tencent.sgz.bean.Active.ObjectReply;
 import com.tencent.sgz.common.BitmapManager;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
+import com.tencent.sgz.widget.GridViewForScrollView;
 import com.tencent.sgz.widget.LinkView;
 import com.tencent.sgz.widget.LinkView.OnLinkClickListener;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * 用户动态Adapter类
@@ -26,7 +36,7 @@ import android.widget.TextView;
  * @version 1.0
  * @created 2014-4-21
  */
-public class ListViewActiveAdapter extends MyBaseAdapter {
+public class ListViewActiveAdapter extends MyBaseAdapter implements AdapterView.OnItemClickListener {
 	private Context context;// 运行上下文
 	private List<Active> listItems;// 数据集合
 	private LayoutInflater listContainer;// 视图容器
@@ -125,10 +135,12 @@ public class ListViewActiveAdapter extends MyBaseAdapter {
         int dataPosition = this.firstItemViewResource>0?(position-1):position;
 
         //列表第一项
+        //TODO:参考convertView.setTag优化性能
         if(position==0 && this.firstItemViewResource>0){
             if(firstItemView == null){
                 firstItemView = listContainer.inflate(this.firstItemViewResource,null);
                 //TODO:第一个元素视图的数据绑定
+                this.initFirstItemView(firstItemView);
             }
             return firstItemView;
         }
@@ -290,4 +302,171 @@ public class ListViewActiveAdapter extends MyBaseAdapter {
 			setLinkViewClick(true);
 		}
 	};
+
+
+    private GridViewForScrollView appboxToolsGridview;
+    private GridViewForScrollView appboxGamesGridview;
+    private void initFirstItemView(View view){
+        appboxToolsGridview = (GridViewForScrollView)view.findViewById(R.id.appbox_tools);
+
+        ArrayList<HashMap<String,Object>> lst = new ArrayList<HashMap<String,Object>>();
+
+        // 百宝箱数据
+        HashMap<String,Object> map = new HashMap<String,Object>();
+        map.put("itemImage", R.drawable.ico_cate_intro);
+        map.put("itemText", "游戏介绍");
+        map.put("action","http://ttxd.qq.com/webplat/info/news_version3/7367/7750/7756/m6160/201406/264819.shtml");
+        lst.add(map);
+
+        map = new HashMap<String,Object>();
+        map.put("itemImage", R.drawable.ico_cate_wujiang);
+        map.put("itemText", "武将");
+        map.put("action","http://ttxd.qq.com/webplat/info/news_version3/7367/7750/7756/m6160/201406/264819.shtml");
+        lst.add(map);
+
+        map = new HashMap<String,Object>();
+        map.put("itemImage", R.drawable.ico_cate_war);
+        map.put("itemText", "乱舞战");
+        map.put("action","http://ttxd.qq.com/webplat/info/news_version3/7367/7750/7756/m6160/201406/264819.shtml");
+        lst.add(map);
+
+        map = new HashMap<String,Object>();
+        map.put("itemImage", R.drawable.ico_appbox_wallpaper);
+        map.put("itemText", "壁纸");
+        map.put("action","http://ttxd.qq.com/webplat/info/news_version3/7367/7750/7756/m6160/201406/264819.shtml");
+        lst.add(map);
+
+        map = new HashMap<String,Object>();
+        map.put("itemImage", R.drawable.ico_appbox_qrcode);
+        map.put("itemText", "扫一扫");
+        map.put("action","app://UIHelper.showCapture");
+        lst.add(map);
+
+        map = new HashMap<String,Object>();
+        map.put("itemImage", R.drawable.ico_cate_wujiang);
+        map.put("itemText", "阵容");
+        map.put("action","http://ttxd.qq.com/webplat/info/news_version3/7367/7750/7756/m6160/201406/264819.shtml");
+        lst.add(map);
+
+        map = new HashMap<String,Object>();
+        map.put("itemImage", R.drawable.ico_cate_gift);
+        map.put("itemText", "礼包");
+        map.put("action","http://ttxd.qq.com/webplat/info/news_version3/7367/7750/7756/m6160/201406/264819.shtml");
+        lst.add(map);
+
+        SimpleAdapter adpter = new SimpleAdapter(context,
+                lst,R.layout.appbox_gvitem,
+                new String[]{"itemImage","itemText"},
+                new int[]{R.id.appbox_tool_icon,R.id.appbox_tool_title});
+
+        appboxToolsGridview.setAdapter(adpter);
+
+        appboxToolsGridview.setOnItemClickListener(new gridView1OnClickListener());
+
+        //游戏数据
+        appboxGamesGridview = (GridViewForScrollView)view.findViewById(R.id.appbox_games);
+
+        ArrayList<HashMap<String,Object>> lst1 = new ArrayList<HashMap<String,Object>>();
+        HashMap<String,Object> map1 = new HashMap<String,Object>();
+        map1.put("itemImage", R.drawable.ico_cate_intro);
+        map1.put("itemText", "天天炫斗");
+        map1.put("action","https://play.google.com/store/apps/details?id=com.tencent.game.VXDGame");
+        lst1.add(map1);
+
+        map1 = new HashMap<String,Object>();
+        map1.put("itemImage", R.drawable.ico_cate_intro);
+        map1.put("itemText", "天天飞车");
+        map1.put("action","https://play.google.com/store/apps/details?id=com.king.game.motorag");
+        lst1.add(map1);
+
+        SimpleAdapter adpter1 = new SimpleAdapter(context,
+                lst1,R.layout.appbox_gvitem_game,
+                new String[]{"itemImage","itemText"},
+                new int[]{R.id.appbox_game_icon,R.id.appbox_game_title});
+
+        appboxGamesGridview.setAdapter(adpter1);
+
+        //注册点击事件，方法2
+        appboxGamesGridview.setOnItemClickListener(this);
+
+
+    }
+
+    class gridView1OnClickListener implements AdapterView.OnItemClickListener
+    {
+
+        public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                                long arg3) {
+            // TODO Auto-generated method stub
+            Object obj = appboxToolsGridview.getAdapter().getItem(arg2);
+            HashMap<String,Object> map  = (HashMap<String,Object>)obj;
+            String str = (String) map.get("itemText");
+            String action = (String)map.get("action");
+            UIHelper.ToastMessage(context,""+str,0);
+
+            if (action.indexOf("http")==0){
+                News news = new News();
+                news.setUrl(action);
+                UIHelper.showNewsDetailByInstance(context,news,str,false);
+                return;
+            }
+
+            if(action.indexOf("app://")==0){
+                action = action.replace("app://","");
+                if (action.equals("UIHelper.showCapture")){
+                    UIHelper.showCapture(context);
+                }
+            }
+
+        }
+
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position,
+                            long id)
+    {
+        Object obj = appboxGamesGridview.getAdapter().getItem(position);
+        HashMap<String,Object> map  = (HashMap<String,Object>)obj;
+        String str = (String) map.get("itemText");
+        String action = (String)map.get("action");
+        UIHelper.ToastMessage(context,""+str,0);
+
+        if (action.indexOf("http")==0){
+            News news = new News();
+            news.setUrl(action);
+            UIHelper.showNewsDetailByInstance(context,news,str,false);
+            return;
+        }
+
+        if(action.indexOf("app://")==0){
+            action = action.replace("app://","");
+            if (action.equals("UIHelper.showCapture")){
+                UIHelper.showCapture(context);
+            }
+        }
+
+        //TODO:直接启动appstore
+        /*
+        if (UIHelper.isPlayStoreInstalled()) {
+            context.startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("market://details?id=" + item.getPackageName())));
+        } else {
+            context.startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://play.google.com/store/apps/details?id=" + item.getPackageName())));
+        }
+        */
+
+        //TODO:直接打开app
+        /*
+        Intent intent = context.getPackageManager().getLaunchIntentForPackage(item.getPackageName());
+        if (intent != null) {
+            context.startActivity(intent);
+        } else {
+            Toast.makeText(context, R.string.cantOpen, Toast.LENGTH_SHORT).show();
+        }
+        */
+
+    }
+
 }

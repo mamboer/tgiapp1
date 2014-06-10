@@ -42,13 +42,6 @@
                             style="@style/home_news_listitem.badge"
                             android:text="活动"/>
 
-                        <TextView
-                            style="@style/home_news_listitem.badge.blue"
-                            android:text="视频"/>
-
-                        <TextView
-                            style="@style/home_news_listitem.badge.green"
-                            android:text="装备"/>
                     </LinearLayout>
 
 
@@ -80,6 +73,7 @@
                 android:text="2014.05.03 18:09"/>
 
             <LinearLayout
+                android:visibility="gone"
                 style="@style/home_news_listitem.btn"
                 >
 
@@ -101,6 +95,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 style="@style/home_news_listitem.btn"
                 android:layout_marginLeft="5dp"
                 >

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:background="@drawable/gridview_selector"
+android:orientation="horizontal"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+    >
+<RelativeLayout
+    android:tag="catebtn"
+    android:layout_margin="0.5dp"
+    android:background="@color/white"
+    style="@style/shortcut_button.forGridView">
+
+    <ImageView
+        style="@style/shortcut_button_img"
+        android:id="@+id/appbox_tool_icon"
+        android:src="@drawable/ico_cate_intro" />
+
+    <TextView
+        android:id="@+id/appbox_tool_title"
+        style="@style/shortcut_button_txt.style1"
+        android:textColor="@color/bright_bg_btntext"
+        android:text="游戏介绍" />
+
+
+</RelativeLayout>
+</LinearLayout>

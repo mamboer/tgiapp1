@@ -294,6 +294,19 @@
         <item name="android:clickable">true</item>
         <item name="android:minWidth">70dp</item>
     </style>
+    <!--
+    http://blog.csdn.net/huangxiaominglipeng/article/details/17375837
+    提出问题：根据上面的情况，点击事件触发不了该怎么解决？？
+解决问题：
+1,如使用gridview.setOnItemClickListener（）作为点击事件的监听，需要把item中的元素全部设为android:focusable="false"，android:clickable="false"，意思是不处理焦点事件，不处理点击事件
+这样焦点事件和点击事件就由GridView本身来处理，即gridview.setOnItemClickListener（）来处理。
+另一种方法就是在适配器中给其中一个元素添加img.setOnClickListener（）监听，也能处理GridView的点击事件。
+2,itemview里面如果有ImageButton之类可点击的元素，需要换成ImageView不可点击的。
+    -->
+    <style name="shortcut_button.forGridView">
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+    </style>
 
     <style name="shortcut_button_img">
         <item name="android:layout_width">30dp</item>
@@ -312,6 +325,10 @@
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_marginTop">32dp</item>
         <item name="android:gravity">center</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:lines">1</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:singleLine">true</item>
     </style>
 
     <style name="shortcut_button_txt.style1">
@@ -378,6 +395,7 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">10dp</item>
+        <item name="android:clickable">true</item>
     </style>
     <style name="notice_badge">
         <item name="android:layout_width">wrap_content</item>
@@ -516,5 +534,32 @@
         <item name="android:background">@drawable/layer_badge</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <!--S user_fav-->
+    <style name="userfav_item">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">99dp</item>
+    </style>
+    <style name="userfav_item.back">
+        <item name="android:background">@color/foot_bg_on</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="userfav_item.front">
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="userfav_item.btn1">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">#ff3600</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!--E user_fav-->
     
 </resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:tag="gamebtn"
+        android:layout_margin="0.5dp"
+        style="@style/shortcut_button.forGridView">
+
+        <ImageView
+            style="@style/shortcut_button_img"
+            android:id="@+id/appbox_game_icon"
+            android:src="@drawable/ico_cate_intro" />
+
+        <TextView
+            android:id="@+id/appbox_game_title"
+            android:textColor="@color/bright_bg_btntext"
+            style="@style/shortcut_button_txt.style1"
+            android:text="天天炫斗" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

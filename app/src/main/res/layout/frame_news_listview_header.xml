@@ -76,6 +76,7 @@
             android:visibility="visible">
 
             <RelativeLayout
+                android:tag="catebtn"
                 style="@style/shortcut_button">
 
                 <ImageButton
@@ -101,6 +102,7 @@
                 android:background="@color/devider_line_bg1"/>
 
             <RelativeLayout
+                android:tag="catebtn"
                 style="@style/shortcut_button">
 
                 <ImageButton
@@ -125,6 +127,7 @@
                 android:background="@color/devider_line_bg1"/>
 
             <RelativeLayout
+                android:tag="catebtn"
                 style="@style/shortcut_button">
 
                 <ImageButton
@@ -177,6 +180,7 @@
             >
 
             <RelativeLayout
+                android:tag="notice"
                 style="@style/notice">
 
                 <TextView

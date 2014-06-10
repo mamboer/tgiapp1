@@ -6,6 +6,7 @@ import greendroid.widget.QuickAction;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,6 +45,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -66,6 +69,7 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.text.style.StyleSpan;
 import android.text.style.URLSpan;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -1960,8 +1964,24 @@ public class UIHelper {
         return views;
     }
 
-    public static void showCommonWebView(Context context,String url,String title,boolean showFootbar){
+    public static void showCommonWebView(Context context,String url,String title,boolean hideFootbar){
+        News news = new News();
+        news.setUrl(url);
+        showNewsDetailByInstance(context,news,title,hideFootbar);
+    }
 
+    public static boolean isPlayStoreInstalled(Context context) {
+        Intent market = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=dummy"));
+        PackageManager manager = context.getPackageManager();
+        List<ResolveInfo> list = manager.queryIntentActivities(market, 0);
+
+        return list.size() > 0;
+    }
+
+    public static int convertDpToPixel(Context context,float dp) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        float px = dp * (metrics.densityDpi / 160f);
+        return (int) px;
     }
 
 }

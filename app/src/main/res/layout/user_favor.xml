@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/page_bg"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        style="@style/main_head">
+        <RelativeLayout
+            style="@style/main_head_pattern">
+            <TextView
+                android:id="@+id/msgcenter_head_title"
+                style="@style/detail_head_title"
+                android:layout_gravity="center"
+                android:layout_centerVertical="true"
+                android:text="我的收藏"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="left|center"
+                android:clickable="true"
+                android:onClick="back"
+                android:src="@drawable/ico_arrow_left"
+                android:scaleType="center"
+                android:minWidth="40dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:background="@drawable/layer_login_border"
+            android:layout_margin="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/search_editer"
+                android:layout_width="fill_parent"
+                android:layout_height="32dip"
+                android:singleLine="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:imeOptions="actionSearch"
+                android:background="@color/transparent"
+                android:paddingRight="@dimen/space_10"
+                android:paddingLeft="@dimen/space_10"
+                android:drawableRight="@drawable/mico_search"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_15"
+                android:hint="搜索"/>
+        </LinearLayout>
+
+        <com.fortysevendeg.swipelistview.SwipeListView
+            xmlns:swipe="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/slv_userfavlist"
+            android:listSelector="#00000000"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            swipe:swipeFrontView="@+id/swipelist_backview"
+            swipe:swipeBackView="@+id/swipelist_backview"
+            swipe:swipeDrawableChecked="@drawable/userfav_item_selected"
+            swipe:swipeDrawableUnchecked="@drawable/userfav_item_unselected"
+            swipe:swipeCloseAllItemsWhenMoveList="true"
+            swipe:swipeMode="both"
+            >
+        </com.fortysevendeg.swipelistview.SwipeListView>
+    </LinearLayout>
+
+</LinearLayout>
