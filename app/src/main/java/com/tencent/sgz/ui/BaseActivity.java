@@ -5,6 +5,7 @@ import com.tencent.sgz.AppManager;
 import com.tencent.sgz.widget.LoadingDialog;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -34,12 +35,15 @@ public class BaseActivity extends RoboActivity {
 
     protected AppContext appContext;
 
+    protected Resources res;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         appContext =AppContext.Instance;
         loadingDialog = new LoadingDialog(this);
 		allowFullScreen = true;
+        res = getResources();
 		// 添加Activity到堆栈
 		AppManager.getAppManager().addActivity(this);
 	}

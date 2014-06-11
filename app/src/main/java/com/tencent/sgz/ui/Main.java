@@ -2609,7 +2609,7 @@ public class Main extends BaseActivity {
     }
 
     public void gotoSetting(View preView){
-
+        UIHelper.showSetting(this);
     }
 	
 }

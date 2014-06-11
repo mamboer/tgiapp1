@@ -26,7 +26,7 @@
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.ZoomLight" />
+            android:theme="@style/Theme.SlideTop" />
         <activity
             android:name=".ui.FeedBack"
             android:configChanges="keyboardHidden|orientation"
@@ -200,27 +200,6 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 		<activity
             android:name=".ui.CDVActivity1"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.ZoomLight"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
-		<activity
-            android:name=".ui.CDVActivity2"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.ZoomLight"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
-		<activity
-            android:name=".ui.CDVActivity3"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.ZoomLight"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
-		<activity
-            android:name=".ui.CDVActivity4"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"

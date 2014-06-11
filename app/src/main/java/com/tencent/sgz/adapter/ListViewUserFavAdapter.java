@@ -86,11 +86,12 @@ public class ListViewUserFavAdapter extends BaseAdapter {
         holder.btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
+
                 ListViewUserFavAdapter.this.data.remove(position);
                 ListViewUserFavAdapter.this.notifyDataSetChanged();
-                */
-                lvLoveViennaLiao.dismissSelected();
+                //lvLoveViennaLiao.dismissSelected();
+
+                //lvLoveViennaLiao.dismissSelected();
             }
         });
 

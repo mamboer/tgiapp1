@@ -2,31 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/teal"
+    android:background="@color/page_bg"
     android:orientation="vertical" >
-	
-    <FrameLayout 
-        android:layout_width="fill_parent" 
-        android:layout_height="40.dip"
-        android:paddingLeft="2dip"
-        android:paddingRight="2dip"
-        android:background="@color/dark_gray">
-        <TextView 
-            style="@style/detail_head_title"
-            android:text="@string/com_txt_about"/>
-        <ImageView 
-            android:layout_width="wrap_content" 
-            android:layout_height="wrap_content" 
-            android:layout_gravity="left|center" 
-            android:clickable="true" 
-            android:background="@drawable/icon_arrow_left"
-            android:onClick="back"/>
-    </FrameLayout>
+
+    <LinearLayout
+        style="@style/main_head">
+        <RelativeLayout
+            style="@style/main_head_pattern">
+            <TextView
+                android:id="@+id/msgcenter_head_title"
+                style="@style/detail_head_title"
+                android:layout_gravity="center"
+                android:layout_centerVertical="true"
+                android:text="@string/com_txt_about"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="left|center"
+                android:clickable="true"
+                android:onClick="back"
+                android:src="@drawable/ico_arrow_left"
+                android:scaleType="center"
+                android:minWidth="40dp"/>
+        </RelativeLayout>
+    </LinearLayout>
     
     <FrameLayout 
         android:layout_width="fill_parent" 
         android:layout_height="fill_parent"   
-        android:background="@color/teal">
+        android:background="@color/white">
         
         <ImageView
             android:layout_width="wrap_content"
@@ -42,7 +46,7 @@
 	        android:layout_gravity="center|bottom"
 	        android:layout_marginBottom="200dip"
 	        android:text="@string/app_name"
-	        android:textColor="@color/white"
+	        android:textColor="@color/bright_bg_btntext"
 	        android:textSize="@dimen/text_size_16"
 	        android:textStyle="bold" />
 	    
@@ -52,7 +56,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_gravity="center|bottom"
 	        android:layout_marginBottom="180dip"
-	        android:textColor="@color/white"
+	        android:textColor="@color/bright_bg_btntext"
 	        android:text="版本:1.0.0" />
 	
 	    <Button
@@ -64,16 +68,19 @@
 	        android:layout_marginTop="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
-	        android:background="@drawable/selector_btn_black"
+	        android:background="@drawable/selector_btn_green"
 	        android:text="检查新版本" />
 	    
 	    <TextView
+            android:id="@+id/app_copyright"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_gravity="center|bottom"
-	        android:layout_marginBottom="30dip"
+            android:gravity="center_horizontal"
+	        android:layout_marginBottom="15dip"
+            android:textSize="8sp"
 	        android:text="Copyright ©2008-2014 TENCENT"
-	        android:textColor="@color/white" />
+	        android:textColor="@color/bright_bg_btntext" />
     </FrameLayout>
     
     

@@ -3,9 +3,8 @@
 	android:id="@android:id/title" 
 	android:layout_width="fill_parent" 
 	android:layout_height="35dip"
-	android:textSize="@dimen/text_size_15" 
-	android:textStyle="bold" 
-	android:textColor="#ffffffff" 
+	android:textSize="@dimen/text_size_16"
+	android:textColor="@color/bright_bg_btntext"
 	android:gravity="left|center" 
-	android:background="@color/teal" 
+	android:background="@color/liter_gray"
 	android:paddingLeft="10.0dip" />

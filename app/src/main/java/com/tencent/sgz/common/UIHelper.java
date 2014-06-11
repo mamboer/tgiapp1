@@ -581,12 +581,14 @@ public class UIHelper {
                                 QQWeiboHelper.shareToQQ(context, title, url);
                                 break;
                             case R.id.snsBtnWXPYQ:
+                                ToastMessage(context,"功能正在实现中");
                                 // 微信朋友圈
-                                WXFriendsHelper.shareToWXFriends(context, title, url);
+                                //WXFriendsHelper.shareToWXFriends(context, title, url);
                                 break;
                             case R.id.snsBtnWXHY:
                                 //微信好友
-                                WXFriendsHelper.shareToWXFriends(context, title, url);
+                                ToastMessage(context,"功能正在实现中");
+                                //WXFriendsHelper.shareToWXFriends(context, title, url);
                                 break;
                             default:
                                 ToastMessage(context,"功能正在实现中");
@@ -1906,18 +1908,6 @@ public class UIHelper {
 		Intent intent = new Intent(context, CDVActivity1.class);
 		context.startActivity(intent);
 	}
-	public static void showCDV2(Context context) {
-		Intent intent = new Intent(context, CDVActivity2.class);
-		context.startActivity(intent);
-	}
-	public static void showCDV3(Context context) {
-		Intent intent = new Intent(context, CDVActivity3.class);
-		context.startActivity(intent);
-	}
-	public static void showCDV4(Context context) {
-		Intent intent = new Intent(context, CDVActivity4.class);
-		context.startActivity(intent);
-	}
     //http://www.androidhub4you.com/2012/12/listview-into-scrollview-in-android.html
 
     /**
@@ -1982,6 +1972,18 @@ public class UIHelper {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         float px = dp * (metrics.densityDpi / 160f);
         return (int) px;
+    }
+
+    /** * 根据手机的分辨率从 dp 的单位 转成为 px(像素) */
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+    /** * 根据手机的分辨率从 px(像素) 的单位 转成为 dp */
+    public static int px2dip(Context context, float pxValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
     }
 
 }

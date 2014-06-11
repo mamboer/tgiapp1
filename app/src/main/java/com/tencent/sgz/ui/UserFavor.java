@@ -3,9 +3,11 @@ package com.tencent.sgz.ui;
 import android.app.ProgressDialog;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.Menu;
@@ -19,6 +21,7 @@ import com.fortysevendeg.swipelistview.SwipeListView;
 import com.tencent.sgz.R;
 import com.tencent.sgz.adapter.ListViewUserFavAdapter;
 import com.tencent.sgz.bean.FavItem;
+import com.tencent.sgz.common.UIHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,6 +56,12 @@ public class UserFavor extends BaseActivity {
         swipeListView = (SwipeListView) findViewById(R.id.slv_userfavlist);
 
         swipeListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+
+        //设置侧滑位置
+        DisplayMetrics dm2 = this.res.getDisplayMetrics();
+        float offsetLeft = dm2.widthPixels-dm2.density*this.res.getInteger(R.integer.userfav_swipelistview_offsetleft);
+        swipeListView.setOffsetLeft(offsetLeft);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             swipeListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
 

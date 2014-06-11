@@ -9,7 +9,6 @@ android:layout_height="wrap_content"
 <RelativeLayout
     android:tag="catebtn"
     android:layout_margin="0.5dp"
-    android:background="@color/white"
     style="@style/shortcut_button.forGridView">
 
     <ImageView

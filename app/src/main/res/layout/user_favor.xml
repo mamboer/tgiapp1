@@ -60,18 +60,43 @@
                 android:hint="搜索"/>
         </LinearLayout>
 
+        <!--SwipeListView-->
+        <!--
+        <com.fortysevendeg.swipelistview.SwipeListView
+            xmlns:swipe="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/example_lv_list"
+            android:listSelector="#00000000"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            swipe:swipeFrontView="@+id/front"
+            swipe:swipeBackView="@+id/back"
+            swipe:swipeActionLeft="[reveal | dismiss]"
+            swipe:swipeActionRight="[reveal | dismiss]"
+            swipe:swipeMode="[none | both | right | left]"
+            swipe:swipeCloseAllItemsWhenMoveList="[true | false]"
+            swipe:swipeOpenOnLongPress="[true | false]"
+            swipe:swipeAnimationTime="[miliseconds]"
+            swipe:swipeOffsetLeft="[dimension]"
+            swipe:swipeOffsetRight="[dimension]"
+            />
+        -->
         <com.fortysevendeg.swipelistview.SwipeListView
             xmlns:swipe="http://schemas.android.com/apk/res-auto"
             android:id="@+id/slv_userfavlist"
             android:listSelector="#00000000"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            swipe:swipeFrontView="@+id/swipelist_backview"
+            android:divider="@color/gray_level5"
+            android:dividerHeight=".5dp"
+            swipe:swipeFrontView="@+id/swipelist_frontview"
             swipe:swipeBackView="@+id/swipelist_backview"
             swipe:swipeDrawableChecked="@drawable/userfav_item_selected"
             swipe:swipeDrawableUnchecked="@drawable/userfav_item_unselected"
             swipe:swipeCloseAllItemsWhenMoveList="true"
-            swipe:swipeMode="both"
+            swipe:swipeMode="left"
+            swipe:swipeAnimationTime="100"
+            swipe:swipeOffsetLeft="65dp"
+            swipe:swipeOffsetRight="0dp"
             >
         </com.fortysevendeg.swipelistview.SwipeListView>
     </LinearLayout>

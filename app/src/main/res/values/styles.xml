@@ -165,7 +165,7 @@
         <item name="android:textAppearanceSmall">@style/App.Preference.TextAppearance.Small</item>
         <item name="android:listSeparatorTextViewStyle">@style/App.Preference.ListSeparator.TextView.Light</item>
         <item name="android:checkboxStyle">@style/App.Preference.CheckBox</item>
-        <item name="android:windowAnimationStyle">@style/Animation.ZoomLight</item>
+        <item name="android:windowAnimationStyle">@style/Animation.SlideTop</item>
         <item name="android:windowContentOverlay">@null</item> 
     </style>
 
@@ -541,8 +541,8 @@
         <item name="android:layout_height">99dp</item>
     </style>
     <style name="userfav_item.back">
-        <item name="android:background">@color/foot_bg_on</item>
-        <item name="android:gravity">center</item>
+        <item name="android:background">@color/gray_level5</item>
+        <item name="android:gravity">center_vertical|right</item>
     </style>
     <style name="userfav_item.front">
         <item name="android:paddingTop">15dp</item>
@@ -552,11 +552,9 @@
         <item name="android:background">@color/white</item>
     </style>
     <style name="userfav_item.btn1">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">65dp</item>
         <item name="android:background">#ff3600</item>
         <item name="android:textColor">#ffffff</item>
-        <item name="android:paddingLeft">20dp</item>
-        <item name="android:paddingRight">20dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">14sp</item>
     </style>

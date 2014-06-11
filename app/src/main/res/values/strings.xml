@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>    
     <string name="app_name">赤壁乱舞</string>
+    <string name="app_copyright">Copyright © 2005 - %1$s Tencent. All Rights Reserved. \n腾讯公司  版权所有</string>
 
     <integer name="home_slider_interval">6</integer>
     
@@ -43,6 +44,8 @@
     <string name="frame_title_active_message">留言</string>
 
     <string name="community_url">http://bbs.g.qq.com/forum.php?mod=forumdisplay&amp;fid=12388</string>
+    <string name="feedback_email_url">levinhuang@tencent.com</string>
+    <string name="feedback_email_title">用户反馈-Android客户端</string>
     
     <string name="footbar_refresh">刷新</string>
     <string name="footbar_comment">评论</string>
@@ -82,6 +85,8 @@
     <string name="user_friend_head_title">我的好友</string>
     <string name="user_friend_follower">关注(%d)</string>
     <string name="user_friend_fans">粉丝(%d)</string>
+
+    <integer name="userfav_swipelistview_offsetleft">65</integer>
     
     <string name="comment_list_head_title">玩家评论</string>
     <string name="comment_listitem_type">发布于</string>
@@ -93,7 +98,7 @@
     <string name="img_from_album">手机相册</string>
     <string name="ui_insert_image">插入图片</string>  
     
-    <string name="setting_head_title">系统设置</string>
+    <string name="setting_head_title">设置</string>
     <string name="com_txt_search">搜索</string>
     <string name="com_txt_about">关于</string>
     <string name="com_txt_loading">加载中...</string>

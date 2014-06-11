@@ -63,6 +63,7 @@ public class Setting extends PreferenceActivity {
 		final AppContext ac = (AppContext) getApplication();
 
 		// 登录、注销
+        /*
 		account = (Preference) findPreference("account");
 		if (ac.isLogin()) {
 			account.setTitle(R.string.main_menu_logout);
@@ -85,6 +86,7 @@ public class Setting extends PreferenceActivity {
 				return true;
 			}
 		});
+		*/
 
 		// 设置保存图片路径
 		saveImagePath = (Preference) findPreference("saveimagepath");
@@ -110,6 +112,7 @@ public class Setting extends PreferenceActivity {
 				
 
 		// https登录
+        /*
 		httpslogin = (CheckBoxPreference) findPreference("httpslogin");
 		httpslogin.setChecked(ac.isHttpsLogin());
 		if (ac.isHttpsLogin()) {
@@ -129,6 +132,7 @@ public class Setting extends PreferenceActivity {
 						return true;
 					}
 				});
+	    */
 
 		// 加载图片loadimage
 		loadimage = (CheckBoxPreference) findPreference("loadimage");
@@ -153,6 +157,7 @@ public class Setting extends PreferenceActivity {
 				});
 
 		// 左右滑动
+        /*
 		scroll = (CheckBoxPreference) findPreference("scroll");
 		scroll.setChecked(ac.isScroll());
 		if (ac.isScroll()) {
@@ -171,6 +176,7 @@ public class Setting extends PreferenceActivity {
 				return true;
 			}
 		});
+		*/
 
 		// 提示声音
 		voice = (CheckBoxPreference) findPreference("voice");
@@ -267,4 +273,8 @@ public class Setting extends PreferenceActivity {
 			account.setTitle(R.string.main_menu_logout);
 		}
 	}
+
+    public void back(View paramView) {
+        AppManager.getAppManager().finishActivity(this);
+    }
 }

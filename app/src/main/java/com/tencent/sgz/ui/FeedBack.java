@@ -17,8 +17,7 @@ import android.widget.ImageButton;
  * @created 2014-4-21
  */
 public class FeedBack extends BaseActivity{
-	
-	private ImageButton mClose;
+
 	private EditText mEditer;
 	private Button mPublish;
 	
@@ -33,11 +32,8 @@ public class FeedBack extends BaseActivity{
 	//初始化视图控件
     private void initView()
     {
-    	mClose = (ImageButton)findViewById(R.id.feedback_close_button);
     	mEditer = (EditText)findViewById(R.id.feedback_content);
     	mPublish = (Button)findViewById(R.id.feedback_publish);
-    	
-    	mClose.setOnClickListener(UIHelper.finish(this));
     	mPublish.setOnClickListener(publishClickListener);
     }
     
@@ -53,8 +49,8 @@ public class FeedBack extends BaseActivity{
 			Intent i = new Intent(Intent.ACTION_SEND);  
 			//i.setType("text/plain"); //模拟器
 			i.setType("message/rfc822") ; //真机
-			i.putExtra(Intent.EXTRA_EMAIL, new String[]{"ld@tencent.net"});  
-			i.putExtra(Intent.EXTRA_SUBJECT,"用户反馈-Android客户端");  
+			i.putExtra(Intent.EXTRA_EMAIL, new String[]{getString(R.string.feedback_email_url)});
+			i.putExtra(Intent.EXTRA_SUBJECT,getString(R.string.app_name)+" "+getString(R.string.feedback_email_title));
 			i.putExtra(Intent.EXTRA_TEXT,content);  
 			startActivity(Intent.createChooser(i, "Sending mail..."));
 			finish();
