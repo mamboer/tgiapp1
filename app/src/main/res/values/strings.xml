@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>    
+<resources>
+
     <string name="app_name">赤壁乱舞</string>
     <string name="app_copyright">Copyright © 2005 - %1$s Tencent. All Rights Reserved. \n腾讯公司  版权所有</string>
 
     <integer name="home_slider_interval">6</integer>
-    
+
     <string name="main_menu_login">用户登录</string>
     <string name="main_menu_logout">注销登录</string>
     <string name="main_menu_myinfo">我的资料</string>
@@ -23,7 +24,6 @@
     <string name="main_menu_community">社区</string>
     <string name="main_menu_appbox">百宝箱</string>
     <string name="main_menu_icenter">个人中心</string>
-    
     <string name="frame_title_news_all">全部</string>
     <string name="frame_title_news_news">新闻</string>
     <string name="frame_title_news_video">视频</string>
@@ -42,17 +42,14 @@
     <string name="frame_title_active_comment">评论</string>
     <string name="frame_title_active_myself">我自己</string>
     <string name="frame_title_active_message">留言</string>
-
     <string name="community_url">http://bbs.g.qq.com/forum.php?mod=forumdisplay&amp;fid=12388</string>
     <string name="feedback_email_url">levinhuang@tencent.com</string>
     <string name="feedback_email_title">用户反馈-Android客户端</string>
-    
     <string name="footbar_refresh">刷新</string>
     <string name="footbar_comment">评论</string>
     <string name="footbar_share">分享</string>
     <string name="footbar_favorite">收藏</string>
     <string name="footbar_more">更多</string>
-    
     <string name="login_dialog_logo">赤壁乱舞</string>
     <string name="login_dialog_account">账号:</string>
     <string name="login_dialog_account_hint">请输入QQ号</string>
@@ -67,7 +64,6 @@
     <string name="login_dialog_autoLogin">自动登录:</string>
     <string name="login_dialog_rememberMe">记住我的登录信息</string>
     <string name="login_requiretip">您好，请登入</string>
-    
     <string name="news_detail_head_title">新闻正文</string>
     <string name="news_detail_lable_pub">发布于</string>
     <string name="question_detail_head_title">帖子正文</string>
@@ -81,38 +77,34 @@
     <string name="tweet_chatfooter_too_short">录音时间太短</string>
     <string name="message_detail_head_title">我和%s的对话</string>
     <string name="user_center_head_title">用户空间</string>
-    
     <string name="user_friend_head_title">我的好友</string>
     <string name="user_friend_follower">关注(%d)</string>
     <string name="user_friend_fans">粉丝(%d)</string>
 
     <integer name="userfav_swipelistview_offsetleft">65</integer>
-    
+
     <string name="comment_list_head_title">玩家评论</string>
     <string name="comment_listitem_type">发布于</string>
     <string name="comment_pub_head_title">评论回复</string>
     <string name="comment_pub_content_hint">输入评论</string>
     <string name="comment_reply_title">---共有 %d 条评论---</string>
-    
     <string name="img_from_camera">手机拍照</string>
     <string name="img_from_album">手机相册</string>
-    <string name="ui_insert_image">插入图片</string>  
-    
+    <string name="ui_insert_image">插入图片</string>
     <string name="setting_head_title">设置</string>
     <string name="com_txt_search">搜索</string>
     <string name="com_txt_about">关于</string>
     <string name="com_txt_loading">加载中...</string>
     <string name="capture_head_title">扫一扫</string>
     <string name="msg_camera_framework_bug">抱歉，Android相机出现问题。您可能需要重启设备。</string>
-
     <string name="receiver_widgetupdate">com.tencent.sgz.action.APPWIDGET_UPDATE</string>
     <string name="receiver_tweetpub">com.tencent.sgz.action.APP_TWEETPUB</string>
-
     <string name="lbl_ok">确认</string>
     <string name="lbl_scan_qrcode">扫描二维码</string>
-    <integer name="offsetTop_scan_qrcode">-30</integer>
 
+    <integer name="offsetTop_scan_qrcode">-30</integer>
     <integer name="wtlogin_appid">563046901</integer>
+
     <string name="wtlogin_errtip_requireuid">请输入登录账号！</string>
     <string name="wtlogin_errtip_requirepwd">请输入登录密码！</string>
     <string name="wtlogin_errtip_param">输入参数有误，请检查！</string>
@@ -128,4 +120,8 @@
     <string name="wtlogin_devlock_smsverify">手机短信验证</string>
     <string name="wtlogin_verifycode_getitagain">重新获取</string>
     <string name="wtlogin_loginok">登录成功</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
 </resources>

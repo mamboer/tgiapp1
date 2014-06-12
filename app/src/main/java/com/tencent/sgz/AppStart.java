@@ -6,6 +6,7 @@ import java.util.List;
 import com.tencent.sgz.common.FileUtils;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.ui.Main;
+import com.tencent.sgz.ui.MainActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -112,7 +113,7 @@ public class AppStart extends Activity {
      * 跳转到...
      */
     private void redirectTo(){        
-        Intent intent = new Intent(this, Main.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }

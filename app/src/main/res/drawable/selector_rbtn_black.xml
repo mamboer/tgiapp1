@@ -3,6 +3,7 @@
 
   	<item android:state_pressed="true" android:drawable="@drawable/layer_rbtn_footer_on"></item>
     <item android:state_checked="true" android:drawable="@drawable/layer_rbtn_footer_on"></item>
+    <item android:state_selected="true" android:drawable="@drawable/layer_rbtn_footer_on"></item>
     <item android:drawable="@drawable/layer_rbtn_footer"></item>
 
 </selector>

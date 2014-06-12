@@ -182,6 +182,32 @@
         <item name="android:paddingTop">@dimen/space_2</item>
         <item name="android:paddingBottom">@dimen/space_3</item>
     </style>
+    <style name="footbar.tab">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+    </style>
+
+    <style name="footbar_tabtxt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_10</item>
+        <item name="android:textColor">@color/footer_rbtn_text</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="footbar_tabico">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:contentDescription">@null</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
     <style name="user_center_footbar" parent="footbar">
         <item name="android:textSize">@dimen/text_size_12</item>
         <item name="android:gravity">left|center</item>
