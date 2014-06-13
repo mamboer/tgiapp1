@@ -15,10 +15,8 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.tencent.sgz.R;
-import com.tencent.sgz.activity.HomeFragmentActivity;
-import com.tencent.sgz.activity.ManualFragmentActivity;
-import com.tencent.sgz.fragment.HomeFragment;
-import com.tencent.sgz.fragment.ManualFragment;
+import com.tencent.sgz.activity.*;
+import com.tencent.sgz.fragment.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -76,6 +74,7 @@ public class MainActivity extends FragmentActivity {
 
         mTabIndicators = new ArrayList<RelativeLayout>();
 
+        //首页
         mTabIndicator = (RelativeLayout)inflater.inflate(R.layout.tab_indicator,mTabWidget,false);
         TextView txtTab = (TextView)mTabIndicator.findViewById(R.id.tab_title);
         ImageView imgTab = (ImageView)mTabIndicator.findViewById(R.id.tab_icon);
@@ -83,6 +82,10 @@ public class MainActivity extends FragmentActivity {
         imgTab.setBackgroundResource(R.drawable.btn_home_bg);
         mTabIndicators.add(mTabIndicator);
 
+        mTabManager.addTab(
+                mTabHost.newTabSpec("tab1").setIndicator(mTabIndicators.get(0)),
+                HomeFragment.class, null);
+        //攻略
         mTabIndicator = (RelativeLayout)inflater.inflate(R.layout.tab_indicator,mTabWidget,false);
         txtTab = (TextView)mTabIndicator.findViewById(R.id.tab_title);
         imgTab = (ImageView)mTabIndicator.findViewById(R.id.tab_icon);
@@ -91,11 +94,44 @@ public class MainActivity extends FragmentActivity {
         mTabIndicators.add(mTabIndicator);
 
         mTabManager.addTab(
-                mTabHost.newTabSpec("tab1").setIndicator(mTabIndicators.get(0)),
-                HomeFragment.class, null);
-        mTabManager.addTab(
                 mTabHost.newTabSpec("tab2").setIndicator(mTabIndicators.get(1)),
                 ManualFragment.class, null);
+        //社区
+        mTabIndicator = (RelativeLayout)inflater.inflate(R.layout.tab_indicator,mTabWidget,false);
+        txtTab = (TextView)mTabIndicator.findViewById(R.id.tab_title);
+        imgTab = (ImageView)mTabIndicator.findViewById(R.id.tab_icon);
+        txtTab.setText(R.string.main_menu_community);
+        imgTab.setBackgroundResource(R.drawable.btn_community_bg);
+        mTabIndicators.add(mTabIndicator);
+
+        mTabManager.addTab(
+                mTabHost.newTabSpec("tab3").setIndicator(mTabIndicators.get(2)),
+                CommunityFragment.class, null);
+
+        //百宝箱
+        mTabIndicator = (RelativeLayout)inflater.inflate(R.layout.tab_indicator,mTabWidget,false);
+        txtTab = (TextView)mTabIndicator.findViewById(R.id.tab_title);
+        imgTab = (ImageView)mTabIndicator.findViewById(R.id.tab_icon);
+        txtTab.setText(R.string.main_menu_appbox);
+        imgTab.setBackgroundResource(R.drawable.btn_appbox_bg);
+        mTabIndicators.add(mTabIndicator);
+
+        mTabManager.addTab(
+                mTabHost.newTabSpec("tab4").setIndicator(mTabIndicators.get(3)),
+                AppboxFragment.class, null);
+
+        //个人中心
+        mTabIndicator = (RelativeLayout)inflater.inflate(R.layout.tab_indicator,mTabWidget,false);
+        txtTab = (TextView)mTabIndicator.findViewById(R.id.tab_title);
+        imgTab = (ImageView)mTabIndicator.findViewById(R.id.tab_icon);
+        txtTab.setText(R.string.main_menu_icenter);
+        imgTab.setBackgroundResource(R.drawable.btn_icenter_bg);
+        mTabIndicators.add(mTabIndicator);
+
+        mTabManager.addTab(
+                mTabHost.newTabSpec("tab5").setIndicator(mTabIndicators.get(4)),
+                ICenterFragment.class, null);
+
 
         if (savedInstanceState != null) {
             mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));
@@ -118,12 +154,15 @@ public class MainActivity extends FragmentActivity {
      * view to show as the tab content.  It listens to changes in tabs, and takes
      * care of switch to the correct fragment shown in a separate content area
      * whenever the selected tab changes.
+     * TODO: 每次tab切换时都会重新初始化fragment，是否可以参考http://www.cnblogs.com/tiantianbyconan/p/3360938.html将初始化过的fragment保存到内存中
      */
     public static class TabManager implements TabHost.OnTabChangeListener {
         private final FragmentActivity mActivity;
         private final TabHost mTabHost;
         private final int mContainerId;
         private final HashMap<String, TabInfo> mTabs = new HashMap<String, TabInfo>();
+        private final ArrayList<String> mTabKeys = new ArrayList<String>();
+        private int mCurrentTab;
         TabInfo mLastTab;
 
         static final class TabInfo {
@@ -180,13 +219,14 @@ public class MainActivity extends FragmentActivity {
 
             mTabs.put(tag, info);
             mTabHost.addTab(tabSpec);
+            mTabKeys.add(tag);
         }
 
         @Override
         public void onTabChanged(String tabId) {
             TabInfo newTab = mTabs.get(tabId);
             if (mLastTab != newTab) {
-                FragmentTransaction ft = mActivity.getSupportFragmentManager().beginTransaction();
+                FragmentTransaction ft = getFragmentTransaction(tabId);
                 if (mLastTab != null) {
                     if (mLastTab.fragment != null) {
                         ft.detach(mLastTab.fragment);
@@ -206,6 +246,31 @@ public class MainActivity extends FragmentActivity {
                 ft.commit();
                 mActivity.getSupportFragmentManager().executePendingTransactions();
             }
+
+            mCurrentTab = mTabHost.getCurrentTab();
+
         }
+
+        /**
+        * 获取一个带动画的FragmentTransaction
+        * @param tabId
+        * @return
+        */
+        private FragmentTransaction getFragmentTransaction(String tabId){
+            FragmentTransaction ft = mActivity.getSupportFragmentManager().beginTransaction();
+            int idx = getTabIndexByTagId(tabId);
+            // 设置切换动画
+            if(idx > mCurrentTab ){
+                ft.setCustomAnimations(R.anim.slide_left_in, R.anim.slide_left_out);
+            }else{
+                ft.setCustomAnimations(R.anim.slide_right_in, R.anim.slide_right_out);
+            }
+            return ft;
+        }
+
+        private int getTabIndexByTagId(String tabId){
+            return mTabKeys.indexOf(tabId);
+        }
+
     }
 }
