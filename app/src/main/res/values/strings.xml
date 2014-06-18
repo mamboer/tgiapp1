@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">赤壁乱舞</string>
+    <string name="app_id">sgz</string>
     <string name="app_copyright">Copyright © 2005 - %1$s Tencent. All Rights Reserved. \n腾讯公司  版权所有</string>
 
     <integer name="home_slider_interval">6</integer>

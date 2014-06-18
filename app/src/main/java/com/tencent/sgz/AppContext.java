@@ -51,6 +51,7 @@ import com.tencent.sgz.common.ImageUtils;
 import com.tencent.sgz.common.MethodsCompat;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
+import com.tencent.sgz.entity.AppData;
 import com.tencent.sgz.ui.Login;
 
 import android.app.Application;
@@ -88,6 +89,9 @@ public class AppContext extends Application {
 	private boolean login = false;	//登录状态
 	private long loginUid = 0;	//登录用户的id
 	private Hashtable<String, Object> memCacheRegion = new Hashtable<String, Object>();
+
+    private AppData data;
+
     /**
      * Application Contenxt singleton instance
      */
@@ -1343,6 +1347,9 @@ public class AppContext extends Application {
 		lu.setRememberMe(StringUtils.toBool(getProperty("user.isRememberMe")));
 		return lu;
 	}
+
+    public void setData(AppData data){this.data = data;}
+    public AppData getData(){return this.data;}
 	
 	/**
 	 * 保存用户头像
@@ -1505,7 +1512,7 @@ public class AppContext extends Application {
 	 * @param cachefile
 	 * @return
 	 */
-	private boolean isReadDataCache(String cachefile)
+	protected boolean isReadDataCache(String cachefile)
 	{
 		return readObject(cachefile) != null;
 	}
@@ -1578,7 +1585,7 @@ public class AppContext extends Application {
 	/**
 	 * 清除缓存目录
 	 * @param dir 目录
-	 * @param numDays 当前系统时间
+	 * @param curTime 当前系统时间
 	 * @return
 	 */
 	private int clearCacheFolder(File dir, long curTime) {          

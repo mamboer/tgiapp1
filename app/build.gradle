@@ -59,4 +59,5 @@ dependencies {
     compile 'com.google.zxing:android-integration:3.0.1'
     compile 'com.android.support:support-v4:19.1.+'
     compile 'com.android.support:appcompat-v7:19.+'
+    compile 'com.google.code.gson:gson:+'
 }

@@ -30,7 +30,7 @@ import java.util.ListIterator;
  * that switches between tabs and also allows the user to perform horizontal
  * flicks to move between the tabs.
  */
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentBaseActivity{
 
     TabHost mTabHost;
 
@@ -60,7 +60,7 @@ public class MainActivity extends FragmentActivity {
 
         mTabWidget = (TabWidget) findViewById(android.R.id.tabs);
 
-        mTabManager = new TabManager(this, mTabHost, R.id.realtabcontent);
+        mTabManager = new TabManager(this, mTabHost, R.id.realtabcontent,true);
 
 
 
@@ -165,6 +165,8 @@ public class MainActivity extends FragmentActivity {
         private int mCurrentTab;
         TabInfo mLastTab;
 
+        private boolean keepFragmentInMemory;
+
         static final class TabInfo {
             private final String tag;
             private final Class<?> clss;
@@ -195,10 +197,16 @@ public class MainActivity extends FragmentActivity {
         }
 
         public TabManager(FragmentActivity activity, TabHost tabHost, int containerId) {
+            this(activity,tabHost,containerId,false);
+
+        }
+
+        public TabManager(FragmentActivity activity, TabHost tabHost, int containerId,boolean keepFragmentInMemory) {
             mActivity = activity;
             mTabHost = tabHost;
             mContainerId = containerId;
             mTabHost.setOnTabChangedListener(this);
+            this.keepFragmentInMemory = keepFragmentInMemory;
         }
 
         public void addTab(TabHost.TabSpec tabSpec, Class<?> clss, Bundle args) {
@@ -229,7 +237,13 @@ public class MainActivity extends FragmentActivity {
                 FragmentTransaction ft = getFragmentTransaction(tabId);
                 if (mLastTab != null) {
                     if (mLastTab.fragment != null) {
-                        ft.detach(mLastTab.fragment);
+
+                        if(keepFragmentInMemory){
+                            mLastTab.fragment.onPause();
+                            ft.hide(mLastTab.fragment);
+                        }else{
+                            ft.detach(mLastTab.fragment);
+                        }
                     }
                 }
                 if (newTab != null) {
@@ -238,7 +252,13 @@ public class MainActivity extends FragmentActivity {
                                 newTab.clss.getName(), newTab.args);
                         ft.add(mContainerId, newTab.fragment, newTab.tag);
                     } else {
-                        ft.attach(newTab.fragment);
+                        if(keepFragmentInMemory){
+                            newTab.fragment.onResume();
+                            ft.show(newTab.fragment);
+                        }else{
+                            ft.attach(newTab.fragment);
+                        }
+
                     }
                 }
 

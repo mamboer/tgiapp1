@@ -303,6 +303,10 @@
 
         <activity
             android:name=".ui.MainActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar"
             android:label="@string/title_activity_main" >
         </activity>
 

@@ -18,6 +18,7 @@ import roboguice.activity.RoboActivity;
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
  * @created 2014-5-11
+ * TODO:请注意BaseActiviy和FragmentBaseActivity的同步
  */
 public class BaseActivity extends RoboActivity {
 
