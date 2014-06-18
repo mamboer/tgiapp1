@@ -18,6 +18,7 @@ import com.tencent.sgz.entity.ArticleList;
 
 import java.util.ArrayList;
 
+
 public class ViewFlowAdapter extends BaseAdapter {
 
 	private LayoutInflater mInflater;
@@ -34,8 +35,12 @@ public class ViewFlowAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return items.size();
-	}
+
+        //return items.size();
+        //这里是为了实现循环播放
+        //http://www.eoeandroid.com/thread-163018-1-1.html
+        return Integer.MAX_VALUE;
+    }
 
 	@Override
 	public Object getItem(int position) {

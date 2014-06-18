@@ -60,4 +60,5 @@ dependencies {
     compile 'com.android.support:support-v4:19.1.+'
     compile 'com.android.support:appcompat-v7:19.+'
     compile 'com.google.code.gson:gson:+'
+    compile 'com.viewpagerindicator:library:2.4.1@aar'
 }

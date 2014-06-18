@@ -17,16 +17,11 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -81,7 +76,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
         };
     };
 
-    private MyDearViennaLiao_SliderPageChangeListener slider_pageChangeListener;
+    private ILoveViennaLiaoSliderPageChangeListener slider_pageChangeListener;
     private ScrollTask slider_viennaLiaoScrollTask;
 
 	/**
@@ -262,19 +257,19 @@ public class ListViewNewsAdapter extends BaseAdapter {
         }
 
         slider_dots = new ArrayList<View>();
-        slider_dots.add(context.findViewById(R.id.v_dot0));
-        slider_dots.add(context.findViewById(R.id.v_dot1));
-        slider_dots.add(context.findViewById(R.id.v_dot2));
-        slider_dots.add(context.findViewById(R.id.v_dot3));
+        slider_dots.add(listContainer.inflate(R.layout.home_slider_dot,null));
+        slider_dots.add(listContainer.inflate(R.layout.home_slider_dot,null));
+        slider_dots.add(listContainer.inflate(R.layout.home_slider_dot,null));
+        slider_dots.add(listContainer.inflate(R.layout.home_slider_dot,null));
 
         slider_title = (TextView) context.findViewById(R.id.tv_title);
         slider_title.setText(slider_titles[0]);//
 
         //这里不用final会报错
         final ViewPager slider_viewPager1 = (ViewPager) context.findViewById(R.id.vp);
-        slider_viewPager1.setAdapter(new MyDearViennaLiao_SliderAdapter());
+        slider_viewPager1.setAdapter(new ILoveViennaLiaoSliderAdapter());
 
-        slider_pageChangeListener = new MyDearViennaLiao_SliderPageChangeListener();
+        slider_pageChangeListener = new ILoveViennaLiaoSliderPageChangeListener();
 
         slider_viewPager1.setOnPageChangeListener(slider_pageChangeListener);
 
@@ -335,7 +330,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
 
     }
 
-    private class MyDearViennaLiao_SliderPageChangeListener implements ViewPager.OnPageChangeListener {
+    private class ILoveViennaLiaoSliderPageChangeListener implements ViewPager.OnPageChangeListener {
         private int oldPosition = 0;
 
         /**
@@ -361,7 +356,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
     }
 
 
-    private class MyDearViennaLiao_SliderAdapter extends PagerAdapter {
+    private class ILoveViennaLiaoSliderAdapter extends PagerAdapter {
 
         @Override
         public int getCount() {

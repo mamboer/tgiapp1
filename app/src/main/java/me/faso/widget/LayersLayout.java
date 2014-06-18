@@ -4,15 +4,15 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.LinearLayout;
 
-import org.taptwo.android.widget.ViewFlow;
 
 public class LayersLayout extends LinearLayout {
 	/**
 	 * 自定义图层
 	 */
-	private ViewFlow viewFlow;
+	private TouchableView viewFlow;
 	private String TAG = "MyViewFlow";
 	boolean onHorizontal = false;
 	float x = 0.0f;
@@ -28,7 +28,7 @@ public class LayersLayout extends LinearLayout {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setView(ViewFlow viewFlow) {
+	public void setView(TouchableView viewFlow) {
 		this.viewFlow = viewFlow;
 	}
 
@@ -49,7 +49,7 @@ public class LayersLayout extends LinearLayout {
 			break;
 		}
 
-		if (ViewFlow.onTouch) {
+		if (viewFlow.isOnTouching()) {
 			float dx = Math.abs(ev.getX() - x);
 			Log.i("MyViewFlow", "dx:=" + dx);
 			if (dx > 20.0) {
@@ -71,10 +71,15 @@ public class LayersLayout extends LinearLayout {
 	// 对触屏事件进行处理
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		Log.i(TAG, "viewFlow是否被点击：" + ViewFlow.onTouch);
-		if (ViewFlow.onTouch) {
+		Log.i(TAG, "viewFlow是否被点击：" + viewFlow.isOnTouching());
+		if (viewFlow.isOnTouching()) {
 			return viewFlow.onTouchEvent(event);
 		}
 		return super.onTouchEvent(event);
 	}
+
+    public interface TouchableView {
+        boolean isOnTouching();
+        boolean onTouchEvent(MotionEvent event);
+    }
 }

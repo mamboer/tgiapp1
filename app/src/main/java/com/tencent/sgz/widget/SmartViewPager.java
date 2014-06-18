@@ -1,14 +1,24 @@
 package com.tencent.sgz.widget;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.widget.ListView;
 import android.widget.ScrollView;
+
+import com.tencent.sgz.R;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import me.faso.widget.LayersLayout;
 
 /**
  * Custom {@link ViewPager} implementation to resolve scroll gesture directions more accurate than a regular
@@ -22,7 +32,13 @@ import android.widget.ScrollView;
  * scrolling directions.
  * http://stackoverflow.com/questions/8381697/viewpager-inside-a-scrollview-does-not-scroll-correclty
  */
-public class SmartViewPager extends ViewPager {
+public class SmartViewPager extends ViewPager implements LayersLayout.TouchableView {
+
+    private  boolean isOnTouching;
+    @Override
+    public boolean isOnTouching(){
+        return this.isOnTouching;
+    }
 
     // -----------------------------------------------------------------------
     //
@@ -53,9 +69,24 @@ public class SmartViewPager extends ViewPager {
         if (!mIsLockOnHorizontalAxis)
             mIsLockOnHorizontalAxis = mGestureDetector.onTouchEvent(event);
 
-        // release the lock when finger is up
-        if (event.getAction() == MotionEvent.ACTION_UP)
-            mIsLockOnHorizontalAxis = false;
+        final int action = event.getAction();
+
+        switch (action) {
+            case MotionEvent.ACTION_DOWN:
+                isOnTouching = true;
+                stopAutoSliding();
+                break;
+
+            case MotionEvent.ACTION_MOVE:
+                break;
+
+            case MotionEvent.ACTION_UP:
+                // release the lock when finger is up
+                mIsLockOnHorizontalAxis = false;
+                isOnTouching = false;
+                startAutoSliding();
+                break;
+        }
 
         getParent().requestDisallowInterceptTouchEvent(mIsLockOnHorizontalAxis);
         return super.onTouchEvent(event);
@@ -83,6 +114,53 @@ public class SmartViewPager extends ViewPager {
             return allowScroll;
         }
 
+    }
+
+    private int mCurrentItem;
+
+    private class ScrollTask implements Runnable {
+
+        public void run() {
+            synchronized (SmartViewPager.this) {
+
+                mCurrentItem = (SmartViewPager.this.getCurrentItem() + 1) % SmartViewPager.this.getAdapter().getCount();
+                Log.e("LV","slider_viewPager currentItem:"+mCurrentItem);
+                sliderHandler.obtainMessage().sendToTarget();
+            }
+        }
+
+    }
+
+    private Handler sliderHandler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+            Log.e("LV","slider_viewPager currentItem handler:"+mCurrentItem);
+            SmartViewPager.this.setCurrentItem(mCurrentItem);
+        };
+    };
+
+    // An ExecutorService that can schedule commands to run after a given delay,
+    // or to execute periodically.
+    private ScheduledExecutorService scheduledExecutorService;
+    private boolean isAutoTimerStarted = false;
+    private ScrollTask autoScrollTask;
+
+    public void startAutoSliding(){
+        if(isAutoTimerStarted){
+            return;
+        }
+        autoScrollTask = new ScrollTask();
+        scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        scheduledExecutorService.scheduleAtFixedRate(autoScrollTask, 3, SmartViewPager.this.getContext().getResources().getInteger(R.integer.home_slider_interval), TimeUnit.SECONDS);
+
+        isAutoTimerStarted = true;
+
+    }
+
+    public void stopAutoSliding(){
+        if(scheduledExecutorService!=null && !scheduledExecutorService.isShutdown()) {
+            scheduledExecutorService.shutdown();
+            isAutoTimerStarted = false;
+        }
     }
 
 }
