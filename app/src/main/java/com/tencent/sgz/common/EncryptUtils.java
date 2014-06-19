@@ -11,6 +11,8 @@ import java.security.NoSuchAlgorithmException;
 public class EncryptUtils {
     private static final String SECRET_CODE = "::SECRET::";
 
+    private static final String TAG ="EncryptUtils";
+
     public static String encodeBase64(String txt) {
         return Base64.encodeToString(txt.getBytes(), Base64.DEFAULT);
     }

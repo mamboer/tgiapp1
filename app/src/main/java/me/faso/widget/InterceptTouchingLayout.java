@@ -7,8 +7,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
-
-public class LayersLayout extends LinearLayout {
+/**
+ * 使用InterceptTouchingLayout有时候会报：java.lang.IllegalArgumentException: pointerIndex out of range
+ * http://blog.sina.com.cn/s/blog_6400e5c50101ll09.html
+ */
+public class InterceptTouchingLayout extends LinearLayout {
 	/**
 	 * 自定义图层
 	 */
@@ -18,12 +21,12 @@ public class LayersLayout extends LinearLayout {
 	float x = 0.0f;
 	float y = 0.0f;
 
-	public LayersLayout(Context context) {
+	public InterceptTouchingLayout(Context context) {
 		super(context);
 		// TODO Auto-generated constructor stub
 	}
 
-	public LayersLayout(Context context, AttributeSet attrs) {
+	public InterceptTouchingLayout(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
 	}
@@ -58,24 +61,29 @@ public class LayersLayout extends LinearLayout {
 			if (onHorizontal) {
 				Log.i(TAG, "viewFlow处理");
 				return true;
-			} else {
-				Log.i(TAG, "listview处理");
-				return super.onInterceptTouchEvent(ev);
 			}
-		} else {
-			return super.onInterceptTouchEvent(ev);
 		}
 
+        Log.i(TAG, "listview处理");
+        try {
+            return super.onInterceptTouchEvent(ev);
+        }catch(IllegalArgumentException ex) {
+            return false;
+        }
 	}
 
 	// 对触屏事件进行处理
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		Log.i(TAG, "viewFlow是否被点击：" + viewFlow.isOnTouching());
-		if (viewFlow.isOnTouching()) {
-			return viewFlow.onTouchEvent(event);
-		}
-		return super.onTouchEvent(event);
+        try {
+            if (viewFlow.isOnTouching()) {
+                return viewFlow.onTouchEvent(event);
+            }
+            return super.onTouchEvent(event);
+        }catch(IllegalArgumentException ex) {
+            return false;
+        }
 	}
 
     public interface TouchableView {

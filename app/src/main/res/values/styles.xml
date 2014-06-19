@@ -242,6 +242,7 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
     <style name="main_head">
+        <item name="android:layout_weight">0</item>
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">50dip</item>
         <item name="android:background">@color/head_bg</item>

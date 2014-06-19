@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
-import android.view.VelocityTracker;
 import android.widget.ListView;
 import android.widget.ScrollView;
 
@@ -18,7 +17,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import me.faso.widget.LayersLayout;
+import me.faso.widget.InterceptTouchingLayout;
 
 /**
  * Custom {@link ViewPager} implementation to resolve scroll gesture directions more accurate than a regular
@@ -32,7 +31,7 @@ import me.faso.widget.LayersLayout;
  * scrolling directions.
  * http://stackoverflow.com/questions/8381697/viewpager-inside-a-scrollview-does-not-scroll-correclty
  */
-public class SmartViewPager extends ViewPager implements LayersLayout.TouchableView {
+public class SmartViewPager extends ViewPager implements InterceptTouchingLayout.TouchableView {
 
     private  boolean isOnTouching;
     @Override
@@ -73,11 +72,9 @@ public class SmartViewPager extends ViewPager implements LayersLayout.TouchableV
 
         switch (action) {
             case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_MOVE:
                 isOnTouching = true;
                 stopAutoSliding();
-                break;
-
-            case MotionEvent.ACTION_MOVE:
                 break;
 
             case MotionEvent.ACTION_UP:
@@ -87,7 +84,7 @@ public class SmartViewPager extends ViewPager implements LayersLayout.TouchableV
                 startAutoSliding();
                 break;
         }
-
+        //如果mIsLockOnHorizontalAxis为true,此句代码是为了通知他的父ViewPager现在进行的是本控件的操作，不要对我的操作进行干扰
         getParent().requestDisallowInterceptTouchEvent(mIsLockOnHorizontalAxis);
         return super.onTouchEvent(event);
     }

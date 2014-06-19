@@ -2,19 +2,22 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="@color/page_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <me.faso.widget.LayersLayout
+    <!--
+    使用InterceptTouchingLayout有时候会报：java.lang.IllegalArgumentException: pointerIndex out of range
+    http://blog.sina.com.cn/s/blog_6400e5c50101ll09.html
+    这里不用也可以，因为SmartViewPager解决了活动冲突的问题
+    -->
+    <!--
+    <me.faso.widget.InterceptTouchingLayout
         android:id="@+id/layerslayout"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:orientation="vertical"
         android:paddingLeft="0dip"
         android:paddingRight="0dip" >
-
-        <!-- 下拉刷新 -->
 
         <me.faso.widget.PullToRefreshListView
             android:id="@+id/pulltorefreshlistview"
@@ -28,6 +31,18 @@
             android:fastScrollEnabled="true">
         </me.faso.widget.PullToRefreshListView>
 
-    </me.faso.widget.LayersLayout>
+    </me.faso.widget.InterceptTouchingLayout>
+    -->
+
+    <me.faso.widget.PullToRefreshListView
+        android:id="@+id/pulltorefreshlistview"
+        android:divider="@color/transparent"
+        android:dividerHeight="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:drawSelectorOnTop="false"
+        android:fadingEdgeLength="0dip"
+        android:fastScrollEnabled="true">
+    </me.faso.widget.PullToRefreshListView>
 
 </LinearLayout>

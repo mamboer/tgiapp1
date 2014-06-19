@@ -5,33 +5,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.tencent.sgz.AppContext;
 import com.tencent.sgz.R;
 import com.tencent.sgz.adapter.HomeListAdapter;
 import com.tencent.sgz.adapter.ILoveViennaLiaoSliderAdapter;
-import com.tencent.sgz.adapter.ViewFlowAdapter;
-import com.tencent.sgz.bean.News;
-import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.AppData;
-import com.tencent.sgz.entity.Article;
 import com.tencent.sgz.widget.SmartViewPager;
 
-import java.util.ArrayList;
-
-import me.faso.widget.LayersLayout;
+import me.faso.widget.InterceptTouchingLayout;
 import me.faso.widget.PullToRefreshBase;
 
 import com.viewpagerindicator.*;
@@ -41,7 +27,7 @@ public class HomeFragment extends FragmentBase {
 
     private ListView listView; // 下拉刷新的listview
     private SmartViewPager viewFlow; // 进行图片轮播的ViewPager
-    private LayersLayout layersLayout; // 自定义图层，用于对触屏事件进行重定向
+    private InterceptTouchingLayout interceptTouchingLayout; // 自定义图层，用于对触屏事件进行重定向
 
     private HomeBroadcastReceiver receiver;
     private IntentFilter intentFilter;
@@ -111,9 +97,8 @@ public class HomeFragment extends FragmentBase {
         listView.addHeaderView(header); // 将viewFlow添加到listview中
 
         //图片轮播
-        int viewFlowCount = ad.getNotices().getItems().size();
         viewFlow = (SmartViewPager) header.findViewById(R.id.vp);// 获得viewPager对象
-        viewFlow.setAdapter(new ILoveViennaLiaoSliderAdapter(getActivity(),ad.getNotices().getItems()));
+        viewFlow.setAdapter(new ILoveViennaLiaoSliderAdapter(getActivity(),ad.getSlides().getItems()));
 
         sliderPageChangeListener = new ILoveViennaLiaoSliderPageChangeListener();
 
@@ -123,8 +108,8 @@ public class HomeFragment extends FragmentBase {
         vpDots =(CirclePageIndicator) header.findViewById(R.id.vp_dots);
         vpDots.setViewPager(viewFlow);
 
-        layersLayout = (LayersLayout) parent.findViewById(R.id.layerslayout);// 获得自定义图层，对触屏事件进行重定向
-        layersLayout.setView(viewFlow); // 将viewFlow对象传递给自定义图层，用于对事件进行重定向
+        //interceptTouchingLayout = (InterceptTouchingLayout) parent.findViewById(R.id.layerslayout);// 获得自定义图层，对触屏事件进行重定向
+        //interceptTouchingLayout.setView(viewFlow); // 将viewFlow对象传递给自定义图层，用于对事件进行重定向
 
         // 绑定数据
         lvAdapter = new HomeListAdapter(ct,ad.getArticles(),R.layout.home_news_listitem);

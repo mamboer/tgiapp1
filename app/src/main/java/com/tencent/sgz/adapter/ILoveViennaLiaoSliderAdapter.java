@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.R;
 import com.tencent.sgz.bean.News;
 import com.tencent.sgz.common.UIHelper;
@@ -39,10 +40,10 @@ public class ILoveViennaLiaoSliderAdapter extends PagerAdapter {
 
         View view = inflater.inflate(R.layout.viewflow_image_item, null);
         ImageView iv =(ImageView) view.findViewById(R.id.imgView);
-        Article item = items.get(arg1);
+        final Article item = items.get(arg1);
         String url = item.getCover();
         if(null==url||url.equals("")){
-            url = "http://ossweb-img.qq.com/upload/webplat/info/tgideas/201406/1402931095_1436653066_785_imageAddr.jpg";
+            url = AppDataProvider.URL.DEFAULT_SLIDE_IMG;
         }
         UIHelper.showLoadImage(iv, url, "图片加载失败" + url);
 
@@ -50,7 +51,7 @@ public class ILoveViennaLiaoSliderAdapter extends PagerAdapter {
             @Override
             public void onClick(View view) {
                 News news = new News();
-                news.setUrl("http://ttxd.qq.com/webplat/info/news_version3/7367/7750/7757/m6160/201406/264617.shtml");
+                news.setUrl(item.getUrl());
                 UIHelper.showNewsDetailByInstance(context, news);
             }
         });

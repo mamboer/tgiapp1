@@ -11,6 +11,7 @@ public class AppData implements Serializable {
         errCode = 0;
         articles = new ArticleList();
         notices = new ArticleList();
+        slides = new ArticleList();
         misc = new MiscData();
     }
 
@@ -19,6 +20,7 @@ public class AppData implements Serializable {
 
     private ArticleList articles;
     private ArticleList notices;
+    private ArticleList slides;
     private MiscData misc;
 
     public ArticleList getArticles() {
@@ -29,6 +31,10 @@ public class AppData implements Serializable {
         this.articles = articles;
     }
 
+    /**
+     * 获取公告信息
+     * @return
+     */
     public ArticleList getNotices() {
         return notices;
     }
@@ -59,5 +65,21 @@ public class AppData implements Serializable {
 
     public void setErrMsg(String errMsg) {
         this.errMsg = errMsg;
+    }
+
+    /**
+     * 获取图片轮播数据
+     * @return
+     */
+    public ArticleList getSlides() {
+        return slides;
+    }
+
+    /**
+     * 设置图片轮播数据
+     * @param slides
+     */
+    public void setSlides(ArticleList slides) {
+        this.slides = slides;
     }
 }

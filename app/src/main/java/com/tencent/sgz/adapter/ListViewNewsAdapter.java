@@ -262,8 +262,6 @@ public class ListViewNewsAdapter extends BaseAdapter {
         slider_dots.add(listContainer.inflate(R.layout.home_slider_dot,null));
         slider_dots.add(listContainer.inflate(R.layout.home_slider_dot,null));
 
-        slider_title = (TextView) context.findViewById(R.id.tv_title);
-        slider_title.setText(slider_titles[0]);//
 
         //这里不用final会报错
         final ViewPager slider_viewPager1 = (ViewPager) context.findViewById(R.id.vp);
@@ -340,7 +338,6 @@ public class ListViewNewsAdapter extends BaseAdapter {
         @Override
         public void onPageSelected(int position) {
             slider_currentItem = position;
-            slider_title.setText(slider_titles[position]);
             slider_dots.get(oldPosition).setBackgroundResource(R.drawable.dot_normal);
             slider_dots.get(position).setBackgroundResource(R.drawable.dot_focus);
             oldPosition = position;

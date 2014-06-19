@@ -27,17 +27,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="35dip"
                 android:layout_gravity="bottom"
-                android:background="#22000000"
+                android:background="#33000000"
                 android:gravity="center"
                 android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/tv_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="中国家庭院校园区域名字体现"
-                    android:textColor="#ffffff"
-                    android:visibility="gone"/>
 
                 <com.viewpagerindicator.CirclePageIndicator
                     android:id="@+id/vp_dots"
