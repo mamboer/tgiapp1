@@ -1,5 +1,7 @@
 package com.tencent.sgz.entity;
 
+import com.tencent.sgz.common.EncryptUtils;
+
 /**
  * Created by levin on 6/17/14.
  */
@@ -12,4 +14,9 @@ public class ActionItem extends Entity {
 
     public void setAction(String act){this.action = act;}
     public String getAction(){return this.action;}
+
+    public String getMD5(){
+        return EncryptUtils.encodeMD5(this.action);
+    }
+
 }

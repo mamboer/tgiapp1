@@ -4,6 +4,7 @@
     <string name="app_name">赤壁乱舞</string>
     <string name="app_id">sgz</string>
     <string name="app_copyright">Copyright © 2005 - %1$s Tencent. All Rights Reserved. \n腾讯公司  版权所有</string>
+    <string name="app_datahost">http://ttxd.qq.com</string>
 
     <integer name="home_slider_interval">6</integer>
 
@@ -83,6 +84,8 @@
     <string name="user_friend_fans">粉丝(%d)</string>
 
     <integer name="userfav_swipelistview_offsetleft">65</integer>
+    <integer name="channelfav_max">4</integer>
+    <string name="channelfav_name">猜你喜欢</string>
 
     <string name="comment_list_head_title">玩家评论</string>
     <string name="comment_listitem_type">发布于</string>

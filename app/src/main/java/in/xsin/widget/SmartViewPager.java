@@ -1,4 +1,4 @@
-package com.tencent.sgz.widget;
+package in.xsin.widget;
 
 import android.content.Context;
 import android.os.Handler;

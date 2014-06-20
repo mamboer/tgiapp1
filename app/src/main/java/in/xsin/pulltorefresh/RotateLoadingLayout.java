@@ -1,4 +1,4 @@
-package com.tencent.sgz.widget.SwipeRefresh;
+package in.xsin.pulltorefresh;
 
 import com.tencent.sgz.R;
 
@@ -96,7 +96,7 @@ public class RotateLoadingLayout extends LoadingLayout {
     @Override
     public void setLastUpdatedLabel(CharSequence label) {
         // 如果最后更新的时间的文本是空的话，隐藏前面的标题
-        mHeaderTimeViewTitle.setVisibility(TextUtils.isEmpty(label) ? View.INVISIBLE : View.VISIBLE);
+        mHeaderTimeViewTitle.setVisibility(TextUtils.isEmpty(label) ? INVISIBLE : VISIBLE);
         mHeaderTimeView.setText(label);
     }
 

@@ -1,10 +1,11 @@
-package com.tencent.sgz.widget;
+package in.xsin.widget;
 
 import android.view.View;
 import android.widget.GridView;
 
 /**
  * Created by levin on 6/10/14.
+ * http://blog.csdn.net/gaohaiyanghy/article/details/10175371
  */
 public class GridViewForScrollView extends GridView
 {
@@ -15,6 +16,10 @@ public class GridViewForScrollView extends GridView
     }
 
     /**
+     * 其中onMeasure函数决定了组件显示的高度与宽度；
+     makeMeasureSpec函数中第一个函数决定布局空间的大小，第二个参数是布局模式
+     MeasureSpec.AT_MOST的意思就是子控件需要多大的控件就扩展到多大的空间
+     同样的道理，ListView也适用
      */
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {

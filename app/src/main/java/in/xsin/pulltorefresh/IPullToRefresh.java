@@ -1,9 +1,6 @@
-package com.tencent.sgz.widget.SwipeRefresh;
+package in.xsin.pulltorefresh;
 
-import android.content.Context;
-import android.util.AttributeSet;
 import android.view.View;
-import com.tencent.sgz.widget.SwipeRefresh.PullToRefreshBase.OnRefreshListener;
 
 /**
  * 定义了拉动刷新的接口
@@ -61,7 +58,7 @@ public interface IPullToRefresh<T extends View> {
      * 
      * @param refreshListener 监听器对象
      */
-    public void setOnRefreshListener(OnRefreshListener<T> refreshListener);
+    public void setOnRefreshListener(PullToRefreshBase.OnRefreshListener<T> refreshListener);
     
     /**
      * 结束下拉刷新

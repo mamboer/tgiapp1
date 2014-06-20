@@ -88,4 +88,9 @@ public class ILoveViennaLiaoSliderAdapter extends PagerAdapter {
     public void finishUpdate(ViewGroup arg0) {
 
     }
+
+    public void updateData(ArrayList<Article> data){
+        this.items = data;
+        this.notifyDataSetChanged();
+    }
 }

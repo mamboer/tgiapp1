@@ -1,5 +1,7 @@
 package com.tencent.sgz.entity;
 
+import com.tencent.sgz.common.EncryptUtils;
+
 import java.io.Serializable;
 
 /**
@@ -159,5 +161,9 @@ public class Article implements Serializable {
 
     public void setEvtEndAt(String evtEndAt) {
         this.evtEndAt = evtEndAt;
+    }
+
+    public String getMD5(){
+        return EncryptUtils.encodeMD5(this.url);
     }
 }

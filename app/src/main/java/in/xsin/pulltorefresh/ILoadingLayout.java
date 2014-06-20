@@ -1,4 +1,4 @@
-package com.tencent.sgz.widget.SwipeRefresh;
+package in.xsin.pulltorefresh;
 
 
 /**

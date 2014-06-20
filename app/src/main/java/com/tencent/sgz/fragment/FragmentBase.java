@@ -50,9 +50,15 @@ public abstract class FragmentBase extends Fragment {
         }
 
         fragmentView = inflater.inflate(fragmentViewId, container, false);
-        this.initView(fragmentView,inflater);
+        //this.initView(fragmentView,inflater);
 
         return fragmentView;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+        this.initView(fragmentView,getLayoutInflater(savedInstanceState));
     }
 
     public View getFragmentView() {

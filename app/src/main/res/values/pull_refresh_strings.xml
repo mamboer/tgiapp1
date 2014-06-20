@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="pushmsg_center_no_more_msg">已经到底啦</string>
+    <string name="pushmsg_center_no_more_msg">已加载全部</string>
     <string name="pushmsg_center_pull_up_text">松开加载更多</string>
     <string name="pushmsg_center_pull_down_text">下拉可以刷新</string>
     <string name="pushmsg_center_pull_release_text">松开获取更多</string>

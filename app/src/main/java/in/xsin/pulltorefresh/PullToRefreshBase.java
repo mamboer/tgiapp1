@@ -1,6 +1,6 @@
-package com.tencent.sgz.widget.SwipeRefresh;
+package in.xsin.pulltorefresh;
 
-import com.tencent.sgz.widget.SwipeRefresh.ILoadingLayout.State;
+import in.xsin.pulltorefresh.ILoadingLayout.State;
 
 import android.content.Context;
 import android.util.AttributeSet;

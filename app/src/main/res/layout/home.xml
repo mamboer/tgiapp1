@@ -34,15 +34,11 @@
     </me.faso.widget.InterceptTouchingLayout>
     -->
 
-    <me.faso.widget.PullToRefreshListView
+    <in.xsin.pulltorefresh.PullToRefreshListView
         android:id="@+id/pulltorefreshlistview"
-        android:divider="@color/transparent"
-        android:dividerHeight="0dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:drawSelectorOnTop="false"
-        android:fadingEdgeLength="0dip"
-        android:fastScrollEnabled="true">
-    </me.faso.widget.PullToRefreshListView>
+        android:layout_height="match_parent">
+
+    </in.xsin.pulltorefresh.PullToRefreshListView>
 
 </LinearLayout>

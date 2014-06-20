@@ -493,6 +493,12 @@
        	<item name="android:fadingEdge">none</item>
        	<item name="android:scrollingCache">false</item>
     </style>
+
+    <style name="widget_listview.article">
+        <item name="android:listSelector">@drawable/listview_item_selector</item>
+        <item name="android:divider">@drawable/transparent</item>
+        <item name="android:dividerHeight">0dp</item>
+    </style>
     
     <style name="widget_cdv">
         <item name="android:layout_width">fill_parent</item>

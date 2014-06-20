@@ -1,4 +1,4 @@
-package com.tencent.sgz.widget;
+package in.xsin.widget;
 
 
 
@@ -31,7 +31,7 @@ public class ListViewForScrollView extends ListView {
      */
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        //super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,
                 MeasureSpec.AT_MOST);

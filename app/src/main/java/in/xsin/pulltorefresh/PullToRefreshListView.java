@@ -1,4 +1,4 @@
-package com.tencent.sgz.widget.SwipeRefresh;
+package in.xsin.pulltorefresh;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -8,7 +8,7 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.Adapter;
 import android.widget.ListView;
 
-import com.tencent.sgz.widget.SwipeRefresh.ILoadingLayout.State;
+import in.xsin.pulltorefresh.ILoadingLayout.State;
 
 /**
  * 这个类实现了ListView下拉刷新，上加载更多和滑到底部自动加载
@@ -80,6 +80,15 @@ public class PullToRefreshListView extends PullToRefreshBase<ListView> implement
             LoadingLayout footerLoadingLayout = getFooterLoadingLayout();
             if (null != footerLoadingLayout) {
                 footerLoadingLayout.setState(State.NO_MORE_DATA);
+            }
+        }else{
+            if (null != mLoadMoreFooterLayout) {
+                mLoadMoreFooterLayout.setState(State.PULL_TO_REFRESH);
+            }
+
+            LoadingLayout footerLoadingLayout = getFooterLoadingLayout();
+            if (null != footerLoadingLayout) {
+                footerLoadingLayout.setState(State.PULL_TO_REFRESH);
             }
         }
     }

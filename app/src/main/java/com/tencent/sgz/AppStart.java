@@ -87,7 +87,7 @@ public class AppStart extends Activity {
                 Bundle data = msg.getData();
                 int errCode = data.getInt("errCode");
                 String errMsg = data.getString("errMsg");
-                //ac.setData((AppData)data.getSerializable("data"));
+                ac.setData((AppData)data.getSerializable("data"));
 
                 if(aa.hasEnded()){
                     redirectTo();
@@ -97,7 +97,7 @@ public class AppStart extends Activity {
         };
 
         //初始化数据
-        AppDataProvider.getAppData(ac,onAppDataGot , true);
+        AppDataProvider.getAppData(ac,onAppDataGot , false);
     }
     
     /**

@@ -7,27 +7,22 @@ import java.util.List;
 import com.tencent.sgz.R;
 import com.tencent.sgz.bean.Active;
 import com.tencent.sgz.bean.News;
-import com.tencent.sgz.bean.Tweet;
 import com.tencent.sgz.bean.Active.ObjectReply;
 import com.tencent.sgz.common.BitmapManager;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
-import com.tencent.sgz.widget.GridViewForScrollView;
+import in.xsin.widget.GridViewForScrollView;
 import com.tencent.sgz.widget.LinkView;
 import com.tencent.sgz.widget.LinkView.OnLinkClickListener;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * 用户动态Adapter类

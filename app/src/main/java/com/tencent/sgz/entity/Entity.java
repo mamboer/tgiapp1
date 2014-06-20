@@ -6,6 +6,7 @@ import java.io.Serializable;
  * Created by levin on 6/17/14.
  */
 public class Entity implements Serializable {
+
     private String id;
     private String name;
 

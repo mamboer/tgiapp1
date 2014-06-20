@@ -1,23 +1,23 @@
-package com.tencent.sgz.widget.SwipeRefresh;
+package in.xsin.pulltorefresh;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
-import android.widget.ScrollView;
+import android.util.FloatMath;
+import android.webkit.WebView;
 
 /**
- * 封装了ScrollView的下拉刷新
+ * 封装了WebView的下拉刷新
  * 
  * @author Li Hong
  * @since 2013-8-22
  */
-public class PullToRefreshScrollView extends PullToRefreshBase<ScrollView> {
+public class PullToRefreshWebView extends PullToRefreshBase<WebView> {
     /**
      * 构造方法
      * 
      * @param context context
      */
-    public PullToRefreshScrollView(Context context) {
+    public PullToRefreshWebView(Context context) {
         this(context, null);
     }
     
@@ -27,7 +27,7 @@ public class PullToRefreshScrollView extends PullToRefreshBase<ScrollView> {
      * @param context context
      * @param attrs attrs
      */
-    public PullToRefreshScrollView(Context context, AttributeSet attrs) {
+    public PullToRefreshWebView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
     
@@ -38,7 +38,7 @@ public class PullToRefreshScrollView extends PullToRefreshBase<ScrollView> {
      * @param attrs attrs
      * @param defStyle defStyle
      */
-    public PullToRefreshScrollView(Context context, AttributeSet attrs, int defStyle) {
+    public PullToRefreshWebView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
@@ -46,9 +46,9 @@ public class PullToRefreshScrollView extends PullToRefreshBase<ScrollView> {
      * @see com.nj1s.lib.pullrefresh.PullToRefreshBase#createRefreshableView(android.content.Context, android.util.AttributeSet)
      */
     @Override
-    protected ScrollView createRefreshableView(Context context, AttributeSet attrs) {
-        ScrollView scrollView = new ScrollView(context);
-        return scrollView;
+    protected WebView createRefreshableView(Context context, AttributeSet attrs) {
+        WebView webView = new WebView(context);
+        return webView;
     }
 
     /**
@@ -64,11 +64,7 @@ public class PullToRefreshScrollView extends PullToRefreshBase<ScrollView> {
      */
     @Override
     protected boolean isReadyForPullUp() {
-        View scrollViewChild = mRefreshableView.getChildAt(0);
-        if (null != scrollViewChild) {
-            return mRefreshableView.getScrollY() >= (scrollViewChild.getHeight() - getHeight());
-        }
-        
-        return false;
+        float exactContentHeight = FloatMath.floor(mRefreshableView.getContentHeight() * mRefreshableView.getScale());
+        return mRefreshableView.getScrollY() >= (exactContentHeight - mRefreshableView.getHeight());
     }
 }

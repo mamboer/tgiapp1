@@ -21,8 +21,6 @@ public class HomeListAdapter extends BaseAdapter {
 
     private Context context;
 
-    private ArticleList data;
-
     private ArrayList<Article> items;
 
     private LayoutInflater inflater;
@@ -40,9 +38,8 @@ public class HomeListAdapter extends BaseAdapter {
         public TextView desc;
     }
 
-    public HomeListAdapter(Context context,ArticleList data,int resource) {
-        this.data = data;
-        this.items = data.getItems();
+    public HomeListAdapter(Context context,ArrayList<Article> data,int resource) {
+        this.items = data;
         this.context = context;
         this.itemViewResource = resource;
         this.inflater = LayoutInflater.from(context);	//创建视图容器并设置上下文
@@ -101,7 +98,7 @@ public class HomeListAdapter extends BaseAdapter {
         listItemView.title.setText(news.getTitle());
         listItemView.title.setTag(news);//设置隐藏参数(实体类)
         listItemView.author.setText(news.getAuthor());
-        listItemView.date.setText(StringUtils.friendly_time(news.getPubDate()));
+        listItemView.date.setText(StringUtils.friendly_time(news.getEvtStartAt()));
         listItemView.count.setText(news.getCommentCount()+"");
         listItemView.cntVote.setText(news.getVoteCount()+"");
         listItemView.cate.setText(cateName);
@@ -123,4 +120,14 @@ public class HomeListAdapter extends BaseAdapter {
         return convertView;
 
     }
+
+    public void updateData(ArrayList<Article> data,boolean isAppend){
+        if(!isAppend){
+            this.items = data;
+        }else{
+            this.items.addAll(data);
+        }
+        this.notifyDataSetChanged();
+    }
+
 }

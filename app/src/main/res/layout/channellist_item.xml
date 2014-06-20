@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:background="@color/white"
+android:layout_marginBottom="@dimen/space_10"
+android:orientation="horizontal"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+    >
+    <RelativeLayout
+        android:tag="catebtn"
+        style="@style/shortcut_button.forGridView">
+
+        <ImageView
+            style="@style/shortcut_button_img"
+            android:id="@+id/channellist_itemicon"
+            android:src="@drawable/ico_cate_news" />
+
+        <TextView
+            android:id="@+id/channellist_itemtext"
+            style="@style/shortcut_button_txt.style1"
+            android:text="新闻" />
+
+        <TextView
+            android:visibility="gone"
+            style="@style/shortcut_button_badge"
+            android:layout_alignRight="@+id/channellist_itemicon"
+            android:text="10"/>
+
+
+    </RelativeLayout>
+</LinearLayout>

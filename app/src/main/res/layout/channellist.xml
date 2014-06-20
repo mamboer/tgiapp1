@@ -29,7 +29,14 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <in.xsin.pulltorefresh.PullToRefreshScrollView
+        android:id="@+id/mPullScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </in.xsin.pulltorefresh.PullToRefreshScrollView>
+
     <ScrollView
+        android:visibility="gone"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 

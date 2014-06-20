@@ -82,4 +82,9 @@ public class AppData implements Serializable {
     public void setSlides(ArticleList slides) {
         this.slides = slides;
     }
+
+    public void appendArticles(ArticleList items){
+        this.articles.getItems().addAll(items.getItems());
+    }
+
 }
