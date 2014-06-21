@@ -497,7 +497,7 @@ public class Main extends BaseActivity {
 	 * 初始化新闻列表
 	 */
 	private void initNewsListView() {
-		lvNewsAdapter = new ListViewNewsAdapter(this, lvNewsData,R.layout.home_news_listitem,R.layout.frame_news_listview_header,-1);
+		lvNewsAdapter = new ListViewNewsAdapter(this, lvNewsData,R.layout.home_news_listitem,R.layout.home_listview_header,-1);
 		lvNews_footer = getLayoutInflater().inflate(R.layout.listview_footer,
 				null);
 		lvNews_foot_more = (TextView) lvNews_footer

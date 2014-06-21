@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/frame_home_header"
     android:orientation="vertical"
     android:layout_width="fill_parent"
@@ -27,20 +28,34 @@
                 android:layout_width="fill_parent"
                 android:layout_height="35dip"
                 android:layout_gravity="bottom"
-                android:background="#33000000"
+                android:background="#88000000"
                 android:gravity="center"
                 android:orientation="vertical" >
 
+                <!--
                 <com.viewpagerindicator.CirclePageIndicator
                     android:id="@+id/vp_dots"
                     android:padding="3dp"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent" />
+                -->
+                <in.xsin.widget.FlowIndicator
+                    android:id="@+id/vp_dots1"
+                    app:count="2"
+                    app:point_normal_color="@color/liter_gray"
+                    app:point_radius="3dp"
+                    app:point_seleted_color="#ffffff"
+                    app:point_size="5dip"
+                    app:space="12dip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </LinearLayout>
         </FrameLayout>
 
         <!--shortcut entries-->
         <LinearLayout
+            android:id="@+id/home_channel_menus"
             android:layout_width="fill_parent"
             android:layout_height="70dp"
             android:orientation="horizontal"
@@ -52,18 +67,21 @@
                 android:tag="catebtn"
                 style="@style/shortcut_button">
 
-                <ImageButton
+                <ImageView
                     style="@style/shortcut_button_img"
-                    android:id="@+id/shortcut_btn_hot"
+                    android:id="@+id/shortcut_btn1"
                     android:src="@drawable/ico_shortcut_hot" />
 
                 <TextView
+                    android:id="@+id/shortcut_txt1"
                     style="@style/shortcut_button_txt"
                     android:text="热点" />
 
                 <TextView
+                    android:visibility="gone"
+                    android:id="@+id/shortcut_badge1"
                     style="@style/shortcut_button_badge"
-                    android:layout_alignRight="@+id/shortcut_btn_hot"
+                    android:layout_alignRight="@+id/shortcut_btn1"
                     android:text="10"/>
 
 
@@ -78,18 +96,21 @@
                 android:tag="catebtn"
                 style="@style/shortcut_button">
 
-                <ImageButton
+                <ImageView
                     style="@style/shortcut_button_img"
-                    android:id="@+id/shortcut_btn_hero"
+                    android:id="@+id/shortcut_btn2"
                     android:src="@drawable/ico_shortcut_hero" />
 
                 <TextView
+                    android:id="@+id/shortcut_txt2"
                     style="@style/shortcut_button_txt"
                     android:text="英雄" />
 
                 <TextView
+                    android:visibility="gone"
+                    android:id="@+id/shortcut_badge2"
                     style="@style/shortcut_button_badge"
-                    android:layout_alignRight="@+id/shortcut_btn_hero"
+                    android:layout_alignRight="@+id/shortcut_btn2"
                     android:text="2"/>
 
             </RelativeLayout>
@@ -103,12 +124,13 @@
                 android:tag="catebtn"
                 style="@style/shortcut_button">
 
-                <ImageButton
+                <ImageView
                     style="@style/shortcut_button_img"
-                    android:id="@+id/shortcut_btn_gift"
+                    android:id="@+id/shortcut_btn3"
                     android:src="@drawable/ico_shortcut_gift" />
 
                 <TextView
+                    android:id="@+id/shortcut_txt3"
                     style="@style/shortcut_button_txt"
                     android:text="礼包" />
             </RelativeLayout>
@@ -153,6 +175,7 @@
             >
 
             <RelativeLayout
+                android:id="@+id/home_notice"
                 android:tag="notice"
                 style="@style/notice">
 
@@ -164,7 +187,7 @@
 
                 <TextView
                     style="@style/notice_txt"
-
+                    android:id="@+id/notice_txt"
                     android:layout_toRightOf="@+id/notice_badge"
                     android:text="庆祝游戏开服，送豪华礼包！！"
                     />

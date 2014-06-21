@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,7 +29,11 @@ import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.AppData;
 import com.tencent.sgz.entity.Article;
 import com.tencent.sgz.entity.ArticleList;
+import com.tencent.sgz.entity.ChannelGroup;
+import com.tencent.sgz.entity.ChannelItem;
 import com.tencent.sgz.widget.NewDataToast;
+
+import in.xsin.widget.FlowIndicator;
 import in.xsin.widget.SmartViewPager;
 
 import in.xsin.pulltorefresh.*;
@@ -47,7 +53,7 @@ public class HomeFragment extends FragmentBase {
 
     private PullToRefreshListView mPullListView;
     private ListView mListView; // 下拉刷新的listview
-    private SmartViewPager viewFlow; // 进行图片轮播的ViewPager
+    private SmartViewPager viewPager; // 进行图片轮播的ViewPager
     private InterceptTouchingLayout interceptTouchingLayout; // 自定义图层，用于对触屏事件进行重定向
 
     private HomeBroadcastReceiver receiver;
@@ -62,6 +68,8 @@ public class HomeFragment extends FragmentBase {
     private ILoveViennaLiaoSliderAdapter mSliderAdapter;
 
     private CirclePageIndicator vpDots;
+    private FlowIndicator vpDots1;
+    private int mSliderCount;
 
     private SimpleDateFormat mDateFormat = new SimpleDateFormat("MM-dd HH:mm");
 
@@ -84,14 +92,14 @@ public class HomeFragment extends FragmentBase {
     @Override
     public void onStart(){
         super.onStart();
-        //viewFlow.startAutoSliding(getContext()); // 启动自动播放
+        //viewPager.startAutoSliding(getContext()); // 启动自动播放
     }
 
     @Override
     public void onPause() {
 
         super.onPause();
-        viewFlow.stopAutoSliding();
+        viewPager.stopAutoSliding();
         getActivity().unregisterReceiver(receiver);
     }
 
@@ -100,7 +108,7 @@ public class HomeFragment extends FragmentBase {
 
         super.onResume();
 
-        viewFlow.startAutoSliding(); // 启动自动播放
+        viewPager.startAutoSliding(); // 启动自动播放
 
         receiver = new HomeBroadcastReceiver();
         getActivity().registerReceiver(receiver, getIntentFilter());
@@ -109,7 +117,7 @@ public class HomeFragment extends FragmentBase {
     @Override
     public void onStop(){
         super.onStop();
-        //viewFlow.stopAutoFlowTimer();
+        //viewPager.stopAutoFlowTimer();
     }
 
     private void updateData(AppData data,ArticleList newArticleItems){
@@ -126,18 +134,27 @@ public class HomeFragment extends FragmentBase {
 
     private void initSlider(View parent,LayoutInflater inflater,View header,AppData ad,AppContext ct){
         //图片轮播
+        mSliderCount = ad.getSlides().getItems().size();
         mSliderAdapter = new ILoveViennaLiaoSliderAdapter(getActivity(),ad.getSlides().getItems());
         sliderPageChangeListener = new ILoveViennaLiaoSliderPageChangeListener();
-        viewFlow = (SmartViewPager) parent.findViewById(R.id.vp);// 获得viewPager对象
-        viewFlow.setAdapter(mSliderAdapter);
-        viewFlow.setOnPageChangeListener(sliderPageChangeListener);
+        viewPager = (SmartViewPager) parent.findViewById(R.id.vp);// 获得viewPager对象
+        viewPager.setAdapter(mSliderAdapter);
+        viewPager.setOnPageChangeListener(sliderPageChangeListener);
 
         //图片轮播圆点
+        /*
         vpDots =(CirclePageIndicator) parent.findViewById(R.id.vp_dots);
-        vpDots.setViewPager(viewFlow);
+        vpDots.setViewPager(viewPager);
+        */
+        vpDots1 = (FlowIndicator) header.findViewById(R.id.vp_dots1);
+        vpDots1.setCount(mSliderCount);
 
         //interceptTouchingLayout = (InterceptTouchingLayout) parent.findViewById(R.id.layerslayout);// 获得自定义图层，对触屏事件进行重定向
-        //interceptTouchingLayout.setView(viewFlow); // 将viewFlow对象传递给自定义图层，用于对事件进行重定向
+        //interceptTouchingLayout.setView(viewPager); // 将viewFlow对象传递给自定义图层，用于对事件进行重定向
+
+        //设置ViewPager的默认项, 设置为长度的100倍，这样子开始就能往左滑动
+        //http://my.oschina.net/xsk/blog/119167
+        viewPager.setCurrentItem(mSliderCount * 100000);
     }
 
     private void initListView(View parent,LayoutInflater inflater,View header,AppData ad,final AppContext ct){
@@ -299,17 +316,57 @@ public class HomeFragment extends FragmentBase {
             }
         });
 
-        //最近点击的
-        ArrayList<View> cateBtnViews = UIHelper.getViewsByTag((ViewGroup)parent,"catebtn");
+        //最近点击的频道
+        LinearLayout homeChannelMenus = (LinearLayout) header.findViewById(R.id.home_channel_menus);
+        ArrayList<View> cateBtnViews = UIHelper.getViewsByTag((ViewGroup)header,"catebtn");
+        ImageView iv = null;
+        TextView tv = null;
+        ViewGroup vg = null;
+        ChannelItem citem = null;
 
-        for (View cateBtnView : cateBtnViews) {
-            cateBtnView.setOnClickListener(new View.OnClickListener() {
+        ChannelGroup favGroup = AppDataProvider.getFavChannelGroup(ct,false);
+        if(favGroup.getItems().size()<3){
+            homeChannelMenus.setVisibility(View.GONE);
+        }else{
+            for (int i=0;i<3;i++){
+                citem = favGroup.getItems().get(i);
+                vg = (ViewGroup) cateBtnViews.get(i);
+                iv = (ImageView)vg.getChildAt(0);
+                tv = (TextView)vg.getChildAt(1);
+
+                UIHelper.showLoadImage(iv,citem.getIcon(),"图标加载失败："+citem.getIcon());
+
+                tv.setText(citem.getName());
+
+                final ChannelItem citem1 = citem;
+                vg.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        News news = new News();
+                        news.setUrl(AppDataProvider.assertUrl(ct,citem1.getAction()));
+                        UIHelper.showNewsDetailByInstance(getActivity(),news);
+                    }
+                });
+
+            }
+        }//if
+
+    }
+
+    void initNotice(View parent,LayoutInflater inflater,View header,AppData ad,final AppContext ct){
+        RelativeLayout noticeView = (RelativeLayout)header.findViewById(R.id.home_notice);
+        TextView tv = (TextView)header.findViewById(R.id.notice_txt);
+
+        final ArrayList<Article> notices = ct.getData().getNotices().getItems();
+        if(notices.size()==0){
+            noticeView.setVisibility(View.GONE);
+        }else{
+            tv.setText(notices.get(0).getTitle());
+            noticeView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //TODO:
-                    String testUrl = "http://ttxd.qq.com/webplat/info/news_version3/7367/7750/7756/m6160/201406/264642.shtml";
                     News news = new News();
-                    news.setUrl(testUrl);
+                    news.setUrl(AppDataProvider.assertUrl(ct,notices.get(0).getUrl()));
                     UIHelper.showNewsDetailByInstance(getActivity(),news);
                 }
             });
@@ -326,13 +383,17 @@ public class HomeFragment extends FragmentBase {
             Log.e(TAG,"AppData为空，这是怎么回事？？");
         }
 
-        View header = inflater.inflate(R.layout.frame_news_listview_header, null);
+        View header = inflater.inflate(R.layout.home_listview_header, null);
 
         this.initListView(parent,inflater,header,ad,ct);
 
         this.initSlider(parent,inflater,header,ad,ct);
 
         this.initChannels(parent,inflater,header,ad,ct);
+
+        this.initNotice(parent,inflater,header,ad,ct);
+
+
 
     }
 
@@ -407,7 +468,7 @@ public class HomeFragment extends FragmentBase {
         @Override
         public void onPageSelected(int position) {
             oldPosition = position;
-
+            vpDots1.setSeletion(position);
         }
         @Override
         public void onPageScrollStateChanged(int state) {

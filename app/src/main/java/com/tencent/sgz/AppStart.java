@@ -54,9 +54,10 @@ public class AppStart extends Activity {
 		{
 			@Override
 			public void onAnimationEnd(Animation arg0) {
-				redirectTo();
+				//redirectTo();
 
                 if(ac.getData()!=null){
+                    Log.e(TAG,"AppData loaded and startup animation ended, preparing redirecting...");
                     redirectTo();
                 }
 
@@ -88,6 +89,8 @@ public class AppStart extends Activity {
                 int errCode = data.getInt("errCode");
                 String errMsg = data.getString("errMsg");
                 ac.setData((AppData)data.getSerializable("data"));
+
+                Log.e(TAG,"AppData loaded, "+(aa.hasEnded()?"startup animation ended,let's do redirect.":"startup animation running..."));
 
                 if(aa.hasEnded()){
                     redirectTo();

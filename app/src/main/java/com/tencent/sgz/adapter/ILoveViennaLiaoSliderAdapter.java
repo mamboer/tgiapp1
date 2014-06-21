@@ -31,16 +31,20 @@ public class ILoveViennaLiaoSliderAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return items.size();
+        //return items.size();
+        //http://my.oschina.net/xsk/blog/119167
+        return Integer.MAX_VALUE;
     }
 
     //TODO:
     @Override
-    public Object instantiateItem(ViewGroup arg0, int arg1) {
+    public Object instantiateItem(ViewGroup arg0, int position) {
+
+        int posi = position % items.size();
 
         View view = inflater.inflate(R.layout.viewflow_image_item, null);
         ImageView iv =(ImageView) view.findViewById(R.id.imgView);
-        final Article item = items.get(arg1);
+        final Article item = items.get(posi);
         String url = item.getCover();
         if(null==url||url.equals("")){
             url = AppDataProvider.URL.DEFAULT_SLIDE_IMG;
