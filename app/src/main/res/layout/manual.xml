@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/page_bg"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        />
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:layout_below="@id/textView1"
-        />
+    <include layout="@layout/manual_menu"></include>
+
+
+    <in.xsin.pulltorefresh.PullToRefreshListView
+        android:tag="manualListView"
+        android:id="@+id/manual_lv1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </in.xsin.pulltorefresh.PullToRefreshListView>
+
+    <in.xsin.pulltorefresh.PullToRefreshListView
+        android:tag="manualListView"
+        android:id="@+id/manual_lv2"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </in.xsin.pulltorefresh.PullToRefreshListView>
+
+    <in.xsin.pulltorefresh.PullToRefreshListView
+        android:tag="manualListView"
+        android:id="@+id/manual_lv3"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </in.xsin.pulltorefresh.PullToRefreshListView>
+
+
 
 </LinearLayout>

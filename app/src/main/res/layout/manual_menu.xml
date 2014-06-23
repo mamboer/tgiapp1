@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@color/white">
+            <LinearLayout
+                android:tag="filterBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:id="@+id/frame_question_hdbtn1"
+                android:layout_weight="1">
+                <TextView
+                    android:tag="tabMenuText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="43dp"
+                    android:gravity="center"
+                    android:textColor="@color/tab_highlight_bg"
+                    android:text="玩法攻略">
+                </TextView>
+                <View
+                    android:tag="tabMenuLine"
+                    android:id="@+id/frame_question_hdbtn1_bline"
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/tab_highlight_bg">
+                </View>
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="14dp"
+
+                android:background="@color/gray_level4">
+            </View>
+            <LinearLayout
+                android:tag="filterBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:id="@+id/frame_question_hdbtn2"
+                android:layout_weight="1">
+                <TextView
+                    android:tag="tabMenuText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="43dp"
+                    android:gravity="center"
+                    android:textColor="@color/bright_bg_btntext"
+                    android:text="游戏评测">
+                </TextView>
+                <View
+                    android:tag="tabMenuLine"
+                    android:id="@+id/frame_question_hdbtn2_bline"
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/white">
+                </View>
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="14dp"
+
+                android:background="@color/gray_level4">
+            </View>
+            <LinearLayout
+                android:tag="filterBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:clickable="true"
+                android:id="@+id/frame_question_hdbtn3"
+                android:layout_weight="1">
+                <TextView
+                    android:tag="tabMenuText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="43dp"
+                    android:gravity="center"
+                    android:textColor="@color/bright_bg_btntext"
+                    android:text="高玩心得">
+                </TextView>
+                <View
+                    android:tag="tabMenuLine"
+                    android:id="@+id/frame_question_hdbtn3_bline"
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/white">
+                </View>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10dp"/>
+
+    </LinearLayout>
+
+</FrameLayout>

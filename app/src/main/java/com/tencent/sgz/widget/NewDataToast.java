@@ -77,8 +77,8 @@ public class NewDataToast extends Toast{
         tv.setText(text);
         
         result.setView(v);
-        result.setDuration(600);
-        result.setGravity(Gravity.TOP, 0, (int)(dm.density*75));
+        result.setDuration(500);
+        result.setGravity(Gravity.TOP, 0, (int)(dm.density*100));
 
         return result;
     }

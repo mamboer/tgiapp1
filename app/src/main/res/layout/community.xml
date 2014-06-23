@@ -2,22 +2,13 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="@color/red"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView1"
+    <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/wv_frame_community"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        />
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:layout_below="@id/textView1"
+        android:layout_height="fill_parent"
         />
 
 </LinearLayout>
