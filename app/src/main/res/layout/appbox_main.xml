@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/page_bg">
+
+    <in.xsin.widget.GridViewForScrollView
+        android:id="@+id/appbox_tools"
+        android:numColumns="4"
+        android:gravity="center"
+        android:horizontalSpacing="@dimen/space_1"
+        android:verticalSpacing="@dimen/space_1"
+        android:background="@color/white"
+        android:listSelector="#00000000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </in.xsin.widget.GridViewForScrollView>
+
+    <in.xsin.widget.GridViewForScrollView
+        android:id="@+id/appbox_games"
+        android:numColumns="4"
+        android:gravity="center"
+        android:horizontalSpacing="@dimen/space_1"
+        android:verticalSpacing="@dimen/space_1"
+        android:listSelector="@drawable/gridview_selector"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </in.xsin.widget.GridViewForScrollView>
+
+
+</LinearLayout>

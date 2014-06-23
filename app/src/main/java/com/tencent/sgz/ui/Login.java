@@ -424,7 +424,7 @@ public class Login extends BaseActivity{
         util.LOGI("loginSuccess,头像：" + util.buf_to_string(info._face) + ", " + new String(info._img_url));
 
         Intent intent = new Intent();
-        intent.setClass(Login.this, Main.class);
+        intent.setClass(Login.this, MainActivity.class);
         intent.putExtra("LOGIN", true);
         intent.putExtra("RET", 0);
         intent.putExtra("ACCOUNT", userAccount);

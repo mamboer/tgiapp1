@@ -42,6 +42,7 @@ public class SearchList extends Entity{
 		private String url;
 		private String pubDate;
 		private String author;
+        private String img;
 		public int getObjid() {return objid;}
 		public void setObjid(int objid) {this.objid = objid;}
 		public int getType() {return type;}
@@ -54,11 +55,22 @@ public class SearchList extends Entity{
 		public void setPubDate(String pubDate) {this.pubDate = pubDate;}
 		public String getAuthor() {return author;}
 		public void setAuthor(String author) {this.author = author;}
-	}
+
+        public String getImg() {
+            return img;
+        }
+
+        public void setImg(String img) {
+            this.img = img;
+        }
+    }
 
 	public int getPageSize() {
 		return pageSize;
 	}
+    public void setPageSize(int pSize) {
+        this.pageSize=pSize;
+    }
 	public List<Result> getResultlist() {
 		return resultlist;
 	}

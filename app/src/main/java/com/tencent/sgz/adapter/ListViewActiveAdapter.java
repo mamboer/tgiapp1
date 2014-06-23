@@ -352,7 +352,7 @@ public class ListViewActiveAdapter extends MyBaseAdapter implements AdapterView.
         SimpleAdapter adpter = new SimpleAdapter(context,
                 lst,R.layout.appbox_gvitem,
                 new String[]{"itemImage","itemText"},
-                new int[]{R.id.appbox_tool_icon,R.id.appbox_tool_title});
+                new int[]{R.id.appbox_item_icon,R.id.appbox_item_title});
 
         appboxToolsGridview.setAdapter(adpter);
 
@@ -377,7 +377,7 @@ public class ListViewActiveAdapter extends MyBaseAdapter implements AdapterView.
         SimpleAdapter adpter1 = new SimpleAdapter(context,
                 lst1,R.layout.appbox_gvitem_game,
                 new String[]{"itemImage","itemText"},
-                new int[]{R.id.appbox_game_icon,R.id.appbox_game_title});
+                new int[]{R.id.appbox_item_icon,R.id.appbox_item_title});
 
         appboxGamesGridview.setAdapter(adpter1);
 

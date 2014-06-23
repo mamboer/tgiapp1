@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.R;
 import com.tencent.sgz.adapter.HomeListAdapter;
 import com.tencent.sgz.adapter.ManualListAdapter;
+import com.tencent.sgz.bean.News;
 import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.AppData;
 import com.tencent.sgz.entity.Article;
@@ -178,7 +180,7 @@ public class ManualFragment extends FragmentBase {
         mListViewAdapter1 = new ManualListAdapter(ct,mListViewDataItems1,R.layout.article_listitem);
 
         mListView1.setAdapter(mListViewAdapter1);
-        //mListView1.setOnItemClickListener(onListViewItemClick);
+        mListView1.setOnItemClickListener(onListViewItemClick);
 
         //mPullListView1.onPullDownRefreshComplete();
         //mPullListView1.onPullUpRefreshComplete();
@@ -312,7 +314,7 @@ public class ManualFragment extends FragmentBase {
         mListViewAdapter2 = new ManualListAdapter(ct,mListViewDataItems2,R.layout.article_listitem);
 
         mListView2.setAdapter(mListViewAdapter2);
-        //mListView1.setOnItemClickListener(onListViewItemClick);
+        mListView2.setOnItemClickListener(onListViewItemClick);
 
         //mPullListView2.onPullDownRefreshComplete();
         //mPullListView2.onPullUpRefreshComplete();
@@ -446,7 +448,7 @@ public class ManualFragment extends FragmentBase {
         mListViewAdapter3 = new ManualListAdapter(ct,mListViewDataItems3,R.layout.article_listitem);
 
         mListView3.setAdapter(mListViewAdapter3);
-        //mListView1.setOnItemClickListener(onListViewItemClick);
+        mListView3.setOnItemClickListener(onListViewItemClick);
 
         //mPullListView3.onPullDownRefreshComplete();
         //mPullListView3.onPullUpRefreshComplete();
@@ -597,6 +599,35 @@ public class ManualFragment extends FragmentBase {
         }
 
     }
+
+    private AdapterView.OnItemClickListener onListViewItemClick = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            // 点击头部、底部栏无效
+            if (i == 0 || i == -1)
+                return;
+
+            Article item = null;
+            // 判断是否是TextView
+            if (view instanceof TextView) {
+                item = (Article) view.getTag();
+            } else {
+                TextView tv = (TextView) view
+                        .findViewById(R.id.news_listitem_title);
+                item = (Article) tv.getTag();
+            }
+            if (item == null)
+                return;
+
+            // 跳转到新闻详情
+
+            News news = new News();
+            news.setUrl(AppDataProvider.assertUrl(getAppContext(),item.getUrl()));
+
+            UIHelper.showNewsRedirect(getActivity(), news);
+
+        }
+    };
 
 }
 

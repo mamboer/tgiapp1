@@ -7,8 +7,13 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
@@ -16,6 +21,10 @@ import android.widget.TextView;
 
 import com.tencent.sgz.R;
 import com.tencent.sgz.activity.*;
+import com.tencent.sgz.bean.BlogList;
+import com.tencent.sgz.bean.News;
+import com.tencent.sgz.bean.NewsList;
+import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.fragment.*;
 
 import java.util.ArrayList;
@@ -30,7 +39,7 @@ import java.util.ListIterator;
  * that switches between tabs and also allows the user to perform horizontal
  * flicks to move between the tabs.
  */
-public class MainActivity extends FragmentBaseActivity{
+public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabChangeListener{
 
     TabHost mTabHost;
 
@@ -43,6 +52,11 @@ public class MainActivity extends FragmentBaseActivity{
     RelativeLayout mTabIndicator;
 
     LayoutInflater inflater;
+
+    TextView mHeadTitle;
+
+    ImageView mHeadLogo;
+    ImageButton mHeadSearch;
 
 
     @Override
@@ -61,12 +75,48 @@ public class MainActivity extends FragmentBaseActivity{
         mTabWidget = (TabWidget) findViewById(android.R.id.tabs);
 
         mTabManager = new TabManager(this, mTabHost, R.id.realtabcontent,true);
+        mTabManager.setOnTabChangedListener(this);
+
+        mHeadTitle = (TextView) findViewById(R.id.main_head_title);
 
 
+        // 网络连接判断
+        if (!appContext.isNetworkConnected())
+            UIHelper.ToastMessage(this, R.string.network_not_connected);
+        // 初始化登录
+        appContext.initLoginInfo();
 
 
 
         initTabs(savedInstanceState);
+
+        initHeadView();
+
+    }
+
+    /**
+     * 初始化头部视图
+     */
+    private void initHeadView() {
+
+        mHeadLogo = (ImageView) findViewById(R.id.main_head_logo);
+        mHeadSearch = (ImageButton) findViewById(R.id.main_head_search);
+
+        mHeadSearch.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                UIHelper.showSearch(v.getContext());
+                //UIHelper.showCDV1(v.getContext());
+            }
+        });
+        mHeadLogo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //UIHelper.showCapture(Main.this);
+                News news = new News();
+                news.setUrl("http://ttxd.qq.com/act/a20140521tg/index.htm");
+
+                UIHelper.showNewsDetailByInstance(MainActivity.this,news,"一个小游戏",true);
+            }
+        });
 
     }
 
@@ -83,6 +133,7 @@ public class MainActivity extends FragmentBaseActivity{
         mTabIndicators.add(mTabIndicator);
 
         mTabManager.addTab(
+                getResources().getString(R.string.app_name),
                 mTabHost.newTabSpec("tab1").setIndicator(mTabIndicators.get(0)),
                 HomeFragment.class, null);
         //攻略
@@ -94,6 +145,7 @@ public class MainActivity extends FragmentBaseActivity{
         mTabIndicators.add(mTabIndicator);
 
         mTabManager.addTab(
+                getResources().getString(R.string.main_menu_manual),
                 mTabHost.newTabSpec("tab2").setIndicator(mTabIndicators.get(1)),
                 ManualFragment.class, null);
         //社区
@@ -105,6 +157,7 @@ public class MainActivity extends FragmentBaseActivity{
         mTabIndicators.add(mTabIndicator);
 
         mTabManager.addTab(
+                getResources().getString(R.string.main_menu_community),
                 mTabHost.newTabSpec("tab3").setIndicator(mTabIndicators.get(2)),
                 CommunityFragment.class, null);
 
@@ -117,6 +170,7 @@ public class MainActivity extends FragmentBaseActivity{
         mTabIndicators.add(mTabIndicator);
 
         mTabManager.addTab(
+                getResources().getString(R.string.main_menu_appbox),
                 mTabHost.newTabSpec("tab4").setIndicator(mTabIndicators.get(3)),
                 AppboxFragment.class, null);
 
@@ -129,6 +183,7 @@ public class MainActivity extends FragmentBaseActivity{
         mTabIndicators.add(mTabIndicator);
 
         mTabManager.addTab(
+                getResources().getString(R.string.main_menu_icenter),
                 mTabHost.newTabSpec("tab5").setIndicator(mTabIndicators.get(4)),
                 ICenterFragment.class, null);
 
@@ -142,6 +197,13 @@ public class MainActivity extends FragmentBaseActivity{
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString("tab", mTabHost.getCurrentTabTag());
+    }
+
+    @Override
+    public void onTabChanged(String tabId) {
+        TabManager.TabInfo newTab = mTabManager.getTab(tabId);
+        mHeadTitle.setText(newTab.title);
+
     }
 
     /**
@@ -165,16 +227,20 @@ public class MainActivity extends FragmentBaseActivity{
         private int mCurrentTab;
         TabInfo mLastTab;
 
+        private TabHost.OnTabChangeListener onTabChangeListener;
+
         private boolean keepFragmentInMemory;
 
-        static final class TabInfo {
-            private final String tag;
-            private final Class<?> clss;
-            private final Bundle args;
-            private Fragment fragment;
+        public static final class TabInfo {
+            public final String tag;
+            public final String title;
+            public final Class<?> clss;
+            public final Bundle args;
+            public Fragment fragment;
 
-            TabInfo(String _tag, Class<?> _class, Bundle _args) {
+            TabInfo(String _tag,String _title, Class<?> _class, Bundle _args) {
                 tag = _tag;
+                title = _title;
                 clss = _class;
                 args = _args;
             }
@@ -209,11 +275,11 @@ public class MainActivity extends FragmentBaseActivity{
             this.keepFragmentInMemory = keepFragmentInMemory;
         }
 
-        public void addTab(TabHost.TabSpec tabSpec, Class<?> clss, Bundle args) {
+        public void addTab(String title,TabHost.TabSpec tabSpec, Class<?> clss, Bundle args) {
             tabSpec.setContent(new DummyTabFactory(mActivity));
             String tag = tabSpec.getTag();
 
-            TabInfo info = new TabInfo(tag, clss, args);
+            TabInfo info = new TabInfo(tag,title, clss, args);
 
             // Check to see if we already have a fragment for this tab, probably
             // from a previously saved state.  If so, deactivate it, because our
@@ -269,6 +335,11 @@ public class MainActivity extends FragmentBaseActivity{
 
             mCurrentTab = mTabHost.getCurrentTab();
 
+
+            if(null!=onTabChangeListener){
+                onTabChangeListener.onTabChanged(tabId);
+            }
+
         }
 
         /**
@@ -292,5 +363,28 @@ public class MainActivity extends FragmentBaseActivity{
             return mTabKeys.indexOf(tabId);
         }
 
+        public TabInfo getTab(String tabId){
+            return mTabs.get(tabId);
+        }
+
+        public void setOnTabChangedListener(TabHost.OnTabChangeListener listener){
+
+            onTabChangeListener = listener;
+
+        }
+
     }
+
+    public void gotoMsgCenter(View preView){
+        UIHelper.showMsgCenter(this);
+    }
+
+    public void gotoUserFavor(View preView){
+        UIHelper.showUserFavor(this);
+    }
+
+    public void gotoSetting(View preView){
+        UIHelper.showSetting(this);
+    }
+
 }

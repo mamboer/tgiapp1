@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tencent.sgz.AppContext;
+import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.AppManager;
 import com.tencent.sgz.R;
 import com.tencent.sgz.adapter.ListViewSearchAdapter;
+import com.tencent.sgz.bean.News;
 import com.tencent.sgz.bean.SearchList;
 import com.tencent.sgz.bean.Notice;
 import com.tencent.sgz.bean.SearchList.Result;
@@ -172,8 +174,13 @@ public class Search extends BaseActivity{
         		if(res == null) return;
         		
         		//跳转
-        		UIHelper.showUrlRedirect(view.getContext(), res.getUrl());
-        	}
+        		//UIHelper.showUrlRedirect(view.getContext(), res.getUrl());
+
+                News news = new News();
+                news.setUrl(AppDataProvider.assertUrl(appContext,res.getUrl()));
+
+                UIHelper.showNewsRedirect(Search.this, news);
+            }
 		});
     	mlvSearch.setOnScrollListener(new AbsListView.OnScrollListener() {
 			public void onScrollStateChanged(AbsListView view, int scrollState) {				
@@ -212,7 +219,34 @@ public class Search extends BaseActivity{
 			public void handleMessage(Message msg) {
 				
 				headButtonSwitch(DATA_LOAD_COMPLETE);
+                lvSearch_foot_progress.setVisibility(View.GONE);
 
+                Bundle data = msg.getData();
+                int errCode = data.getInt("errCode");
+                String errMsg = data.getString("errMsg");
+                if(errCode>0){
+                    //有异常--显示加载出错 & 弹出错误消息
+                    curLvDataState = UIHelper.LISTVIEW_DATA_MORE;
+                    lvSearch_foot_more.setText(R.string.load_error);
+                    ((AppException)msg.obj).makeToast(Search.this);
+                    return;
+                }
+
+                SearchList list = (SearchList)data.getSerializable("data");
+                lvSearchData.clear();
+                lvSearchData.addAll(list.getResultlist());
+
+                if(lvSearchData.size()==0){
+                    curLvDataState = UIHelper.LISTVIEW_DATA_EMPTY;
+                    lvSearch_foot_more.setText(R.string.load_empty);
+                    return;
+                }
+
+                curLvDataState = UIHelper.LISTVIEW_DATA_FULL;
+                lvSearchAdapter.notifyDataSetChanged();
+                lvSearch_foot_more.setText(R.string.load_full);
+
+                /*
 				if(msg.what >= 0){						
 					SearchList list = (SearchList)msg.obj;
 					Notice notice = list.getNotice();
@@ -272,13 +306,14 @@ public class Search extends BaseActivity{
 				if(msg.arg1 != UIHelper.LISTVIEW_ACTION_SCROLL){
 					mlvSearch.setSelection(0);//返回头部
 				}
+				*/
 			}
 		};
   	}
   	
     /**
      * 线程加载收藏数据
-     * @param type 0:全部收藏 1:软件 2:话题 3:博客 4:新闻 5:代码
+     * @param catalog 0:全部收藏 1:软件 2:话题 3:博客 4:新闻 5:代码
      * @param pageIndex 当前页数
      * @param handler 处理器
      * @param action 动作标识
@@ -291,7 +326,10 @@ public class Search extends BaseActivity{
 		
 		headButtonSwitch(DATA_LOAD_ING);
 		mlvSearch.setVisibility(ListView.VISIBLE);
-		
+
+        AppDataProvider.searchLocalData(appContext,curSearchContent,handler);
+
+        /*
 		new Thread(){
 			public void run() {
 				Message msg = new Message();
@@ -309,6 +347,8 @@ public class Search extends BaseActivity{
 					handler.sendMessage(msg);
 			}
 		}.start();
+		*/
+
 	} 
 	
 	private View.OnClickListener searchBtnClick(final Button btn,final String catalog){

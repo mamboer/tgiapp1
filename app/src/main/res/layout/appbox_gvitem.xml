@@ -13,11 +13,11 @@ android:layout_height="wrap_content"
 
     <ImageView
         style="@style/shortcut_button_img"
-        android:id="@+id/appbox_tool_icon"
+        android:id="@+id/appbox_item_icon"
         android:src="@drawable/ico_cate_intro" />
 
     <TextView
-        android:id="@+id/appbox_tool_title"
+        android:id="@+id/appbox_item_title"
         style="@style/shortcut_button_txt.style1"
         android:textColor="@color/bright_bg_btntext"
         android:text="游戏介绍" />

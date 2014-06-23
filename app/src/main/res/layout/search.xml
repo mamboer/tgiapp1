@@ -30,15 +30,16 @@
         android:layout_margin="10dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="horizontal">
 
+        <!--取消搜索框自动获取焦点：http://blog.csdn.net/a19860903/article/details/8546329-->
         <EditText
             android:id="@+id/search_editer"
             android:layout_width="fill_parent"
             android:layout_height="32dip"
             android:singleLine="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             android:imeOptions="actionSearch"
             android:background="@color/transparent"
             android:paddingRight="@dimen/space_10"

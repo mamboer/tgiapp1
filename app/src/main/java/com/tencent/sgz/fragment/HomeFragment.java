@@ -100,7 +100,9 @@ public class HomeFragment extends FragmentBase {
 
         super.onPause();
         viewPager.stopAutoSliding();
-        getActivity().unregisterReceiver(receiver);
+        //TODO:点击百宝箱上面的元素时也会调用这里的onPause??
+        //getActivity().unregisterReceiver(receiver);
+
     }
 
     @Override
@@ -111,7 +113,7 @@ public class HomeFragment extends FragmentBase {
         viewPager.startAutoSliding(); // 启动自动播放
 
         receiver = new HomeBroadcastReceiver();
-        getActivity().registerReceiver(receiver, getIntentFilter());
+        //getActivity().registerReceiver(receiver, getIntentFilter());
     }
 
     @Override

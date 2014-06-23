@@ -6,9 +6,12 @@ import android.os.Message;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.tencent.sgz.bean.SearchList;
 import com.tencent.sgz.common.EncryptUtils;
 import com.tencent.sgz.common.HttpUtil;
+import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.AppData;
+import com.tencent.sgz.entity.Article;
 import com.tencent.sgz.entity.ArticleList;
 import com.tencent.sgz.entity.ChannelGroup;
 import com.tencent.sgz.entity.ChannelItem;
@@ -321,6 +324,92 @@ public class AppDataProvider {
                 bundle.putSerializable("data",data);
                 msg.setData(bundle);
 
+                handler.sendMessage(msg);
+
+            }
+        }.start();
+
+    }
+
+    private static ArrayList<Article> getLocalArticleData(final AppContext context,String url){
+        //read from cache
+        String data0 = "";
+        url = assertUrl(context,url);
+        String key = EncryptUtils.encodeMD5(url);
+        ArrayList<Article> data = new ArrayList<Article>();
+        int flagIdx = 0;
+        Gson gson = new Gson();
+        ArticleList data1 = null;
+
+        if(!context.isReadDataCache(key)){
+            return data;
+        }
+        data0 =(String) context.readObject(key);
+        flagIdx = data0.lastIndexOf("<!--");
+        if(flagIdx>0) {
+            data0 = data0.substring(0, flagIdx);
+            data1 = gson.fromJson(data0, ArticleList.class);
+            data1.getItems().remove(0);
+            data.addAll(data1.getItems());
+        }
+
+
+
+        if(null!=data1&&null!=data1.getNextPageId()&&!data1.getNextPageId().equals("")){
+            data.addAll(getLocalArticleData(context,data1.getNextPageId()));
+        }
+
+        return data;
+    }
+
+    /**
+     * 搜索本地数据
+     * @param context
+     * @param handler
+     */
+    public static void searchLocalData(final AppContext context,final String term,final Handler handler){
+
+        new Thread(){
+            public void run() {
+                String data0 = "";
+                int flagIdx = 0;
+                Bundle bundle = new Bundle();
+                SearchList data = new SearchList();
+                data.setPageSize(1);
+
+                SearchList.Result res = null;
+
+                ArrayList<Article> data1= new ArrayList<Article>();
+
+                try {
+
+                    data1 = getLocalArticleData(context,URL.ARTICLE);
+
+                    for(Article item:data1){
+                        if(!(item.getTitle().indexOf(term)>-1||item.getDesc().indexOf(term)>-1||item.getCateName().indexOf(term)>-1)){
+                            continue;
+                        }
+                        res = new SearchList.Result();
+                        res.setType(1);//1新闻
+                        res.setUrl(item.getUrl());
+                        res.setPubDate(item.getEvtStartAt());
+                        res.setTitle(item.getTitle());
+                        res.setImg(item.getCover());
+                        data.getResultlist().add(res);
+                    }
+
+                    bundle.putInt("errCode",0);
+                    bundle.putString("errMsg",null);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    bundle.putInt("errCode",1);
+                    bundle.putString("errMsg",e.getMessage());
+                }
+
+                Message msg = new Message();
+                bundle.putSerializable("data",data);
+
+                msg.setData(bundle);
                 handler.sendMessage(msg);
 
             }

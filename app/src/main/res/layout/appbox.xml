@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/page_appbox"
+    android:background="@color/page_bg"
     android:orientation="vertical"
-    android:background="@color/blue"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        />
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:layout_below="@id/textView1"
-        />
+    <in.xsin.pulltorefresh.PullToRefreshScrollView
+        android:id="@+id/mPullScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </in.xsin.pulltorefresh.PullToRefreshScrollView>
 
 </LinearLayout>

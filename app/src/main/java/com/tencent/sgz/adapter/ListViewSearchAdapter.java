@@ -91,7 +91,7 @@ public class ListViewSearchAdapter extends BaseAdapter {
 		if(StringUtils.isEmpty(res.getAuthor())) {
 			listItemView.layout.setVisibility(LinearLayout.GONE);
 		}else{
-			listItemView.layout.setVisibility(LinearLayout.VERTICAL);
+			listItemView.layout.setVisibility(LinearLayout.VISIBLE);
 			listItemView.author.setText(res.getAuthor());
 			listItemView.date.setText(StringUtils.friendly_time(res.getPubDate()));
 		}

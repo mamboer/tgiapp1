@@ -2,22 +2,200 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="@color/teal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:background="@color/page_bg"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-    <TextView
-        android:id="@+id/textView1"
+    <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        />
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:layout_below="@id/textView1"
-        />
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:background="@drawable/layer_login_border"
+                android:padding="10dp"
+                android:layout_marginBottom="@dimen/space_10"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/icenter_userAvatar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/widget_dface"/>
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/space_15"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_gravity="top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/icenter_userName"
+                        android:text="@string/login_requiretip"
+                        android:textSize="@dimen/text_size_17"
+                        android:gravity="fill_vertical"
+                        android:textColor="@color/bright_bg_btntext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/icenter_userId"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone"
+                        android:text="QQ号：未知用户"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:clickable="true"
+                android:onClick="gotoMsgCenter"
+                android:background="@drawable/layer_login_border"
+                android:padding="10dp"
+                android:layout_marginBottom="@dimen/space_10"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/icenter_mico_msg"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/mico_msg"/>
+                <LinearLayout
+                    android:layout_toRightOf="@+id/icenter_mico_msg"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/space_10"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="消息中心"
+                        android:textSize="@dimen/text_size_15"
+                        android:layout_marginRight="@dimen/space_10"
+                        android:textColor="@color/bright_bg_btntext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        style="@style/badge"
+
+                        android:text="2"/>
+
+                </LinearLayout>
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ico_arr_right"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:clickable="true"
+                android:onClick="gotoUserFavor"
+                android:background="@drawable/layer_login_border"
+                android:padding="10dp"
+                android:layout_marginBottom="@dimen/space_10"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/icenter_mico_fav"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/mico_fav"/>
+                <LinearLayout
+                    android:layout_toRightOf="@+id/icenter_mico_fav"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/space_10"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="我的收藏"
+                        android:textSize="@dimen/text_size_15"
+                        android:layout_marginRight="@dimen/space_10"
+                        android:textColor="@color/bright_bg_btntext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ico_arr_right"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:clickable="true"
+                android:onClick="gotoSetting"
+                android:background="@drawable/layer_login_border"
+                android:padding="10dp"
+                android:layout_marginBottom="@dimen/space_10"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/icenter_mico_cfg"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/mico_cfg"/>
+                <LinearLayout
+                    android:layout_toRightOf="@+id/icenter_mico_cfg"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/space_10"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="设置"
+                        android:textSize="@dimen/text_size_15"
+                        android:layout_marginRight="@dimen/space_10"
+                        android:textColor="@color/bright_bg_btntext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ico_arr_right"/>
+            </RelativeLayout>
+
+            <Button
+                android:layout_marginBottom="@dimen/space_10"
+                android:id="@+id/wt_login_btn_login"
+                style="@style/btn_text"
+                android:background="@drawable/selector_btn_green"
+                android:text="@string/login_dialog_login"/>
+
+            <Button
+                android:visibility="gone"
+                android:layout_marginBottom="@dimen/space_10"
+                android:id="@+id/wt_login_btn_logoff"
+                style="@style/btn_text.highlight"
+                android:background="@drawable/selector_btn_white"
+                android:text="@string/login_dialog_logoff"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
