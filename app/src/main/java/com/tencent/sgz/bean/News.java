@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tencent.sgz.AppException;
+import com.tencent.sgz.common.EncryptUtils;
 import com.tencent.sgz.common.StringUtils;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -66,6 +67,7 @@ public class News extends Entity{
 	private List<Relative> relatives;
     private String cateName;
     private String face;
+    private String md5;
 
 	public News(){
 		this.newType = new NewsType();
@@ -83,6 +85,7 @@ public class News extends Entity{
 		public String url;
 	} 
 
+    public String getMd5(){return this.md5;}
     public void setCateName(String cName){this.cateName=cName;}
     public String getCateName(){return this.cateName;}
 	public List<Relative> getRelatives() {
@@ -132,6 +135,7 @@ public class News extends Entity{
 	}
 	public void setUrl(String url) {
 		this.url = url;
+        this.md5 = EncryptUtils.encodeMD5(url);
 	}
 	public String getBody() {
 		return body;

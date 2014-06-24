@@ -8,6 +8,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 
+import com.tencent.sgz.R;
+
 /**
  * 腾讯微博帮助类
  * @author yeguozhong@yeah.net
@@ -17,9 +19,7 @@ import android.net.Uri;
 public class QQWeiboHelper {
 	
 	private static final String Share_URL = "http://share.v.t.qq.com/index.php?c=share&a=index";
-	private static final String Share_Source = "OSChina";
-	private static final String Share_Site = "OSChina.net";
-	private static final String Share_AppKey = "96f54f97c4de46e393c4835a266207f4";
+
 
 	/**
 	 * 分享到腾讯微博
@@ -28,6 +28,11 @@ public class QQWeiboHelper {
 	 * @param url
 	 */
 	public static void shareToQQ(Activity activity,String title,String url){
+
+        final String Share_Source = activity.getString(R.string.app_name);
+        final String Share_Site = activity.getString(R.string.app_datahost);
+        final String Share_AppKey = activity.getString(R.string.openqq_appkey);
+
 		String URL = Share_URL;
 		try {
 			URL += "&title=" + URLEncoder.encode(title, HTTP.UTF_8) + "&url=" + URLEncoder.encode(url, HTTP.UTF_8) + "&appkey=" + Share_AppKey + "&source=" + Share_Source + "&site=" + Share_Site;	

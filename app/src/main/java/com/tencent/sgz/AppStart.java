@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import com.tencent.sgz.common.FileUtils;
+import com.tencent.sgz.common.OpenQQHelper;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.entity.AppData;
 import com.tencent.sgz.ui.Main;
@@ -40,6 +41,10 @@ public class AppStart extends Activity {
         super.onCreate(savedInstanceState);
 
         ac = AppContext.Instance;
+
+        // 初始化登录
+        OpenQQHelper.attachTo(this);
+        ac.initLoginInfo();
        
         final View view = View.inflate(this, R.layout.start, null);
 		FrameLayout wellcome = (FrameLayout) view.findViewById(R.id.app_start_view);

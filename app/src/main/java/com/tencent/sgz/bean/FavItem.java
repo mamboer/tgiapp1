@@ -2,9 +2,11 @@ package com.tencent.sgz.bean;
 
 import android.graphics.drawable.Drawable;
 
+import com.tencent.sgz.common.EncryptUtils;
+
 public class FavItem {
 
-    private Drawable icon;
+    private String icon;
 
     private String name;
 
@@ -14,8 +16,13 @@ public class FavItem {
 
     private String action;
 
+    private String md5;
+
     public String getAction(){return action;}
-    public void setAction(String action){this.action = action;}
+    public void setAction(String action){
+        this.action = action;
+        md5 = EncryptUtils.encodeMD5(action);
+    }
 
     public String getDate(){return date;}
     public void setDate(String date){this.date = date;}
@@ -36,11 +43,15 @@ public class FavItem {
         this.name = name;
     }
 
-    public Drawable getIcon() {
+    public String getIcon() {
         return icon;
     }
 
-    public void setIcon(Drawable icon) {
+    public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public String getMd5() {
+        return md5;
     }
 }

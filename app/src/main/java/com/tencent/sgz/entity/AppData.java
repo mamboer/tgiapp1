@@ -13,6 +13,7 @@ public class AppData implements Serializable {
         notices = new ArticleList();
         slides = new ArticleList();
         misc = new MiscData();
+        favArticles = new UserFavArticleList();
     }
 
     private int errCode;
@@ -22,6 +23,7 @@ public class AppData implements Serializable {
     private ArticleList notices;
     private ArticleList slides;
     private MiscData misc;
+    private UserFavArticleList favArticles;
 
     public ArticleList getArticles() {
         return articles;
@@ -85,6 +87,39 @@ public class AppData implements Serializable {
 
     public void appendArticles(ArticleList items){
         this.articles.getItems().addAll(items.getItems());
+    }
+
+    public UserFavArticleList getFavArticles() {
+        return favArticles;
+    }
+
+    public void setFavArticles(UserFavArticleList favArticles) {
+        this.favArticles = favArticles;
+    }
+
+    /**
+     * 收藏数据中是否存在指定数据
+     * @param item
+     * @return
+     */
+    public boolean hasFavArticle(Article item){
+        return hasFavItem(item.getMD5());
+    }
+
+    /**
+     * 收藏数据中是否存在指定数据
+     * @param md5id
+     * @return
+     */
+    public boolean hasFavItem(String md5id){
+        boolean has = false;
+        for(Article item0:favArticles.getItems()){
+            if(item0.getMD5().equals(md5id)){
+                has = true;
+                break;
+            }
+        }
+        return has;
     }
 
 }

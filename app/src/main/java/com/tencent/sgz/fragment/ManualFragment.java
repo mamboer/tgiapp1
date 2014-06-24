@@ -622,6 +622,10 @@ public class ManualFragment extends FragmentBase {
             // 跳转到新闻详情
 
             News news = new News();
+            news.setTitle(item.getTitle());
+            news.setDesc(item.getDesc());
+            news.setFace(item.getCover());
+            news.setCateName(item.getCateName());
             news.setUrl(AppDataProvider.assertUrl(getAppContext(),item.getUrl()));
 
             UIHelper.showNewsRedirect(getActivity(), news);

@@ -6,18 +6,17 @@ import java.util.List;
 
 import com.tencent.sgz.AppConfig;
 import com.tencent.sgz.AppContext;
+import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
 import com.tencent.sgz.adapter.ListViewCommentAdapter;
 import com.tencent.sgz.bean.Comment;
 import com.tencent.sgz.bean.CommentList;
-import com.tencent.sgz.bean.FavoriteList;
 import com.tencent.sgz.bean.News;
-import com.tencent.sgz.bean.News.Relative;
 import com.tencent.sgz.bean.Notice;
 import com.tencent.sgz.bean.Result;
-import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
+import com.tencent.sgz.entity.Article;
 import com.tencent.sgz.widget.BadgeView;
 import com.tencent.sgz.widget.PullToRefreshListView;
 import android.annotation.SuppressLint;
@@ -29,26 +28,21 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.GestureDetector;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
+
+import in.xsin.widget.ProgressWebView;
 
 /**
  * 新闻详情
@@ -71,9 +65,10 @@ public class NewsDetail extends BaseActivity {
 
 	private ImageView mCommentList;
 	private ImageView mShare;
+    private ImageView mHeart;
 
 
-	private WebView mWebView;
+	private ProgressWebView mWebView;
 	private Handler mHandler;
 	private News newsDetail;
 	private int newsId;
@@ -158,8 +153,9 @@ public class NewsDetail extends BaseActivity {
 		mCommentList = (ImageView) findViewById(R.id.news_detail_footbar_commentlist);
 		mShare = (ImageView) findViewById(R.id.news_detail_footbar_share);
 		mFavorite = (ImageView) findViewById(R.id.news_detail_footbar_favorite);
+        mHeart = (ImageView) findViewById(R.id.news_detail_footbar_heart);
 
-		mWebView = (WebView) findViewById(R.id.news_detail_webview);
+		mWebView = (ProgressWebView) findViewById(R.id.news_detail_webview);
 
         WebSettings webSettings = mWebView.getSettings();
 
@@ -177,7 +173,8 @@ public class NewsDetail extends BaseActivity {
 		mFavorite.setOnClickListener(favoriteClickListener);
 		mRefresh.setOnClickListener(refreshClickListener);
 		mShare.setOnClickListener(shareClickListener);
-		//mCommentList.setOnClickListener(commentlistClickListener);
+        mHeart.setOnClickListener(heartClickListener);
+		mCommentList.setOnClickListener(commentlistClickListener);
 
 		bv_comment = new BadgeView(this, mCommentList);
 		bv_comment.setBackgroundResource(R.drawable.widget_count_bg2);
@@ -203,12 +200,21 @@ public class NewsDetail extends BaseActivity {
 					headButtonSwitch(DATA_LOAD_COMPLETE);
 
 					// 是否收藏
+                    /*
 					if (newsDetail.getFavorite() == 1)
 						mFavorite
 								.setImageResource(R.drawable.fbar_favon_bg);
 					else
 						mFavorite
 								.setImageResource(R.drawable.fbar_fav_bg);
+				    */
+                    if(appContext.getData().hasFavItem(newsDetail.getMd5())){
+                        mFavorite
+                                .setImageResource(R.drawable.fbar_favon_bg);
+                    }else{
+                        mFavorite
+                                .setImageResource(R.drawable.fbar_fav_bg);
+                    }
 
 					// 显示评论数
 					if (newsDetail.getCommentCount() > 0) {
@@ -397,7 +403,7 @@ public class NewsDetail extends BaseActivity {
 					*/
             View anchor = findViewById(R.id.news_detail_footer);
             UIHelper.showShareDialog1(NewsDetail.this,anchor, newsDetail.getTitle(),
-                    newsDetail.getUrl());
+                    newsDetail.getUrl(),newsDetail.getFace());
 		}
 	};
 
@@ -413,16 +419,68 @@ public class NewsDetail extends BaseActivity {
 
 	private View.OnClickListener commentlistClickListener = new View.OnClickListener() {
 		public void onClick(View v) {
+            /*
 			if (newsId == 0) {
 				return;
 			}
 			// 切换到评论
 			viewSwitch(VIEWSWITCH_TYPE_COMMENTS);
+			*/
+            UIHelper.ToastMessage(NewsDetail.this,"功能未实现，评论接口待开发实现中ing");
 		}
 	};
+    private View.OnClickListener heartClickListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            UIHelper.ToastMessage(NewsDetail.this,"功能未实现，点赞接口待开发实现中ing");
+        }
+    };
 
 	private View.OnClickListener favoriteClickListener = new View.OnClickListener() {
 		public void onClick(View v) {
+
+            if (newsDetail == null||newsDetail.getMd5()==null||newsDetail.getMd5().equals("")) {
+                return;
+            }
+
+            final long uid = appContext.getLoginUid();
+
+            final Handler onDataGot = new Handler(){
+                @Override
+                public void handleMessage(Message msg){
+                    super.handleMessage(msg);
+                    Bundle data = msg.getData();
+                    int errCode = data.getInt("errCode");
+                    String errMsg = data.getString("errMsg");
+                    boolean isRemoved = data.getBoolean("isRemoved");
+
+
+                    if(errMsg!=null){
+                        UIHelper.ToastMessage(appContext,errMsg);
+                        return;
+                    }
+
+                    if(isRemoved){
+                        UIHelper.ToastMessage(appContext,"已取消收藏！");
+                        mFavorite.setImageResource(R.drawable.fbar_fav_bg);
+                    }else{
+                        UIHelper.ToastMessage(appContext,"收藏成功！");
+                        mFavorite.setImageResource(R.drawable.fbar_favon_bg);
+                    }
+
+                }
+            };
+
+            final Article item = new Article();
+
+            item.setCateName(newsDetail.getCateName());
+            item.setUrl(newsDetail.getUrl());
+            item.setDesc(newsDetail.getDesc());
+            item.setTitle(newsDetail.getTitle());
+            item.setCover(newsDetail.getFace());
+
+            AppDataProvider.toggleFavArticle(appContext, item, uid, onDataGot);
+
+            /*
 			if (newsId == 0 || newsDetail == null) {
 				return;
 			}
@@ -481,6 +539,7 @@ public class NewsDetail extends BaseActivity {
 					handler.sendMessage(msg);
 				}
 			}.start();
+			*/
 		}
 	};
 
@@ -771,6 +830,9 @@ public class NewsDetail extends BaseActivity {
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        
+
 		if (resultCode != RESULT_OK)
 			return;
 		if (data == null)

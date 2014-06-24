@@ -345,6 +345,8 @@ public class HomeFragment extends FragmentBase {
                     @Override
                     public void onClick(View view) {
                         News news = new News();
+                        news.setTitle(citem1.getName());
+                        news.setFace(citem1.getIcon());
                         news.setUrl(AppDataProvider.assertUrl(ct,citem1.getAction()));
                         UIHelper.showNewsDetailByInstance(getActivity(),news);
                     }
@@ -367,8 +369,13 @@ public class HomeFragment extends FragmentBase {
             noticeView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Article item = notices.get(0);
                     News news = new News();
-                    news.setUrl(AppDataProvider.assertUrl(ct,notices.get(0).getUrl()));
+                    news.setTitle(item.getTitle());
+                    news.setDesc(item.getDesc());
+                    news.setFace(item.getCover());
+                    news.setCateName(item.getCateName());
+                    news.setUrl(AppDataProvider.assertUrl(ct,item.getUrl()));
                     UIHelper.showNewsDetailByInstance(getActivity(),news);
                 }
             });
@@ -434,6 +441,10 @@ public class HomeFragment extends FragmentBase {
             // 跳转到新闻详情
 
             News news = new News();
+            news.setTitle(item.getTitle());
+            news.setDesc(item.getDesc());
+            news.setFace(item.getCover());
+            news.setCateName(item.getCateName());
             news.setUrl(AppDataProvider.assertUrl(getAppContext(),item.getUrl()));
 
             UIHelper.showNewsRedirect(getActivity(), news);

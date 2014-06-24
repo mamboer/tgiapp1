@@ -13,6 +13,7 @@ import java.util.concurrent.Executors;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.api.ApiClient;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
@@ -102,7 +103,42 @@ public class BitmapManager {
         		queueJob(url, imageView, width, height);
         	}
         }  
-    }  
+    }
+
+    /**
+     * 加载图片-可指定显示图片的高宽
+     * @param url
+     * @param width
+     * @param height
+     */
+    public void loadBitmap(final Context ct,String url, int width, int height,final Handler handler) {
+
+        Bitmap bitmap = getBitmapFromCache(url);
+        Message msg = new Message();
+
+        if (bitmap != null) {
+            //显示缓存图片
+            msg.what =0;
+            msg.obj = bitmap;
+            handler.sendMessage(msg);
+            return;
+        }
+
+        //加载SD卡中的图片缓存
+        String filename = FileUtils.getFileName(url);
+        String filepath = ct.getFilesDir() + File.separator + filename;
+        File file = new File(filepath);
+        if(file.exists()){
+            //显示SD卡中的图片缓存
+            bitmap = ImageUtils.getBitmap(ct, filename);
+            msg.what =0;
+            msg.obj = bitmap;
+            handler.sendMessage(msg);
+            return;
+        }
+        //线程加载网络图片
+        queueJob(ct,url, width, height,handler);
+    }
   
     /**
      * 从缓存中获取图片
@@ -149,8 +185,49 @@ public class BitmapManager {
                 handler.sendMessage(message);  
             }  
         });  
-    } 
-  
+    }
+
+    /**
+     * 从网络中加载图片
+     * @param url
+     * @param handler
+     * @param width
+     * @param height
+     */
+    public void queueJob(final Context ct,final String url, final int width, final int height,final Handler handler) {
+        /* Create handler in UI thread. */
+        final Handler handler0 = new Handler() {
+            public void handleMessage(Message msg) {
+
+                Message msg1 = new Message();
+
+                if (msg.obj != null) {
+                    msg1.what = 0;
+                    msg1.obj = msg.obj;
+
+                    try {
+                        //向SD卡中写入图片缓存
+                        ImageUtils.saveImage(ct, FileUtils.getFileName(url), (Bitmap) msg.obj);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    msg1.what = -1;
+                    msg1.obj = null;
+                }
+                handler.sendMessage(msg);
+            }
+        };
+
+        pool.execute(new Runnable() {
+            public void run() {
+                Message message = Message.obtain();
+                message.obj = downloadBitmap(url, width, height);
+                handler0.sendMessage(message);
+            }
+        });
+    }
+
     /**
      * 下载图片-可指定显示图片的高宽
      * @param url

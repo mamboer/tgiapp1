@@ -9,11 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.R;
 import com.tencent.sgz.bean.News;
 import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.Article;
+import com.tencent.sgz.ui.BaseActivity;
 
 import java.util.ArrayList;
 
@@ -55,7 +57,11 @@ public class ILoveViennaLiaoSliderAdapter extends PagerAdapter {
             @Override
             public void onClick(View view) {
                 News news = new News();
-                news.setUrl(item.getUrl());
+                news.setTitle(item.getTitle());
+                news.setDesc(item.getDesc());
+                news.setFace(item.getCover());
+                news.setUrl(AppDataProvider.assertUrl( AppContext.Instance, item.getUrl()));
+                news.setCateName(item.getCateName());
                 UIHelper.showNewsDetailByInstance(context, news);
             }
         });

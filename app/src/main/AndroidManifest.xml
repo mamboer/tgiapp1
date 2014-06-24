@@ -181,10 +181,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.ZoomLight.Fullscreen" />
         <activity
-            android:name="com.tencent.weibo.webview.OAuthV1AuthorizeWebView"
-            android:label="@string/app_name" />
-        <activity android:name=".common.QQWeiboHelper2" />
-        <activity
             android:name=".ui.Capture"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
@@ -266,6 +262,33 @@
         </provider>
         -->
         <!-- E wtlogin -->
+
+        <!-- S OpenQQ -->
+        <!-- 应用吧 -->
+        <activity
+            android:name="com.tencent.open.yyb.AppbarActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name="com.tencent.connect.avatar.ImageActivity" />
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tencent101125247" />
+                <!-- 100380359 100381104 222222 -->
+            </intent-filter>
+        </activity>
+        <!-- E OpenQQ -->
 
 
         <!-- S 个人中心 -->

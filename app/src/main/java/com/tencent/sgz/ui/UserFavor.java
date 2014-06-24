@@ -13,15 +13,21 @@ import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
 import com.fortysevendeg.swipelistview.SwipeListView;
+import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.R;
 import com.tencent.sgz.adapter.ListViewUserFavAdapter;
 import com.tencent.sgz.bean.FavItem;
+import com.tencent.sgz.bean.News;
 import com.tencent.sgz.common.UIHelper;
+import com.tencent.sgz.entity.Article;
+import com.tencent.sgz.entity.UserFavArticleList;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,6 +39,8 @@ import java.util.List;
  * Created by levin on 6/4/14.
  */
 public class UserFavor extends BaseActivity {
+
+    private final static String TAG ="UserFav";
 
     private ListViewUserFavAdapter adapter;
     private List<FavItem> data;
@@ -48,6 +56,12 @@ public class UserFavor extends BaseActivity {
         this.initView();
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        reload();
+    }
+
     private void initView(){
         data = new ArrayList<FavItem>();
 
@@ -56,6 +70,8 @@ public class UserFavor extends BaseActivity {
         swipeListView = (SwipeListView) findViewById(R.id.slv_userfavlist);
 
         swipeListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+
+        swipeListView.setEmptyView(findViewById( R.id.user_favitem_nil));
 
         //设置侧滑位置
         DisplayMetrics dm2 = this.res.getDisplayMetrics();
@@ -132,6 +148,14 @@ public class UserFavor extends BaseActivity {
             @Override
             public void onClickFrontView(int position) {
                 Log.d("swipe", String.format("onClickFrontView %d", position));
+                FavItem item = adapter.getItem(position);
+                News news = new News();
+                news.setTitle(item.getName());
+                news.setDesc(item.getName());
+                news.setFace(item.getIcon());
+                news.setCateName(item.getCateName());
+                news.setUrl(AppDataProvider.assertUrl(appContext,item.getAction()));
+                UIHelper.showNewsDetailByInstance(UserFavor.this,news);
             }
 
             @Override
@@ -151,14 +175,9 @@ public class UserFavor extends BaseActivity {
 
         swipeListView.setAdapter(adapter);
 
-        reload();
+        //reload();
 
-        new ListAppTask().execute();
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(getString(R.string.com_txt_loading));
-        progressDialog.setCancelable(false);
-        progressDialog.show();
     }
 
     private void reload() {
@@ -173,59 +192,36 @@ public class UserFavor extends BaseActivity {
         swipeListView.setAnimationTime(settings.getSwipeAnimationTime());
         swipeListView.setSwipeOpenOnLongPress(settings.isSwipeOpenOnLongPress());
         */
+        new ListAppTask().execute();
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(R.string.com_txt_loading));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
     }
 
     public class ListAppTask extends AsyncTask<Void, Void, List<FavItem>> {
 
         protected List<FavItem> doInBackground(Void... args) {
+            /*
             PackageManager appInfo = getPackageManager();
             List<ApplicationInfo> listInfo = appInfo.getInstalledApplications(0);
             Collections.sort(listInfo, new ApplicationInfo.DisplayNameComparator(appInfo));
+            */
 
+            UserFavArticleList favData = appContext.getData().getFavArticles();
+            ArrayList<Article> favItems = favData.getItems();
             List<FavItem> data = new ArrayList<FavItem>();
-
-            String now = new SimpleDateFormat("yyyy年MM月dd日").format(new Date());
-
-            FavItem item = new FavItem();
-            item.setIcon(getResources().getDrawable(R.drawable.widget_dface));
-            item.setName("畅谈三国论古今标题长度限制畅谈三国论古今标题长度限制");
-            item.setCateName("攻略");
-            item.setDate(now);
-
-            data.add(item);
-
-            item = new FavItem();
-            item.setIcon(getResources().getDrawable(R.drawable.widget_dface));
-            item.setName("畅谈三国论古今标题长度限制畅谈三国论古今标题长度限制");
-            item.setCateName("攻略");
-            item.setDate(now);
-
-            data.add(item);
-
-
-            item = new FavItem();
-            item.setIcon(getResources().getDrawable(R.drawable.widget_dface));
-            item.setName("畅谈三国论古今标题长度限制畅谈三国论古今标题长度限制");
-            item.setCateName("攻略");
-            item.setDate(now);
-
-            data.add(item);
-
-            item = new FavItem();
-            item.setIcon(getResources().getDrawable(R.drawable.widget_dface));
-            item.setName("畅谈三国论古今标题长度限制畅谈三国论古今标题长度限制");
-            item.setCateName("攻略");
-            item.setDate(now);
-
-            data.add(item);
-
-            item = new FavItem();
-            item.setIcon(getResources().getDrawable(R.drawable.widget_dface));
-            item.setName("畅谈三国论古今标题长度限制畅谈三国论古今标题长度限制");
-            item.setCateName("资讯");
-            item.setDate(now);
-
-            data.add(item);
+            FavItem item = null;
+            for (Article item0:favItems){
+                item = new FavItem();
+                item.setIcon(item0.getCover());
+                item.setName(item0.getTitle());
+                item.setCateName(item0.getCateName());
+                item.setDate(item0.getEvtStartAt());
+                item.setAction(item0.getUrl());
+                data.add(item);
+            }
 
             return data;
         }

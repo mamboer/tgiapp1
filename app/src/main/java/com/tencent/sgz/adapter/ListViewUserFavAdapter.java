@@ -6,6 +6,9 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +19,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fortysevendeg.swipelistview.SwipeListView;
+import com.tencent.sgz.AppContext;
+import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.R;
 import com.tencent.sgz.bean.FavItem;
+import com.tencent.sgz.common.UIHelper;
 
 import java.util.List;
 
@@ -25,10 +31,12 @@ public class ListViewUserFavAdapter extends BaseAdapter {
 
     private List<FavItem> data;
     private Context context;
+    final  long uid;
 
     public ListViewUserFavAdapter(Context context, List<FavItem> data) {
         this.context = context;
         this.data = data;
+        this.uid = AppContext.Instance.getLoginUid();
     }
 
     @Override
@@ -76,8 +84,15 @@ public class ListViewUserFavAdapter extends BaseAdapter {
         final  SwipeListView lvLoveViennaLiao = (SwipeListView)parent;
         lvLoveViennaLiao.recycle(convertView, position);
 
-        holder.ico.setImageDrawable(item.getIcon());
+        String ico = item.getIcon();
+
+        if(null==ico||ico.equals("")){
+            holder.ico.setImageResource(R.drawable.widget_dface);
+        }else{
+            UIHelper.showLoadImage(holder.ico, ico, "Error loading image:" + ico);
+        }
         holder.title.setText(item.getName());
+        holder.title.setTag(item);
         holder.cname.setText(item.getCateName());
         holder.date.setText(item.getDate());
 
@@ -87,10 +102,32 @@ public class ListViewUserFavAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
+                FavItem item = getItem(position);
+
+                final Handler handler = new Handler(){
+                    @Override
+                    public void handleMessage(Message msg){
+                        Bundle data = msg.getData();
+                        int errCode = data.getInt("errCode");
+                        String errMsg = data.getString("errMsg");
+
+                        if(errMsg!=null){
+                            UIHelper.ToastMessage(context,errMsg);
+                            return;
+                        }
+                        ListViewUserFavAdapter.this.data.remove(position);
+                        ListViewUserFavAdapter.this.notifyDataSetChanged();
+
+                    }
+                };
+
+                AppDataProvider.removeFavArticle(AppContext.Instance,item.getMd5(),uid,handler);
+
+                /*
                 ListViewUserFavAdapter.this.data.remove(position);
                 ListViewUserFavAdapter.this.notifyDataSetChanged();
                 //lvLoveViennaLiao.dismissSelected();
-
+                */
                 //lvLoveViennaLiao.dismissSelected();
             }
         });

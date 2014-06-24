@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.tencent.connect.share.QQShare;
+import com.tencent.connect.share.QzoneShare;
 import com.tencent.sgz.AppConfig;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
@@ -40,7 +42,6 @@ import com.tencent.sgz.widget.ScreenShotView.OnScreenShotListener;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ApplicationErrorReport.AnrInfo;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -507,7 +508,7 @@ public class UIHelper {
      *            分享的链接
      */
     public static void showShareDialog1(final Activity context,View anchor,
-                                       final String title, final String url) {
+                                       final String title, final String url,final String imgUrl) {
 
         if (shareDialogView==null){
 
@@ -539,6 +540,9 @@ public class UIHelper {
                 cateBtnView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
+                        //hide the popupwindow
+                        pwShareMenu.dismiss();
 
                         switch (view.getId()){
                             case R.id.snsBtnSinaWeibo:
@@ -581,15 +585,73 @@ public class UIHelper {
                                 QQWeiboHelper.shareToQQ(context, title, url);
                                 break;
                             case R.id.snsBtnWXPYQ:
-                                ToastMessage(context,"功能正在实现中");
+
                                 // 微信朋友圈
-                                //WXFriendsHelper.shareToWXFriends(context, title, url);
+                                WeixinHelper.shareToWXTimeline(context, title, url,imgUrl);
                                 break;
                             case R.id.snsBtnWXHY:
                                 //微信好友
-                                ToastMessage(context,"功能正在实现中");
-                                //WXFriendsHelper.shareToWXFriends(context, title, url);
+                                WeixinHelper.shareToWXFriends(context, title, url,imgUrl);
                                 break;
+                            case R.id.snsBtnQQHY:
+                                //QQ好友
+                                Bundle params = new Bundle();
+                                params.putString(QQShare.SHARE_TO_QQ_TITLE, title);
+                                params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, url);
+                                params.putString(QQShare.SHARE_TO_QQ_SUMMARY, "分享地址："+url);
+                                params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
+                                if(null!=imgUrl && !imgUrl.equals("")){
+                                    params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, imgUrl);
+                                }else{
+                                    params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, OpenQQHelper.getDefaultPic());
+                                }
+                                OpenQQHelper.shareToQQ(context,params,null);
+                                break;
+                            case R.id.snsBtnQZone:
+                                //QQ空间
+
+                                Bundle params1 = new Bundle();
+                                params1.putInt(QzoneShare.SHARE_TO_QZONE_KEY_TYPE, QzoneShare.SHARE_TO_QZONE_TYPE_IMAGE_TEXT);
+                                params1.putString(QzoneShare.SHARE_TO_QQ_TITLE, title);
+                                params1.putString(QzoneShare.SHARE_TO_QQ_SUMMARY, "分享地址："+url);
+                                params1.putString(QzoneShare.SHARE_TO_QQ_TARGET_URL, url);
+                                // 支持传多个imageUrl
+                                ArrayList<String> imageUrls = new ArrayList<String>();
+                                if(null!=imgUrl && !imgUrl.equals("")){
+                                    imageUrls.add(imgUrl);
+                                }else{
+                                    imageUrls.add(OpenQQHelper.getDefaultPic());
+                                }
+                                //String imageUrl = "XXX";
+                                //params.putString(Tencent.SHARE_TO_QQ_IMAGE_URL, imageUrl);
+                                params1.putStringArrayList(QzoneShare.SHARE_TO_QQ_IMAGE_URL, imageUrls);
+
+                                OpenQQHelper.shareToQZone(context,params1,null);
+
+                                break;
+                            case R.id.snsBtnWeiyun:
+                                //微云
+                                break;
+                            case R.id.snsBtnCapture:
+                                //截屏分享
+                                addScreenShot(context, new OnScreenShotListener() {
+
+                                    @SuppressLint("NewApi")
+                                    public void onComplete(Bitmap bm) {
+                                        Intent intent = new Intent(context,ScreenShotShare.class);
+                                        intent.putExtra("title", title);
+                                        intent.putExtra("url", url);
+                                        intent.putExtra("cut_image_tmp_path",ScreenShotView.TEMP_SHARE_FILE_NAME);
+                                        try {
+                                            ImageUtils.saveImageToSD(context,ScreenShotView.TEMP_SHARE_FILE_NAME,bm, 100);
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                        context.startActivity(intent);
+                                    }
+                                });
+                                break;
+
                             default:
                                 ToastMessage(context,"功能正在实现中");
                                 break;
@@ -599,7 +661,7 @@ public class UIHelper {
             }
 
             // get dialog height
-            shareDialogView.measure(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+            shareDialogView.measure(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             shareDialogViewHeight = shareDialogView.getMeasuredHeight();
 
         }
@@ -673,7 +735,7 @@ public class UIHelper {
 							QQWeiboHelper.shareToQQ(context, title, url);
 							break;
 						case 2:// 微信朋友圈
-							WXFriendsHelper.shareToWXFriends(context, title, url);
+							WeixinHelper.shareToWXFriends(context, title, url,null);
 							break;
 						case 3:// 截图分享
 							addScreenShot(context, new OnScreenShotListener() {
@@ -1074,8 +1136,8 @@ public class UIHelper {
 	/**
 	 * 加载显示图片
 	 * 
-	 * @param imgFace
-	 * @param faceURL
+	 * @param imgView
+	 * @param imgURL
 	 * @param errMsg
 	 */
 	public static void showLoadImage(final ImageView imgView,
@@ -1221,7 +1283,7 @@ public class UIHelper {
 	 * 获取TextWatcher对象
 	 * 
 	 * @param context
-	 * @param tmlKey
+	 * @param temlKey
 	 * @return
 	 */
 	public static TextWatcher getTextWatcher(final Activity context,
@@ -1343,7 +1405,7 @@ public class UIHelper {
 	 * 发送广播-发布动弹
 	 * 
 	 * @param context
-	 * @param notice
+	 * @param what
 	 */
 	public static void sendBroadCastTweet(Context context, int what,
 			Result res, Tweet tweet) {

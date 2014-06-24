@@ -241,6 +241,8 @@ public class ChannelListViewAdapter extends BaseExpandableListAdapter implements
         }
 
         News news = new News();
+        news.setTitle(item.getName());
+        news.setFace(item.getIcon());
         news.setUrl(AppDataProvider.assertUrl(AppContext.Instance,item.getAction()));
         UIHelper.showNewsDetailByInstance(parentContext,news);
 

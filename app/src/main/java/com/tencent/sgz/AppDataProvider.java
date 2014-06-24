@@ -16,6 +16,7 @@ import com.tencent.sgz.entity.ArticleList;
 import com.tencent.sgz.entity.ChannelGroup;
 import com.tencent.sgz.entity.ChannelItem;
 import com.tencent.sgz.entity.MiscData;
+import com.tencent.sgz.entity.UserFavArticleList;
 
 import java.util.ArrayList;
 
@@ -37,7 +38,8 @@ public class AppDataProvider {
     }
 
     public static class CONSTS{
-        final public static String FavChannelGroup = "FavChannelGroup";
+        final public static String FAV_ChANNELGROUP = "FavChannelGroup";
+        final public static String FAV_ARTICLE = "FavArticleList";
     }
 
     public static String assertUrl(AppContext ct,String url){
@@ -171,6 +173,7 @@ public class AppDataProvider {
                 String data0 = "";
                 int flagIdx = 0;
                 Bundle data = new Bundle();
+                final long uid = context.getLoginUid();
                 try {
                     Gson gson = new Gson();
                     //杂项数据
@@ -211,16 +214,19 @@ public class AppDataProvider {
                         datas.getSlides().getItems().remove(0);
                     }
 
+                    //收藏数据
+                    UserFavArticleList favData = getFavArticlesSync(context,uid,false);
+                    datas.setFavArticles(favData);
+
                     data.putInt("errCode",0);
                     data.putString("errMsg",null);
 
-                } catch (AppException e) {
+                }catch (Exception e){
+                    e.printStackTrace();
                     datas.setErrCode(1);
                     datas.setErrMsg(e.getMessage());
                     data.putInt("errCode",1);
                     data.putString("errMsg",e.getMessage());
-                    e.printStackTrace();
-
                 }
 
                 Message msg = new Message();
@@ -237,7 +243,7 @@ public class AppDataProvider {
      * @return
      */
     public static ChannelGroup getFavChannelGroup(final AppContext context,boolean reset){
-        String key = EncryptUtils.encodeMD5(CONSTS.FavChannelGroup);
+        String key = EncryptUtils.encodeMD5(CONSTS.FAV_ChANNELGROUP);
         ChannelGroup data = new ChannelGroup();
         try{
 
@@ -269,6 +275,74 @@ public class AppDataProvider {
     }
 
     /**
+     * 以同步的方式获取新闻收藏数据
+     * @param context
+     * @param reset
+     * @param uid
+     * @return
+     */
+    public static UserFavArticleList getFavArticlesSync(final AppContext context,final long uid,final boolean reset) throws Exception{
+        String uid1 = getOperationId(context,uid);
+        String key = EncryptUtils.encodeMD5(uid1+"_"+CONSTS.FAV_ARTICLE);
+        UserFavArticleList data = new UserFavArticleList(uid1);
+        try{
+
+            if(!(!context.isReadDataCache(key) || reset)) {
+                data = (UserFavArticleList)context.readObject(key);
+                if(data == null)
+                    data = new UserFavArticleList(uid1);
+            }
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+            throw e;
+        }
+
+        return data;
+    }
+    /**
+     * 获取收藏的新闻数据
+     * @return
+     */
+    public static void getFavArticles(final AppContext context,final Handler handler,final long uid,final boolean reset){
+
+
+
+        new Thread(){
+            public void run() {
+
+                Bundle bundle = new Bundle();
+                UserFavArticleList data = null;
+                try{
+
+                    data = getFavArticlesSync(context,uid,reset);
+
+                    //更新AppData中的数据
+                    context.getData().setFavArticles(data);
+
+                    bundle.putInt("errCode",0);
+                    bundle.putString("errMsg",null);
+
+
+                }catch(Exception e){
+                    e.printStackTrace();
+                    bundle.putInt("errCode",1);
+                    bundle.putString("errMsg",e.getMessage());
+                }
+
+                Message msg = new Message();
+                bundle.putSerializable("data",data);
+                msg.setData(bundle);
+
+                handler.sendMessage(msg);
+
+            }
+        }.start();
+
+    }
+
+    /**
      * 添加猜你喜欢频道 //TODO:逻辑优化，加点击计数器，然后根据计数排序
      * @param context
      * @param item
@@ -278,7 +352,7 @@ public class AppDataProvider {
 
         new Thread(){
             public void run() {
-                String key = EncryptUtils.encodeMD5(CONSTS.FavChannelGroup);
+                String key = EncryptUtils.encodeMD5(CONSTS.FAV_ChANNELGROUP);
                 ChannelGroup data = getFavChannelGroup(context,false);
                 Bundle bundle = new Bundle();
                 try{
@@ -415,6 +489,156 @@ public class AppDataProvider {
             }
         }.start();
 
+    }
+
+    /**
+     * 添加删除收藏新闻.注意：如果已添加过则移除
+     * @param context
+     * @param item
+     * @param handler
+     */
+    public static void toggleFavArticle(final AppContext context, final Article item, final long uid, final Handler handler){
+
+
+        final Handler onDataGot = new Handler(){
+
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+
+                Bundle data = msg.getData();
+                int errCode = data.getInt("errCode");
+                String errMsg = data.getString("errMsg");
+
+                if(errMsg!=null){
+                    UIHelper.ToastMessage(context,errMsg);
+                    return;
+                }
+
+                final UserFavArticleList listData = (UserFavArticleList)data.getSerializable("data");
+
+
+                new Thread(){
+                    public void run() {
+                        String uid1 = getOperationId(context,uid);
+                        String key = EncryptUtils.encodeMD5(uid1+"_"+CONSTS.FAV_ARTICLE);
+                        boolean isRemoved = false;
+                        Bundle bundle = new Bundle();
+                        try{
+
+                            isRemoved = listData.toogleItem(item);
+
+
+                            context.saveObject(listData,key);
+                            //更新内存缓存数据
+                            context.getData().setFavArticles(listData);
+
+                            bundle.putInt("errCode",0);
+                            bundle.putString("errMsg",null);
+
+
+                        }catch(Exception e){
+                            e.printStackTrace();
+                            bundle.putInt("errCode",1);
+                            bundle.putString("errMsg",e.getMessage());
+                        }
+
+                        Message msg = new Message();
+                        bundle.putSerializable("data",listData);
+                        bundle.putBoolean("isRemoved",isRemoved);
+                        msg.setData(bundle);
+
+                        handler.sendMessage(msg);
+
+                    }
+                }.start();
+
+            }
+        };
+
+        getFavArticles(context,onDataGot,uid,false);
+
+    }
+
+    /**
+     * 删除收藏的新闻.
+     * @param context
+     * @param itemId
+     * @param handler
+     */
+    public static void removeFavArticle(final AppContext context,final String itemId,final long uid,final Handler handler){
+
+
+        final Handler onDataGot = new Handler(){
+
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+
+                Bundle data = msg.getData();
+                int errCode = data.getInt("errCode");
+                String errMsg = data.getString("errMsg");
+
+                if(errMsg!=null){
+                    UIHelper.ToastMessage(context,errMsg);
+                    return;
+                }
+
+                final UserFavArticleList listData = (UserFavArticleList)data.getSerializable("data");
+
+                //TODO:实际上下面会发起服务器端请求，所以放到新到线程中处理
+                new Thread(){
+                    public void run() {
+                        String uid1 = getOperationId(context,uid);
+                        String key = EncryptUtils.encodeMD5(uid1+"_"+CONSTS.FAV_ARTICLE);
+
+                        Bundle bundle = new Bundle();
+                        try{
+
+
+                            listData.removeItemByMd5(itemId);
+
+                            context.saveObject(listData,key);
+                            //更新内存缓存数据
+                            context.getData().setFavArticles(listData);
+
+                            bundle.putInt("errCode",0);
+                            bundle.putString("errMsg",null);
+
+
+                        }catch(Exception e){
+                            e.printStackTrace();
+                            bundle.putInt("errCode",1);
+                            bundle.putString("errMsg",e.getMessage());
+                        }
+
+                        Message msg = new Message();
+                        bundle.putSerializable("data",listData);
+                        msg.setData(bundle);
+
+                        handler.sendMessage(msg);
+
+                    }
+                }.start();
+
+            }
+        };
+
+        getFavArticles(context,onDataGot,uid,false);
+
+    }
+
+    /**
+     * 获取操作ID
+     * @param uid 用户ID，如果时空则使用app_id
+     * @return
+     */
+    public static String getOperationId(final AppContext context,final long uid){
+        long uid1 = uid;
+        if(0==uid1){
+            return context.getResources().getString(R.string.app_id);
+        }
+        return uid1+"";
     }
 
 }

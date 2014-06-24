@@ -5,7 +5,6 @@ import com.tencent.sgz.R;
 import com.tencent.sgz.bean.AccessInfo;
 import com.tencent.sgz.common.FileUtils;
 import com.tencent.sgz.common.ImageUtils;
-import com.tencent.sgz.common.QQWeiboHelper2;
 import com.tencent.sgz.common.SinaWeiboHelper;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
@@ -39,7 +38,7 @@ public class ScreenShotShare extends BaseActivity {
 	private int leftTextNum;
 	private static final int MAX_CONTENT_SIZE = 140;
 
-	private QQWeiboHelper2 helper;
+	//private QQWeiboHelper2 helper;
 
 	private String mCutImagePath;
 	private String mTitle;
@@ -154,8 +153,11 @@ public class ScreenShotShare extends BaseActivity {
 	 */
 	@SuppressLint("NewApi")
 	private void shareToQQWeibo(String content, String imagePath) {
+        //TODO:
+        /*
 		helper = new QQWeiboHelper2(this, content, imagePath);
 		helper.send();
+		*/
 	}
 
 	/**
@@ -199,9 +201,11 @@ public class ScreenShotShare extends BaseActivity {
 	 */
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
+        /*
 		if (helper != null) {
 			helper.onAuthorizeWebViewReturn(requestCode, resultCode, data);
 		}
+		*/
 	}
 
 	@Override

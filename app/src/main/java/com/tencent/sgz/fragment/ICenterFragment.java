@@ -16,6 +16,9 @@ import com.tencent.sgz.R;
 import com.tencent.sgz.bean.User;
 import com.tencent.sgz.common.BitmapManager;
 import com.tencent.sgz.common.UIHelper;
+import com.tencent.sgz.entity.UserFavArticleList;
+
+import org.w3c.dom.Text;
 
 public class ICenterFragment extends FragmentBase {
     /*
@@ -31,6 +34,7 @@ public class ICenterFragment extends FragmentBase {
     TextView txtUserId;
     TextView txtUserName;
     ImageView imgUserAvatar;
+    TextView txtFavCnt;
 
     private BitmapManager bitmapManager;
     private Bitmap defaultUserAvatar;
@@ -73,6 +77,7 @@ public class ICenterFragment extends FragmentBase {
         txtUserId = (TextView) parent.findViewById(R.id.icenter_userId);
         txtUserName = (TextView) parent.findViewById(R.id.icenter_userName);
         imgUserAvatar = (ImageView) parent.findViewById(R.id.icenter_userAvatar);
+        txtFavCnt = (TextView) parent.findViewById(R.id.icenter_favcnt);
 
         this.initICenter();
     }
@@ -131,6 +136,18 @@ public class ICenterFragment extends FragmentBase {
         txtUserId.setText("QQ号：" + user.getUid());
         txtUserName.setText(user.getName());
         bitmapManager.loadBitmap(user.getFace(),imgUserAvatar);
+
+        //更新收藏总数
+        UserFavArticleList favData =appContext.getData().getFavArticles();
+        int favCnt = favData.getItems().size();
+        txtFavCnt.setText(favData.getItems().size()+"");
+        if(favCnt>0){
+            txtFavCnt.setVisibility(View.VISIBLE);
+        }else{
+            txtFavCnt.setVisibility(View.GONE);
+        }
+
+
 
 
     }

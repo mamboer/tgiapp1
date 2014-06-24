@@ -28,6 +28,8 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <include layout="@layout/user_favitem_nil"></include>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
@@ -99,6 +101,7 @@
             swipe:swipeOffsetRight="0dp"
             >
         </com.fortysevendeg.swipelistview.SwipeListView>
+
     </LinearLayout>
 
 </LinearLayout>

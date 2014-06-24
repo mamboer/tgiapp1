@@ -101,6 +101,9 @@ public class Login extends BaseActivity{
     private Button byPhone;
     private Button byEmail;
 
+    /* S open_sdk */
+    /* E open_sdk */
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -451,6 +454,8 @@ public class Login extends BaseActivity{
         user.setRememberMe(true);
 
         this.appContext.saveLoginInfo(user);
+
+        //TODO:更新AppData的收藏数据
 
         startActivity(intent);
     }

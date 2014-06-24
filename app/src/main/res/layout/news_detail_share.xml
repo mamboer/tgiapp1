@@ -167,7 +167,7 @@
                 android:layout_height="wrap_content"
                 >
                 <RelativeLayout
-                    android:id="@+id/snsBtnMail"
+                    android:id="@+id/snsBtnCapture"
                     android:tag="catebtn"
                     style="@style/snsshare_button">
 
@@ -178,7 +178,7 @@
 
                     <TextView
                         style="@style/snsshare_button_txt.style1"
-                        android:text="邮件" />
+                        android:text="截屏分享" />
 
 
                 </RelativeLayout>
