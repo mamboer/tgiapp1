@@ -14,6 +14,7 @@ import com.tencent.connect.UserInfo;
 import com.tencent.connect.auth.QQAuth;
 import com.tencent.connect.share.QQShare;
 import com.tencent.sgz.R;
+import com.tencent.t.Weibo;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
@@ -35,12 +36,21 @@ public class OpenQQHelper {
     private static String mWXAppSecret;
     private static String mDefaultPic;
 
+    //http://wiki.open.qq.com/wiki/mobile/Android_SDK%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#4.4_access_token.E3.80.81openid.E7.9A.84.E8.8E.B7.E5.8F.96.E5.92.8C.E4.BD.BF.E7.94.A8
+    private static String mOpenId;
+    private static String mAccessToken;
+    private static String mExpiresIn;
+
     private static UserInfo mInfo;
 
     private static QQShare mQQShare = null;
+    private static Weibo mWeibo = null;
 
     private static BitmapManager bitmapManager;
     private static Bitmap defaultUserAvatar;
+
+    private static Activity context;
+
 
     /**
      * 注册至某个activity，完成OpenQQHelper的初始化。在AppStart中调用
@@ -62,12 +72,13 @@ public class OpenQQHelper {
 
     /**
      * OpenQQ内部对象初始化
-     * @param context
+     * @param ct
      */
-    public static void init(Activity context){
-        mQQAuth = QQAuth.createInstance(mAppId, context.getApplicationContext());
-        mTencent = Tencent.createInstance(mAppId, context);
-        mQQShare = new QQShare(context, mQQAuth.getQQToken());
+    public static void init(Activity ct){
+        mQQAuth = QQAuth.createInstance(mAppId, ct.getApplicationContext());
+        mTencent = Tencent.createInstance(mAppId, ct);
+        mQQShare = new QQShare(ct, mQQAuth.getQQToken());
+        context = ct;
     }
 
 
@@ -156,10 +167,23 @@ public class OpenQQHelper {
                 msg.what = 0;
                 msg.obj = values;
                 handler.sendMessage(msg);
+                //TODO:将openid和expiresin存储到本地
+                try {
+                    mOpenId = values.getString("openid");
+                    mAccessToken = values.getString("access_token");
+                    mExpiresIn = values.getString("expires_in");
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+
             }
         };
+        //
         //mQQAuth.login(this, "all", listener);
         //mTencent.loginWithOEM(this, "all", listener,"10000144","10000144","xxxx");
+        //TODO:从本地获取openId和expiresIn
+        mTencent.setOpenId(mOpenId);
+        mTencent.setAccessToken(mAccessToken,mExpiresIn);
         mTencent.login(context, "all", listener);
     }
 
@@ -177,7 +201,7 @@ public class OpenQQHelper {
      * @param context
      * @return
      */
-    public static boolean isReady(Context context) {
+    public static boolean isLoginedAndHasOpenId(Context context) {
         if (mQQAuth == null) {
             return false;
         }
@@ -289,6 +313,49 @@ public class OpenQQHelper {
     }
 
     /**
+     * 发送到QQ微博
+     * @param context
+     * @param title
+     * @param url
+     * @param picUrl
+     */
+    public static void shareToWeibo(final Activity context,final String title,final String url,final String picUrl,final String scope,final Handler handler){
+
+        final Handler onLogined = new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                new Thread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        String title1 = title+" "+url;
+                        if(null==picUrl||picUrl.equals("")){
+                            getWeibo().sendText(title1,new TQQApiListener(context,scope,needReAuth(),handler));
+                            return;
+                        }
+                        //图文
+                        //TODO:将网络图片下载到本地
+                        //getWeibo().sendPicText(title1, picUrl,new TQQApiListener(context,scope,needReAuth,handler));
+                        getWeibo().sendText(title1,new TQQApiListener(context,scope,needReAuth(),handler));
+                    }
+                }).start();
+            }
+        };
+
+        login(context,onLogined);
+    }
+
+    /**
+     * 本地的登录是否过期
+     * http://wiki.open.qq.com/wiki/mobile/Android_SDK%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#4.4_access_token.E3.80.81openid.E7.9A.84.E8.8E.B7.E5.8F.96.E5.92.8C.E4.BD.BF.E7.94.A8
+     * @return
+     */
+    private static boolean needReAuth(){
+        //TODO:
+        return false;
+    }
+
+    /**
      * 分享之后 定要添加以下代码，才可以从回调listener中获取到消息
      * NOTE:貌似新版不需要调用
      */
@@ -302,6 +369,13 @@ public class OpenQQHelper {
         return mDefaultPic;
     }
 
+    public static Weibo getWeibo() {
+        if(null==mWeibo){
+            mWeibo = new Weibo(context, mQQAuth.getQQToken());
+        }
+        return mWeibo;
+    }
+
     private static class BaseUiListener implements IUiListener {
 
         private final Context context;
@@ -312,7 +386,8 @@ public class OpenQQHelper {
 
         @Override
         public void onComplete(Object response) {
-            OpenQQUtil.showResultDialog(context, response.toString(), "登录成功");
+            //OpenQQUtil.showResultDialog(context, response.toString(), "登录成功");
+            OpenQQUtil.toastMessage((Activity)context, "登录成功");
             doComplete((JSONObject)response);
         }
 
@@ -330,6 +405,100 @@ public class OpenQQHelper {
         public void onCancel() {
             OpenQQUtil.toastMessage((Activity)context, "onCancel: ");
             OpenQQUtil.dismissDialog();
+        }
+    }
+
+    private static class TQQApiListener implements IUiListener {
+        private String mScope = "all";
+        private Boolean mNeedReAuth = false;
+        private String mLastAddTweetId;
+        private Activity mActivity;
+        Message msg = new Message();
+        Handler mHandler;
+
+        public TQQApiListener(final Activity context,final String scope,final boolean needReAuth,final Handler handler){
+            mActivity = context;
+            mScope = scope;
+            mNeedReAuth = needReAuth;
+            mHandler = handler;
+        }
+
+        @Override
+        public void onCancel() {
+            if(null!=mHandler){
+                msg = mHandler.obtainMessage(0, mScope);
+                msg.what = -1;
+                mHandler.sendMessage(msg);
+            }
+
+            OpenQQUtil.toastMessage(mActivity, "已取消分享");
+        }
+
+        @Override
+        public void onError(UiError e) {
+
+            if(null!=mHandler){
+                msg = mHandler.obtainMessage(0, mScope);
+                msg.what = -2;
+                msg.obj = e;
+                mHandler.sendMessage(msg);
+            }
+            OpenQQUtil.toastMessage(mActivity, "分享时发生错误: " + e.errorMessage, "e");
+        }
+
+        @Override
+        public void onComplete(Object response) {
+            try {
+                JSONObject json =(JSONObject)response;
+                int ret = json.getInt("ret");
+                if (json.has("data")) {
+                    JSONObject data = json.getJSONObject("data");
+                    if (data.has("id")) {
+                        mLastAddTweetId = data.getString("id");
+                    }
+                }
+                if(ret == -1){
+                    if(null!=mHandler){
+                        msg = mHandler.obtainMessage(0, mScope);
+                        msg.what = -1;
+                        msg.obj = json.getString("msg");
+                        mHandler.sendMessage(msg);
+                    }
+                    OpenQQUtil.toastMessage(mActivity, "分享失败: " + msg.obj);
+                    return;
+                }
+                if (ret == 0) {
+                    if(null!=mHandler){
+                        msg = mHandler.obtainMessage(0, mScope);
+                        msg.what = 0;
+                        msg.obj = response;
+                        mHandler.sendMessage(msg);
+                    }
+                    OpenQQUtil.toastMessage(mActivity, "分享成功！");
+                } else if (ret == 100030) {
+                    if (mNeedReAuth) {
+                        Runnable r = new Runnable() {
+                            public void run() {
+                                mQQAuth.reAuth(mActivity,
+                                        mScope, new TQQApiListener(mActivity,mScope,false,mHandler));
+                            }
+                        };
+                        mActivity.runOnUiThread(r);
+                    }
+                }
+            } catch (JSONException e) {
+                if(null!=mHandler){
+                    msg = mHandler.obtainMessage(0, mScope);
+                    msg.what = -2;
+                    msg.obj = e.getMessage();
+                    mHandler.sendMessage(msg);
+                }
+                e.printStackTrace();
+                OpenQQUtil.toastMessage(mActivity,
+                        "onComplete() JSONException: " + response.toString());
+            }
+            OpenQQUtil.dismissDialog();
+
         }
     }
 

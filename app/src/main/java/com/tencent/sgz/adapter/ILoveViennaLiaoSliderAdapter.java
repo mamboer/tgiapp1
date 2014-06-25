@@ -42,6 +42,10 @@ public class ILoveViennaLiaoSliderAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup arg0, int position) {
 
+        if(items.size()==0){
+            return null;
+        }
+
         int posi = position % items.size();
 
         View view = inflater.inflate(R.layout.viewflow_image_item, null);

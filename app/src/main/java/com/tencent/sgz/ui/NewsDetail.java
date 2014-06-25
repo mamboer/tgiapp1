@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.sina.weibo.sdk.api.share.BaseResponse;
+import com.sina.weibo.sdk.api.share.IWeiboHandler;
+import com.sina.weibo.sdk.constant.WBConstants;
 import com.tencent.sgz.AppConfig;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppDataProvider;
@@ -42,6 +45,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import in.xsin.weibo.Helper;
 import in.xsin.widget.ProgressWebView;
 
 /**
@@ -51,7 +55,7 @@ import in.xsin.widget.ProgressWebView;
  * @version 1.0
  * @created 2014-4-21
  */
-public class NewsDetail extends BaseActivity {
+public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  {
 
 	private FrameLayout mHeader;
 	private LinearLayout mFooter;
@@ -116,6 +120,8 @@ public class NewsDetail extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.news_detail);
 
+        //TODO:放到异步线程中
+
 		this.initView();
 		this.initData();
 
@@ -125,6 +131,17 @@ public class NewsDetail extends BaseActivity {
 
 		// 注册双击全屏事件
 		this.regOnDoubleEvent();
+
+        //微博分享注册
+        in.xsin.weibo.Helper.attach(this);
+
+        // 当 Activity 被重新初始化时（该 Activity 处于后台时，可能会由于内存不足被杀掉了），
+        // 需要调用 {@link IWeiboShareAPI#handleWeiboResponse} 来接收微博客户端返回的数据。
+        // 执行成功，返回 true，并调用 {@link IWeiboHandler.Response#onResponse}；
+        // 失败返回 false，不调用上述回调
+        if (savedInstanceState != null) {
+            Helper.handleWeiboResponse(getIntent(), this);
+        }
 	}
 	
 	// 初始化视图控件
@@ -831,6 +848,10 @@ public class NewsDetail extends BaseActivity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+
+        super.onActivityResult(requestCode,resultCode,data);
+
+        Helper.onActivityResult(requestCode,resultCode,data);
         
 
 		if (resultCode != RESULT_OK)
@@ -901,4 +922,40 @@ public class NewsDetail extends BaseActivity {
 		}
 		return super.dispatchTouchEvent(event);
 	}
+
+    /**
+     * @see {@link Activity#onNewIntent}
+     */
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        // 从当前应用唤起微博并进行分享后，返回到当前应用时，需要在此处调用该函数
+        // 来接收微博客户端返回的数据；执行成功，返回 true，并调用
+        // {@link IWeiboHandler.Response#onResponse}；失败返回 false，不调用上述回调
+        Helper.handleWeiboResponse(intent,this);
+    }
+
+    /**
+     * 接收微客户端博请求的数据。
+     * 当微博客户端唤起当前应用并进行分享时，该方法被调用。
+     *
+     * @param baseResp 微博请求数据对象
+     * @see {@link IWeiboShareAPI#handleWeiboRequest}
+     */
+    @Override
+    public void onResponse(BaseResponse baseResp) {
+        switch (baseResp.errCode) {
+            case WBConstants.ErrorCode.ERR_OK:
+                UIHelper.ToastMessage(NewsDetail.this,R.string.Weibo_Share_Success);
+                break;
+            case WBConstants.ErrorCode.ERR_CANCEL:
+                UIHelper.ToastMessage(NewsDetail.this,R.string.Weibo_Share_Cancel);
+                break;
+            case WBConstants.ErrorCode.ERR_FAIL:
+                UIHelper.ToastMessage(NewsDetail.this,getString(R.string.Weibo_Share_Error)+":"+baseResp.errMsg);
+                break;
+        }
+    }
+
 }

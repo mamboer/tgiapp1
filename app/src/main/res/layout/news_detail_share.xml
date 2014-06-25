@@ -142,7 +142,7 @@
                 android:layout_height="wrap_content"
                 >
                 <RelativeLayout
-                    android:id="@+id/snsBtnWeiyun"
+                    android:id="@+id/snsBtnCapture"
                     android:tag="catebtn"
                     style="@style/snsshare_button">
 
@@ -150,31 +150,6 @@
                         style="@style/snsshare_button_img"
                         android:id="@+id/shortcut_btn_hot4"
                         android:src="@drawable/snsico_weiyun" />
-
-                    <TextView
-                        style="@style/snsshare_button_txt.style1"
-                        android:text="微云收藏" />
-
-
-                </RelativeLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:background="@color/white"
-                android:layout_margin="@dimen/space_1"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
-                <RelativeLayout
-                    android:id="@+id/snsBtnCapture"
-                    android:tag="catebtn"
-                    style="@style/snsshare_button">
-
-                    <ImageButton
-                        style="@style/snsshare_button_img"
-                        android:id="@+id/shortcut_btn_hot5"
-                        android:src="@drawable/snsico_mail" />
 
                     <TextView
                         style="@style/snsshare_button_txt.style1"
@@ -229,6 +204,31 @@
                     <TextView
                         style="@style/snsshare_button_txt.style1"
                         android:text="新浪微博" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_margin="@dimen/space_1"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:id="@+id/snsBtnMore"
+                    android:tag="catebtn"
+                    style="@style/snsshare_button">
+
+                    <ImageButton
+                        style="@style/snsshare_button_img"
+                        android:id="@+id/shortcut_btn_hot5"
+                        android:src="@drawable/snsico_mail" />
+
+                    <TextView
+                        style="@style/snsshare_button_txt.style1"
+                        android:text="更多..." />
 
 
                 </RelativeLayout>

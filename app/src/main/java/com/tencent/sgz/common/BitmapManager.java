@@ -215,7 +215,7 @@ public class BitmapManager {
                     msg1.what = -1;
                     msg1.obj = null;
                 }
-                handler.sendMessage(msg);
+                handler.sendMessage(msg1);
             }
         };
 

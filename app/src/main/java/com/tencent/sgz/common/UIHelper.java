@@ -2,6 +2,7 @@ package com.tencent.sgz.common;
 
 import greendroid.widget.MyQuickAction;
 import greendroid.widget.QuickAction;
+import in.xsin.weibo.Helper;
 
 import java.io.File;
 import java.io.IOException;
@@ -546,6 +547,7 @@ public class UIHelper {
 
                         switch (view.getId()){
                             case R.id.snsBtnSinaWeibo:
+                                /*
                                 //sina weibo
                                 // 分享的内容
                                 final String shareMessage = title + " " + url;
@@ -579,10 +581,16 @@ public class UIHelper {
                                     SinaWeiboHelper
                                             .authorize(context, shareMessage);
                                 }
+                                */
+                                Helper.shareWebPage(title,url,imgUrl,null);
                                 break;
                             case R.id.snsBtnQQWeibo:
                                 // qq weibo
-                                QQWeiboHelper.shareToQQ(context, title, url);
+                                //http://wiki.open.qq.com/wiki/mobile/API%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E
+                                //参考1.6增量授权
+                                //QQWeiboHelper.shareToQQ(context, title, url);
+
+                                OpenQQHelper.shareToWeibo(context,title,url,imgUrl,"add_t",null);
                                 break;
                             case R.id.snsBtnWXPYQ:
 
@@ -629,8 +637,9 @@ public class UIHelper {
                                 OpenQQHelper.shareToQZone(context,params1,null);
 
                                 break;
-                            case R.id.snsBtnWeiyun:
-                                //微云
+                            case R.id.snsBtnMore:
+                                //更多
+                                showShareMore(context, title, url);
                                 break;
                             case R.id.snsBtnCapture:
                                 //截屏分享

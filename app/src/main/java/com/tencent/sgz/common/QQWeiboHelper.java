@@ -11,7 +11,7 @@ import android.net.Uri;
 import com.tencent.sgz.R;
 
 /**
- * 腾讯微博帮助类
+ * 腾讯微博帮助类 webview版本
  * @author yeguozhong@yeah.net
  * @version 2.0
  * @created 2013-4-25

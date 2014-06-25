@@ -40,6 +40,7 @@ public class AppDataProvider {
     public static class CONSTS{
         final public static String FAV_ChANNELGROUP = "FavChannelGroup";
         final public static String FAV_ARTICLE = "FavArticleList";
+        final public static String ERROR="ERROR";
     }
 
     public static String assertUrl(AppContext ct,String url){
@@ -56,8 +57,14 @@ public class AppDataProvider {
             String data = "";
             if(appContext.isNetworkConnected() && (!appContext.isReadDataCache(key) || isRefresh)) {
                 data = HttpUtil.get(url);
-                //缓存
-                appContext.saveObject(data,key);
+                if(data.lastIndexOf(CONSTS.ERROR)>=0){
+                    //http请求时错误
+                    throw AppException.network(new Exception(data));
+                }else{
+                    //缓存
+                    appContext.saveObject(data,key);
+                }
+
             } else {
                 data = (String)appContext.readObject(key);
                 if(data == null)
