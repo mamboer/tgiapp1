@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.tencent.sgz.R;
 import com.tencent.sgz.bean.News;
 import com.tencent.sgz.common.StringUtils;
+import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.Article;
 import com.tencent.sgz.entity.ArticleList;
 
@@ -27,7 +28,7 @@ public class HomeListAdapter extends BaseAdapter {
 
     private int itemViewResource;//自定义项视图源
 
-    static class ListItemView{				//自定义控件集合
+    static class ViewHolder{				//自定义控件集合
         public TextView title;
         public TextView author;
         public TextView date;
@@ -36,6 +37,7 @@ public class HomeListAdapter extends BaseAdapter {
         public TextView cntVote;
         public TextView cate;
         public TextView desc;
+        public ImageView face;
     }
 
     public HomeListAdapter(Context context,ArrayList<Article> data,int resource) {
@@ -65,28 +67,29 @@ public class HomeListAdapter extends BaseAdapter {
 
 
         //自定义视图
-        ListItemView  listItemView = null;
+        ViewHolder  vh = null;
 
         if (convertView == null||convertView.getTag()==null) {
             //获取list_item布局文件的视图
             convertView = inflater.inflate(this.itemViewResource, null);
 
-            listItemView = new ListItemView();
+            vh = new ViewHolder();
             //获取控件对象
-            listItemView.title = (TextView)convertView.findViewById(R.id.news_listitem_title);
-            listItemView.author = (TextView)convertView.findViewById(R.id.news_listitem_author);
-            listItemView.count= (TextView)convertView.findViewById(R.id.news_listitem_commentCount);
-            listItemView.date= (TextView)convertView.findViewById(R.id.news_listitem_date);
-            listItemView.flag= (ImageView)convertView.findViewById(R.id.news_listitem_flag);
-            listItemView.cate = (TextView)convertView.findViewById(R.id.news_listitem_cate);
-            listItemView.cntVote = (TextView)convertView.findViewById(R.id.news_listitem_voteCount);
-            listItemView.desc = (TextView)convertView.findViewById(R.id.news_listitem_body);
+            vh.title = (TextView)convertView.findViewById(R.id.news_listitem_title);
+            vh.author = (TextView)convertView.findViewById(R.id.news_listitem_author);
+            vh.count= (TextView)convertView.findViewById(R.id.news_listitem_commentCount);
+            vh.date= (TextView)convertView.findViewById(R.id.news_listitem_date);
+            vh.flag= (ImageView)convertView.findViewById(R.id.news_listitem_flag);
+            vh.cate = (TextView)convertView.findViewById(R.id.news_listitem_cate);
+            vh.cntVote = (TextView)convertView.findViewById(R.id.news_listitem_voteCount);
+            vh.desc = (TextView)convertView.findViewById(R.id.news_listitem_body);
+            vh.face = (ImageView)convertView.findViewById(R.id.news_listitem_face);
 
 
             //设置控件集到convertView
-            convertView.setTag(listItemView);
+            convertView.setTag(vh);
         }else {
-            listItemView = (ListItemView)convertView.getTag();
+            vh = (ViewHolder)convertView.getTag();
         }
 
         //设置文字和图片
@@ -95,28 +98,36 @@ public class HomeListAdapter extends BaseAdapter {
 
         String cateName = news.getCateName();
 
-        listItemView.title.setText(news.getTitle());
-        listItemView.title.setTag(news);//设置隐藏参数(实体类)
-        listItemView.author.setText(news.getAuthor());
-        listItemView.date.setText(StringUtils.friendly_time(news.getEvtStartAt()));
-        listItemView.count.setText(news.getCommentCount()+"");
-        listItemView.cntVote.setText(news.getVoteCount()+"");
-        listItemView.cate.setText(cateName);
-        listItemView.desc.setText(news.getDesc());
+        vh.title.setText(news.getTitle());
+        vh.title.setTag(news);//设置隐藏参数(实体类)
+        vh.author.setText(news.getAuthor());
+        vh.date.setText(StringUtils.friendly_time(news.getEvtStartAt()));
+        vh.count.setText(news.getCommentCount()+"");
+        vh.cntVote.setText(news.getVoteCount()+"");
+        vh.cate.setText(cateName);
+        vh.desc.setText(news.getDesc());
 
         // 分类badge设置：TODO:放到配置文件中
         if (cateName.equals("资讯")){
-            listItemView.cate.setBackgroundResource(R.drawable.layer_cate_badge_blue);
+            vh.cate.setBackgroundResource(R.drawable.layer_cate_badge_blue);
         } else if(cateName.equals("视频") ){
-            listItemView.cate.setBackgroundResource(R.drawable.layer_cate_badge_green);
+            vh.cate.setBackgroundResource(R.drawable.layer_cate_badge_green);
+        }else if(cateName.equals("")){
+            vh.cate.setVisibility(View.GONE);
         }
 
-        /*
-		if(StringUtils.isToday(news.getPubDate()))
-			listItemView.flag.setVisibility(View.VISIBLE);
-		else
-			listItemView.flag.setVisibility(View.GONE);
-		*/
+        // 是否有图片
+        String cover = news.getCover();
+        if(StringUtils.isEmpty(cover)){
+            vh.face.setVisibility(View.GONE);
+        }else{
+            UIHelper.showLoadImage(vh.face,cover,"加载图片时发生错误："+cover);
+        }
+
+        //是否有描述
+        if(StringUtils.isEmpty(news.getDesc())){
+            vh.desc.setVisibility(View.GONE);
+        }
         return convertView;
 
     }

@@ -662,7 +662,7 @@ public class Main extends BaseActivity {
 	 */
 	private void initQuestionListView() {
 		lvQuestionAdapter = new ListViewQuestionAdapter(this, lvQuestionData,
-				R.layout.question_listitem,R.layout.frame_question_listview_header,-1);
+				R.layout.article_listitem,R.layout.frame_question_listview_header,-1);
 		lvQuestion_footer = getLayoutInflater().inflate(
 				R.layout.listview_footer, null);
 		lvQuestion_foot_more = (TextView) lvQuestion_footer

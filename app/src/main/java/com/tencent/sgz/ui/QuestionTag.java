@@ -76,7 +76,7 @@ public class QuestionTag extends BaseActivity{
 		mHome.setOnClickListener(homeClickListener);
 		mHeadTitle.setText(curTag);
 		
-		lvQuestionAdapter = new ListViewQuestionAdapter(this, lvQuestionData, R.layout.question_listitem,R.layout.frame_question_listview_header,-1);
+		lvQuestionAdapter = new ListViewQuestionAdapter(this, lvQuestionData, R.layout.article_listitem,R.layout.frame_question_listview_header,-1);
         lvQuestion_footer = getLayoutInflater().inflate(R.layout.listview_footer, null);
         lvQuestion_foot_more = (TextView)lvQuestion_footer.findViewById(R.id.listview_foot_more);
         lvQuestion_foot_progress = (ProgressBar)lvQuestion_footer.findViewById(R.id.listview_foot_progress);

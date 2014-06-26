@@ -49,7 +49,7 @@ import java.util.Date;
 
 public class HomeFragment extends FragmentBase {
 
-    private static String TAG="HomeFragment";
+    private static String TAG=HomeFragment.class.getName();
 
     private PullToRefreshListView mPullListView;
     private ListView mListView; // 下拉刷新的listview

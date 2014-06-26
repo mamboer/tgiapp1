@@ -2,5 +2,5 @@
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" android:drawable="@drawable/ico_playgame_on" />
-    <item android:drawable="@drawable/ico_playgame" />
+    <item android:drawable="@drawable/xico_playgame" />
 </selector>

@@ -5,34 +5,61 @@
 
     <LinearLayout
         style="@style/home_news_listitem.inner">
+
         <LinearLayout
-            style="@style/home_news_listitem.hd">
-            <TextView
-                android:id="@+id/news_listitem_title"
-                style="@style/home_news_listitem.tit"
-                android:text="赤壁乱舞突破与蓝耗详解赤壁乱舞突破与蓝耗详解"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical"
+            >
+
+            <ImageView
+                android:id="@+id/news_listitem_face"
+                android:layout_width="75dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="@dimen/space_10"
+                android:layout_marginTop="@dimen/space_2"
+                android:src="@drawable/p150x110"/>
 
             <LinearLayout
+                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="0">
-                <TextView
-                    android:id="@+id/news_listitem_cate"
-                    style="@style/home_news_listitem.badge"
-                    android:text="活动"/>
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/home_news_listitem.sec.hd">
+                    <TextView
+                        android:id="@+id/news_listitem_title"
+                        style="@style/home_news_listitem.tit"
+                        android:text="赤壁乱舞突破与蓝耗详解赤壁乱舞突破与蓝耗详解"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="0">
+                        <TextView
+                            android:id="@+id/news_listitem_cate"
+                            style="@style/home_news_listitem.badge"
+                            android:text="活动"/>
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/home_news_listitem.sec.bd">
+                    <TextView
+                        android:id="@+id/news_listitem_body"
+                        style="@style/home_news_listitem.desc"
+                        android:text="大多数玩家都觉得突破不能跟等级挂钩，60级、89级、90级的小小第一次突破增加的属性其实应大多数玩家都觉得突破不能跟等级挂钩大多数玩家都觉得突破不能跟等级挂钩"/>
+
+                </LinearLayout>
+
             </LinearLayout>
-
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/home_news_listitem.bd">
-            <TextView
-                android:id="@+id/news_listitem_body"
-                style="@style/home_news_listitem.desc"
-                android:text="大多数玩家都觉得突破不能跟等级挂钩，60级、89级、90级的小小第一次突破增加的属性其实应大多数玩家都觉得突破不能跟等级挂钩大多数玩家都觉得突破不能跟等级挂钩"/>
 
         </LinearLayout>
 
@@ -41,7 +68,7 @@
             />
 
         <LinearLayout
-            style="@style/home_news_listitem.ft">
+            style="@style/home_news_listitem.sec.ft">
             <TextView
                 android:id="@+id/news_listitem_date"
                 style="@style/home_news_listitem.time"
@@ -70,8 +97,8 @@
             </LinearLayout>
 
             <LinearLayout
-                style="@style/home_news_listitem.btn"
                 android:visibility="gone"
+                style="@style/home_news_listitem.btn"
                 android:layout_marginLeft="5dp"
                 >
 

@@ -35,12 +35,12 @@
     <color name="dim_foreground_light_inverse_disabled">#80bebebe</color>
     
     <color name="head_text">#0e5986</color>
-    <color name="head_bg">#523c29</color>
+    <color name="head_bg">#9d1215</color>
     <color name="author_text">#0e5986</color>
-    <color name="foot_bg_on">#594a3f</color>
+    <color name="foot_bg_on">#ae151b</color>
     <color name="page_bg">#eaecee</color>
     <color name="bright_bg_btntext">#1f1f1f</color>
-    <color name="tab_highlight_bg">#aa7a51</color>
+    <color name="tab_highlight_bg">#ae151b</color>
     
     <color name="face_bg">#eef1f4</color>
     

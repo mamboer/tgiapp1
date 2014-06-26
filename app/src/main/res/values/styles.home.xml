@@ -13,26 +13,28 @@
         <item name="android:orientation">vertical</item>
         <item name="android:paddingTop">15dp</item>
         <item name="android:paddingBottom">15dp</item>
-        <item name="android:paddingLeft">10dp</item>
-        <item name="android:paddingRight">10dp</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
         <item name="android:layout_marginBottom">10dp</item>
     </style>
-    <style name="home_news_listitem.hd">
+    <style name="home_news_listitem.sec">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+    <style name="home_news_listitem.sec.hd">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">center_vertical</item>
-
     </style>
     <style name="home_news_listitem.badge">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">20dp</item>
-        <item name="android:minWidth">32dp</item>
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
         <item name="android:background">@drawable/layer_cate_badge</item>
         <item name="android:gravity">center</item>
     </style>
@@ -54,7 +56,7 @@
         <item name="android:layout_weight">1</item>
     </style>
 
-    <style name="home_news_listitem.bd">
+    <style name="home_news_listitem.sec.bd">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
@@ -69,17 +71,18 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/text_size_12</item>
         <item name="android:textColor">@color/gray</item>
-        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingTop">8dp</item>
     </style>
     <style name="home_news_listitem.split">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/devider_line_bg1</item>
+        <item name="android:layout_marginLeft">1dp</item>
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginBottom">10dp</item>
     </style>
 
-    <style name="home_news_listitem.ft">
+    <style name="home_news_listitem.sec.ft">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>

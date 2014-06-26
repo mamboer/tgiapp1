@@ -17,7 +17,7 @@
                 android:id="@+id/news_listitem_face"
                 android:layout_width="75dp"
                 android:layout_height="55dp"
-                android:layout_marginRight="@dimen/space_15"
+                android:layout_marginLeft="@dimen/space_10"
                 android:src="@drawable/p150x110"/>
 
             <LinearLayout
@@ -26,7 +26,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    style="@style/home_news_listitem.hd">
+                    style="@style/home_news_listitem.sec.hd">
                     <TextView
                         android:id="@+id/news_listitem_title"
                         style="@style/home_news_listitem.tit"
@@ -49,7 +49,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    style="@style/home_news_listitem.bd">
+                    style="@style/home_news_listitem.sec.bd">
                     <TextView
                         android:id="@+id/news_listitem_body"
                         style="@style/home_news_listitem.desc"
@@ -66,7 +66,7 @@
             />
 
         <LinearLayout
-            style="@style/home_news_listitem.ft">
+            style="@style/home_news_listitem.sec.ft">
             <TextView
                 android:id="@+id/news_listitem_date"
                 style="@style/home_news_listitem.time"
