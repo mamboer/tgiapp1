@@ -13,7 +13,9 @@ import android.widget.Toast;
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.auth.QQAuth;
 import com.tencent.connect.share.QQShare;
+import com.tencent.sgz.AppConfig;
 import com.tencent.sgz.R;
+import com.tencent.sgz.bean.AccessInfo;
 import com.tencent.t.Weibo;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
@@ -82,6 +84,15 @@ public class OpenQQHelper {
     }
 
 
+    public static long getExpiresIn(){
+        long ret = System.currentTimeMillis();
+        if(StringUtils.isEmpty(mExpiresIn)){
+            return ret;
+        }
+        return (ret+ Long.parseLong(mExpiresIn) * 1000);
+
+    }
+
     /**
      * 当前OpenQQ是否处于登录态
      * @return
@@ -110,7 +121,10 @@ public class OpenQQHelper {
             @Override
             public void onError(UiError e) {
                 // TODO Auto-generated method stub
-
+                Message msg = new Message();
+                msg.obj = e;
+                msg.what = -1;
+                mHandler.sendMessage(msg);
             }
 
             @Override
@@ -119,6 +133,7 @@ public class OpenQQHelper {
                 msg.obj = response;
                 msg.what = 0;
                 mHandler.sendMessage(msg);
+
                 new Thread(){
 
                     @Override
@@ -144,6 +159,10 @@ public class OpenQQHelper {
             @Override
             public void onCancel() {
                 // TODO Auto-generated method stub
+                Message msg = new Message();
+                msg.obj = "登录已被取消";
+                msg.what = -2;
+                mHandler.sendMessage(msg);
 
             }
         };
@@ -151,6 +170,10 @@ public class OpenQQHelper {
 //	                    Constants.HTTP_GET, requestListener, null);
         mInfo = new UserInfo(context, mQQAuth.getQQToken());
         mInfo.getUserInfo(listener);
+    }
+
+    public static String getOpenId(){
+        return mOpenId;
     }
 
     /**
@@ -164,24 +187,41 @@ public class OpenQQHelper {
             @Override
             protected void doComplete(JSONObject values) {
                 Message msg = new Message();
-                msg.what = 0;
-                msg.obj = values;
-                handler.sendMessage(msg);
-                //TODO:将openid和expiresin存储到本地
+
                 try {
                     mOpenId = values.getString("openid");
                     mAccessToken = values.getString("access_token");
                     mExpiresIn = values.getString("expires_in");
+
+                    //存储到本地
+                    AppConfig.getAppConfig(context).setOpenQQAccessInfo(mOpenId, mAccessToken, mAppKey, getExpiresIn());
+
+                    msg.what = 0;
+                    msg.obj = values;
                 }catch(Exception e){
+                    msg.what = -1;
+                    msg.obj = e;
                     e.printStackTrace();
                 }
+
+                handler.sendMessage(msg);
+
 
             }
         };
         //
         //mQQAuth.login(this, "all", listener);
         //mTencent.loginWithOEM(this, "all", listener,"10000144","10000144","xxxx");
-        //TODO:从本地获取openId和expiresIn
+        //获取上次登录到token
+        AccessInfo openQQAccessInfo = AppConfig.getAppConfig(context).getOpenQQAccessInfo();
+        if(openQQAccessInfo!=null){
+            mOpenId = openQQAccessInfo.getOpenId();
+            mAccessToken = openQQAccessInfo.getAccessToken();
+            //如果结果小于或等于0，表示token已经过期，应该提示用户重新走登录流程
+            //http://wiki.open.qq.com/wiki/mobile/Android_SDK%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#4.4_access_token.E3.80.81openid.E7.9A.84.E8.8E.B7.E5.8F.96.E5.92.8C.E4.BD.BF.E7.94.A8
+            mExpiresIn = String.valueOf((openQQAccessInfo.getExpiresIn()-System.currentTimeMillis())/1000);
+        }
+
         mTencent.setOpenId(mOpenId);
         mTencent.setAccessToken(mAccessToken,mExpiresIn);
         mTencent.login(context, "all", listener);

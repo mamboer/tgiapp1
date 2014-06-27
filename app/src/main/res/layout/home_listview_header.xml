@@ -141,6 +141,28 @@
                 android:background="@color/devider_line_bg1"/>
 
             <RelativeLayout
+                android:tag="catebtn"
+                style="@style/shortcut_button">
+
+                <ImageView
+                    style="@style/shortcut_button_img"
+                    android:id="@+id/shortcut_btn4"
+                    android:src="@drawable/ico_shortcut_gift" />
+
+                <TextView
+                    android:id="@+id/shortcut_txt4"
+                    style="@style/shortcut_button_txt"
+                    android:text="礼包" />
+            </RelativeLayout>
+
+            <View
+                android:visibility="gone"
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:background="@color/devider_line_bg1"/>
+
+            <RelativeLayout
+                android:visibility="gone"
                 android:id="@+id/frame_home_btnmore"
                 android:clickable="true"
                 style="@style/shortcut_button">

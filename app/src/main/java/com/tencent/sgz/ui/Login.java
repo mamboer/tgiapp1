@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -91,7 +92,7 @@ public class Login extends BaseActivity{
 
     //public Button btnHistLogin;
 
-    @InjectView(R.id.wt_login_btn_login1) public Button btnQucikLogin;
+    @InjectView(R.id.wt_login_btn_login1) public LinearLayout btnQucikLogin;
 
     public TextView reg;
     public TextView findPswd;

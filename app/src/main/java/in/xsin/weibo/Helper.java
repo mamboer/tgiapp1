@@ -53,11 +53,18 @@ public class Helper {
             bitmapManager = new BitmapManager(defaultUserAvatar);
 
             mWeiboAuth = new WeiboAuth(ct, Constants.APP_KEY, Constants.REDIRECT_URL, Constants.SCOPE);
-            // 创建微博分享接口实例
-            mWeiboShareAPI = WeiboShareSDK.createWeiboAPI(context, Constants.APP_KEY);
-            mWeiboShareAPI.registerApp();
+
 
         }
+    }
+
+    private static void createWeiboAPI(Activity ct){
+        if(mWeiboShareAPI==null){
+            // 创建微博分享接口实例
+            mWeiboShareAPI = WeiboShareSDK.createWeiboAPI(ct, Constants.APP_KEY);
+            mWeiboShareAPI.registerApp();
+        }
+
     }
 
     /**
@@ -87,6 +94,7 @@ public class Helper {
     public static void shareWebPage(String title,String url, final String picUrl, final Handler handler){
 
         try {
+            createWeiboAPI(context);
             // 如果未安装微博客户端，设置下载微博对应的回调
             if (!mWeiboShareAPI.isWeiboAppInstalled()) {
                 mWeiboShareAPI.registerWeiboDownloadListener(new IWeiboDownloadListener() {

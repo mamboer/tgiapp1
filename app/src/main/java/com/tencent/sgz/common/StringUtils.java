@@ -100,7 +100,7 @@ public class StringUtils {
 		} else if (days > 2 && days <= 10) {
 			ftime = days + "天前";
 		} else if (days > 10) {
-			ftime = dateFormater2.get().format(time);
+			ftime = dateFormater.get().format(time);
 		}
 		return ftime;
 	}

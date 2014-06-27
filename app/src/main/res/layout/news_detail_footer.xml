@@ -9,23 +9,28 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/space_1"
         android:background="@color/gray_level5"></View>
+
+    <!-- S temp for compiler-->
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/news_detail_footbar_heart"
+        style="@style/newsdetail_footbar_image"
+        android:src="@drawable/fbar_heart_bg"/>
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/news_detail_footbar_commentlist"
+        style="@style/newsdetail_footbar_image"
+        android:src="@drawable/fbar_community_bg"/>
+    <!-- E temp for compiler-->
+
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="#fefefe"
         >
-        <ImageView
-            android:visibility="gone"
-            android:id="@+id/news_detail_footbar_heart"
-            style="@style/newsdetail_footbar_image"
-            android:src="@drawable/fbar_heart_bg"/>
-
-        <ImageView
-            android:visibility="gone"
-            android:id="@+id/news_detail_footbar_commentlist"
-            style="@style/newsdetail_footbar_image"
-            android:src="@drawable/fbar_community_bg"/>
 
         <ImageView
             android:id="@+id/news_detail_footbar_refresh"

@@ -88,6 +88,7 @@ public class AppContext extends Application {
 	
 	private boolean login = false;	//登录状态
 	private long loginUid = 0;	//登录用户的id
+    private String loginOpenId;//对应用户id的open id
 	private Hashtable<String, Object> memCacheRegion = new Hashtable<String, Object>();
 
     private AppData data;
@@ -239,6 +240,14 @@ public class AppContext extends Application {
 	public long getLoginUid() {
 		return this.loginUid;
 	}
+
+    /**
+     * 获取登录用户id
+     * @return
+     */
+    public String getLoginOpenId() {
+        return this.loginOpenId;
+    }
 	
 	/**
 	 * 用户注销
@@ -248,6 +257,7 @@ public class AppContext extends Application {
 		this.cleanCookie();
 		this.login = false;
 		this.loginUid = 0;
+        this.loginOpenId = null;
 	}
 	
 	/**
@@ -262,8 +272,9 @@ public class AppContext extends Application {
 	 */
 	public void initLoginInfo() {
 		User loginUser = getLoginInfo();
-		if(loginUser!=null && loginUser.getUid()>0 && loginUser.isRememberMe()){
+		if(loginUser!=null && !StringUtils.isEmpty(loginUser.getOpenId()) && loginUser.isRememberMe()){
 			this.loginUid = loginUser.getUid();
+            this.loginOpenId = loginUser.getOpenId();
 			this.login = true;
 		}else{
 			this.Logout();
@@ -1297,12 +1308,14 @@ public class AppContext extends Application {
 	 */
 	public void saveLoginInfo(final User user) {
 		this.loginUid = user.getUid();
+        this.loginOpenId = user.getOpenId();
 		this.login = true;
 		setProperties(new Properties(){{
-			setProperty("user.uid", String.valueOf(user.getUid()));
+			setProperty("user.uid", String.valueOf(loginUid));
 			setProperty("user.name", user.getName());
 			setProperty("user.face", user.getFace());//用户头像-文件名
 			setProperty("user.account", user.getAccount());
+            setProperty("user.openid",loginOpenId);
             /*
 			setProperty("user.pwd", CyptoUtils.encode("tencentApp3gz",user.getPwd()));
 			setProperty("user.location", user.getLocation());
@@ -1326,7 +1339,7 @@ public class AppContext extends Application {
 		this.loginUid = 0;
 		this.login = false;
 		removeProperty("user.uid","user.name","user.face","user.account","user.pwd",
-				"user.location","user.followers","user.fans","user.score","user.isRememberMe");
+				"user.location","user.followers","user.fans","user.score","user.isRememberMe","user.openid");
 	}
 	
 	/**
@@ -1339,6 +1352,7 @@ public class AppContext extends Application {
 		lu.setName(getProperty("user.name"));
 		lu.setFace(getProperty("user.face"));
 		lu.setAccount(getProperty("user.account"));
+        lu.setOpenId(getProperty("user.openid"));
 		lu.setPwd(CyptoUtils.decode("tencentApp3gz",getProperty("user.pwd")));
 		lu.setLocation(getProperty("user.location"));
 		lu.setFollowers(StringUtils.toInt(getProperty("user.followers"), 0));

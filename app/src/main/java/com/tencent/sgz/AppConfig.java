@@ -44,12 +44,18 @@ public class AppConfig {
 	public final static String CONF_VOICE = "perf_voice";
 	public final static String CONF_CHECKUP = "perf_checkup";
 
+    public final static String CONF_OPENQQ_OPENID="openqq_openid";
+    public final static String CONF_OPENQQ_ACCESSTOKEN="openqq_accessToken";
+    public final static String CONF_OPENQQ_ACCESSSECRET="openqq_accessSecret";
+    public final static String CONF_OPENQQ_EXPIRESIN="openqq_expiresIn";
+
 	public final static String SAVE_IMAGE_PATH = "save_image_path";
 	@SuppressLint("NewApi")
 	public final static String DEFAULT_SAVE_IMAGE_PATH = Environment.getExternalStorageDirectory()+ File.separator+ "sgz"+ File.separator;
 			
 	private Context mContext;
 	private AccessInfo accessInfo = null;
+    private AccessInfo openQQAccessInfo = null;
 	private static AppConfig appConfig;
 
 	public static AppConfig getAppConfig(Context context) {
@@ -195,4 +201,65 @@ public class AppConfig {
 			props.remove(k);
 		setProps(props);
 	}
+
+    /* S OpenQQ相关 */
+    public void setOpenQQAccessToken(String accessToken) {
+        set(CONF_OPENQQ_ACCESSTOKEN, accessToken);
+    }
+    public String getOpenQQAccessToken() {
+        return get(CONF_OPENQQ_ACCESSTOKEN);
+    }
+
+    public void setOpenQQOpenId(String openId) {
+        set(CONF_OPENQQ_OPENID, openId);
+    }
+    public String getOpenQQOpenId() {
+        return get(CONF_OPENQQ_OPENID);
+    }
+
+
+    public void setOpenQQAccessSecret(String accessSecret) {
+        set(CONF_OPENQQ_ACCESSSECRET, accessSecret);
+    }
+
+    public String getOpenQQAccessSecret() {
+        return get(CONF_OPENQQ_ACCESSSECRET);
+    }
+
+    public void setOpenQQExpiresIn(long expiresIn) {
+        set(CONF_OPENQQ_EXPIRESIN, String.valueOf(expiresIn));
+    }
+
+    public long getOpenQQExpiresIn() {
+        return StringUtils.toLong(get(CONF_OPENQQ_EXPIRESIN));
+    }
+
+    public void setOpenQQAccessInfo(String openId,String accessToken, String accessSecret,
+                              long expiresIn) {
+        if (openQQAccessInfo == null)
+            openQQAccessInfo = new AccessInfo();
+        openQQAccessInfo.setAccessToken(accessToken);
+        openQQAccessInfo.setAccessSecret(accessSecret);
+        openQQAccessInfo.setExpiresIn(expiresIn);
+        openQQAccessInfo.setOpenId(openId);
+        // 保存到配置
+        this.setOpenQQOpenId(openId);
+        this.setOpenQQAccessToken(accessToken);
+        this.setOpenQQAccessSecret(accessSecret);
+        this.setOpenQQExpiresIn(expiresIn);
+    }
+
+    public AccessInfo getOpenQQAccessInfo() {
+        if (openQQAccessInfo == null && !StringUtils.isEmpty(getOpenQQAccessToken())
+                && !StringUtils.isEmpty(getOpenQQAccessSecret())) {
+            openQQAccessInfo = new AccessInfo();
+            openQQAccessInfo.setAccessToken(getOpenQQAccessToken());
+            openQQAccessInfo.setAccessSecret(getOpenQQAccessSecret());
+            openQQAccessInfo.setExpiresIn(getOpenQQExpiresIn());
+            openQQAccessInfo.setOpenId(getOpenQQOpenId());
+        }
+        return openQQAccessInfo;
+    }
+    /* E OpenQQ相关 */
+
 }

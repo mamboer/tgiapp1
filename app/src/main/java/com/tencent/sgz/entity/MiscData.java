@@ -21,8 +21,8 @@ public class MiscData implements Serializable {
     public void setCates(ArrayList<CateItem> items) {this.cates = items;}
     public ArrayList<CateItem> getCates(){return this.cates;}
 
-    public void setKeywords(ArrayList<ChannelGroup> items){this.channels = items;}
-    public ArrayList<ChannelGroup> getKeywords(){return this.channels;}
+    public void setChannels(ArrayList<ChannelGroup> items){this.channels = items;}
+    public ArrayList<ChannelGroup> getChannels(){return this.channels;}
 
     public void setToolbox(ToolboxData item){this.toolbox = item;}
     public ToolboxData getToolbox(){return this.toolbox;}

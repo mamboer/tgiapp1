@@ -326,11 +326,12 @@ public class HomeFragment extends FragmentBase {
         ViewGroup vg = null;
         ChannelItem citem = null;
 
+        //首页4个快捷入口按钮
         ChannelGroup favGroup = AppDataProvider.getFavChannelGroup(ct,false);
-        if(favGroup.getItems().size()<3){
+        if(favGroup.getItems().size()<4){
             homeChannelMenus.setVisibility(View.GONE);
         }else{
-            for (int i=0;i<3;i++){
+            for (int i=0;i<4;i++){
                 citem = favGroup.getItems().get(i);
                 vg = (ViewGroup) cateBtnViews.get(i);
                 iv = (ImageView)vg.getChildAt(0);

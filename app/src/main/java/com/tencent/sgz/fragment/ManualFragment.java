@@ -604,8 +604,6 @@ public class ManualFragment extends FragmentBase {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             // 点击头部、底部栏无效
-            if (i == 0 || i == -1)
-                return;
 
             Article item = null;
             // 判断是否是TextView
