@@ -2,30 +2,25 @@ apply plugin: 'android'
 
 android {
     compileSdkVersion 15
-    buildToolsVersion "19.1.0"
-
+    buildToolsVersion '19.1.0'
     lintOptions {
         checkReleaseBuilds false
         // Or, if you prefer, you can continue to check for errors in release builds,
         // but continue the build even when errors are found:
         abortOnError false
     }
-
     defaultConfig {
         minSdkVersion 8
         targetSdkVersion 15
     }
-
     signingConfigs {
-
         release {
-            storeFile file("n3gz.jks")
-            storePassword "5611n3gz"
-            keyAlias "n3gz"
-            keyPassword "5611n3gz"
+            storeFile file('n3gz.jks')
+            storePassword '5611n3gz'
+            keyAlias 'n3gz'
+            keyPassword '5611n3gz'
         }
     }
-
     buildTypes {
         release {
             runProguard false
@@ -33,7 +28,6 @@ android {
             signingConfig signingConfigs.release
         }
     }
-
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/LICENSE'
@@ -43,6 +37,8 @@ android {
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/notice.txt'
         exclude 'META-INF/ASL2.0'
+    }
+    productFlavors {
     }
 }
 
