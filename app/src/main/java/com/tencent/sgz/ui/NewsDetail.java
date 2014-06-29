@@ -162,7 +162,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 		mHeader = (FrameLayout) findViewById(R.id.news_detail_header);
 		mFooter = (LinearLayout) findViewById(R.id.news_detail_footer);
 		//mHome = (ImageView) findViewById(R.id.news_detail_home);
-		mRefresh = (ImageView) findViewById(R.id.news_detail_refresh);
+		mRefresh = (ImageView) findViewById(R.id.news_detail_footbar_refresh);
 		mHeadTitle = (TextView) findViewById(R.id.news_detail_head_title);
 		mProgressbar = (ProgressBar) findViewById(R.id.news_detail_head_progress);
 		mViewSwitcher = (ViewSwitcher) findViewById(R.id.news_detail_viewswitcher);
@@ -324,11 +324,16 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 
 	private void initData(final int news_id, final boolean isRefresh) {
 		headButtonSwitch(DATA_LOAD_ING);
+        Message msg = new Message();
+        msg.what = 1;
+        msg.obj = null;
+        mHandler.sendMessage(msg);
+        /*
 
 		new Thread() {
 			public void run() {
 				Message msg = new Message();
-                /*
+
 				try {
 					newsDetail = ((AppContext) getApplication()).getNews(
 							news_id, isRefresh);
@@ -342,12 +347,13 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 					msg.what = -1;
 					msg.obj = e;
 				}
-				*/
+
                 msg.what = 1;
                 msg.obj = null;
 				mHandler.sendMessage(msg);
 			}
 		}.start();
+        */
 	}
 
 	/**
@@ -382,17 +388,17 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 		case DATA_LOAD_ING:
             mWebView.setVisibility(View.GONE);
 			mProgressbar.setVisibility(View.VISIBLE);
-			mRefresh.setVisibility(View.GONE);
+			//mRefresh.setVisibility(View.GONE);
 			break;
 		case DATA_LOAD_COMPLETE:
             mWebView.setVisibility(View.VISIBLE);
 			mProgressbar.setVisibility(View.GONE);
-			mRefresh.setVisibility(View.VISIBLE);
+			//mRefresh.setVisibility(View.VISIBLE);
 			break;
 		case DATA_LOAD_FAIL:
             mWebView.setVisibility(View.GONE);
 			mProgressbar.setVisibility(View.GONE);
-			mRefresh.setVisibility(View.VISIBLE);
+			//mRefresh.setVisibility(View.VISIBLE);
 			break;
 		}
 	}
@@ -480,7 +486,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
                         UIHelper.ToastMessage(appContext,"已取消收藏！");
                         mFavorite.setImageResource(R.drawable.fbar_fav_bg);
                     }else{
-                        UIHelper.ToastMessage(appContext,"收藏成功！");
+                        UIHelper.ToastMessage(appContext,"添加收藏成功！");
                         mFavorite.setImageResource(R.drawable.fbar_favon_bg);
                     }
 

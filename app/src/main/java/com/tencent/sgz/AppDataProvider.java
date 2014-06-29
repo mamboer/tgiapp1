@@ -3,7 +3,6 @@ package com.tencent.sgz;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.tencent.sgz.bean.SearchList;
@@ -259,7 +258,7 @@ public class AppDataProvider {
             ArrayList<ChannelItem> citems = new ArrayList<ChannelItem>();
             int max = context.getResources().getInteger(R.integer.channelfav_max);
             if((!context.isReadDataCache(key) || reset)) {
-                items = context.getData().getMisc().getKeywords();
+                items = context.getData().getMisc().getChannels();
                 if(items.size()>0){
                     data = items.get(0);
                     max = Math.min(max, data.getItems().size());

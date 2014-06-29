@@ -1,30 +1,17 @@
 package com.tencent.sgz.ui;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.ScrollView;
-import android.widget.TextView;
 
 import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.R;
 import com.tencent.sgz.adapter.ChannelListViewAdapter;
-import com.tencent.sgz.bean.News;
 import com.tencent.sgz.common.UIHelper;
-import com.tencent.sgz.entity.AppData;
-import com.tencent.sgz.entity.Article;
 import com.tencent.sgz.entity.ChannelGroup;
 import com.tencent.sgz.entity.MiscData;
-import com.tencent.sgz.widget.NewDataToast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,7 +20,6 @@ import java.util.Date;
 import in.xsin.pulltorefresh.PullToRefreshBase;
 import in.xsin.pulltorefresh.PullToRefreshScrollView;
 import in.xsin.widget.ExpandableListViewForScrollView;
-import roboguice.inject.InjectView;
 
 /**
  * Created by levin on 6/5/14.
@@ -90,7 +76,7 @@ public class ChannelList extends BaseActivity {
                         }
 
                         MiscData mdata = (MiscData)data.getSerializable("data");
-                        channelGroups = mdata.getKeywords();
+                        channelGroups = mdata.getChannels();
 
                         appContext.getData().setMisc(mdata);
 
@@ -128,7 +114,7 @@ public class ChannelList extends BaseActivity {
     }
 
     void initListViewData(){
-        channelGroups.addAll(this.appContext.getData().getMisc().getKeywords());
+        channelGroups.addAll(this.appContext.getData().getMisc().getChannels());
         mFavGroup = AppDataProvider.getFavChannelGroup(this.appContext,false);
 
         channelGroups.add(0,mFavGroup);

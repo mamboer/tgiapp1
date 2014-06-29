@@ -137,20 +137,17 @@ public class ManualListAdapter extends BaseAdapter {
         if(StringUtils.isEmpty(cover)){
             vh.face.setVisibility(View.GONE);
         }else{
-            UIHelper.showLoadImage(vh.face, cover, "加载图片时发生错误：" + cover);
+            vh.face.setVisibility(View.VISIBLE);
+            UIHelper.showLoadImage(vh.face,cover,"加载图片时发生错误："+cover);
         }
 
         //是否有描述
         if(StringUtils.isEmpty(news.getDesc())){
             vh.desc.setVisibility(View.GONE);
+        }else{
+            vh.desc.setVisibility(View.VISIBLE);
         }
 
-        /*
-		if(StringUtils.isToday(news.getPubDate()))
-			listItemView.flag.setVisibility(View.VISIBLE);
-		else
-			listItemView.flag.setVisibility(View.GONE);
-		*/
         return convertView;
 
     }

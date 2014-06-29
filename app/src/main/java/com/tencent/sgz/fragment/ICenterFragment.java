@@ -3,22 +3,34 @@ package com.tencent.sgz.fragment;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.tencent.connect.UserInfo;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.R;
 import com.tencent.sgz.bean.User;
 import com.tencent.sgz.common.BitmapManager;
+import com.tencent.sgz.common.OpenQQHelper;
+import com.tencent.sgz.common.QQWeiboHelper;
 import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.UserFavArticleList;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.UiError;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
+
+import java.text.ParseException;
 
 public class ICenterFragment extends FragmentBase {
     /*
@@ -29,7 +41,7 @@ public class ICenterFragment extends FragmentBase {
     @InjectView(R.id.icenter_userAvatar) ImageView imgUserAvatar;
     */
 
-    Button btnLogin;
+    LinearLayout btnLogin;
     Button btnLogoff;
     TextView txtUserId;
     TextView txtUserName;
@@ -72,7 +84,7 @@ public class ICenterFragment extends FragmentBase {
     }
 
     public void initView(View parent,LayoutInflater inflater){
-        btnLogin = (Button) parent.findViewById(R.id.wt_login_btn_login);
+        btnLogin = (LinearLayout) parent.findViewById(R.id.wt_btn_login);
         btnLogoff = (Button) parent.findViewById(R.id.wt_login_btn_logoff);
         txtUserId = (TextView) parent.findViewById(R.id.icenter_userId);
         txtUserName = (TextView) parent.findViewById(R.id.icenter_userName);
@@ -89,14 +101,15 @@ public class ICenterFragment extends FragmentBase {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UIHelper.showLoginPage(getActivity());
+                //UIHelper.showLoginPage(getActivity());
+                onClickLogin();
             }
         });
         btnLogoff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getAppContext().cleanLoginInfo();
-                updateICenter();
+                onClickLogin();
             }
         });
 
@@ -104,10 +117,84 @@ public class ICenterFragment extends FragmentBase {
 
     }
 
+    private void updateUserInfo() {
+        if (OpenQQHelper.isLogined()) {
+
+            OpenQQHelper.getUserInfo(getActivity(),mOnLogined);
+
+        } else {
+            updateICenter();
+        }
+    }
+
+    private void onClickLogin() {
+        if (!OpenQQHelper.isLogined()) {
+
+            OpenQQHelper.login(getActivity(),new Handler(){
+                @Override
+                public void handleMessage(Message msg){
+                    int what = msg.what;
+                    if(what!=0){
+                        UIHelper.ToastMessage(getActivity(),"登录失败："+msg.obj);
+                        return;
+                    }
+
+                    updateUserInfo();
+
+                }
+            });
+        } else {
+
+            OpenQQHelper.logout(getActivity());
+            updateICenter();
+        }
+    }
+
+    Handler mOnLogined = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 0) {
+                JSONObject response = (JSONObject) msg.obj;
+                User user = new User();
+                user.setOpenId(OpenQQHelper.getOpenId());
+                user.setRememberMe(true);
+                try {
+                    if (response.has("nickname")) {
+                        user.setName(response.getString("nickname"));
+                        user.setAccount(response.getString("nickname"));
+                    }
+                    if(response.has("figureurl")){
+                        user.setFace(response.getString("figureurl_qq_2"));
+                    }
+                    if(response.has("gender")){
+                        user.setGender(response.getString("gender"));
+                    }
+                    /*
+                    user.setAccount(userAccount);
+                    user.setUid(info._uin);
+                    */
+                }catch (JSONException e){
+                    e.printStackTrace();
+                    UIHelper.ToastMessage(getContext(),"解析用户数据时出错："+e.getMessage());
+                }
+                getAppContext().saveLoginInfo(user);
+                updateICenter();
+            }else if(msg.what == 1){
+                Bitmap bitmap = (Bitmap)msg.obj;
+                imgUserAvatar.setImageBitmap(bitmap);
+                imgUserAvatar.setVisibility(View.VISIBLE);
+            }else{
+                //登录出错
+            }
+        }
+
+    };
+
     private void updateICenter(){
         btnLogin.setVisibility(View.GONE);
         btnLogoff.setVisibility(View.GONE);
-        txtUserId.setVisibility(View.GONE);
+        //txtUserId.setVisibility(View.GONE);
 
         /*
         btnLogin.setVisibility(View.VISIBLE);
@@ -122,7 +209,7 @@ public class ICenterFragment extends FragmentBase {
         if (!appContext.isLogin()) {
             btnLogin.setVisibility(View.VISIBLE);
             imgUserAvatar.setImageResource(R.drawable.widget_dface);
-            txtUserId.setText("QQ号：未知用户");
+            //txtUserId.setText("QQ号：未知用户");
             txtUserName.setText(this.getResources().getString(R.string.login_requiretip));
 
             return;
@@ -132,9 +219,9 @@ public class ICenterFragment extends FragmentBase {
         //获取登录信息
         User user = appContext.getLoginInfo();
         btnLogoff.setVisibility(View.VISIBLE);
-        txtUserId.setVisibility(View.VISIBLE);
-        txtUserId.setText("QQ号：" + user.getUid());
-        txtUserName.setText(user.getName());
+        //txtUserId.setVisibility(View.VISIBLE);
+        //txtUserId.setText("QQ号：" + user.getUid());
+        txtUserName.setText("您好，"+user.getName());
         bitmapManager.loadBitmap(user.getFace(),imgUserAvatar);
 
         //更新收藏总数

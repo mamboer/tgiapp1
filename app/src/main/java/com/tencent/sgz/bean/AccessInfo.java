@@ -6,7 +6,7 @@ package com.tencent.sgz.bean;
  * @version 1.0
  * @created 2014-4-21
  */
-public class AccessInfo 
+public class AccessInfo
 {
 	//userId
 	private String userID;
@@ -16,6 +16,8 @@ public class AccessInfo
 	
 	//accessSecret
 	private String accessSecret;
+
+    private String openId;
 	
 	private long expiresIn;
 	
@@ -43,4 +45,12 @@ public class AccessInfo
 	public void setExpiresIn(long expiresIn) {
 		this.expiresIn = expiresIn;
 	}
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
 }

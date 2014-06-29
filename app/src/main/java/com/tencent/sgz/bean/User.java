@@ -45,6 +45,8 @@ public class User extends Base {
 	private String expertise;
 	private int relation;
 	private String latestonline;
+
+    private String openId;
 	
 	
 	public boolean isRememberMe() {
@@ -232,4 +234,12 @@ public class User extends Base {
 		}
 		return user;
 	}
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
 }

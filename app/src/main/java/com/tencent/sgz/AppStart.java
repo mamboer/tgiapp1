@@ -32,7 +32,7 @@ import android.widget.LinearLayout;
  */
 public class AppStart extends Activity {
     
-	private static final String TAG  = "AppStart";
+	private static final String TAG  = AppStart.class.getName();
 	AppContext ac = null;
 	boolean isRedirecting;
 
