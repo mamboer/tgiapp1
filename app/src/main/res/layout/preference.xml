@@ -3,7 +3,8 @@
  	android:layout_width="fill_parent" 
  	android:layout_height="wrap_content" 
  	android:minHeight="?android:listPreferredItemHeight"
- 	android:gravity="center_vertical" 
+ 	android:gravity="center_vertical"
+    android:background="@color/white"
  	android:paddingRight="5dip"
  	android:paddingLeft="?android:scrollbarSize" >
     <RelativeLayout 
@@ -14,7 +15,8 @@
 	        android:id="@android:id/title" 
 	        android:layout_width="wrap_content" 
 	        android:layout_height="wrap_content" 
-	        android:textSize="@dimen/text_size_18" 
+	        android:textSize="@dimen/text_size_18"
+            android:text="测试测试测试测试测试测试"
 	        android:textColor="@color/primary_text_light" 
 	        android:ellipsize="marquee" 
 	        android:fadingEdge="horizontal" 
@@ -25,14 +27,17 @@
 	        android:layout_height="wrap_content" 
 	        android:textSize="@dimen/text_size_14" 
 	        android:textColor="@color/secondary_text_light" 
-	        android:maxLines="4" 
+	        android:maxLines="4"
+            android:text="测试测试测试测试测试测试测试一下好不好测试一下好不"
 	        android:layout_below="@android:id/title" 
 	        android:layout_alignLeft="@android:id/title" />
     </RelativeLayout>
+    <!-- Preference should place its actual preference widget here. -->
     <LinearLayout 
      	android:id="@android:id/widget_frame"
      	android:layout_width="wrap_content" 
      	android:layout_height="wrap_content"
 	    android:gravity="center_vertical" 
-	    android:orientation="vertical" />
+	    android:orientation="vertical">
+    </LinearLayout>
 </LinearLayout>

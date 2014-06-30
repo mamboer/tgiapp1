@@ -25,7 +25,10 @@ import com.tencent.sgz.widget.PullToRefreshListView;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -70,6 +73,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 	private ImageView mCommentList;
 	private ImageView mShare;
     private ImageView mHeart;
+    private ImageView mStartGame;
 
 
 	private ProgressWebView mWebView;
@@ -171,6 +175,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 		mShare = (ImageView) findViewById(R.id.news_detail_footbar_share);
 		mFavorite = (ImageView) findViewById(R.id.news_detail_footbar_favorite);
         mHeart = (ImageView) findViewById(R.id.news_detail_footbar_heart);
+        mStartGame = (ImageView) findViewById(R.id.news_detail_footbar_game);
 
 		mWebView = (ProgressWebView) findViewById(R.id.news_detail_webview);
 
@@ -192,6 +197,8 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 		mShare.setOnClickListener(shareClickListener);
         mHeart.setOnClickListener(heartClickListener);
 		mCommentList.setOnClickListener(commentlistClickListener);
+
+        mStartGame.setOnClickListener(startGameClickListener);
 
 		bv_comment = new BadgeView(this, mCommentList);
 		bv_comment.setBackgroundResource(R.drawable.widget_count_bg2);
@@ -455,6 +462,46 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
     private View.OnClickListener heartClickListener = new View.OnClickListener() {
         public void onClick(View v) {
             UIHelper.ToastMessage(NewsDetail.this,"功能未实现，点赞接口待开发实现中ing");
+        }
+    };
+
+    private View.OnClickListener startGameClickListener = new View.OnClickListener(){
+        public void onClick(View v) {
+            String pName = "com.tencent.game.VXDGame";
+            boolean isInstalled = false;
+            // 得到PackageManager对象
+            final PackageManager pm = getPackageManager();
+
+            // 得到系统 安装的所有程序包的PackageInfo对象
+            List<PackageInfo> packs = pm
+                    .getInstalledPackages(PackageManager.GET_UNINSTALLED_PACKAGES);
+
+            for (PackageInfo pi : packs) {
+                if(pi.packageName.equals(pName)){
+                    isInstalled = true;
+                    break;
+                }
+            }
+
+            if(isInstalled){
+                //取到点击的包名
+                Intent i = pm.getLaunchIntentForPackage(pName);
+                //如果该程序不可启动（像系统自带的包，有很多是没有入口的）会返回NULL
+                if (i != null)
+                    startActivity(i);
+            }else{
+                //TODO:去安卓市场
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id="+pName)));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    //http://android.myapp.com/myapp/detail.htm?apkName=com.tencent.game.VXDGame
+                    //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + pName)));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://android.myapp.com/myapp/detail.htm?apkName=" + pName)));
+                }
+
+            }
+
+
         }
     };
 

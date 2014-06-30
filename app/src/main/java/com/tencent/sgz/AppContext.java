@@ -66,7 +66,9 @@ import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+/*
 import android.webkit.CacheManager;
+*/
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.RoboApplicationProvider;
@@ -1567,13 +1569,15 @@ public class AppContext extends Application {
 	public void clearAppCache()
 	{
 		//清除webview缓存
+        /*
 		File file = CacheManager.getCacheFileBaseDir();  
 		if (file != null && file.exists() && file.isDirectory()) {  
 		    for (File item : file.listFiles()) {  
 		    	item.delete();  
 		    }  
 		    file.delete();  
-		}  		  
+		}
+		*/
 		deleteDatabase("webview.db");  
 		deleteDatabase("webview.db-shm");  
 		deleteDatabase("webview.db-wal");  

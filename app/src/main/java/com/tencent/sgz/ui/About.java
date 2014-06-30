@@ -23,7 +23,6 @@ import java.util.Date;
 public class About extends BaseActivity{
 	
 	private TextView mVersion;
-	private Button mUpdate;
     private TextView mCopyright;
 	
 	@Override
@@ -44,13 +43,6 @@ public class About extends BaseActivity{
 
         } catch (NameNotFoundException e) {    
 			e.printStackTrace(System.err);
-		} 
-        
-        mUpdate = (Button)findViewById(R.id.about_update);
-        mUpdate.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				UpdateManager.getUpdateManager().checkAppUpdate(About.this, true);
-			}
-		});        
+		}
 	}
 }

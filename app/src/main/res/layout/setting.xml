@@ -27,9 +27,365 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <FrameLayout 
-	    android:id="@+id/setting_content" 
-	    android:layout_width="fill_parent" 
-	    android:layout_height="fill_parent"   
-		android:background="@color/white"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="@dimen/space_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:background="@drawable/layer_login_border"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/space_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="onClickImgPath"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="图片路径"
+                            android:textSize="@dimen/text_size_15"
+                            android:layout_marginRight="@dimen/space_10"
+                            android:textColor="@color/bright_bg_btntext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/txtCfgTipImgPath"
+                            android:text="目前保存路径：xxxxxxx"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ico_arr_right"/>
+                </RelativeLayout>
+
+                <View
+                    android:background="@color/gray_level5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"></View>
+                <RelativeLayout
+                    android:clickable="true"
+                    android:onClick="onClickImgLoader"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="图片加载"
+                            android:textSize="@dimen/text_size_15"
+                            android:layout_marginRight="@dimen/space_10"
+                            android:textColor="@color/bright_bg_btntext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/txtCfgTipImgLoader"
+                            android:text="已开启在WIFI网络下加载图片"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </LinearLayout>
+                    <CheckBox
+                        android:clickable="false"
+                        android:id="@+id/cbxCfgImgLoader"
+                        android:checked="true"
+                        android:button="@drawable/cbx"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+                <View
+                    android:background="@color/gray_level5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"></View>
+                <RelativeLayout
+                    android:onClick="onClickSound"
+                    android:clickable="true"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="提示声音"
+                            android:textSize="@dimen/text_size_15"
+                            android:layout_marginRight="@dimen/space_10"
+                            android:textColor="@color/bright_bg_btntext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/txtCfgTipSound"
+                            android:text="已开启提示声音"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </LinearLayout>
+                    <CheckBox
+                        android:clickable="false"
+                        android:id="@+id/cbxCfgSound"
+                        android:checked="true"
+                        android:button="@drawable/cbx"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+                <View
+                    android:background="@color/gray_level5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"></View>
+                <RelativeLayout
+                    android:onClick="onClickAutoUpdate"
+                    android:clickable="true"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="自动更新"
+                            android:textSize="@dimen/text_size_15"
+                            android:layout_marginRight="@dimen/space_10"
+                            android:textColor="@color/bright_bg_btntext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/txtCfgTipAutoUpdate"
+                            android:text="已开启运行程序时自动检查更新"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </LinearLayout>
+                    <CheckBox
+                        android:clickable="false"
+                        android:id="@+id/cbxCfgAutoUpdate"
+                        android:checked="true"
+                        android:button="@drawable/cbx"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/layer_login_border"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/space_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:onClick="onClickClearCache"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="清除缓存"
+                            android:textSize="@dimen/text_size_15"
+                            android:layout_marginRight="@dimen/space_10"
+                            android:textColor="@color/bright_bg_btntext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/txtCfgTipCache"
+                            android:text="6.03MB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ico_arr_right"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/layer_login_border"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/space_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:onClick="onClickQA"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="帮助反馈"
+                            android:textSize="@dimen/text_size_15"
+                            android:layout_marginRight="@dimen/space_10"
+                            android:textColor="@color/bright_bg_btntext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="用户意见反馈"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ico_arr_right"/>
+                </RelativeLayout>
+
+                <View
+                    android:background="@color/gray_level5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"></View>
+                <RelativeLayout
+                    android:onClick="onClickCheckVersion"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="版本检测"
+                            android:textSize="@dimen/text_size_15"
+                            android:layout_marginRight="@dimen/space_10"
+                            android:textColor="@color/bright_bg_btntext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="检测是否有新版本"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ico_arr_right"/>
+                </RelativeLayout>
+
+                <View
+                    android:background="@color/gray_level5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"></View>
+                <RelativeLayout
+                    android:onClick="onClickAbout"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="关于我们"
+                            android:textSize="@dimen/text_size_15"
+                            android:layout_marginRight="@dimen/space_10"
+                            android:textColor="@color/bright_bg_btntext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="版权和版本信息"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ico_arr_right"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
 </LinearLayout>

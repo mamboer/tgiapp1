@@ -58,18 +58,7 @@
 	        android:layout_marginBottom="180dip"
 	        android:textColor="@color/bright_bg_btntext"
 	        android:text="版本:1.0.0" />
-	
-	    <Button
-	        android:id="@+id/about_update"
-	        style="@style/btn_text"
-	        android:layout_width="150dp"
-	        android:layout_gravity="center|bottom"
-	        android:layout_margin="100dp"
-	        android:layout_marginTop="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-	        android:background="@drawable/selector_btn_green"
-	        android:text="检查新版本" />
+
 	    
 	    <TextView
             android:id="@+id/app_copyright"

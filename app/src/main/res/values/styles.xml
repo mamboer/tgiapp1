@@ -116,8 +116,9 @@
 	</style>
     
     <style name="App.Preference.CheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/pref_checkbox_selector_style</item>
+        <item name="android:button">@drawable/cbx</item>
     </style>
+
     <style name="App.Preference.TextAppearance.Large" parent="@android:style/TextAppearance.Large">
         <item name="android:textColor">@color/primary_text_light</item>
     </style>
