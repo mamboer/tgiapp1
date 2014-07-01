@@ -40,7 +40,7 @@ import java.util.List;
  */
 public class UserFavor extends BaseActivity {
 
-    private final static String TAG ="UserFav";
+    private final static String TAG =UserFavor.class.getName();
 
     private ListViewUserFavAdapter adapter;
     private List<FavItem> data;
@@ -155,6 +155,9 @@ public class UserFavor extends BaseActivity {
                 news.setFace(item.getIcon());
                 news.setCateName(item.getCateName());
                 news.setUrl(AppDataProvider.assertUrl(appContext,item.getAction()));
+                news.setStartAt(item.getStartAt());
+                news.setEndAt(item.getEndAt());
+                news.setPubDate(item.getDate());
                 UIHelper.showNewsDetailByInstance(UserFavor.this,news);
             }
 
@@ -220,6 +223,8 @@ public class UserFavor extends BaseActivity {
                 item.setCateName(item0.getCateName());
                 item.setDate(item0.getEvtStartAt());
                 item.setAction(item0.getUrl());
+                item.setStartAt(item0.getEvtStartAt());
+                item.setEndAt(item0.getEvtEndAt());
                 data.add(item);
             }
 

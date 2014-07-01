@@ -20,9 +20,10 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent">
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/sico_reddot"/>
+                android:id="@+id/userfav_item_ico"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:src="@drawable/dot_red12"/>
         </LinearLayout>
         <LinearLayout
             android:gravity="center"

@@ -78,7 +78,7 @@ public class StringUtils {
 						(cal.getTimeInMillis() - time.getTime()) / 60000, 1)
 						+ "分钟前";
 			else
-				ftime = hour + "小时前";
+				ftime = Math.abs(hour) + "小时前";
 			return ftime;
 		}
 
@@ -92,7 +92,7 @@ public class StringUtils {
 						(cal.getTimeInMillis() - time.getTime()) / 60000, 1)
 						+ "分钟前";
 			else
-				ftime = hour + "小时前";
+				ftime = Math.abs(hour) + "小时前";
 		} else if (days == 1) {
 			ftime = "昨天";
 		} else if (days == 2) {
@@ -124,6 +124,23 @@ public class StringUtils {
 		}
 		return b;
 	}
+
+    /**
+     * 判断给定字符串时间是否大于今天
+     * @param sdate
+     * @return
+     */
+    public static boolean isLargerThanToday(String sdate){
+        boolean b=  false;
+        Date time = toDate(sdate);
+        Date today = new Date();
+        if(null==time){
+            return b;
+        }
+        long nowDate = Long.parseLong(dateFormater2.get().format(today).replace("-", ""));
+        long timeDate = Long.parseLong(dateFormater2.get().format(time).replace("-", ""));
+        return (timeDate>nowDate);
+    }
 	
 	/**
 	 * 返回long类型的今天的日期

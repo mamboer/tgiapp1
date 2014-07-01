@@ -18,8 +18,11 @@ import com.tencent.sgz.bean.CommentList;
 import com.tencent.sgz.bean.News;
 import com.tencent.sgz.bean.Notice;
 import com.tencent.sgz.bean.Result;
+import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
+import com.tencent.sgz.entity.AppData;
 import com.tencent.sgz.entity.Article;
+import com.tencent.sgz.entity.UserRemindArticleList;
 import com.tencent.sgz.widget.BadgeView;
 import com.tencent.sgz.widget.PullToRefreshListView;
 import android.annotation.SuppressLint;
@@ -32,6 +35,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.format.DateUtils;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -50,6 +54,8 @@ import android.widget.ViewSwitcher;
 
 import in.xsin.weibo.Helper;
 import in.xsin.widget.ProgressWebView;
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectView;
 
 /**
  * 新闻详情
@@ -58,6 +64,7 @@ import in.xsin.widget.ProgressWebView;
  * @version 1.0
  * @created 2014-4-21
  */
+@ContentView(R.layout.news_detail)
 public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  {
 
 	private FrameLayout mHeader;
@@ -74,6 +81,8 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 	private ImageView mShare;
     private ImageView mHeart;
     private ImageView mStartGame;
+
+    @InjectView(R.id.news_detail_reminder) ImageView mReminder;
 
 
 	private ProgressWebView mWebView;
@@ -107,7 +116,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 
 	private int _catalog;
 	private int _id;
-	private long _uid;
+	private String _uid;
 	private String _content;
 	private int _isPostToMyZone;
 
@@ -122,7 +131,8 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.news_detail);
+
+        _uid = appContext.getLoginOpenId();
 
         //TODO:放到异步线程中
 
@@ -200,6 +210,8 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 
         mStartGame.setOnClickListener(startGameClickListener);
 
+        mReminder.setOnClickListener(reminderClickListener);
+
 		bv_comment = new BadgeView(this, mCommentList);
 		bv_comment.setBackgroundResource(R.drawable.widget_count_bg2);
 		bv_comment.setIncludeFontPadding(false);
@@ -214,7 +226,21 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
             mFooter.setVisibility(View.GONE);
         }
 
+        //添加提醒功能
+        this.assertReminder();
+
 	}
+    //业务逻辑：如果该新闻有结束时间，并且结束时间大于当前时间，则允许添加到提醒中去
+    private boolean assertReminder(){
+        if(null==newsDetail||StringUtils.isEmpty(newsDetail.getMd5())) return false;
+
+        String endTime = newsDetail.getEndAt();
+
+        if(StringUtils.isEmpty(endTime)|| ( !StringUtils.isLargerThanToday(endTime) )) return false;
+
+        return true;
+
+    }
 
 	// 初始化控件数据
 	private void initData() {
@@ -222,6 +248,8 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 			public void handleMessage(Message msg) {
 				if (msg.what == 1) {
 					headButtonSwitch(DATA_LOAD_COMPLETE);
+
+                    AppData appData = appContext.getData();
 
 					// 是否收藏
                     /*
@@ -232,11 +260,20 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 						mFavorite
 								.setImageResource(R.drawable.fbar_fav_bg);
 				    */
-                    if(appContext.getData().hasFavItem(newsDetail.getMd5())){
+                    if(appData.hasFavItem(newsDetail.getMd5())){
                         mFavorite
                                 .setImageResource(R.drawable.fbar_favon_bg);
                     }else{
                         mFavorite
+                                .setImageResource(R.drawable.fbar_fav_bg);
+                    }
+
+                    //是否提醒
+                    if(appData.hasRemindItem(newsDetail.getMd5())){
+                        mReminder
+                                .setImageResource(R.drawable.fbar_favon_bg);
+                    }else{
+                        mReminder
                                 .setImageResource(R.drawable.fbar_fav_bg);
                     }
 
@@ -410,6 +447,55 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 		}
 	}
 
+    private View.OnClickListener reminderClickListener = new View.OnClickListener() {
+        public void onClick(View v) {
+
+            if (!assertReminder()) {
+                UIHelper.ToastMessage(appContext,"当前新闻或活动已经过期，不能设置提醒！");
+                return;
+            }
+
+            final Handler onDataGot = new Handler(){
+                @Override
+                public void handleMessage(Message msg){
+                    super.handleMessage(msg);
+                    Bundle data = msg.getData();
+                    int errCode = data.getInt("errCode");
+                    String errMsg = data.getString("errMsg");
+                    boolean isRemoved = data.getBoolean("isRemoved");
+
+
+                    if(errMsg!=null){
+                        UIHelper.ToastMessage(appContext,errMsg);
+                        return;
+                    }
+
+                    if(isRemoved){
+                        UIHelper.ToastMessage(appContext,"已取消提醒！");
+                        mReminder.setImageResource(R.drawable.fbar_fav_bg);
+                    }else{
+                        UIHelper.ToastMessage(appContext,"添加提醒成功！");
+                        mReminder.setImageResource(R.drawable.fbar_favon_bg);
+                    }
+
+                }
+            };
+
+            final Article item = new Article();
+
+            item.setCateName(newsDetail.getCateName());
+            item.setUrl(newsDetail.getUrl());
+            item.setDesc(newsDetail.getDesc());
+            item.setTitle(newsDetail.getTitle());
+            item.setCover(newsDetail.getFace());
+            item.setEvtEndAt(newsDetail.getEndAt());
+            item.setEvtStartAt(newsDetail.getStartAt());
+
+            UserRemindArticleList.toggleRemindArticle(appContext, item, _uid, onDataGot);
+
+        }
+    };
+
 	private View.OnClickListener refreshClickListener = new View.OnClickListener() {
 		public void onClick(View v) {
 			//hideEditor(v);
@@ -467,7 +553,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 
     private View.OnClickListener startGameClickListener = new View.OnClickListener(){
         public void onClick(View v) {
-            String pName = "com.tencent.game.VXDGame";
+            String pName = res.getString(R.string.app_package);
             boolean isInstalled = false;
             // 得到PackageManager对象
             final PackageManager pm = getPackageManager();
@@ -508,11 +594,9 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 	private View.OnClickListener favoriteClickListener = new View.OnClickListener() {
 		public void onClick(View v) {
 
-            if (newsDetail == null||newsDetail.getMd5()==null||newsDetail.getMd5().equals("")) {
+            if (newsDetail == null||StringUtils.isEmpty(newsDetail.getMd5())) {
                 return;
             }
-
-            final long uid = appContext.getLoginUid();
 
             final Handler onDataGot = new Handler(){
                 @Override
@@ -548,7 +632,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
             item.setTitle(newsDetail.getTitle());
             item.setCover(newsDetail.getFace());
 
-            AppDataProvider.toggleFavArticle(appContext, item, uid, onDataGot);
+            AppDataProvider.toggleFavArticle(appContext, item, _uid, onDataGot);
 
             /*
 			if (newsId == 0 || newsDetail == null) {

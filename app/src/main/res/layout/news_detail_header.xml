@@ -28,12 +28,12 @@
 		android:layout_marginRight="10dip"/>
 
    	<ImageView 
-   		android:id="@+id/news_detail_refresh"
+   		android:id="@+id/news_detail_reminder"
 	   	android:layout_width="wrap_content" 
 	   	android:layout_height="wrap_content" 
 	   	android:layout_gravity="right|center"
-	   	android:clickable="true" 
-	   	android:background="@drawable/head_refresh"
-		android:visibility="gone"/>
+	   	android:clickable="true"
+        android:layout_marginRight="10dip"
+	   	android:background="@drawable/fbar_fav_bg"/>
 
 </FrameLayout>

@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.tencent.sgz.bean.SearchList;
 import com.tencent.sgz.common.EncryptUtils;
 import com.tencent.sgz.common.HttpUtil;
+import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.AppData;
 import com.tencent.sgz.entity.Article;
@@ -16,6 +17,7 @@ import com.tencent.sgz.entity.ChannelGroup;
 import com.tencent.sgz.entity.ChannelItem;
 import com.tencent.sgz.entity.MiscData;
 import com.tencent.sgz.entity.UserFavArticleList;
+import com.tencent.sgz.entity.UserRemindArticleList;
 
 import java.util.ArrayList;
 
@@ -39,6 +41,7 @@ public class AppDataProvider {
     public static class CONSTS{
         final public static String FAV_ChANNELGROUP = "FavChannelGroup";
         final public static String FAV_ARTICLE = "FavArticleList";
+        final public static String REMIND_ARTICLE = "REMIND_ARTICLELIST";
         final public static String ERROR="ERROR";
     }
 
@@ -179,7 +182,7 @@ public class AppDataProvider {
                 String data0 = "";
                 int flagIdx = 0;
                 Bundle data = new Bundle();
-                final long uid = context.getLoginUid();
+                final String uid = context.getLoginOpenId();
                 try {
                     Gson gson = new Gson();
                     //杂项数据
@@ -223,6 +226,10 @@ public class AppDataProvider {
                     //收藏数据
                     UserFavArticleList favData = getFavArticlesSync(context,uid,false);
                     datas.setFavArticles(favData);
+
+                    //提醒数据
+                    UserRemindArticleList reminderData = UserRemindArticleList.getRemindArticlesSync(context,uid,false);
+                    datas.setRemindArticles(reminderData);
 
                     data.putInt("errCode",0);
                     data.putString("errMsg",null);
@@ -284,10 +291,10 @@ public class AppDataProvider {
      * 以同步的方式获取新闻收藏数据
      * @param context
      * @param reset
-     * @param uid
+     * @param uid 用户滴openID
      * @return
      */
-    public static UserFavArticleList getFavArticlesSync(final AppContext context,final long uid,final boolean reset) throws Exception{
+    public static UserFavArticleList getFavArticlesSync(final AppContext context,final String uid,final boolean reset) throws Exception{
         String uid1 = getOperationId(context,uid);
         String key = EncryptUtils.encodeMD5(uid1+"_"+CONSTS.FAV_ARTICLE);
         UserFavArticleList data = new UserFavArticleList(uid1);
@@ -311,7 +318,7 @@ public class AppDataProvider {
      * 获取收藏的新闻数据
      * @return
      */
-    public static void getFavArticles(final AppContext context,final Handler handler,final long uid,final boolean reset){
+    public static void getFavArticles(final AppContext context,final Handler handler,final String uid,final boolean reset){
 
 
 
@@ -503,7 +510,7 @@ public class AppDataProvider {
      * @param item
      * @param handler
      */
-    public static void toggleFavArticle(final AppContext context, final Article item, final long uid, final Handler handler){
+    public static void toggleFavArticle(final AppContext context, final Article item, final String uid, final Handler handler){
 
 
         final Handler onDataGot = new Handler(){
@@ -572,7 +579,7 @@ public class AppDataProvider {
      * @param itemId
      * @param handler
      */
-    public static void removeFavArticle(final AppContext context,final String itemId,final long uid,final Handler handler){
+    public static void removeFavArticle(final AppContext context,final String itemId,final String uid,final Handler handler){
 
 
         final Handler onDataGot = new Handler(){
@@ -639,12 +646,12 @@ public class AppDataProvider {
      * @param uid 用户ID，如果时空则使用app_id
      * @return
      */
-    public static String getOperationId(final AppContext context,final long uid){
-        long uid1 = uid;
-        if(0==uid1){
+    public static String getOperationId(final AppContext context,final String uid){
+
+        if(StringUtils.isEmpty(uid)){
             return context.getResources().getString(R.string.app_id);
         }
-        return uid1+"";
+        return uid;
     }
 
 }

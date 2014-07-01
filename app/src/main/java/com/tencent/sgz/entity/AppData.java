@@ -14,6 +14,7 @@ public class AppData implements Serializable {
         slides = new ArticleList();
         misc = new MiscData();
         favArticles = new UserFavArticleList();
+        remindArticles = new UserRemindArticleList();
     }
 
     private int errCode;
@@ -24,6 +25,7 @@ public class AppData implements Serializable {
     private ArticleList slides;
     private MiscData misc;
     private UserFavArticleList favArticles;
+    private UserRemindArticleList remindArticles;
 
     public ArticleList getArticles() {
         return articles;
@@ -122,4 +124,27 @@ public class AppData implements Serializable {
         return has;
     }
 
+    /**
+     * 提醒数据中是否存在指定数据
+     * @param md5id
+     * @return
+     */
+    public boolean hasRemindItem(String md5id){
+        boolean has = false;
+        for(Article item0:remindArticles.getItems()){
+            if(item0.getMD5().equals(md5id)){
+                has = true;
+                break;
+            }
+        }
+        return has;
+    }
+
+    public UserRemindArticleList getRemindArticles() {
+        return remindArticles;
+    }
+
+    public void setRemindArticles(UserRemindArticleList remindArticles) {
+        this.remindArticles = remindArticles;
+    }
 }

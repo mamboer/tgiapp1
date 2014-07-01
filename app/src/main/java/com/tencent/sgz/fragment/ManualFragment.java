@@ -625,6 +625,9 @@ public class ManualFragment extends FragmentBase {
             news.setFace(item.getCover());
             news.setCateName(item.getCateName());
             news.setUrl(AppDataProvider.assertUrl(getAppContext(),item.getUrl()));
+            news.setStartAt(item.getEvtStartAt());
+            news.setEndAt(item.getEvtEndAt());
+            news.setPubDate(item.getPubDate());
 
             UIHelper.showNewsRedirect(getActivity(), news);
 

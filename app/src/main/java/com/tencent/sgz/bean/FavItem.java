@@ -18,6 +18,10 @@ public class FavItem {
 
     private String md5;
 
+    private String startAt;
+
+    private String endAt;
+
     public String getAction(){return action;}
     public void setAction(String action){
         this.action = action;
@@ -53,5 +57,21 @@ public class FavItem {
 
     public String getMd5() {
         return md5;
+    }
+
+    public String getStartAt() {
+        return startAt;
+    }
+
+    public void setStartAt(String startAt) {
+        this.startAt = startAt;
+    }
+
+    public String getEndAt() {
+        return endAt;
+    }
+
+    public void setEndAt(String endAt) {
+        this.endAt = endAt;
     }
 }

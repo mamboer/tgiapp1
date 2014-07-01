@@ -1,11 +1,6 @@
 package com.tencent.sgz.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,24 +11,29 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.fortysevendeg.swipelistview.SwipeListView;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.R;
 import com.tencent.sgz.bean.FavItem;
+import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
+import com.tencent.sgz.entity.Article;
+import com.tencent.sgz.entity.UserRemindArticleList;
+
+import org.apache.http.client.methods.HttpOptions;
 
 import java.util.List;
 
-public class ListViewUserFavAdapter extends BaseAdapter {
 
-    private List<FavItem> data;
+public class ListViewUserRemindAdapter extends BaseAdapter {
+
+    private List<Article> data;
     private Context context;
     final  String uid;
 
-    public ListViewUserFavAdapter(Context context, List<FavItem> data) {
+    public ListViewUserRemindAdapter(Context context, List<Article> data) {
         this.context = context;
         this.data = data;
         this.uid = AppContext.Instance.getLoginOpenId();
@@ -45,7 +45,7 @@ public class ListViewUserFavAdapter extends BaseAdapter {
     }
 
     @Override
-    public FavItem getItem(int position) {
+    public Article getItem(int position) {
         return data.get(position);
     }
 
@@ -65,11 +65,11 @@ public class ListViewUserFavAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        final FavItem item = getItem(position);
+        final Article item = getItem(position);
         ViewHolder holder;
         if (convertView == null) {
             LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = li.inflate(R.layout.user_favitem, parent, false);
+            convertView = li.inflate(R.layout.user_noticeitem, parent, false);
             holder = new ViewHolder();
             holder.ico = (ImageView) convertView.findViewById(R.id.userfav_item_ico);
             holder.title = (TextView) convertView.findViewById(R.id.userfav_item_title);
@@ -81,21 +81,22 @@ public class ListViewUserFavAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        final  SwipeListView lvLoveViennaLiao = (SwipeListView)parent;
+        final SwipeListView lvLoveViennaLiao = (SwipeListView)parent;
         lvLoveViennaLiao.recycle(convertView, position);
 
-        String ico = item.getIcon();
 
-        if(null==ico||ico.equals("")){
-            holder.ico.setImageResource(R.drawable.widget_dface);
-        }else{
-            UIHelper.showLoadImage(holder.ico, ico, "Error loading image:" + ico);
-        }
-        holder.title.setText(item.getName());
+        holder.title.setText(item.getTitle());
         holder.title.setTag(item);
         holder.cname.setText(item.getCateName());
-        holder.date.setText(item.getDate());
+        holder.date.setText(item.getEvtEndAt());
         holder.btnDel.setTag(item);
+
+        //是否过期
+        if(StringUtils.isLargerThanToday(item.getEvtEndAt())){
+            holder.ico.setImageResource(R.drawable.dot_red12);
+        }else{
+            holder.ico.setImageResource(R.drawable.dot_gray12);
+        }
 
 
 
@@ -103,7 +104,7 @@ public class ListViewUserFavAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                FavItem item = (FavItem)v.getTag();
+                Article item = (Article)v.getTag();
 
                 final Handler handler = new Handler(){
                     @Override
@@ -116,13 +117,13 @@ public class ListViewUserFavAdapter extends BaseAdapter {
                             UIHelper.ToastMessage(context,errMsg);
                             return;
                         }
-                        ListViewUserFavAdapter.this.data.remove(position);
-                        ListViewUserFavAdapter.this.notifyDataSetChanged();
+                        ListViewUserRemindAdapter.this.data.remove(position);
+                        ListViewUserRemindAdapter.this.notifyDataSetChanged();
 
                     }
                 };
 
-                AppDataProvider.removeFavArticle(AppContext.Instance,item.getMd5(),uid,handler);
+                UserRemindArticleList.removeRemindArticle(AppContext.Instance, item.getMD5(), uid, handler);
 
                 /*
                 ListViewUserFavAdapter.this.data.remove(position);

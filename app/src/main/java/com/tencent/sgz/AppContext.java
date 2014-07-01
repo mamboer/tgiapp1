@@ -1528,7 +1528,7 @@ public class AppContext extends Application {
 	 * @param cachefile
 	 * @return
 	 */
-	protected boolean isReadDataCache(String cachefile)
+	public boolean isReadDataCache(String cachefile)
 	{
 		return readObject(cachefile) != null;
 	}

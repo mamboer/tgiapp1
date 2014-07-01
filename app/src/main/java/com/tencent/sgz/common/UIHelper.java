@@ -1640,8 +1640,11 @@ public class UIHelper {
      *
      * @param context
      */
-    public static void showEventCenter(Context context) {
+    public static void showEventCenter(Context context,Bundle data) {
         Intent intent = new Intent(context, EventNotice.class);
+        if(null!=data){
+            intent.putExtras(data);
+        }
         context.startActivity(intent);
     }
 

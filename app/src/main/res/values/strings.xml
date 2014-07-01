@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">赤壁乱舞</string>
-    <string name="app_id">sgz</string>
+    <string name="app_name">天天炫斗</string>
+    <string name="app_id">ttxd</string>
     <string name="app_copyright">Copyright © 2005 - %1$s Tencent. All Rights Reserved. \n腾讯公司  版权所有</string>
     <string name="app_datahost">http://ttxd.qq.com</string>
+    <string name="app_package">com.tencent.game.VXDGame</string>
 
     <integer name="home_slider_interval">6</integer>
 
@@ -133,5 +134,9 @@
     <string name="openqq_appid">101125247</string><!--http://connect.qq.com/manage/detail?appid=101125247&platform=mobile&type=2 -->
     <string name="openqq_appkey">c0b186d5c692ace60eff0d41d9300559</string>
     <string name="openqq_default_pic">http://ossweb-img.qq.com/images/chanpin/ttxd/public/a20140528ttxd/downloadqrttxd.jpg</string>
+
+    <!--S 详情页-->
+    <integer name="reminder_ahead_day">3</integer>
+    <!--E 详情页-->
 
 </resources>

@@ -68,13 +68,31 @@ public class News extends Entity{
     private String cateName;
     private String face;
     private String md5;
+    private String startAt;
+    private String endAt;
 
 	public News(){
 		this.newType = new NewsType();
 		this.relatives = new ArrayList<Relative>();
-	}	
-	
-	public class NewsType implements Serializable{
+	}
+
+    public String getEndAt() {
+        return endAt;
+    }
+
+    public void setEndAt(String endAt) {
+        this.endAt = endAt;
+    }
+
+    public String getStartAt() {
+        return startAt;
+    }
+
+    public void setStartAt(String startAt) {
+        this.startAt = startAt;
+    }
+
+    public class NewsType implements Serializable{
 		public int type;
 		public String attachment;
 		public int authoruid2;

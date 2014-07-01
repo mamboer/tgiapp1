@@ -595,5 +595,30 @@
         <item name="android:textSize">14sp</item>
     </style>
     <!--E user_fav-->
+
+    <!--S user_notice-->
+    <style name="usernotice_item">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">80dp</item>
+    </style>
+    <style name="usernotice_item.back">
+        <item name="android:background">@color/gray_level5</item>
+        <item name="android:gravity">center_vertical|right</item>
+    </style>
+    <style name="usernotice_item.front">
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="usernotice_item.btn1">
+        <item name="android:layout_width">65dp</item>
+        <item name="android:background">#ff3600</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <!--E user_notice-->
     
 </resources>
