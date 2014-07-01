@@ -89,6 +89,7 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -2058,6 +2059,44 @@ public class UIHelper {
     public static int px2dip(Context context, float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
+    }
+
+    /**
+     * 检查是否需要换图片
+     * @param view
+     */
+    public static void checkWelcomeBG(Context context,RelativeLayout view) {
+        String path = FileUtils.getAppCache(context, "wellcomeback");
+        List<File> files = FileUtils.listPathFiles(path);
+        if (!files.isEmpty()) {
+            File f = files.get(0);
+            long time[] = getTime(f.getName());
+            long today = StringUtils.getToday();
+            if (today >= time[0] && today <= time[1]) {
+                view.setBackgroundDrawable(Drawable.createFromPath(f.getAbsolutePath()));
+            }
+        }
+    }
+
+    /**
+     * 分析显示的时间
+     * @param time
+     * @return
+     */
+    private static long[] getTime(String time) {
+        long res[] = new long[2];
+        try {
+            time = time.substring(0, time.indexOf("."));
+            String t[] = time.split("-");
+            res[0] = Long.parseLong(t[0]);
+            if (t.length >= 2) {
+                res[1] = Long.parseLong(t[1]);
+            } else {
+                res[1] = Long.parseLong(t[0]);
+            }
+        } catch (Exception e) {
+        }
+        return res;
     }
 
 }

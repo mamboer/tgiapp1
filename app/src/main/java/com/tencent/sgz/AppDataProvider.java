@@ -19,6 +19,9 @@ import com.tencent.sgz.entity.MiscData;
 import com.tencent.sgz.entity.UserFavArticleList;
 import com.tencent.sgz.entity.UserRemindArticleList;
 
+import org.apache.http.util.EncodingUtils;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
@@ -43,6 +46,7 @@ public class AppDataProvider {
         final public static String FAV_ARTICLE = "FavArticleList";
         final public static String REMIND_ARTICLE = "REMIND_ARTICLELIST";
         final public static String ERROR="ERROR";
+        final public static String ENCODING_UTF8="UTF-8";
     }
 
     public static String assertUrl(AppContext ct,String url){
@@ -50,6 +54,62 @@ public class AppDataProvider {
             return url;
         }
         return (ct.getString(R.string.app_datahost)+url);
+    }
+
+    /**
+     * 从assets目录获取指定文件
+     * @param context
+     * @param filePath
+     * @return
+     */
+    public static String getAssetFile(AppContext context,String filePath,String encoding){
+        String result = "";
+
+        try {
+
+            InputStream in = context.getResources().getAssets().open(filePath);
+            //获取文件的字节数
+            int lenght = in.available();
+            //创建byte数组
+            byte[]  buffer = new byte[lenght];
+            //将文件中的数据读到byte数组中
+            in.read(buffer);
+            result = EncodingUtils.getString(buffer, encoding);
+
+            in.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    private static String getAssetFileNameByUrl(String url){
+        String r = "data/";
+        if(url.equalsIgnoreCase(URL.ARTICLE)){
+            //新闻
+            r+="article";
+        }else if(url.equalsIgnoreCase(URL.NOTICE)){
+            //公告
+            r+="notice";
+        }else if(url.equalsIgnoreCase(URL.EXP)){
+            r+="exp";
+        }else if(url.equalsIgnoreCase(URL.MANUAL)){
+            r+="manual";
+        }else if(url.equalsIgnoreCase(URL.MISC)){
+            r+="misc";
+        }else if(url.equalsIgnoreCase(URL.SLIDE)){
+            r+="slide";
+        }else if(url.equalsIgnoreCase(URL.TESTING)){
+            r+="testing";
+        }else{
+            r=null;
+        }
+        if(null!=r){
+            r+=".shtml";
+        }
+
+        return r;
     }
 
     public static String getRemoteData(AppContext appContext,String url,boolean isRefresh) throws AppException{
@@ -69,8 +129,15 @@ public class AppDataProvider {
 
             } else {
                 data = (String)appContext.readObject(key);
-                if(data == null)
-                    data = "";
+                //没有缓存也没有网络，从assets目录中读取
+                if(data == null){
+                    url = getAssetFileNameByUrl(url);
+                    if(null!=url){
+                        data = getAssetFile(appContext,url,CONSTS.ENCODING_UTF8);
+                    }else{
+                        data = "";
+                    }
+                }
             }
             return data;
 
@@ -104,9 +171,13 @@ public class AppDataProvider {
                         data0 = data0.substring(0, flagIdx);
                         data = gson.fromJson(data0, ArticleList.class);
                         data.getItems().remove(0);
+                        bundle.putInt("errCode",0);
+                        bundle.putString("errMsg",null);
+                    }else{
+                        bundle.putInt("errCode",2);
+                        bundle.putString("errMsg","网络数据连失败或数据格式有误！");
                     }
-                    bundle.putInt("errCode",0);
-                    bundle.putString("errMsg",null);
+
                 } catch (AppException e) {
                     data = null;
                     e.printStackTrace();
@@ -146,9 +217,13 @@ public class AppDataProvider {
                     if(flagIdx>0) {
                         data0 = data0.substring(0, flagIdx);
                         data = gson.fromJson(data0, MiscData.class);
+                        bundle.putInt("errCode",0);
+                        bundle.putString("errMsg",null);
+                    }else{
+                        bundle.putInt("errCode",2);
+                        bundle.putString("errMsg","网络数据连失败或数据格式有误！");
                     }
-                    bundle.putInt("errCode",0);
-                    bundle.putString("errMsg",null);
+
                 } catch (AppException e) {
                     data = null;
                     e.printStackTrace();

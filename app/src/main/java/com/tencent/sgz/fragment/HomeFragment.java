@@ -199,7 +199,7 @@ public class HomeFragment extends FragmentBase {
                         super.handleMessage(msg);
 
                         mPullListView.onPullDownRefreshComplete();
-                        mPullListView.onPullUpRefreshComplete();
+                        //mPullListView.onPullUpRefreshComplete();
 
                         Bundle data = msg.getData();
                         int errCode = data.getInt("errCode");
@@ -207,6 +207,7 @@ public class HomeFragment extends FragmentBase {
 
                         if(errMsg!=null){
                             UIHelper.ToastMessage(getContext(),errMsg);
+                            mPullListView.setHasMoreData(mListViewHasMoreData);
                             return;
                         }
 
@@ -273,7 +274,7 @@ public class HomeFragment extends FragmentBase {
                     public void handleMessage(Message msg) {
                         super.handleMessage(msg);
 
-                        mPullListView.onPullDownRefreshComplete();
+                        //mPullListView.onPullDownRefreshComplete();
                         mPullListView.onPullUpRefreshComplete();
 
                         Bundle data = msg.getData();
@@ -282,6 +283,7 @@ public class HomeFragment extends FragmentBase {
 
                         if(errMsg!=null){
                             UIHelper.ToastMessage(getContext(),errMsg);
+                            mPullListView.setHasMoreData(mListViewHasMoreData);
                             return;
                         }
 

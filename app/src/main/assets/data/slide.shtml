@@ -1,0 +1,51 @@
+{
+"items":[
+{"id":"tencent"}
+,
+{
+"id":"广告id",
+"title":"app广告3",
+"desc":"",
+"cateName":"首页广告",
+"cateId":"分类ID",
+"author":"作者昵称",
+"authorid":"作者id",
+"pubDate":"2014-06-18",
+"url":"/webplat/info/news_version3/7367/8248/8277/8340/m5855/201406/266724.shtml",
+"cover":"http://ossweb-img.qq.com/upload/webplat/info/ttxd/201406/1403093113_1436653066_16444_imageAddr.jpg",
+"evtStartAt":"2014-06-18 19:48:21",
+"evtEndAt":"2015-06-18 19:48:21"
+}
+,
+{
+"id":"广告id",
+"title":"app广告2",
+"desc":"",
+"cateName":"首页广告",
+"cateId":"分类ID",
+"author":"作者昵称",
+"authorid":"作者id",
+"pubDate":"2014-06-18",
+"url":"/webplat/info/news_version3/7367/8248/8277/8340/m5855/201406/266723.shtml",
+"cover":"http://ossweb-img.qq.com/upload/webplat/info/ttxd/201406/1403092062_1436653066_25272_imageAddr.jpg",
+"evtStartAt":"2014-06-18 19:47:11",
+"evtEndAt":"2015-06-18 19:47:11"
+}
+,
+{
+"id":"广告id",
+"title":"app广告1",
+"desc":"ad1",
+"cateName":"首页广告",
+"cateId":"分类ID",
+"author":"作者昵称",
+"authorid":"作者id",
+"pubDate":"2014-06-18",
+"url":"/webplat/info/news_version3/7367/8248/8277/8340/m5855/201406/266721.shtml",
+"cover":"http://ossweb-img.qq.com/upload/webplat/info/ttxd/201406/1403092005_1436653066_24066_imageAddr.jpg",
+"evtStartAt":"2014-06-18 19:46:16",
+"evtEndAt":"2015-06-18 19:46:16"
+}
+]
+}
+<!--[if !IE]>|xGv00|dec8e6598b9a4da898a0bb3dcce84363<![endif]-->

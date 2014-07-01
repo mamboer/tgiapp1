@@ -1422,6 +1422,27 @@ public class AppContext extends Application {
 	{
 		setProperty(AppConfig.CONF_LOAD_IMAGE, String.valueOf(b));
 	}
+    /**
+     * 是否第一次加载
+     * @return
+     */
+    public boolean isFirstBootup()
+    {
+        String r = getProperty(AppConfig.CONF_APP_FIRSTBOOTUP);
+        //默认是第一次
+        if(StringUtils.isEmpty(r))
+            return true;
+        else
+            return StringUtils.toBool(r);
+    }
+    /**
+     * 设置是否第一次启动程序
+     * @param b
+     */
+    public void setConfigFirstBootup(boolean b)
+    {
+        setProperty(AppConfig.CONF_APP_FIRSTBOOTUP, String.valueOf(b));
+    }
 	
 	/**
 	 * 是否发出提示音

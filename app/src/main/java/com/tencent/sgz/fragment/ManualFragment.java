@@ -198,7 +198,7 @@ public class ManualFragment extends FragmentBase {
                         super.handleMessage(msg);
 
                         mPullListView1.onPullDownRefreshComplete();
-                        mPullListView1.onPullUpRefreshComplete();
+                        //mPullListView1.onPullUpRefreshComplete();
 
                         Bundle data = msg.getData();
                         int errCode = data.getInt("errCode");
@@ -206,6 +206,7 @@ public class ManualFragment extends FragmentBase {
 
                         if(errMsg!=null){
                             UIHelper.ToastMessage(getContext(),errMsg);
+                            mPullListView1.setHasMoreData(mListViewHasMoreData1);
                             return;
                         }
 
@@ -265,7 +266,7 @@ public class ManualFragment extends FragmentBase {
                     public void handleMessage(Message msg) {
                         super.handleMessage(msg);
 
-                        mPullListView1.onPullDownRefreshComplete();
+                        //mPullListView1.onPullDownRefreshComplete();
                         mPullListView1.onPullUpRefreshComplete();
 
                         Bundle data = msg.getData();
@@ -274,6 +275,7 @@ public class ManualFragment extends FragmentBase {
 
                         if(errMsg!=null){
                             UIHelper.ToastMessage(getContext(),errMsg);
+                            mPullListView1.setHasMoreData(mListViewHasMoreData1);
                             return;
                         }
 
@@ -332,7 +334,7 @@ public class ManualFragment extends FragmentBase {
                         super.handleMessage(msg);
 
                         mPullListView2.onPullDownRefreshComplete();
-                        mPullListView2.onPullUpRefreshComplete();
+                        //mPullListView2.onPullUpRefreshComplete();
 
                         Bundle data = msg.getData();
                         int errCode = data.getInt("errCode");
@@ -340,6 +342,7 @@ public class ManualFragment extends FragmentBase {
 
                         if(errMsg!=null){
                             UIHelper.ToastMessage(getContext(),errMsg);
+                            mPullListView2.setHasMoreData(mListViewHasMoreData2);
                             return;
                         }
 
@@ -399,7 +402,7 @@ public class ManualFragment extends FragmentBase {
                     public void handleMessage(Message msg) {
                         super.handleMessage(msg);
 
-                        mPullListView2.onPullDownRefreshComplete();
+                        //mPullListView2.onPullDownRefreshComplete();
                         mPullListView2.onPullUpRefreshComplete();
 
                         Bundle data = msg.getData();
@@ -408,6 +411,7 @@ public class ManualFragment extends FragmentBase {
 
                         if(errMsg!=null){
                             UIHelper.ToastMessage(getContext(),errMsg);
+                            mPullListView2.setHasMoreData(mListViewHasMoreData2);
                             return;
                         }
 
@@ -466,7 +470,7 @@ public class ManualFragment extends FragmentBase {
                         super.handleMessage(msg);
 
                         mPullListView3.onPullDownRefreshComplete();
-                        mPullListView3.onPullUpRefreshComplete();
+                        //mPullListView3.onPullUpRefreshComplete();
 
                         Bundle data = msg.getData();
                         int errCode = data.getInt("errCode");
@@ -474,6 +478,7 @@ public class ManualFragment extends FragmentBase {
 
                         if(errMsg!=null){
                             UIHelper.ToastMessage(getContext(),errMsg);
+                            mPullListView3.setHasMoreData(mListViewHasMoreData3);
                             return;
                         }
 
@@ -533,7 +538,7 @@ public class ManualFragment extends FragmentBase {
                     public void handleMessage(Message msg) {
                         super.handleMessage(msg);
 
-                        mPullListView3.onPullDownRefreshComplete();
+                        //mPullListView3.onPullDownRefreshComplete();
                         mPullListView3.onPullUpRefreshComplete();
 
                         Bundle data = msg.getData();
@@ -542,6 +547,7 @@ public class ManualFragment extends FragmentBase {
 
                         if(errMsg!=null){
                             UIHelper.ToastMessage(getContext(),errMsg);
+                            mPullListView3.setHasMoreData(mListViewHasMoreData3);
                             return;
                         }
 

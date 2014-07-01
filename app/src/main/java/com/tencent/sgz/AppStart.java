@@ -6,6 +6,7 @@ import java.util.List;
 import com.tencent.sgz.common.FileUtils;
 import com.tencent.sgz.common.OpenQQHelper;
 import com.tencent.sgz.common.StringUtils;
+import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.AppData;
 import com.tencent.sgz.ui.Main;
 import com.tencent.sgz.ui.MainActivity;
@@ -23,6 +24,7 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 /**
  * 应用程序启动类：1,显示欢迎界面并跳转到主界面 2,加载数据包
@@ -36,6 +38,8 @@ public class AppStart extends Activity {
 	AppContext ac = null;
 	boolean isRedirecting;
 
+    LinearLayout mLoadingTxt;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,13 +51,17 @@ public class AppStart extends Activity {
         ac.initLoginInfo();
        
         final View view = View.inflate(this, R.layout.start, null);
-		FrameLayout wellcome = (FrameLayout) view.findViewById(R.id.app_start_view);
-		check(wellcome);
+		RelativeLayout wellcome = (RelativeLayout) view.findViewById(R.id.app_start_view);
+        mLoadingTxt = (LinearLayout) view.findViewById(R.id.app_start_loadingtxt);
+        mLoadingTxt.setVisibility(View.VISIBLE);
+
+		UIHelper.checkWelcomeBG(this,wellcome);
+
 		setContentView(view);
         
 		//渐变展示启动屏
 		final AlphaAnimation aa = new AlphaAnimation(0.3f,1.0f);
-		aa.setDuration(2000);
+		aa.setDuration(getResources().getInteger(R.integer.splash_duration));
 		view.startAnimation(aa);
 		aa.setAnimationListener(new AnimationListener()
 		{
@@ -106,44 +114,6 @@ public class AppStart extends Activity {
 
         //初始化数据
         AppDataProvider.getAppData(ac,onAppDataGot , false);
-    }
-    
-    /**
-     * 检查是否需要换图片
-     * @param view
-     */
-    private void check(FrameLayout view) {
-    	String path = FileUtils.getAppCache(this, "wellcomeback");
-    	List<File> files = FileUtils.listPathFiles(path);
-    	if (!files.isEmpty()) {
-    		File f = files.get(0);
-    		long time[] = getTime(f.getName());
-    		long today = StringUtils.getToday();
-    		if (today >= time[0] && today <= time[1]) {
-    			view.setBackgroundDrawable(Drawable.createFromPath(f.getAbsolutePath()));
-    		}
-    	}
-    }
-    
-    /**
-     * 分析显示的时间
-     * @param time
-     * @return
-     */
-    private long[] getTime(String time) {
-    	long res[] = new long[2];
-    	try {
-    		time = time.substring(0, time.indexOf("."));
-        	String t[] = time.split("-");
-        	res[0] = Long.parseLong(t[0]);
-        	if (t.length >= 2) {
-        		res[1] = Long.parseLong(t[1]);
-        	} else {
-        		res[1] = Long.parseLong(t[0]);
-        	}
-		} catch (Exception e) {
-		}
-    	return res;
     }
     
     /**

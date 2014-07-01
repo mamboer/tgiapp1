@@ -49,6 +49,8 @@ public class AppConfig {
     public final static String CONF_OPENQQ_ACCESSSECRET="openqq_accessSecret";
     public final static String CONF_OPENQQ_EXPIRESIN="openqq_expiresIn";
 
+    public final static String CONF_APP_FIRSTBOOTUP="APP_FIRSTBOOTUP";
+
 	public final static String SAVE_IMAGE_PATH = "save_image_path";
 	@SuppressLint("NewApi")
 	public final static String DEFAULT_SAVE_IMAGE_PATH = Environment.getExternalStorageDirectory()+ File.separator+ "sgz"+ File.separator;
@@ -71,13 +73,6 @@ public class AppConfig {
 	 */
 	public static SharedPreferences getSharedPreferences(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context);
-	}
-
-	/**
-	 * 是否加载显示文章图片
-	 */
-	public static boolean isLoadImage(Context context) {
-		return getSharedPreferences(context).getBoolean(CONF_LOAD_IMAGE, true);
 	}
 
 	public String getCookie() {
