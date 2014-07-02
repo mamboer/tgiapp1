@@ -41,7 +41,9 @@ public class PullToRefreshListView extends PullToRefreshBase<ListView> implement
      * @param attrs attrs
      */
     public PullToRefreshListView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        //this(context, attrs, 0);
+        super(context,attrs);
+        setPullLoadEnabled(false);
     }
     
     /**

@@ -10,7 +10,7 @@ android {
         abortOnError false
     }
     defaultConfig {
-        minSdkVersion 8
+        minSdkVersion 10
         targetSdkVersion 15
     }
     signingConfigs {

@@ -28,7 +28,7 @@ public class PullToRefreshWebView extends PullToRefreshBase<WebView> {
      * @param attrs attrs
      */
     public PullToRefreshWebView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
     }
     
     /**

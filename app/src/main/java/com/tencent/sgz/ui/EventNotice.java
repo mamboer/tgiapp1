@@ -108,7 +108,9 @@ public class EventNotice extends BaseActivity {
 
         swipeListView = (SwipeListView) findViewById(R.id.slv_usernoticelist);
 
-        swipeListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
+            swipeListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+        }
 
         swipeListView.setEmptyView(findViewById( R.id.user_favitem_nil));
 

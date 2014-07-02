@@ -28,7 +28,7 @@ public class PullToRefreshScrollView extends PullToRefreshBase<ScrollView> {
      * @param attrs attrs
      */
     public PullToRefreshScrollView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
     }
     
     /**

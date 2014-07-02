@@ -437,13 +437,13 @@ public class OpenQQHelper {
 
         @Override
         public void onError(UiError e) {
-            OpenQQUtil.toastMessage((Activity)context, "onError: " + e.errorDetail);
+            OpenQQUtil.toastMessage((Activity)context, "登录失败: " + e.errorDetail);
             OpenQQUtil.dismissDialog();
         }
 
         @Override
         public void onCancel() {
-            OpenQQUtil.toastMessage((Activity)context, "onCancel: ");
+            OpenQQUtil.toastMessage((Activity)context, "已取消登录！ ");
             OpenQQUtil.dismissDialog();
         }
     }

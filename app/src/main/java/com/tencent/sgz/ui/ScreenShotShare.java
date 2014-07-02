@@ -5,6 +5,7 @@ import com.tencent.sgz.R;
 import com.tencent.sgz.bean.AccessInfo;
 import com.tencent.sgz.common.FileUtils;
 import com.tencent.sgz.common.ImageUtils;
+import com.tencent.sgz.common.OpenQQHelper;
 import com.tencent.sgz.common.SinaWeiboHelper;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
@@ -20,10 +21,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import in.xsin.weibo.Helper;
+
 /**
  * 截屏分享
- * 
- * @author yeguozhong@yeah.net
  * 
  */
 public class ScreenShotShare extends BaseActivity {
@@ -92,7 +93,7 @@ public class ScreenShotShare extends BaseActivity {
 						UIHelper.ToastMessage(ScreenShotShare.this,
 								"总字数不能超过140个字");
 					} else {
-						shareToQQWeibo(content, mCutImagePath);
+						shareToQQWeibo(content,mUrl, mCutImagePath);
 					}
 				}
 			}
@@ -111,7 +112,7 @@ public class ScreenShotShare extends BaseActivity {
 						UIHelper.ToastMessage(ScreenShotShare.this,
 								"总字数不能超过140个字");
 					} else {
-						shareToSinaWeibo(content, mCutImagePath);
+						shareToSinaWeibo(content,mUrl, mCutImagePath);
 					}
 				}
 			}
@@ -152,18 +153,15 @@ public class ScreenShotShare extends BaseActivity {
 	 * 分享到QQ微博
 	 */
 	@SuppressLint("NewApi")
-	private void shareToQQWeibo(String content, String imagePath) {
-        //TODO:
-        /*
-		helper = new QQWeiboHelper2(this, content, imagePath);
-		helper.send();
-		*/
+	private void shareToQQWeibo(String content,String url, String imagePath) {
+        OpenQQHelper.shareToWeibo(this, content, url, imagePath, "add_t", null);
 	}
 
 	/**
 	 * 分享到新浪微博
 	 */
-	private void shareToSinaWeibo(String content, final String imagePath) {
+	private void shareToSinaWeibo(String content,String url, final String imagePath) {
+        /*
 		AppConfig cfgHelper = AppConfig.getAppConfig(this);
 		final AccessInfo access = cfgHelper.getAccessInfo();
 
@@ -194,6 +192,8 @@ public class ScreenShotShare extends BaseActivity {
 			SinaWeiboHelper
 					.authorize(ScreenShotShare.this, shareMsg, imagePath);
 		}
+		*/
+        Helper.shareWebPage(content, url, imagePath, null);
 	}
 
 	/**

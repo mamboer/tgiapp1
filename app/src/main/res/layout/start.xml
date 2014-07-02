@@ -19,7 +19,7 @@
             android:layout_gravity="right|center"
             android:layout_marginRight="10dip"/>
         <TextView
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:text="狠命加载数据中..."
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

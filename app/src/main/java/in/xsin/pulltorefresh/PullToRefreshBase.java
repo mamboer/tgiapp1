@@ -3,6 +3,7 @@ package in.xsin.pulltorefresh;
 import in.xsin.pulltorefresh.ILoadingLayout.State;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -104,6 +105,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
         super(context, attrs);
         init(context, attrs);
     }
+
 
     /**
      * 构造方法

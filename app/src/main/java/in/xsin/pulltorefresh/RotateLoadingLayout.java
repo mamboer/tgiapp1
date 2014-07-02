@@ -3,6 +3,8 @@ package in.xsin.pulltorefresh;
 import com.tencent.sgz.R;
 
 import android.content.Context;
+import android.graphics.Matrix;
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -140,7 +142,14 @@ public class RotateLoadingLayout extends LoadingLayout {
     @Override
     public void onPull(float scale) {
         float angle = scale * 180f; // SUPPRESS CHECKSTYLE
-        mArrowImageView.setRotation(angle);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            mArrowImageView.setRotation(angle);
+        }else{
+            Matrix matrix=new Matrix();
+            mArrowImageView.setScaleType(ScaleType.MATRIX);   //required
+            matrix.postRotate(angle);
+            mArrowImageView.setImageMatrix(matrix);
+        }
     }
     
     /**
@@ -148,6 +157,13 @@ public class RotateLoadingLayout extends LoadingLayout {
      */
     private void resetRotation() {
         mArrowImageView.clearAnimation();
-        mArrowImageView.setRotation(0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            mArrowImageView.setRotation(0);
+        }else{
+            Matrix matrix=new Matrix();
+            mArrowImageView.setScaleType(ScaleType.MATRIX);   //required
+            matrix.postRotate(0);
+            mArrowImageView.setImageMatrix(matrix);
+        }
     }
 }

@@ -160,6 +160,7 @@ public class HomeFragment extends FragmentBase {
     }
 
     private void initListView(View parent,LayoutInflater inflater,View header,AppData ad,final AppContext ct){
+
         mPullListView = (PullToRefreshListView) parent.findViewById(R.id.pulltorefreshlistview);
         mPullListView.setPullLoadEnabled(false);
         mPullListView.setScrollLoadEnabled(true);

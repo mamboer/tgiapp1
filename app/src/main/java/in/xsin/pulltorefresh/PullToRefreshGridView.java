@@ -41,7 +41,9 @@ public class PullToRefreshGridView extends PullToRefreshBase<GridView> implement
      * @param attrs attrs
      */
     public PullToRefreshGridView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        //this(context, attrs, 0);
+        super(context,attrs);
+        setPullLoadEnabled(false);
     }
     
     /**
