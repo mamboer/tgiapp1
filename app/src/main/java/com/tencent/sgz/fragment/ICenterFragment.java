@@ -51,6 +51,8 @@ public class ICenterFragment extends FragmentBase {
     private BitmapManager bitmapManager;
     private Bitmap defaultUserAvatar;
 
+    User curUser;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -108,8 +110,7 @@ public class ICenterFragment extends FragmentBase {
         btnLogoff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getAppContext().cleanLoginInfo();
-                onClickLogin();
+                onClickLogout();
             }
         });
 
@@ -127,27 +128,29 @@ public class ICenterFragment extends FragmentBase {
         }
     }
 
-    private void onClickLogin() {
-        if (!OpenQQHelper.isLogined()) {
-
-            OpenQQHelper.login(getActivity(),new Handler(){
-                @Override
-                public void handleMessage(Message msg){
-                    int what = msg.what;
-                    if(what!=0){
-                        UIHelper.ToastMessage(getActivity(),"登录失败："+msg.obj);
-                        return;
-                    }
-
-                    updateUserInfo();
-
-                }
-            });
-        } else {
-
+    private void onClickLogout(){
+        if(OpenQQHelper.isLogined()){
             OpenQQHelper.logout(getActivity());
-            updateICenter();
         }
+        getAppContext().logout();
+        cacheUser(null);
+        updateICenter();
+    }
+
+    private void onClickLogin() {
+        OpenQQHelper.login(getActivity(),new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                int what = msg.what;
+                if(what!=0){
+                    UIHelper.ToastMessage(getActivity(),"登录失败："+msg.obj);
+                    return;
+                }
+
+                updateUserInfo();
+
+            }
+        });
     }
 
     Handler mOnLogined = new Handler() {
@@ -179,6 +182,7 @@ public class ICenterFragment extends FragmentBase {
                     UIHelper.ToastMessage(getContext(),"解析用户数据时出错："+e.getMessage());
                 }
                 getAppContext().saveLoginInfo(user);
+                cacheUser(user);
                 updateICenter();
             }else if(msg.what == 1){
                 Bitmap bitmap = (Bitmap)msg.obj;
@@ -190,6 +194,10 @@ public class ICenterFragment extends FragmentBase {
         }
 
     };
+
+    private void cacheUser(User u){
+        curUser = u;
+    }
 
     private void updateICenter(){
         btnLogin.setVisibility(View.GONE);
@@ -217,12 +225,15 @@ public class ICenterFragment extends FragmentBase {
 
         //已登录
         //获取登录信息
-        User user = appContext.getLoginInfo();
+        if(null==curUser){
+            cacheUser(appContext.getLoginInfo());
+        }
+
         btnLogoff.setVisibility(View.VISIBLE);
         //txtUserId.setVisibility(View.VISIBLE);
         //txtUserId.setText("QQ号：" + user.getUid());
-        txtUserName.setText("您好，"+user.getName());
-        bitmapManager.loadBitmap(user.getFace(),imgUserAvatar);
+        txtUserName.setText("您好，"+curUser.getName());
+        bitmapManager.loadBitmap(curUser.getFace(),imgUserAvatar);
 
         //更新收藏总数
         UserFavArticleList favData =appContext.getData().getFavArticles();

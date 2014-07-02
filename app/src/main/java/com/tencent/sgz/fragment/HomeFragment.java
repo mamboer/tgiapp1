@@ -31,6 +31,7 @@ import com.tencent.sgz.entity.Article;
 import com.tencent.sgz.entity.ArticleList;
 import com.tencent.sgz.entity.ChannelGroup;
 import com.tencent.sgz.entity.ChannelItem;
+import com.tencent.sgz.entity.UserRemindArticleList;
 import com.tencent.sgz.widget.NewDataToast;
 
 import in.xsin.widget.FlowIndicator;
@@ -85,14 +86,23 @@ public class HomeFragment extends FragmentBase {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return super.onCreateView(inflater,container,savedInstanceState);
+        View v = super.onCreateView(inflater,container,savedInstanceState);
 
+        return v;
     }
 
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+        //活动提醒消息广播
+        UserRemindArticleList.sendBroadCast(getAppContext());
+    }
     @Override
     public void onStart(){
         super.onStart();
         //viewPager.startAutoSliding(getContext()); // 启动自动播放
+
     }
 
     @Override

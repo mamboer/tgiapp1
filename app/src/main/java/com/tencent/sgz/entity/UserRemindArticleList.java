@@ -1,12 +1,15 @@
 package com.tencent.sgz.entity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppDataProvider;
+import com.tencent.sgz.R;
 import com.tencent.sgz.common.EncryptUtils;
+import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
 
 import java.util.ArrayList;
@@ -231,5 +234,36 @@ public class UserRemindArticleList extends UserArticleList {
 
         getRemindArticles(context,onDataGot,uid,false);
 
+    }
+
+    /**
+     * 获取快过期的本地活动提醒
+     * @return
+     */
+    public static ArrayList<Article> getDueArticleList(AppContext context){
+        int dueDay = context.getResources().getInteger(R.integer.reminder_ahead_day);
+        ArrayList<Article> items = new ArrayList<Article>();
+
+        ArrayList<Article> items0 = context.getData().getRemindArticles().getItems();
+
+        for(Article item:items0){
+            if(StringUtils.isLargerThanTodayButLessThan(item.getEvtEndAt(),dueDay)){
+                items.add(item);
+            }
+        }
+
+        return items;
+    }
+
+    /**
+     * 发活动提醒广播
+     */
+    public static void sendBroadCast(AppContext context){
+        ArrayList<Article> items = getDueArticleList(context);
+        if(items.size()==0) return;
+
+        Intent intent = new Intent(context.getString(R.string.receiver_eventnotice));
+        intent.putExtra("cnt", items.size());
+        context.sendBroadcast(intent);
     }
 }

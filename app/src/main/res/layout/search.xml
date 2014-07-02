@@ -47,7 +47,7 @@
             android:drawableRight="@drawable/mico_search"
             android:gravity="center"
             android:textSize="@dimen/text_size_15"
-            android:hint="搜索"/>
+            android:hint="请输入搜索关键字"/>
 
         <Button
             android:id="@+id/search_btn"

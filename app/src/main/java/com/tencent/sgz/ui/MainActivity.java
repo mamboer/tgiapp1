@@ -1,6 +1,7 @@
 package com.tencent.sgz.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -92,6 +93,18 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
 
         initHeadView();
 
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        //活动提醒广播，BroadCast.java
+        if (intent.getBooleanExtra("NOTICE_REMIND", false)) {
+            // 查看最新信息
+            mTabHost.setCurrentTabByTag("tab5");
+            gotoMsgCenter(null);
+        }
     }
 
     /**

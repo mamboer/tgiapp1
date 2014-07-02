@@ -4,15 +4,18 @@
     <wp7>1.0</wp7>
     <ios>1.0.0</ios>
     <android>
-      <versionCode>26</versionCode>
-      <versionName>1.0.0.0</versionName>
+      <versionCode>30</versionCode>
+      <versionName>1.0.0</versionName>
       <downloadUrl>http://ossweb-img.qq.com/upload/apps/android/ttxd/app-release.apk</downloadUrl>
       <updateLog>
           <![CDATA[版本信息：
-天天炫斗官方宝典 Android v1.0.0.0
+天天炫斗官方宝典 Android v1.0.0.30
 版本更新日志：
-1.初始版本
-2.就不告诉你具体的功能
+1.活动提醒广播功能
+2.使用openqq新的appid，停用原来QQ互联的
+3.修复登录bug
+4.优化了个人中心页面的性能
+5.就不告诉你其他各种功能...
 请点击确定在线升级，如果升级失败，请到http://ossweb-img.qq.com/upload/apps/android/ttxd/app-release.apk下载最新版本
 安装包大小：2.37MB]]>
       </updateLog>

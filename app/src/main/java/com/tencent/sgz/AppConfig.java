@@ -255,6 +255,13 @@ public class AppConfig {
         }
         return openQQAccessInfo;
     }
+
+    public void clearOpenQQAccessInfo(){
+        if(openQQAccessInfo!=null){
+            this.remove(CONF_OPENQQ_OPENID,CONF_OPENQQ_ACCESSTOKEN,CONF_OPENQQ_ACCESSSECRET,CONF_OPENQQ_EXPIRESIN);
+            openQQAccessInfo = null;
+        }
+    }
     /* E OpenQQ相关 */
 
 }

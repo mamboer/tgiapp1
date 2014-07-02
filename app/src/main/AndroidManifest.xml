@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tencent.sgz"
-    android:versionCode="28"
+    android:versionCode="29"
     android:versionName="1.0.0" >
 
     <uses-sdk
@@ -154,8 +154,8 @@
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.ZoomLight"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
+            android:theme="@style/Theme.SlideTop"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".ui.UserInfo"
             android:configChanges="keyboardHidden|orientation"
@@ -328,9 +328,21 @@
             android:theme="@style/Theme.SlideTop" />
         <!-- E 个人中心 -->
 
+        <activity
+            android:name=".ui.MainActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoTitleBar"
+            android:label="@string/title_activity_main" >
+        </activity>
+
+        <!--S 广播-->
+
         <receiver android:name=".ui.BroadCast" >
             <intent-filter>
                 <action android:name="com.tencent.sgz.action.APPWIDGET_UPDATE" />
+                <action android:name="com.tencent.sgz.action.APP_EVENTNOTICE" />
             </intent-filter>
         </receiver>
 
@@ -340,14 +352,9 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name=".ui.MainActivity"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.NoTitleBar"
-            android:label="@string/title_activity_main" >
-        </activity>
+        <!--E 广播-->
+
+
 
     </application>
 

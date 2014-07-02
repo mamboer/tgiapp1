@@ -75,16 +75,31 @@ public class BroadCast extends BroadcastReceiver {
 			}
 			
 			//通知栏显示
-			this.notification(context, activeCount);
+			this.notification(context, activeCount,"NOTICE","您有 $ 条最新信息");
+            return;
 		}
+
+        //活动提醒
+        assertRemindArticles(context,ACTION_NAME,intent);
+
 	}
 
-	private void notification(Context context, int noticeCount){		
+    void assertRemindArticles(Context context,String actionName,Intent intent){
+        if(!context.getString(R.string.receiver_eventnotice).equals(actionName)) {
+            return;
+        }
+        int activeCount = intent.getIntExtra("cnt", 0);//活动提醒数
+
+        //通知栏显示
+        this.notification(context, activeCount,"NOTICE_REMIND","您有 $ 条活动提醒快要到期啦，赶紧去看看！");
+    }
+
+	private void notification(Context context, int noticeCount,String key,String msgTpl){
 		//创建 NotificationManager
 		NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 		
 		String contentTitle = context.getString(R.string.app_name);
-		String contentText = "您有 " + noticeCount + " 条最新信息";
+		String contentText = msgTpl.replace("$",noticeCount+"");
 		int _lastNoticeCount;
 		
 		//判断是否发出通知信息
@@ -94,22 +109,20 @@ public class BroadCast extends BroadcastReceiver {
 			lastNoticeCount = 0;
 			return;
 		}
-		else if(noticeCount == lastNoticeCount)
+		if(noticeCount == lastNoticeCount)
 		{
 			return; 
 		}
-		else
-		{
-			_lastNoticeCount = lastNoticeCount;
-			lastNoticeCount = noticeCount;
-		}
+
+        _lastNoticeCount = lastNoticeCount;
+        lastNoticeCount = noticeCount;
 		
 		//创建通知 Notification
 		Notification notification = null;
 		
 		if(noticeCount > _lastNoticeCount) 
 		{
-			String noticeTitle = "您有 " + (noticeCount-_lastNoticeCount) + " 条最新信息";
+			String noticeTitle = msgTpl.replace("$",(noticeCount-_lastNoticeCount)+"");
 			notification = new Notification(R.drawable.icon, noticeTitle, System.currentTimeMillis());
 		}
 		else
@@ -118,8 +131,8 @@ public class BroadCast extends BroadcastReceiver {
 		}
 		
 		//设置点击通知跳转
-		Intent intent = new Intent(context, Main.class);
-		intent.putExtra("NOTICE", true);
+		Intent intent = new Intent(context, MainActivity.class);
+		intent.putExtra(key, true);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK); 
 		
 		PendingIntent contentIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);

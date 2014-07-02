@@ -271,10 +271,10 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
                     //是否提醒
                     if(appData.hasRemindItem(newsDetail.getMd5())){
                         mReminder
-                                .setImageResource(R.drawable.fbar_favon_bg);
+                                .setImageResource(R.drawable.fbar_clock_bg2);
                     }else{
                         mReminder
-                                .setImageResource(R.drawable.fbar_fav_bg);
+                                .setImageResource(R.drawable.fbar_clock_bg1);
                     }
 
 					// 显示评论数
@@ -472,10 +472,10 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 
                     if(isRemoved){
                         UIHelper.ToastMessage(appContext,"已取消提醒！");
-                        mReminder.setImageResource(R.drawable.fbar_fav_bg);
+                        mReminder.setImageResource(R.drawable.fbar_clock_bg1);
                     }else{
                         UIHelper.ToastMessage(appContext,"添加提醒成功！");
-                        mReminder.setImageResource(R.drawable.fbar_favon_bg);
+                        mReminder.setImageResource(R.drawable.fbar_clock_bg2);
                     }
 
                 }

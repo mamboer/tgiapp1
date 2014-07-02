@@ -1403,7 +1403,7 @@ public class UIHelper {
 		if (!((AppContext) context.getApplicationContext()).isLogin()
 				|| notice == null)
 			return;
-		Intent intent = new Intent("com.tencent.sgz.action.APPWIDGET_UPDATE");
+		Intent intent = new Intent(context.getString(R.string.receiver_widgetupdate));
 		intent.putExtra("atmeCount", notice.getAtmeCount());
 		intent.putExtra("msgCount", notice.getMsgCount());
 		intent.putExtra("reviewCount", notice.getReviewCount());
@@ -1421,7 +1421,7 @@ public class UIHelper {
 			Result res, Tweet tweet) {
 		if (res == null && tweet == null)
 			return;
-		Intent intent = new Intent("com.tencent.sgz.action.APP_TWEETPUB");
+		Intent intent = new Intent(context.getString(R.string.receiver_tweetpub));
 		intent.putExtra("MSG_WHAT", what);
 		if (what == 1)
 			intent.putExtra("RESULT", res);
@@ -1754,7 +1754,7 @@ public class UIHelper {
 	public static void loginOrLogout(Activity activity) {
 		AppContext ac = (AppContext) activity.getApplication();
 		if (ac.isLogin()) {
-			ac.Logout();
+			ac.logout();
 			ToastMessage(activity, "已退出登录");
 		} else {
 			showLoginDialog(activity);

@@ -220,10 +220,12 @@ public class OpenQQHelper {
             //如果结果小于或等于0，表示token已经过期，应该提示用户重新走登录流程
             //http://wiki.open.qq.com/wiki/mobile/Android_SDK%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#4.4_access_token.E3.80.81openid.E7.9A.84.E8.8E.B7.E5.8F.96.E5.92.8C.E4.BD.BF.E7.94.A8
             mExpiresIn = String.valueOf((openQQAccessInfo.getExpiresIn()-System.currentTimeMillis())/1000);
+
+            mTencent.setOpenId(mOpenId);
+            mTencent.setAccessToken(mAccessToken,mExpiresIn);
+
         }
 
-        mTencent.setOpenId(mOpenId);
-        mTencent.setAccessToken(mAccessToken,mExpiresIn);
         mTencent.login(context, "all", listener);
     }
 
@@ -233,6 +235,9 @@ public class OpenQQHelper {
      */
     public static void logout(final Activity context){
         if(!isLogined()) return;
+        mOpenId = null;
+        mAccessToken = null;
+        mExpiresIn = null;
         mQQAuth.logout(context);
     }
 

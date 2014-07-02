@@ -34,6 +34,6 @@
 	   	android:layout_gravity="right|center"
 	   	android:clickable="true"
         android:layout_marginRight="10dip"
-	   	android:background="@drawable/fbar_fav_bg"/>
+	   	android:background="@drawable/fbar_clock_bg1"/>
 
 </FrameLayout>

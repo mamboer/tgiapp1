@@ -1,19 +1,15 @@
 package com.tencent.sgz.api;
 
-import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
-import com.tencent.sgz.AppConfig;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.bean.ActiveList;
@@ -47,7 +43,6 @@ import com.tencent.sgz.bean.WellcomeImage;
 import com.tencent.sgz.common.FileUtils;
 import com.tencent.sgz.common.ImageUtils;
 import com.tencent.sgz.common.StringUtils;
-import com.tencent.sgz.ui.ImageZoomDialog;
 
 import org.apache.commons.httpclient.Cookie;
 import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
@@ -65,8 +60,6 @@ import org.apache.commons.httpclient.params.HttpMethodParams;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Bitmap.CompressFormat;
-import android.util.Log;
 
 /**
  * API客户端接口：用于访问网络数据
@@ -224,7 +217,7 @@ public class ApiClient {
 			try {
 				Result res = Result.parse(new ByteArrayInputStream(responseBody.getBytes()));	
 				if(res.getErrorCode() == 0){
-					appContext.Logout();
+					appContext.logout();
 					appContext.getUnLoginHandler().sendEmptyMessage(1);
 				}
 			} catch (Exception e) {
@@ -331,7 +324,7 @@ public class ApiClient {
 			try {
 				Result res = Result.parse(new ByteArrayInputStream(responseBody.getBytes()));	
 				if(res.getErrorCode() == 0){
-					appContext.Logout();
+					appContext.logout();
 					appContext.getUnLoginHandler().sendEmptyMessage(1);
 				}
 			} catch (Exception e) {

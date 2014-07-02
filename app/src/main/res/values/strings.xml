@@ -103,10 +103,14 @@
     <string name="com_txt_loading">加载中...</string>
     <string name="capture_head_title">扫一扫</string>
     <string name="msg_camera_framework_bug">抱歉，Android相机出现问题。您可能需要重启设备。</string>
-    <string name="receiver_widgetupdate">com.tencent.sgz.action.APPWIDGET_UPDATE</string>
-    <string name="receiver_tweetpub">com.tencent.sgz.action.APP_TWEETPUB</string>
     <string name="lbl_ok">确认</string>
     <string name="lbl_scan_qrcode">扫描二维码</string>
+
+    <!--S 广播事件名-->
+    <string name="receiver_widgetupdate">com.tencent.sgz.action.APPWIDGET_UPDATE</string>
+    <string name="receiver_tweetpub">com.tencent.sgz.action.APP_TWEETPUB</string>
+    <string name="receiver_eventnotice">com.tencent.sgz.action.APP_EVENTNOTICE</string>
+    <!--E 广播事件名-->
 
     <integer name="offsetTop_scan_qrcode">-30</integer>
     <integer name="wtlogin_appid">563046901</integer>
@@ -132,8 +136,8 @@
 
     <string name="wx_appid">wx0c8234f17641d550</string>
     <string name="wx_appsecret">6594dba26bb20c26925f91ef92f2396b</string>
-    <string name="openqq_appid">101125247</string><!--http://connect.qq.com/manage/detail?appid=101125247&platform=mobile&type=2 -->
-    <string name="openqq_appkey">c0b186d5c692ace60eff0d41d9300559</string>
+    <string name="openqq_appid">1101693014</string><!--http://op.open.qq.com/index.php?mod=appinfo&act=main&appid=1101693014#mobile|advancedAbilityAndroid -->
+    <string name="openqq_appkey">FSkWgCrBhHc2sKmn</string>
     <string name="openqq_default_pic">http://ossweb-img.qq.com/images/chanpin/ttxd/public/a20140528ttxd/downloadqrttxd.jpg</string>
 
     <!--S 详情页-->

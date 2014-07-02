@@ -44,10 +44,14 @@ public class StringUtils {
 	 * 将字符串转位日期类型
 	 * 
 	 * @param sdate
+     * @param ignoreHHmmss 是否忽略时，分，秒
 	 * @return
 	 */
-	public static Date toDate(String sdate) {
+	public static Date toDate(String sdate,boolean ignoreHHmmss) {
 		try {
+            if(ignoreHHmmss){
+                return dateFormater2.get().parse(sdate);
+            }
 			return dateFormater.get().parse(sdate);
 		} catch (ParseException e) {
 			return null;
@@ -61,7 +65,7 @@ public class StringUtils {
 	 * @return
 	 */
 	public static String friendly_time(String sdate) {
-		Date time = toDate(sdate);
+		Date time = toDate(sdate,false);
 		if (time == null) {
 			return "Unknown";
 		}
@@ -113,7 +117,7 @@ public class StringUtils {
 	 */
 	public static boolean isToday(String sdate) {
 		boolean b = false;
-		Date time = toDate(sdate);
+		Date time = toDate(sdate,false);
 		Date today = new Date();
 		if (time != null) {
 			String nowDate = dateFormater2.get().format(today);
@@ -132,7 +136,7 @@ public class StringUtils {
      */
     public static boolean isLargerThanToday(String sdate){
         boolean b=  false;
-        Date time = toDate(sdate);
+        Date time = toDate(sdate,false);
         Date today = new Date();
         if(null==time){
             return b;
@@ -141,6 +145,45 @@ public class StringUtils {
         long timeDate = Long.parseLong(dateFormater2.get().format(time).replace("-", ""));
         return (timeDate>nowDate);
     }
+
+    /**
+     * 指定日期字符串是否大于今天diffDayNum天
+     * @param sdate
+     * @param diffDayNum
+     * @return
+     */
+    public static boolean isLargerThanToday(String sdate,int diffDayNum){
+        boolean b=  false;
+        Date time = toDate(sdate,false);
+        Date today = new Date();
+        if(null==time){
+            return b;
+        }
+
+        int diffDay = DateUtils.getDaysOfTwo(today,time);
+
+        return (diffDay>=diffDayNum);
+
+    }
+
+    /**
+     * 指定日期字符串是否大于今天,但小于diffDayNum天
+     * @param sdate
+     * @param diffDayNum
+     * @return
+     */
+    public static boolean isLargerThanTodayButLessThan(String sdate,int diffDayNum){
+        if(!isLargerThanToday(sdate)) return false;
+
+        Date time = toDate(sdate,false);
+        Date today = new Date();
+
+        int diffDay = DateUtils.getDaysOfTwo(today,time);
+
+        return (diffDay<=diffDayNum);
+
+    }
+
 	
 	/**
 	 * 返回long类型的今天的日期

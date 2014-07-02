@@ -419,7 +419,7 @@ public class Main extends BaseActivity {
         btnLogoff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                appContext.cleanLoginInfo();
+                appContext.logout();
                 updateICenter();
             }
         });
