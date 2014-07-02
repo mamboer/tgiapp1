@@ -6,15 +6,16 @@
     <android>
       <versionCode>26</versionCode>
       <versionName>1.0.0.0</versionName>
-      <downloadUrl>http://3gz.qq.com/uploads/sgz-1.0.0.0.apk</downloadUrl>
-      <updateLog><![CDATA[版本信息：
-3gz.qq.com for Android v1.0.0.0
-
- 版本更新日志：
+      <downloadUrl>http://ossweb-img.qq.com/upload/apps/android/ttxd/app-release.apk</downloadUrl>
+      <updateLog>
+          <![CDATA[版本信息：
+天天炫斗官方宝典 Android v1.0.0.0
+版本更新日志：
 1.初始版本
-请点击确定在线升级，如果升级失败，请到http://3gz.qq.com/app下载最新版本
-
-安装包大小：2.37MB]]></updateLog>
+2.就不告诉你具体的功能
+请点击确定在线升级，如果升级失败，请到http://ossweb-img.qq.com/upload/apps/android/ttxd/app-release.apk下载最新版本
+安装包大小：2.37MB]]>
+      </updateLog>
 	  <coverUpdate>false</coverUpdate>
       <coverStartDate>2014-03-05</coverStartDate>
       <coverEndDate>2014-03-05</coverEndDate>

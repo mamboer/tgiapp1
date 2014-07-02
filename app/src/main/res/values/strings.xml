@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">天天炫斗官方宝典</string>
+    <string name="app_name">天天炫斗宝典</string>
     <string name="app_id">ttxd</string>
     <string name="app_copyright">Copyright © 2005 - %1$s Tencent. All Rights Reserved. \n腾讯公司  版权所有</string>
     <string name="app_datahost">http://ttxd.qq.com</string>
