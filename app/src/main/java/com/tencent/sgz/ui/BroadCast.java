@@ -2,6 +2,8 @@ package com.tencent.sgz.ui;
 
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.MainActivity;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -9,6 +11,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+
+import in.xsin.common.MTAHelper;
 
 /**
  * 通知信息广播接收器
@@ -18,7 +22,9 @@ import android.net.Uri;
  */
 public class BroadCast extends BroadcastReceiver {
 
-	private final static int NOTIFICATION_ID = R.layout.main;
+	private final static int NOTIFICATION_ID = R.layout.home;
+
+    public static String TAG = BroadCast.class.getName();
 	
 	private static int lastNoticeCount;
 	
@@ -157,7 +163,9 @@ public class BroadCast extends BroadcastReceiver {
 		}
 		
 		//发出通知
-		notificationManager.notify(NOTIFICATION_ID, notification);		
+		notificationManager.notify(NOTIFICATION_ID, notification);
+
+        MTAHelper.track(context, MTAHelper.TYPE.BROADCAST,TAG,"");
 	}
 	
 }

@@ -4,6 +4,7 @@ import com.tencent.sgz.AppConfig;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.bean.Post;
 import com.tencent.sgz.bean.Result;
 import com.tencent.sgz.common.StringUtils;
@@ -27,7 +28,7 @@ import android.widget.Spinner;
  * @version 1.0
  * @created 2014-4-21
  */
-public class QuestionPub extends BaseActivity{
+public class QuestionPub extends BaseActivity {
 
 	private ImageView mBack;
 	private EditText mTitle;

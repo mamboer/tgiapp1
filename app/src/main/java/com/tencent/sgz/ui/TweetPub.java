@@ -9,6 +9,7 @@ import com.tencent.sgz.AppConfig;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.adapter.GridViewFaceAdapter;
 import com.tencent.sgz.bean.Result;
 import com.tencent.sgz.bean.Tweet;
@@ -61,7 +62,7 @@ import android.widget.Toast;
  * @version 1.0
  * @created 2014-5-11
  */
-public class TweetPub extends BaseActivity{
+public class TweetPub extends BaseActivity {
 	
 	private final static String TAG = "TweetPub";
 	

@@ -5,12 +5,10 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.apache.commons.httpclient.util.URIUtil;
-import org.apache.http.client.utils.URIUtils;
-
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.bean.FriendList;
 import com.tencent.sgz.bean.MyInformation;
 import com.tencent.sgz.bean.Result;
@@ -18,7 +16,7 @@ import com.tencent.sgz.common.FileUtils;
 import com.tencent.sgz.common.ImageUtils;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
-import com.tencent.sgz.widget.LoadingDialog;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;

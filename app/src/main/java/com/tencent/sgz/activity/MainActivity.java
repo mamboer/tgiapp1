@@ -1,39 +1,33 @@
-package com.tencent.sgz.ui;
+package com.tencent.sgz.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
+import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
-import com.tencent.sgz.activity.*;
-import com.tencent.sgz.bean.BlogList;
+import com.tencent.sgz.api.ApiClient;
 import com.tencent.sgz.bean.News;
-import com.tencent.sgz.bean.NewsList;
 import com.tencent.sgz.common.UIHelper;
+import com.tencent.sgz.common.UpdateManager;
 import com.tencent.sgz.fragment.*;
+import com.tencent.sgz.ui.BroadCast;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+
+import in.xsin.common.MTAHelper;
 
 /**
  * Demonstrates combining a TabHost with a ViewPager to implement a tab UI
@@ -41,6 +35,8 @@ import java.util.ListIterator;
  * flicks to move between the tabs.
  */
 public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabChangeListener{
+
+    private static String TAG = MainActivity.class.getName();
 
     TabHost mTabHost;
 
@@ -84,6 +80,7 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
         // 网络连接判断
         if (!appContext.isNetworkConnected())
             UIHelper.ToastMessage(this, R.string.network_not_connected);
+
         // 初始化登录
         appContext.initLoginInfo();
 
@@ -96,11 +93,40 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
     }
 
     @Override
+    protected void onResume(){
+        super.onResume();
+        // 检查新版本
+        if (appContext.isCheckUp()) {
+            UpdateManager.getUpdateManager().checkAppUpdate(this, false);
+        }
+        // 检查是否需要下载欢迎图片
+        this.checkBackGround();
+    }
+
+    private void checkBackGround() {
+        if (!appContext.isNetworkConnected()) {
+            return;
+        }
+        // 启动线程去检查服务器接口是否需要下载新的欢迎界面背景图片到手机
+        new Thread(){
+            public void run() {
+                // 将图片下载下来
+                try {
+                    ApiClient.checkBackGround(appContext);
+                } catch (AppException e) {
+                }
+            }
+        }.start();
+    }
+
+    @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 
         //活动提醒广播，BroadCast.java
         if (intent.getBooleanExtra("NOTICE_REMIND", false)) {
+            //MTA
+            MTAHelper.track(MainActivity.this, MTAHelper.TYPE.BROADCAST, BroadCast.TAG,"userClick");
             // 查看最新信息
             mTabHost.setCurrentTabByTag("tab5");
             gotoMsgCenter(null);
@@ -119,11 +145,15 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
             public void onClick(View v) {
                 UIHelper.showSearch(v.getContext());
                 //UIHelper.showCDV1(v.getContext());
+                MTAHelper.trackClick(v.getContext(),TAG,"main_head_search");
             }
         });
         mHeadLogo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //UIHelper.showCapture(Main.this);
+
+                MTAHelper.trackClick(v.getContext(),TAG,"main_head_logo");
+
                 News news = new News();
                 news.setUrl("http://ttxd.qq.com/act/a20140521tg/index.htm");
 
@@ -217,6 +247,7 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
         TabManager.TabInfo newTab = mTabManager.getTab(tabId);
         mHeadTitle.setText(newTab.title);
 
+        MTAHelper.trackClick(this,TAG,tabId);
     }
 
     /**
@@ -389,14 +420,17 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
     }
 
     public void gotoMsgCenter(View preView){
+        MTAHelper.trackClick(this,TAG,"gotoMsgCenter");
         UIHelper.showMsgCenter(this);
     }
 
     public void gotoUserFavor(View preView){
+        MTAHelper.trackClick(this,TAG,"gotoUserFavor");
         UIHelper.showUserFavor(this);
     }
 
     public void gotoSetting(View preView){
+        MTAHelper.trackClick(this,TAG,"gotoSetting");
         UIHelper.showSetting(this);
     }
 

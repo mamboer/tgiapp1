@@ -7,6 +7,7 @@ import java.util.List;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.adapter.ListViewActiveAdapter;
 import com.tencent.sgz.adapter.ListViewBlogAdapter;
 import com.tencent.sgz.bean.Active;
@@ -40,7 +41,7 @@ import android.widget.TextView;
  * @version 1.0
  * @created 2014-4-21
  */
-public class UserCenter extends BaseActivity{
+public class UserCenter extends BaseActivity {
 	
 	private ImageView mBack;
 	private ImageView mRefresh;

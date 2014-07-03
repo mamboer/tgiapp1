@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.api.ApiClient;
 import com.tencent.sgz.common.FileUtils;
 import com.tencent.sgz.common.ImageUtils;

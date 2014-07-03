@@ -11,6 +11,7 @@ import java.net.UnknownHostException;
 import java.util.Date;
 
 import com.tencent.sgz.common.UIHelper;
+import com.tencent.stat.StatService;
 
 import org.apache.commons.httpclient.HttpException;
 
@@ -226,12 +227,15 @@ public class AppException extends Exception implements UncaughtExceptionHandler{
 		}
 		
 		final String crashReport = getCrashReport(context, ex);
+        final Throwable ex1 = ex;
 		//显示异常信息&发送报告
 		new Thread() {
 			public void run() {
 				Looper.prepare();
 				UIHelper.sendAppCrashReport(context, crashReport);
-				Looper.loop();
+                //mta-上报异常
+                StatService.reportException(context, ex1);
+                Looper.loop();
 			}
 
 		}.start();

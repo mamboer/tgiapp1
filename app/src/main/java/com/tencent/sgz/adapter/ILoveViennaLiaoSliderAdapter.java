@@ -15,11 +15,14 @@ import com.tencent.sgz.R;
 import com.tencent.sgz.bean.News;
 import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.Article;
-import com.tencent.sgz.ui.BaseActivity;
 
 import java.util.ArrayList;
 
+import in.xsin.common.MTAHelper;
+
 public class ILoveViennaLiaoSliderAdapter extends PagerAdapter {
+
+    private static String TAG = ILoveViennaLiaoSliderAdapter.class.getName();
 
     private Context context;
     private LayoutInflater inflater;
@@ -60,6 +63,9 @@ public class ILoveViennaLiaoSliderAdapter extends PagerAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                MTAHelper.trackClick(ILoveViennaLiaoSliderAdapter.this.context,TAG,"slider");
+
                 News news = new News();
                 news.setTitle(item.getTitle());
                 news.setDesc(item.getDesc());

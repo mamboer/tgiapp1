@@ -1,16 +1,13 @@
 package com.tencent.sgz.ui;
 
-import com.tencent.sgz.AppConfig;
 import com.tencent.sgz.R;
-import com.tencent.sgz.bean.AccessInfo;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.common.FileUtils;
 import com.tencent.sgz.common.ImageUtils;
 import com.tencent.sgz.common.OpenQQHelper;
-import com.tencent.sgz.common.SinaWeiboHelper;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;

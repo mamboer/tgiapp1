@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tencent.sgz"
-    android:versionCode="29"
+    android:versionCode="30"
     android:versionName="1.0.0" >
 
     <uses-sdk
@@ -13,7 +13,7 @@
         android:icon="@drawable/icon"
         android:label="@string/app_name" >
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
             <intent-filter>
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.GuideActivity"
+            android:name=".activity.GuideActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
@@ -219,66 +219,6 @@
             android:theme="@style/Theme.ZoomLight"
             android:windowSoftInputMode="stateVisible|adjustResize" />
 
-        <!-- S wtlogin -->
-        <activity
-            android:name=".ui.Login"
-            android:label="@string/login_dialog_login"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="oicq.wtlogin_sdk_demo.QUICKLOGIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.LoginQuick"
-            android:label="@string/login_dialog_login_qq" >
-            <intent-filter>
-                <action android:name="oicq.wtlogin_sdk_demo.QUICKLOGIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.LoginVCode"
-            android:label="@string/wtlogin_verifycode" >
-        </activity>
-        <activity
-            android:name=".ui.LoginOk"
-            android:label="@string/wtlogin_loginok" >
-        </activity>
-        <activity
-            android:name=".ui.LoginQRCode"
-            android:label="@string/lbl_scan_qrcode" >
-        </activity>
-        <activity
-            android:name=".ui.DeviceLock"
-            android:label="DeviceLock"
-            android:launchMode="singleTask" >
-        </activity>
-        <activity
-            android:name=".ui.DeviceProtect"
-            android:label="@string/wtlogin_deviceprotect" >
-        </activity>
-        <activity
-            android:name=".ui.DeviceLockVerify"
-            android:label="DeviceLockVerify" >
-        </activity>
-
-        <!-- 非手Q是不可以有这个声明的:经咨询kinkahuang,下面配置只是给手Q用的，所以直接注释掉 -->
-        <!--
-        <permission android:name="oicq.wlogin_sdk.permission.WloginProvider.READ"></permission>
-        <permission android:name="oicq.wlogin_sdk.permission.WloginProvider.WRITE" ></permission>
-        <provider
-            android:name="oicq.wlogin_sdk.request.WloginProvider"
-            android:authorities="oicq.wlogin_sdk.WloginProvider"
-            android:readPermission="oicq.wlogin_sdk.permission.WloginProvider.READ"
-            android:writePermission="oicq.wlogin_sdk.permission.WloginProvider.WRITE" >
-        </provider>
-        -->
-        <!-- E wtlogin -->
-
         <!-- S OpenQQ -->
         <!-- 应用吧 -->
         <activity
@@ -329,7 +269,7 @@
         <!-- E 个人中心 -->
 
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".activity.MainActivity"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -355,6 +295,12 @@
         <!--E 广播-->
 
 
+        <!--S MTA-->
+        <!-- 请将MTA_APPKEY改为MTA分配的appkey < -->
+        <meta-data android:name="TA_APPKEY" android:value="AX9Z73J7AKUD" />
+        <!-- 请将CHANNAL改为app的发布渠道 < -->
+        <meta-data  android:name="InstallChannel" android:value="myapp" />
+        <!--E MTA-->
 
     </application>
 

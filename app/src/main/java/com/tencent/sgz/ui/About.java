@@ -1,15 +1,12 @@
 package com.tencent.sgz.ui;
 
 import com.tencent.sgz.R;
-import com.tencent.sgz.common.UpdateManager;
+import com.tencent.sgz.activity.BaseActivity;
+
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,7 +21,7 @@ import roboguice.inject.InjectView;
  * @created 2014-5-9
  */
 @ContentView(R.layout.about)
-public class About extends BaseActivity{
+public class About extends BaseActivity {
 
     @InjectView(R.id.app_copyright) TextView mCopyright;
 	@InjectView(R.id.app_name) TextView mName;

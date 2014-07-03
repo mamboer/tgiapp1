@@ -8,6 +8,7 @@ import android.widget.ScrollView;
 
 import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.adapter.ChannelListViewAdapter;
 import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.ChannelGroup;

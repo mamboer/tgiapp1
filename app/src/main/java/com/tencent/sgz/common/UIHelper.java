@@ -2,6 +2,7 @@ package com.tencent.sgz.common;
 
 import greendroid.widget.MyQuickAction;
 import greendroid.widget.QuickAction;
+import in.xsin.common.MTAHelper;
 import in.xsin.weibo.Helper;
 
 import java.io.File;
@@ -18,6 +19,7 @@ import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.AppManager;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.adapter.GridViewFaceAdapter;
 import com.tencent.sgz.api.ApiClient;
 import com.tencent.sgz.bean.AccessInfo;
@@ -39,6 +41,7 @@ import com.tencent.sgz.widget.LinkView.MyURLSpan;
 import com.tencent.sgz.widget.PathChooseDialog.ChooseCompleteListener;
 import com.tencent.sgz.widget.ScreenShotView;
 import com.tencent.sgz.widget.ScreenShotView.OnScreenShotListener;
+import com.tencent.stat.StatService;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -172,14 +175,7 @@ public class UIHelper {
      * @param context
      */
     public static void showLoginPage(Context context) {
-        Intent intent = new Intent(context, Login.class);
-        if (context instanceof Main)
-            intent.putExtra("LOGINTYPE", Login.LOGIN_MAIN);
-        else if (context instanceof Setting)
-            intent.putExtra("LOGINTYPE", Login.LOGIN_SETTING);
-        else
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
+
     }
 
 	/**
@@ -548,61 +544,25 @@ public class UIHelper {
 
                         switch (view.getId()){
                             case R.id.snsBtnSinaWeibo:
-                                /*
-                                //sina weibo
-                                // 分享的内容
-                                final String shareMessage = title + " " + url;
-                                // 初始化微博
-                                if (SinaWeiboHelper.isWeiboNull()) {
-                                    SinaWeiboHelper.initWeibo();
-                                }
-                                // 判断之前是否登陆过
-                                if (access != null) {
-                                    SinaWeiboHelper.progressDialog = new ProgressDialog(
-                                            context);
-                                    SinaWeiboHelper.progressDialog
-                                            .setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                                    SinaWeiboHelper.progressDialog
-                                            .setMessage(context
-                                                    .getString(R.string.sharing));
-                                    SinaWeiboHelper.progressDialog
-                                            .setCancelable(true);
-                                    SinaWeiboHelper.progressDialog.show();
-                                    new Thread() {
-                                        public void run() {
-                                            SinaWeiboHelper.setAccessToken(
-                                                    access.getAccessToken(),
-                                                    access.getAccessSecret(),
-                                                    access.getExpiresIn());
-                                            SinaWeiboHelper.shareMessage(context,
-                                                    shareMessage);
-                                        }
-                                    }.start();
-                                } else {
-                                    SinaWeiboHelper
-                                            .authorize(context, shareMessage);
-                                }
-                                */
+                                MTAHelper.trackClick(context, TAG, "snsBtnSinaWeibo");
                                 Helper.shareWebPage(title,url,imgUrl,null);
                                 break;
                             case R.id.snsBtnQQWeibo:
-                                // qq weibo
-                                //http://wiki.open.qq.com/wiki/mobile/API%E8%B0%83%E7%94%A8%E8%AF%B4%E6%98%8E
-                                //参考1.6增量授权
-                                //QQWeiboHelper.shareToQQ(context, title, url);
-
+                                MTAHelper.trackClick(context, TAG, "snsBtnQQWeibo");
                                 OpenQQHelper.shareToWeibo(context,title,url,imgUrl,"add_t",null);
                                 break;
                             case R.id.snsBtnWXPYQ:
-
+                                MTAHelper.trackClick(context, TAG, "snsBtnWXPYQ");
                                 // 微信朋友圈
                                 WeixinHelper.shareToWXTimeline(context, title, url,imgUrl);
                                 break;
                             case R.id.snsBtnWXHY:
+                                MTAHelper.trackClick(context, TAG, "snsBtnWXHY");
                                 //微信好友
                                 WeixinHelper.shareToWXFriends(context, title, url,imgUrl);
                                 break;
                             case R.id.snsBtnQQHY:
+                                MTAHelper.trackClick(context, TAG, "snsBtnQQHY");
                                 //QQ好友
                                 Bundle params = new Bundle();
                                 params.putString(QQShare.SHARE_TO_QQ_TITLE, title);
@@ -617,6 +577,7 @@ public class UIHelper {
                                 OpenQQHelper.shareToQQ(context,params,null);
                                 break;
                             case R.id.snsBtnQZone:
+                                MTAHelper.trackClick(context, TAG, "snsBtnQZone");
                                 //QQ空间
 
                                 Bundle params1 = new Bundle();
@@ -639,10 +600,12 @@ public class UIHelper {
 
                                 break;
                             case R.id.snsBtnMore:
+                                MTAHelper.trackClick(context, TAG, "snsBtnMore");
                                 //更多
                                 showShareMore(context, title, url);
                                 break;
                             case R.id.snsBtnCapture:
+                                MTAHelper.trackClick(context, TAG, "snsBtnCapture");
                                 //截屏分享
                                 addScreenShot(context, new OnScreenShotListener() {
 
@@ -1852,6 +1815,7 @@ public class UIHelper {
 					}
 				});
 		builder.show();
+
 	}
 
 	/**

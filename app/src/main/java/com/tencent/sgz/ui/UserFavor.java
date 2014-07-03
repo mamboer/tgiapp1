@@ -1,9 +1,6 @@
 package com.tencent.sgz.ui;
 
 import android.app.ProgressDialog;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,15 +10,14 @@ import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.AbsListView;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
 import com.fortysevendeg.swipelistview.SwipeListView;
 import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.adapter.ListViewUserFavAdapter;
 import com.tencent.sgz.bean.FavItem;
 import com.tencent.sgz.bean.News;
@@ -29,11 +25,10 @@ import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.Article;
 import com.tencent.sgz.entity.UserFavArticleList;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
+
+import in.xsin.common.MTAHelper;
 
 /**
  * Created by levin on 6/4/14.
@@ -158,11 +153,15 @@ public class UserFavor extends BaseActivity {
                 news.setStartAt(item.getStartAt());
                 news.setEndAt(item.getEndAt());
                 news.setPubDate(item.getDate());
+
+                MTAHelper.trackClick(UserFavor.this, TAG, "onClickFrontView");
+
                 UIHelper.showNewsDetailByInstance(UserFavor.this,news);
             }
 
             @Override
             public void onClickBackView(int position) {
+                MTAHelper.trackClick(UserFavor.this, TAG, "onClickBackView");
                 Log.d("swipe", String.format("onClickBackView %d", position));
             }
 

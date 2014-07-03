@@ -7,6 +7,7 @@ import java.util.List;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.adapter.ListViewQuestionAdapter;
 import com.tencent.sgz.bean.News;
 import com.tencent.sgz.bean.NewsList;
@@ -32,7 +33,7 @@ import android.widget.TextView;
  * @version 1.0
  * @created 2014-8-27
  */
-public class QuestionTag extends BaseActivity{
+public class QuestionTag extends BaseActivity {
 	
 	private ImageView mHome;
 	private TextView mHeadTitle;

@@ -7,6 +7,7 @@ import java.util.List;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.adapter.ListViewSoftwareAdapter;
 import com.tencent.sgz.adapter.ListViewSoftwareCatalogAdapter;
 import com.tencent.sgz.bean.Notice;
@@ -37,7 +38,7 @@ import android.widget.TextView;
  * @version 1.0
  * @created 2014-4-21
  */
-public class SoftwareLib extends BaseActivity{
+public class SoftwareLib extends BaseActivity {
 	
 	private ImageView mBack;
 	private TextView mTitle;

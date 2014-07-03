@@ -45,10 +45,10 @@ android {
 dependencies {
     compile project(':cordova')
     compile project(':swipelistview')
-    compile files('libs/wlogin_sdk.jar')
     compile files('libs/commons-httpclient-3.1.jar')
     compile files('libs/httpmime-4.1.3.jar')
     compile files('libs/libammsdk.jar')
+    compile files('libs/mid-sdk-2.10.jar')
     compile files('libs/mta-sdk-1.8.0.jar')
     compile files('libs/open_sdk-2.3.1.jar')
     compile files('libs/weibosdkcore.jar')

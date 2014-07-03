@@ -3,6 +3,7 @@ package com.tencent.sgz.ui;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.api.ApiClient;
 import com.tencent.sgz.bean.Result;
 import com.tencent.sgz.bean.User;
@@ -29,7 +30,7 @@ import android.widget.ViewSwitcher;
  * @version 1.0
  * @created 2014-4-21
  */
-public class LoginDialog extends BaseActivity{
+public class LoginDialog extends BaseActivity {
 	
 	private ViewSwitcher mViewSwitcher;
 	private ImageButton btn_close;

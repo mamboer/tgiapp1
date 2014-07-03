@@ -7,6 +7,7 @@ import java.util.List;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.adapter.ListViewFriendAdapter;
 import com.tencent.sgz.bean.FriendList;
 import com.tencent.sgz.bean.FriendList.Friend;

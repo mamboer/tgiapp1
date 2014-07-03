@@ -8,6 +8,7 @@ import com.tencent.sgz.AppConfig;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.adapter.ListViewMessageDetailAdapter;
 import com.tencent.sgz.bean.Comment;
 import com.tencent.sgz.bean.CommentList;
@@ -39,7 +40,7 @@ import android.widget.ViewSwitcher;
  * @version 1.0
  * @created 2014-4-21
  */
-public class MessageDetail extends BaseActivity{
+public class MessageDetail extends BaseActivity {
 	
 	private ImageView mBack;
 	private ImageView mRefresh;

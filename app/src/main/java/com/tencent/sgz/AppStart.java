@@ -1,19 +1,14 @@
 package com.tencent.sgz;
 
-import java.io.File;
-import java.util.List;
-
-import com.tencent.sgz.common.FileUtils;
 import com.tencent.sgz.common.OpenQQHelper;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
+import com.tencent.sgz.common.WeixinHelper;
 import com.tencent.sgz.entity.AppData;
-import com.tencent.sgz.ui.Main;
-import com.tencent.sgz.ui.MainActivity;
+import com.tencent.sgz.activity.MainActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,7 +17,6 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -49,6 +43,9 @@ public class AppStart extends Activity {
         // 初始化登录
         OpenQQHelper.attachTo(this);
         ac.initLoginInfo();
+
+        //初始化微信助手
+        WeixinHelper.attachTo(this);
        
         final View view = View.inflate(this, R.layout.start, null);
 		RelativeLayout wellcome = (RelativeLayout) view.findViewById(R.id.app_start_view);

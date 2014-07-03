@@ -6,11 +6,10 @@ import android.widget.TextView;
 
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.R;
-import com.tencent.sgz.bean.User;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.Article;
-import com.tencent.sgz.entity.UserFavArticleList;
 import com.tencent.sgz.entity.UserRemindArticleList;
 
 import java.util.ArrayList;

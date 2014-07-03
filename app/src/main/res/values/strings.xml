@@ -113,29 +113,12 @@
     <!--E 广播事件名-->
 
     <integer name="offsetTop_scan_qrcode">-30</integer>
-    <integer name="wtlogin_appid">563046901</integer>
-
-    <string name="wtlogin_errtip_requireuid">请输入登录账号！</string>
-    <string name="wtlogin_errtip_requirepwd">请输入登录密码！</string>
-    <string name="wtlogin_errtip_param">输入参数有误，请检查！</string>
-    <string name="wtlogin_errtip_quicklogin_version">4.6以上版本手Q才能支持快速登录</string>
-    <string name="wtlogin_errtip_requirevcode">请输入验证码</string>
-    <string name="wtlogin_errtip_vcode">验证码有误，请重新输入！</string>
-    <string name="wtlogin_verifycode">验证码</string>
-    <string name="wtlogin_verifycode_next">看不清，换一个</string>
-    <string name="wtlogin_deviceprotect">登录设备保护</string>
-    <string name="wtlogin_deviceprotect_notice">你已开启“登录设备保护”，当前设备需求通过密保手机短信验证才能登录。</string>
-    <string name="wtlogin_deviceprotect_phone">密保手机号码:  </string>
-    <string name="wtlogin_beginverify">开始验证</string>
-    <string name="wtlogin_devlock_smsverify">手机短信验证</string>
-    <string name="wtlogin_verifycode_getitagain">重新获取</string>
-    <string name="wtlogin_loginok">登录成功</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <string name="wx_appid">wx0c8234f17641d550</string>
-    <string name="wx_appsecret">6594dba26bb20c26925f91ef92f2396b</string>
+    <string name="wx_appid">wx79c162a00f175fa1</string>
+    <string name="wx_appsecret">1d17a332fed98f70bca8e1e6bb19c886</string>
     <string name="openqq_appid">1101693014</string><!--http://op.open.qq.com/index.php?mod=appinfo&act=main&appid=1101693014#mobile|advancedAbilityAndroid -->
     <string name="openqq_appkey">FSkWgCrBhHc2sKmn</string>
     <string name="openqq_default_pic">http://ossweb-img.qq.com/images/chanpin/ttxd/public/a20140528ttxd/downloadqrttxd.jpg</string>

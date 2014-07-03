@@ -1,10 +1,8 @@
-package com.tencent.sgz.ui;
+package com.tencent.sgz.activity;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
@@ -13,15 +11,20 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.tencent.sgz.AppStart;
 import com.tencent.sgz.R;
+import com.tencent.stat.StatService;
+
+import in.xsin.common.MTAHelper;
 
 public class GuideActivity extends BaseActivity {
+
+    private static String TAG = GuideActivity.class.getName();
+
     private ViewPager viewPager;
 
     /**装分页显示的view的数组*/
@@ -91,6 +94,10 @@ public class GuideActivity extends BaseActivity {
         public void onClick(View v) {
             //设置已经引导
             setGuided();
+
+            //mta统计
+            MTAHelper.trackClick(GuideActivity.this,TAG,"btn_close_guide");
+
 
             //跳转
             Intent mIntent = new Intent();

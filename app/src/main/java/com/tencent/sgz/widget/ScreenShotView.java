@@ -3,7 +3,7 @@ package com.tencent.sgz.widget;
 import com.tencent.sgz.AppConfig;
 import com.tencent.sgz.R;
 import com.tencent.sgz.common.UIHelper;
-import com.tencent.sgz.ui.BaseActivity;
+import com.tencent.sgz.activity.BaseActivity;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

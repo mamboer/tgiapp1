@@ -34,6 +34,7 @@ import com.tencent.sgz.entity.ChannelItem;
 import com.tencent.sgz.entity.UserRemindArticleList;
 import com.tencent.sgz.widget.NewDataToast;
 
+import in.xsin.common.MTAHelper;
 import in.xsin.widget.FlowIndicator;
 import in.xsin.widget.SmartViewPager;
 
@@ -355,9 +356,13 @@ public class HomeFragment extends FragmentBase {
                 tv.setText(citem.getName());
 
                 final ChannelItem citem1 = citem;
+                final int j = i;
                 vg.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
+                        MTAHelper.trackClick(getActivity(),TAG,"catebtn."+j);
+
                         News news = new News();
                         news.setTitle(citem1.getName());
                         news.setFace(citem1.getIcon());
@@ -393,6 +398,9 @@ public class HomeFragment extends FragmentBase {
                     news.setStartAt(item.getEvtStartAt());
                     news.setEndAt(item.getEvtEndAt());
                     news.setPubDate(item.getPubDate());
+
+                    MTAHelper.trackClick(getActivity(),TAG,"home_notice");
+
                     UIHelper.showNewsDetailByInstance(getActivity(),news);
                 }
             });
@@ -466,6 +474,8 @@ public class HomeFragment extends FragmentBase {
             news.setStartAt(item.getEvtStartAt());
             news.setEndAt(item.getEvtEndAt());
             news.setPubDate(item.getPubDate());
+
+            MTAHelper.trackClick(getActivity(),TAG,"onListViewItemClick");
 
             UIHelper.showNewsRedirect(getActivity(), news);
 

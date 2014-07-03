@@ -32,6 +32,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import in.xsin.common.MTAHelper;
 import in.xsin.pulltorefresh.PullToRefreshBase;
 import in.xsin.pulltorefresh.PullToRefreshListView;
 
@@ -39,6 +40,8 @@ import in.xsin.pulltorefresh.PullToRefreshListView;
  * TODO：顶部tab和listview动态配置
  */
 public class ManualFragment extends FragmentBase {
+
+    private static  String TAG = ManualFragment.class.getName();
 
     private PullToRefreshListView mPullListView1;
     private PullToRefreshListView mPullListView2;
@@ -604,6 +607,8 @@ public class ManualFragment extends FragmentBase {
             mIsTabDataLoaded.set(tabIndex,true);
         }
 
+        MTAHelper.trackClick(getActivity(),TAG,"tab"+tabIndex);
+
     }
 
     private AdapterView.OnItemClickListener onListViewItemClick = new AdapterView.OnItemClickListener() {
@@ -624,6 +629,8 @@ public class ManualFragment extends FragmentBase {
                 return;
 
             // 跳转到新闻详情
+
+            MTAHelper.trackClick(getActivity(),TAG,"onListViewItemClick");
 
             News news = new News();
             news.setTitle(item.getTitle());

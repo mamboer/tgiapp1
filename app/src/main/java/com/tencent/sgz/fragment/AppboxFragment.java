@@ -30,12 +30,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
+import in.xsin.common.MTAHelper;
 import in.xsin.pulltorefresh.PullToRefreshBase;
 import in.xsin.pulltorefresh.PullToRefreshScrollView;
 import in.xsin.widget.ExpandableListViewForScrollView;
 import in.xsin.widget.GridViewForScrollView;
 
 public class AppboxFragment extends FragmentBase {
+
+    private static String TAG = AppboxFragment.class.getName();
 
     private ScrollView mScrollView;
     private PullToRefreshScrollView mPullScrollView;
@@ -171,6 +174,8 @@ public class AppboxFragment extends FragmentBase {
             String action = (String)map.get("itemAction");
             //UIHelper.ToastMessage(context,""+str,0);
 
+            MTAHelper.trackClick(getActivity(),TAG,str);
+
             if (action.indexOf("http")==0){
                 News news = new News();
                 news.setUrl(action);
@@ -199,6 +204,8 @@ public class AppboxFragment extends FragmentBase {
             String str = (String) map.get("itemText");
             String action = (String)map.get("itemAction");
             //UIHelper.ToastMessage(getActivity(),""+str,0);
+
+            MTAHelper.trackClick(getActivity(),TAG,str);
 
             if (action.indexOf("http")==0){
                 News news = new News();

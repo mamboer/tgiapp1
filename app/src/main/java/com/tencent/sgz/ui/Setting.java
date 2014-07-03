@@ -4,32 +4,28 @@ import java.io.File;
 
 import com.tencent.sgz.AppConfig;
 import com.tencent.sgz.AppContext;
-import com.tencent.sgz.AppManager;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.common.FileUtils;
 import com.tencent.sgz.common.MethodsCompat;
 import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.common.UpdateManager;
 import com.tencent.sgz.widget.PathChooseDialog.ChooseCompleteListener;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
-import android.preference.Preference;
-import android.preference.PreferenceActivity;
-import android.preference.PreferenceManager;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import in.xsin.common.MTAHelper;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 
 @ContentView(R.layout.setting)
 public class Setting extends BaseActivity {
+
+    private static String TAG = Setting.class.getName();
 
     @InjectView(R.id.txtCfgTipImgPath) TextView mTxtTipImgPath;
     @InjectView(R.id.txtCfgTipAutoUpdate) TextView mTxtTipAutoUpdate;
@@ -106,6 +102,9 @@ public class Setting extends BaseActivity {
 	}
 
     public void onClickImgPath(View v){
+
+        MTAHelper.trackClick(Setting.this, TAG, "onClickImgPath");
+
         if (!FileUtils.checkSaveLocationExists() && !FileUtils.checkExternalSDExists()) {
             Toast.makeText(Setting.this, "手机中尚未安装SD卡", Toast.LENGTH_SHORT).show();
             return;
@@ -123,6 +122,7 @@ public class Setting extends BaseActivity {
     }
 
     public boolean onClickImgLoader(View v){
+        MTAHelper.trackClick(Setting.this, TAG, "onClickImgLoader");
         boolean isChecked = mCbxImgLoader.isChecked();
         UIHelper.changeSettingIsLoadImage(Setting.this,!isChecked);
         mCbxImgLoader.setChecked(!isChecked);
@@ -135,6 +135,7 @@ public class Setting extends BaseActivity {
     }
 
     public void onClickSound(View v){
+        MTAHelper.trackClick(Setting.this, TAG, "onClickSound");
         boolean voice = mCbxSound.isChecked();
         ac.setConfigVoice(!voice);
         mCbxSound.setChecked(!voice);
@@ -146,6 +147,7 @@ public class Setting extends BaseActivity {
     }
 
     public void onClickAutoUpdate(View v){
+        MTAHelper.trackClick(Setting.this, TAG, "onClickAutoUpdate");
         boolean autoUpdate = mCbxAutoUpdate.isChecked();
         ac.setConfigCheckUp(!autoUpdate);
         mCbxAutoUpdate.setChecked(!autoUpdate);
@@ -154,19 +156,23 @@ public class Setting extends BaseActivity {
     }
 
     public void onClickClearCache(View v){
+        MTAHelper.trackClick(Setting.this, TAG, "onClickClearCache");
         UIHelper.clearAppCache(Setting.this);
         mTxtTipCache.setText("0KB");
     }
 
     public void onClickQA(View v){
+        MTAHelper.trackClick(Setting.this, TAG, "onClickQA");
         UIHelper.showFeedBack(Setting.this);
     }
 
     public void onClickCheckVersion(View v){
+        MTAHelper.trackClick(Setting.this, TAG, "onClickCheckVersion");
         UpdateManager.getUpdateManager().checkAppUpdate(Setting.this,true);
     }
 
     public void onClickAbout(View v){
+        MTAHelper.trackClick(Setting.this, TAG, "onClickAbout");
         UIHelper.showAbout(Setting.this);
     }
 

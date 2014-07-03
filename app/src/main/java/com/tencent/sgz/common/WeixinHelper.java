@@ -31,7 +31,6 @@ public class WeixinHelper {
 	private static final int MIN_SUPPORTED_VERSION = 0x21020001;// 最小支持的版本
 
     private static BitmapManager bitmapManager;
-    private static Bitmap defaultUserAvatar;
 
     private static String getAppId(Context ct){
         if(null == APP_ID){
@@ -40,16 +39,15 @@ public class WeixinHelper {
         return APP_ID;
     }
 
+    private static IWXAPI api;
+
     /*
     defaultUserAvatar = BitmapFactory.decodeResource(context.getResources(), R.drawable.widget_dface);
         bitmapManager = new BitmapManager(defaultUserAvatar);
      */
 
     private static Bitmap getDefaultAvatar(Activity context){
-        if(null==defaultUserAvatar){
-            defaultUserAvatar = BitmapFactory.decodeResource(context.getResources(), R.drawable.icon);
-        }
-        return defaultUserAvatar;
+        return BitmapFactory.decodeResource(context.getResources(), R.drawable.icon);
     }
 
     private static BitmapManager getBitmapManager(Activity context){
@@ -57,6 +55,17 @@ public class WeixinHelper {
             bitmapManager = new BitmapManager(getDefaultAvatar(context));
         }
         return bitmapManager;
+    }
+
+    /**
+     * 微信接口初始化
+     * @param context
+     */
+    public static void attachTo(Activity context){
+        //https://open.weixin.qq.com/zh_CN/htmledition/res/dev/document/sdk/android/index.html
+        //createWXAPI(Context context, java.lang.String appId, boolean checkSignature)
+        api = WXAPIFactory.createWXAPI(context,getAppId(context),false);
+        api.registerApp(getAppId(context));
     }
 
 	/**
@@ -70,9 +79,9 @@ public class WeixinHelper {
 	}
 
     private static void shareToWX(final Activity context,String title,String url,String picUrl,int type){
-        final IWXAPI api = WXAPIFactory.createWXAPI(context,getAppId(context),true);
+
         final int type1 = type;
-        api.registerApp(getAppId(context));
+
         // 检查是否安装微信
         if(!api.isWXAppInstalled()) {
             UIHelper.ToastMessage(context, "抱歉，您尚未安装微信客户端，无法进行微信分享！");
@@ -80,7 +89,7 @@ public class WeixinHelper {
         }
         // 检查是否支持
         if(api.getWXAppSupportAPI() < MIN_SUPPORTED_VERSION) {
-            UIHelper.ToastMessage(context, "抱歉，您的微信版本不支持分享到朋友圈！");
+            UIHelper.ToastMessage(context, "抱歉，您的微信版本不支持分享！");
             return;
         }
         WXWebpageObject webpage = new WXWebpageObject();
@@ -108,7 +117,7 @@ public class WeixinHelper {
             }
         };
 
-        if(null!=picUrl && !picUrl.equals("")){
+        if(!StringUtils.isEmpty(picUrl)){
 
             getBitmapManager(context).loadBitmap(context,picUrl,0,0,handler);
 
@@ -123,10 +132,14 @@ public class WeixinHelper {
         msg.thumbData = bmpToByteArray(bitmap, true);
         SendMessageToWX.Req req = new SendMessageToWX.Req();
         // 分享的时间
-        req.transaction = String.valueOf(System.currentTimeMillis());
+        req.transaction = buildTransaction(type);
         req.message = msg;
         req.scene = type;
         api.sendReq(req);
+    }
+
+    private static String buildTransaction(final int type) {
+        return (type + String.valueOf(System.currentTimeMillis()));
     }
 
     /**

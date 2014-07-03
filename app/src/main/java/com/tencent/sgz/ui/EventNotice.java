@@ -1,7 +1,6 @@
 package com.tencent.sgz.ui;
 
 import android.app.ProgressDialog;
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -19,14 +18,12 @@ import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
 import com.fortysevendeg.swipelistview.SwipeListView;
 import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.R;
-import com.tencent.sgz.adapter.ListViewUserFavAdapter;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.adapter.ListViewUserRemindAdapter;
-import com.tencent.sgz.bean.FavItem;
 import com.tencent.sgz.bean.News;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.Article;
-import com.tencent.sgz.entity.UserFavArticleList;
 import com.tencent.sgz.entity.UserRemindArticleList;
 
 import java.util.ArrayList;
@@ -34,6 +31,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import in.xsin.common.MTAHelper;
 import roboguice.inject.ContentView;
 
 /**
@@ -199,11 +197,15 @@ public class EventNotice extends BaseActivity {
                 news.setStartAt(item.getEvtStartAt());
                 news.setEndAt(item.getEvtEndAt());
                 news.setPubDate(item.getPubDate());
+
+                MTAHelper.trackClick(EventNotice.this, TAG, "onClickFrontView");
+
                 UIHelper.showNewsDetailByInstance(EventNotice.this, news);
             }
 
             @Override
             public void onClickBackView(int position) {
+                MTAHelper.trackClick(EventNotice.this, TAG, "onClickBackView");
                 Log.d("swipe", String.format("onClickBackView %d", position));
             }
 

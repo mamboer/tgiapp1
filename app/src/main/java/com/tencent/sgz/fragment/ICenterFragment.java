@@ -1,5 +1,6 @@
 package com.tencent.sgz.fragment;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import com.tencent.sgz.common.OpenQQHelper;
 import com.tencent.sgz.common.QQWeiboHelper;
 import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.UserFavArticleList;
+import com.tencent.stat.StatService;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.UiError;
 
@@ -31,8 +33,12 @@ import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.text.ParseException;
+import java.util.Properties;
+
+import in.xsin.common.MTAHelper;
 
 public class ICenterFragment extends FragmentBase {
+    private static String TAG = ICenterFragment.class.getName();
     /*
     @InjectView(R.id.wt_login_btn_login) Button btnLogin;
     @InjectView(R.id.wt_login_btn_logoff) Button btnLogoff;
@@ -129,6 +135,7 @@ public class ICenterFragment extends FragmentBase {
     }
 
     private void onClickLogout(){
+        MTAHelper.trackClick(getActivity(), TAG, "onClickLogout");
         if(OpenQQHelper.isLogined()){
             OpenQQHelper.logout(getActivity());
         }
@@ -138,11 +145,17 @@ public class ICenterFragment extends FragmentBase {
     }
 
     private void onClickLogin() {
+
+        MTAHelper.trackClick(getActivity(), TAG, "onClickLogin");
+
         OpenQQHelper.login(getActivity(),new Handler(){
             @Override
             public void handleMessage(Message msg){
                 int what = msg.what;
                 if(what!=0){
+                    Properties pro = new Properties();
+                    pro.setProperty("error",msg.obj.toString());
+                    MTAHelper.trackLogin(getActivity(),false,pro);
                     UIHelper.ToastMessage(getActivity(),"登录失败："+msg.obj);
                     return;
                 }
@@ -162,6 +175,7 @@ public class ICenterFragment extends FragmentBase {
                 User user = new User();
                 user.setOpenId(OpenQQHelper.getOpenId());
                 user.setRememberMe(true);
+                Activity ctx = getActivity();
                 try {
                     if (response.has("nickname")) {
                         user.setName(response.getString("nickname"));
@@ -173,12 +187,19 @@ public class ICenterFragment extends FragmentBase {
                     if(response.has("gender")){
                         user.setGender(response.getString("gender"));
                     }
-                    /*
-                    user.setAccount(userAccount);
-                    user.setUid(info._uin);
-                    */
+
+                    // 上报登陆成功自定义事件，统计登陆次数和用户数
+                    // MTA登陆的标准事件
+                    Properties prop = new Properties();
+                    prop.setProperty("nickname", user.getName());
+                    prop.setProperty("gender", user.getGender());
+                    MTAHelper.trackLogin(ctx,true,prop);
+
                 }catch (JSONException e){
                     e.printStackTrace();
+                    Properties pro = new Properties();
+                    pro.setProperty("error",e.getMessage());
+                    MTAHelper.trackLogin(getActivity(),false,pro);
                     UIHelper.ToastMessage(getContext(),"解析用户数据时出错："+e.getMessage());
                 }
                 getAppContext().saveLoginInfo(user);

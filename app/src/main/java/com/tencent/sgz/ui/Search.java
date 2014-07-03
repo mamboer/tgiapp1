@@ -3,15 +3,13 @@ package com.tencent.sgz.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.AppException;
-import com.tencent.sgz.AppManager;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.adapter.ListViewSearchAdapter;
 import com.tencent.sgz.bean.News;
 import com.tencent.sgz.bean.SearchList;
-import com.tencent.sgz.bean.Notice;
 import com.tencent.sgz.bean.SearchList.Result;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
@@ -30,13 +28,18 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import in.xsin.common.MTAHelper;
+
 /**
  * 搜索
  * @author lv (http://t.qq.com/badstyle)
  * @version 1.0
  * @created 2014-5-9
  */
-public class Search extends BaseActivity{
+public class Search extends BaseActivity {
+
+    private static String TAG = Search.class.getName();
+
 	private Button mSearchBtn;
 	private EditText mSearchEditer;
 	private ProgressBar mProgressbar;
@@ -318,8 +321,12 @@ public class Search extends BaseActivity{
      * @param handler 处理器
      * @param action 动作标识
      */
-	private void loadLvSearchData(final String catalog,final int pageIndex,final Handler handler,final int action){  
-		if(StringUtils.isEmpty(curSearchContent)){
+	private void loadLvSearchData(final String catalog,final int pageIndex,final Handler handler,final int action){
+
+        MTAHelper.trackClick(this, TAG, "loadLvSearchData");
+
+
+        if(StringUtils.isEmpty(curSearchContent)){
 			UIHelper.ToastMessage(Search.this, "请输入搜索内容");
 			return;
 		}

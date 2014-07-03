@@ -12,6 +12,8 @@ import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
 
+import in.xsin.common.MTAHelper;
+
 /**
  * Created by levin on 6/18/14.
  */
@@ -44,13 +46,17 @@ public abstract class FragmentBase extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        String className = this.getClass().getName();
+
         if (0==fragmentViewId){
-            Log.e(this.getClass().getName(),"fragmentViewId未设置，请在onCreate方法中调用setFragmentViewId");
+            Log.e(className,"fragmentViewId未设置，请在onCreate方法中调用setFragmentViewId");
             return  null;
         }
 
         fragmentView = inflater.inflate(fragmentViewId, container, false);
         //this.initView(fragmentView,inflater);
+
+        MTAHelper.track(getActivity(), MTAHelper.TYPE.FRAGMENT,className,"");
 
         return fragmentView;
     }

@@ -9,6 +9,9 @@ import android.view.View;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppManager;
 import com.tencent.sgz.widget.LoadingDialog;
+import com.tencent.stat.StatService;
+
+import java.util.Properties;
 
 /**
  * Created by levin on 6/18/14.
@@ -85,7 +88,25 @@ public class FragmentBaseActivity extends FragmentActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    @Override
+    protected  void onResume(){
+        super.onResume();
+        //页面开始-MTA
+        StatService.onResume(this);
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        // 页面结束-MTA
+        StatService.onPause(this);
+    }
+
     public void back(View paramView) {
+        //mta统计－后退按钮
+        Properties prop = new Properties();
+        prop.setProperty("tag", this.getClass().getName());
+        StatService.trackCustomKVEvent(this, "mta_tag_activity_back",prop);
         AppManager.getAppManager().finishActivity(this);
     }
 }

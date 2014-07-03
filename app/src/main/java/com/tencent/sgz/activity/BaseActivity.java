@@ -1,14 +1,17 @@
-package com.tencent.sgz.ui;
+package com.tencent.sgz.activity;
 
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppManager;
 import com.tencent.sgz.widget.LoadingDialog;
+import com.tencent.stat.StatService;
 
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+
+import java.util.Properties;
 
 import roboguice.activity.RoboActivity;
 
@@ -48,6 +51,20 @@ public class BaseActivity extends RoboActivity {
 		// 添加Activity到堆栈
 		AppManager.getAppManager().addActivity(this);
 	}
+
+    @Override
+    protected  void onResume(){
+        super.onResume();
+        //页面开始-MTA
+        StatService.onResume(this);
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        // 页面结束-MTA
+        StatService.onPause(this);
+    }
 
 	@Override
 	protected void onDestroy() {
@@ -93,7 +110,12 @@ public class BaseActivity extends RoboActivity {
 	}
 	
 	public void back(View paramView) {
-		AppManager.getAppManager().finishActivity(this);
+		//mta统计－后退按钮
+        Properties prop = new Properties();
+        prop.setProperty("tag", this.getClass().getName());
+        StatService.trackCustomKVEvent(this, "mta_tag_activity_back",prop);
+
+        AppManager.getAppManager().finishActivity(this);
 	}
 
 }

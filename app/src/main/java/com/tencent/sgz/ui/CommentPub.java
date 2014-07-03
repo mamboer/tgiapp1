@@ -3,6 +3,7 @@ package com.tencent.sgz.ui;
 import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.bean.CommentList;
 import com.tencent.sgz.bean.Result;
 import com.tencent.sgz.common.StringUtils;
@@ -25,7 +26,7 @@ import android.widget.ImageView;
  * @version 1.0
  * @created 2014-4-21
  */
-public class CommentPub extends BaseActivity{
+public class CommentPub extends BaseActivity {
 
 	public final static int CATALOG_NEWS = 1;
 	public final static int CATALOG_POST = 2;

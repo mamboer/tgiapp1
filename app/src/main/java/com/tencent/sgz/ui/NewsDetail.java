@@ -12,6 +12,7 @@ import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
+import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.adapter.ListViewCommentAdapter;
 import com.tencent.sgz.bean.Comment;
 import com.tencent.sgz.bean.CommentList;
@@ -35,7 +36,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.format.DateUtils;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -52,6 +52,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import in.xsin.common.MTAHelper;
 import in.xsin.weibo.Helper;
 import in.xsin.widget.ProgressWebView;
 import roboguice.inject.ContentView;
@@ -66,6 +67,8 @@ import roboguice.inject.InjectView;
  */
 @ContentView(R.layout.news_detail)
 public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  {
+
+    private static String TAG = NewsDetail.class.getName();
 
 	private FrameLayout mHeader;
 	private LinearLayout mFooter;
@@ -450,6 +453,9 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
     private View.OnClickListener reminderClickListener = new View.OnClickListener() {
         public void onClick(View v) {
 
+            MTAHelper.trackClick(NewsDetail.this,TAG,"reminderClickListener");
+
+
             if (!assertReminder()) {
                 UIHelper.ToastMessage(appContext,"当前新闻或活动已经过期，不能设置提醒！");
                 return;
@@ -498,6 +504,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 
 	private View.OnClickListener refreshClickListener = new View.OnClickListener() {
 		public void onClick(View v) {
+            MTAHelper.trackClick(NewsDetail.this,TAG,"refreshClickListener");
 			//hideEditor(v);
 			initData(newsId, true);
 			loadLvCommentData(curId, curCatalog, 0, mCommentHandler,
@@ -507,6 +514,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 
 	private View.OnClickListener shareClickListener = new View.OnClickListener() {
 		public void onClick(View v) {
+            MTAHelper.trackClick(NewsDetail.this,TAG,"shareClickListener");
 			if (newsDetail == null) {
 				UIHelper.ToastMessage(v.getContext(),
 						R.string.msg_read_detail_fail);
@@ -553,6 +561,9 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 
     private View.OnClickListener startGameClickListener = new View.OnClickListener(){
         public void onClick(View v) {
+
+            MTAHelper.trackClick(NewsDetail.this,TAG,"startGameClickListener");
+
             String pName = res.getString(R.string.app_package);
             boolean isInstalled = false;
             // 得到PackageManager对象
@@ -593,6 +604,8 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 
 	private View.OnClickListener favoriteClickListener = new View.OnClickListener() {
 		public void onClick(View v) {
+
+            MTAHelper.trackClick(NewsDetail.this,TAG,"favoriteClickListener");
 
             if (newsDetail == null||StringUtils.isEmpty(newsDetail.getMd5())) {
                 return;
