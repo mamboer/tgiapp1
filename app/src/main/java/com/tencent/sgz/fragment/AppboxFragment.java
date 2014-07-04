@@ -19,6 +19,7 @@ import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.R;
 import com.tencent.sgz.adapter.ChannelListViewAdapter;
 import com.tencent.sgz.bean.News;
+import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.entity.ActionItem;
 import com.tencent.sgz.entity.ChannelGroup;
@@ -185,8 +186,14 @@ public class AppboxFragment extends FragmentBase {
 
             if(action.indexOf("app://")==0){
                 action = action.replace("app://","");
-                if (action.equals("UIHelper.showCapture")){
+                if (action.equals("showCapture")){
                     UIHelper.showCapture(getActivity());
+                    return;
+                }
+                if(action.indexOf("launchApp/")==0){
+                    String pName = action.replace("launchApp/","");
+                    UIHelper.launchApp(getActivity(),TAG,pName);
+                    return;
                 }
             }
 
@@ -216,31 +223,16 @@ public class AppboxFragment extends FragmentBase {
 
             if(action.indexOf("app://")==0){
                 action = action.replace("app://","");
-                if (action.equals("UIHelper.showCapture")){
+                if (action.equals("showCapture")){
                     UIHelper.showCapture(getActivity());
+                    return;
+                }
+                if(action.indexOf("launchApp/")==0){
+                    String pName = action.replace("launchApp/","");
+                    UIHelper.launchApp(getActivity(),TAG,pName);
+                    return;
                 }
             }
-
-            //TODO:直接启动appstore
-            /*
-            if (UIHelper.isPlayStoreInstalled()) {
-                context.startActivity(new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("market://details?id=" + item.getPackageName())));
-            } else {
-                context.startActivity(new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("http://play.google.com/store/apps/details?id=" + item.getPackageName())));
-            }
-            */
-
-                //TODO:直接打开app
-            /*
-            Intent intent = context.getPackageManager().getLaunchIntentForPackage(item.getPackageName());
-            if (intent != null) {
-                context.startActivity(intent);
-            } else {
-                Toast.makeText(context, R.string.cantOpen, Toast.LENGTH_SHORT).show();
-            }
-            */
 
         }
 

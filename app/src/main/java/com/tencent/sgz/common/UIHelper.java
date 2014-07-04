@@ -50,6 +50,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
@@ -2039,6 +2040,52 @@ public class UIHelper {
             if (today >= time[0] && today <= time[1]) {
                 view.setBackgroundDrawable(Drawable.createFromPath(f.getAbsolutePath()));
             }
+        }
+    }
+
+    /**
+     * 启动应用
+     * @param context
+     * @param appPackageName
+     */
+    public static void launchApp(Context context,String contextTag,String appPackageName){
+        MTAHelper.trackClick(context,contextTag,"startGameClickListener");
+
+        if(StringUtils.isEmpty(appPackageName)) {
+            return;
+        }
+
+        boolean isInstalled = false;
+        // 得到PackageManager对象
+        final PackageManager pm = context.getPackageManager();
+
+        // 得到系统 安装的所有程序包的PackageInfo对象
+        List<PackageInfo> packs = pm
+                .getInstalledPackages(PackageManager.GET_UNINSTALLED_PACKAGES);
+
+        for (PackageInfo pi : packs) {
+            if(pi.packageName.equals(appPackageName)){
+                isInstalled = true;
+                break;
+            }
+        }
+
+        if(isInstalled){
+            //取到点击的包名
+            Intent i = pm.getLaunchIntentForPackage(appPackageName);
+            //如果该程序不可启动（像系统自带的包，有很多是没有入口的）会返回NULL
+            if (i != null)
+                context.startActivity(i);
+        }else{
+            //TODO:去安卓市场
+            try {
+                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id="+appPackageName)));
+            } catch (android.content.ActivityNotFoundException anfe) {
+                //http://android.myapp.com/myapp/detail.htm?apkName=com.tencent.game.VXDGame
+                //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + pName)));
+                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://android.myapp.com/myapp/detail.htm?apkName=" + appPackageName)));
+            }
+
         }
     }
 

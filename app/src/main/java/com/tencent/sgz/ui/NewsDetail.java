@@ -562,42 +562,8 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
     private View.OnClickListener startGameClickListener = new View.OnClickListener(){
         public void onClick(View v) {
 
-            MTAHelper.trackClick(NewsDetail.this,TAG,"startGameClickListener");
-
             String pName = res.getString(R.string.app_package);
-            boolean isInstalled = false;
-            // 得到PackageManager对象
-            final PackageManager pm = getPackageManager();
-
-            // 得到系统 安装的所有程序包的PackageInfo对象
-            List<PackageInfo> packs = pm
-                    .getInstalledPackages(PackageManager.GET_UNINSTALLED_PACKAGES);
-
-            for (PackageInfo pi : packs) {
-                if(pi.packageName.equals(pName)){
-                    isInstalled = true;
-                    break;
-                }
-            }
-
-            if(isInstalled){
-                //取到点击的包名
-                Intent i = pm.getLaunchIntentForPackage(pName);
-                //如果该程序不可启动（像系统自带的包，有很多是没有入口的）会返回NULL
-                if (i != null)
-                    startActivity(i);
-            }else{
-                //TODO:去安卓市场
-                try {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id="+pName)));
-                } catch (android.content.ActivityNotFoundException anfe) {
-                    //http://android.myapp.com/myapp/detail.htm?apkName=com.tencent.game.VXDGame
-                    //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + pName)));
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://android.myapp.com/myapp/detail.htm?apkName=" + pName)));
-                }
-
-            }
-
+            UIHelper.launchApp(NewsDetail.this,TAG,pName);
 
         }
     };
