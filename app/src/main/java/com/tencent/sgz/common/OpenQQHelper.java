@@ -189,10 +189,12 @@ public class OpenQQHelper {
                 Message msg = new Message();
 
                 try {
-                    mOpenId = values.getString("openid");
-                    mAccessToken = values.getString("access_token");
-                    mExpiresIn = values.getString("expires_in");
-
+                    //新登录滴话才会有openid传回来
+                    if(values.has("openid")){
+                        mOpenId = values.getString("openid");
+                        mAccessToken = values.getString("access_token");
+                        mExpiresIn = values.getString("expires_in");
+                    }
                     //存储到本地
                     AppConfig.getAppConfig(context).setOpenQQAccessInfo(mOpenId, mAccessToken, mAppKey, getExpiresIn());
 
