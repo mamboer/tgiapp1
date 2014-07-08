@@ -32,6 +32,8 @@ public class WeixinHelper {
 
     private static BitmapManager bitmapManager;
 
+    private static Activity mContext;
+
     private static String getAppId(Context ct){
         if(null == APP_ID){
             APP_ID =  ct.getString(R.string.wx_appid);
@@ -47,7 +49,7 @@ public class WeixinHelper {
      */
 
     private static Bitmap getDefaultAvatar(Activity context){
-        return BitmapFactory.decodeResource(context.getResources(), R.drawable.icon);
+        return BitmapFactory.decodeResource(context.getResources(), R.drawable.icon_small);
     }
 
     private static BitmapManager getBitmapManager(Activity context){
@@ -79,7 +81,7 @@ public class WeixinHelper {
 	}
 
     private static void shareToWX(final Activity context,String title,String url,String picUrl,int type){
-
+        mContext = context;
         final int type1 = type;
 
         // 检查是否安装微信
@@ -130,6 +132,11 @@ public class WeixinHelper {
     private static void sendWX(IWXAPI api,WXMediaMessage msg,Bitmap bitmap,int type){
         // 缩略图的二进制数据
         msg.thumbData = bmpToByteArray(bitmap, true);
+        // 检查图片是否大于32kb
+        if (msg.thumbData.length>32*1024){
+            UIHelper.ToastMessage(mContext,"分享失败：分享的图片尺寸超过32KB");
+            return;
+        }
         SendMessageToWX.Req req = new SendMessageToWX.Req();
         // 分享的时间
         req.transaction = buildTransaction(type);

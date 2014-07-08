@@ -615,9 +615,9 @@ public class UIHelper {
                                         Intent intent = new Intent(context,ScreenShotShare.class);
                                         intent.putExtra("title", title);
                                         intent.putExtra("url", url);
-                                        intent.putExtra("cut_image_tmp_path",ScreenShotView.TEMP_SHARE_FILE_NAME);
+                                        intent.putExtra("cut_image_tmp_path",ScreenShotView.getTempShareFileName());
                                         try {
-                                            ImageUtils.saveImageToSD(context,ScreenShotView.TEMP_SHARE_FILE_NAME,bm, 100);
+                                            ImageUtils.saveImageToSD(context,ScreenShotView.getTempShareFileName(),bm, 100);
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
@@ -719,9 +719,9 @@ public class UIHelper {
 									Intent intent = new Intent(context,ScreenShotShare.class);
 									intent.putExtra("title", title);
 									intent.putExtra("url", url);
-									intent.putExtra("cut_image_tmp_path",ScreenShotView.TEMP_SHARE_FILE_NAME);
+									intent.putExtra("cut_image_tmp_path",ScreenShotView.getTempShareFileName());
 									try {
-										ImageUtils.saveImageToSD(context,ScreenShotView.TEMP_SHARE_FILE_NAME,bm, 100);
+										ImageUtils.saveImageToSD(context,ScreenShotView.getTempShareFileName(),bm, 100);
 									} catch (IOException e) {
 										e.printStackTrace();
 									}

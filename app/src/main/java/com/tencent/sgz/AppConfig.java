@@ -52,13 +52,19 @@ public class AppConfig {
     public final static String CONF_APP_FIRSTBOOTUP="APP_FIRSTBOOTUP";
 
 	public final static String SAVE_IMAGE_PATH = "save_image_path";
-	@SuppressLint("NewApi")
-	public final static String DEFAULT_SAVE_IMAGE_PATH = Environment.getExternalStorageDirectory()+ File.separator+ "sgz"+ File.separator;
 			
 	private Context mContext;
 	private AccessInfo accessInfo = null;
     private AccessInfo openQQAccessInfo = null;
 	private static AppConfig appConfig;
+
+    /**
+     * 默认的图片存储地址
+     * @return
+     */
+    public static String getDefaultSaveImagePath(){
+        return AppContext.Instance.getABSExternalStoragePath();
+    }
 
 	public static AppConfig getAppConfig(Context context) {
 		if (appConfig == null) {

@@ -18,19 +18,21 @@
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.GuideActivity"
-            android:screenOrientation="portrait"
             android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name=".AppStart"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+
             <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -238,8 +240,10 @@
             android:noHistory="true" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="tencent101125247" />
                 <!-- 100380359 100381104 222222 -->
             </intent-filter>
@@ -271,13 +275,13 @@
         <activity
             android:name=".activity.MainActivity"
             android:configChanges="keyboardHidden|orientation"
+            android:label="@string/title_activity_main"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.NoTitleBar"
-            android:label="@string/title_activity_main" >
+            android:theme="@style/Theme.NoTitleBar" >
         </activity>
 
-        <!--S 广播-->
+        <!-- S 广播 -->
 
         <receiver android:name=".ui.BroadCast" >
             <intent-filter>
@@ -285,23 +289,30 @@
                 <action android:name="com.tencent.sgz.action.APP_EVENTNOTICE" />
             </intent-filter>
         </receiver>
-
         <receiver android:name=".fragment.HomeFragment$HomeBroadcastReceiver" >
             <intent-filter>
                 <action android:name="TAB1_ACTION" />
             </intent-filter>
         </receiver>
 
-        <!--E 广播-->
+        <!-- E 广播 -->
 
 
-        <!--S MTA-->
+        <!-- S MTA -->
         <!-- 请将MTA_APPKEY改为MTA分配的appkey < -->
-        <meta-data android:name="TA_APPKEY" android:value="AX9Z73J7AKUD" />
+        <meta-data
+            android:name="TA_APPKEY"
+            android:value="AX9Z73J7AKUD" />
         <!-- 请将CHANNAL改为app的发布渠道 < -->
-        <meta-data  android:name="InstallChannel" android:value="myapp" />
-        <!--E MTA-->
-
+        <meta-data
+            android:name="InstallChannel"
+            android:value="myapp" />
+        <!-- E MTA -->
+        <service
+            android:name=".service.XDDataService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -314,7 +325,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <uses-feature
         android:name="android.hardware.camera"

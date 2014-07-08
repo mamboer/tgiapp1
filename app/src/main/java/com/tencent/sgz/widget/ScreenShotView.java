@@ -1,6 +1,7 @@
 package com.tencent.sgz.widget;
 
 import com.tencent.sgz.AppConfig;
+import com.tencent.sgz.AppContext;
 import com.tencent.sgz.R;
 import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.activity.BaseActivity;
@@ -75,8 +76,9 @@ public class ScreenShotView extends View implements OnTouchListener {
 	private boolean isTimeToTip = false;
 	private boolean isHide = false;
 
-	public final static String TEMP_SHARE_FILE_NAME = AppConfig.DEFAULT_SAVE_IMAGE_PATH
-			+ "_share_tmp.jpg";
+    public static String getTempShareFileName(){
+        return (AppConfig.getDefaultSaveImagePath()+"_share_tmp.jpg");
+    }
 
 	private static Bitmap bmDoubleClickTip;
 	/**

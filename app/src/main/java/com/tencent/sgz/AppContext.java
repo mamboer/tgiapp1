@@ -56,6 +56,7 @@ import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 /*
@@ -119,8 +120,8 @@ public class AppContext extends Application {
 		//设置保存图片的路径
 		saveImagePath = getProperty(AppConfig.SAVE_IMAGE_PATH);
 		if(StringUtils.isEmpty(saveImagePath)){
-			setProperty(AppConfig.SAVE_IMAGE_PATH, AppConfig.DEFAULT_SAVE_IMAGE_PATH);
-			saveImagePath = AppConfig.DEFAULT_SAVE_IMAGE_PATH;
+			setProperty(AppConfig.SAVE_IMAGE_PATH, AppConfig.getDefaultSaveImagePath());
+			saveImagePath = AppConfig.getDefaultSaveImagePath();
 		}
 	}
 	
@@ -1793,6 +1794,15 @@ public class AppContext extends Application {
 	 */
 	public void setSaveImagePath(String saveImagePath) {
 		this.saveImagePath = saveImagePath;
-	}	
+	}
+
+    /**
+     * 获取该app在sd卡里面的存储地址
+     * @return
+     */
+    public String getABSExternalStoragePath(){
+        String savePath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+AppContext.Instance.getResources().getString(R.string.app_company)+"/"+ AppContext.Instance.getResources().getString(R.string.app_id)+"/";
+        return savePath;
+    }
 	
 }

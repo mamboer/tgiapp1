@@ -104,7 +104,7 @@ public class UpdateManager {
 				break;
 			case DOWN_NOSDCARD:
 				downloadDialog.dismiss();
-				Toast.makeText(mContext, "无法下载安装文件，请检查SD卡是否挂载", 3000).show();
+				Toast.makeText(mContext, "无法下载安装文件，请检查SD卡是否挂载", Toast.LENGTH_SHORT).show();
 				break;
 			}
     	};
@@ -271,12 +271,13 @@ public class UpdateManager {
 		@Override
 		public void run() {
 			try {
-				String apkName = "OSChinaApp_"+mUpdate.getVersionName()+".apk";
-				String tmpApk = "OSChinaApp_"+mUpdate.getVersionName()+".tmp";
+                String appName = mContext.getString(R.string.app_id);
+				String apkName = appName+"_"+mUpdate.getVersionName()+".apk";
+				String tmpApk = appName+"_"+mUpdate.getVersionName()+".tmp";
 				//判断是否挂载了SD卡
 				String storageState = Environment.getExternalStorageState();		
 				if(storageState.equals(Environment.MEDIA_MOUNTED)){
-					savePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/OSChina/Update/";
+                    savePath = AppContext.Instance.getABSExternalStoragePath()+"Update/";
 					File file = new File(savePath);
 					if(!file.exists()){
 						file.mkdirs();

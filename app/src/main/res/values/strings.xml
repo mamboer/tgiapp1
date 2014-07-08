@@ -2,10 +2,11 @@
 <resources>
 
     <string name="app_name">天天炫斗宝典</string>
-    <string name="app_id">ttxd</string>
+    <string name="app_id">GTTXD</string>
     <string name="app_copyright">Copyright © 2005 - %1$s Tencent. All Rights Reserved. \n腾讯公司  版权所有</string>
     <string name="app_datahost">http://ttxd.qq.com</string>
     <string name="app_package">com.tencent.game.VXDGame</string>
+    <string name="app_company">tencent</string>
 
     <integer name="home_slider_interval">6</integer>
     <integer name="splash_duration">3000</integer>
