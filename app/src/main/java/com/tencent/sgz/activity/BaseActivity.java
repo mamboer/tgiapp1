@@ -23,15 +23,15 @@ import roboguice.activity.RoboActivity;
  * @created 2014-5-11
  * TODO:请注意BaseActiviy和FragmentBaseActivity的同步
  */
-public class BaseActivity extends RoboActivity {
+public abstract class BaseActivity extends RoboActivity implements IActivity {
 
-	// 是否允许全屏
-	private boolean allowFullScreen = true;
+    // 是否允许全屏
+    private boolean allowFullScreen = true;
 
-	// 是否允许销毁
-	private boolean allowDestroy = true;
+    // 是否允许销毁
+    private boolean allowDestroy = true;
 
-	private View view;
+    private View view;
     /**
      * loading dialog
      */
@@ -41,20 +41,22 @@ public class BaseActivity extends RoboActivity {
 
     protected Resources res;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         appContext =AppContext.Instance;
         loadingDialog = new LoadingDialog(this);
-		allowFullScreen = true;
+        allowFullScreen = true;
         res = getResources();
-		// 添加Activity到堆栈
-		AppManager.getAppManager().addActivity(this);
-	}
+        // 添加Activity到堆栈
+        AppManager.getAppManager().addActivity(this);
+    }
 
     @Override
     protected  void onResume(){
         super.onResume();
+        //activity initialization
+        init();
         //页面开始-MTA
         StatService.onResume(this);
     }
@@ -66,56 +68,59 @@ public class BaseActivity extends RoboActivity {
         StatService.onPause(this);
     }
 
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
         // 移除loading dialog
         loadingDialog.dismiss();
-		// 结束Activity&从堆栈中移除
-		AppManager.getAppManager().finishActivity(this);
-	}
+        // 结束Activity&从堆栈中移除
+        AppManager.getAppManager().finishActivity(this);
+    }
 
-	public boolean isAllowFullScreen() {
-		return allowFullScreen;
-	}
+    public boolean isAllowFullScreen() {
+        return allowFullScreen;
+    }
 
-	/**
-	 * 设置是否可以全屏
-	 * 
-	 * @param allowFullScreen
-	 */
-	public void setAllowFullScreen(boolean allowFullScreen) {
-		this.allowFullScreen = allowFullScreen;
-	}
+    /**
+     * 设置是否可以全屏
+     *
+     * @param allowFullScreen
+     */
+    public void setAllowFullScreen(boolean allowFullScreen) {
+        this.allowFullScreen = allowFullScreen;
+    }
 
-	public void setAllowDestroy(boolean allowDestroy) {
-		this.allowDestroy = allowDestroy;
-	}
+    public void setAllowDestroy(boolean allowDestroy) {
+        this.allowDestroy = allowDestroy;
+    }
 
-	public void setAllowDestroy(boolean allowDestroy, View view) {
-		this.allowDestroy = allowDestroy;
-		this.view = view;
-	}
+    public void setAllowDestroy(boolean allowDestroy, View view) {
+        this.allowDestroy = allowDestroy;
+        this.view = view;
+    }
 
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK && view != null) {
-			view.onKeyDown(keyCode, event);
-			if (!allowDestroy) {
-				return false;
-			}
-		}
-		return super.onKeyDown(keyCode, event);
-	}
-	
-	public void back(View paramView) {
-		//mta统计－后退按钮
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && view != null) {
+            view.onKeyDown(keyCode, event);
+            if (!allowDestroy) {
+                return false;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void back(View paramView) {
+        //mta统计－后退按钮
         Properties prop = new Properties();
         prop.setProperty("tag", this.getClass().getName());
         StatService.trackCustomKVEvent(this, "mta_tag_activity_back",prop);
 
         AppManager.getAppManager().finishActivity(this);
-	}
+    }
+
+    public abstract void init();
+    public abstract void refresh(Object ...param);
 
 }

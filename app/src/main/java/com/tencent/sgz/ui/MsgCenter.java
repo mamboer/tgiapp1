@@ -28,6 +28,16 @@ public class MsgCenter extends BaseActivity {
     UserRemindArticleList remindData = null;
 
     @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(Object ...param){
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

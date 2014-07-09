@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  	android:layout_width="fill_parent"
-  	android:layout_height="fill_parent"
-  	android:orientation="vertical"
-  	android:background="@color/white">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
 
-	<include layout="@layout/news_detail_header"/>
+    <include layout="@layout/news_detail_header"/>
 
-	<ViewSwitcher
-    	android:id="@+id/news_detail_viewswitcher" 
-    	android:layout_width="fill_parent"
-    	android:layout_height="fill_parent"
-    	android:layout_weight="1">
+    <ViewSwitcher
+        android:id="@+id/news_detail_viewswitcher"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
 
         <in.xsin.widget.ProgressWebView
             android:id="@+id/news_detail_webview"
@@ -20,11 +20,10 @@
             android:background="@color/white"
             >
         </in.xsin.widget.ProgressWebView>
-    	    
-	    <include layout="@layout/comment_list"/>
-	    
-   	</ViewSwitcher>
-   	
-   	<include layout="@layout/news_detail_footer"/>
-   	
+
+
+    </ViewSwitcher>
+
+    <include layout="@layout/news_detail_footer"/>
+
 </LinearLayout>

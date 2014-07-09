@@ -14,9 +14,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.tencent.sgz.AppStart;
+import com.tencent.sgz.BuildConfig;
 import com.tencent.sgz.R;
+import com.tencent.sgz.common.UIHelper;
+import com.tencent.sgz.service.XDDataService;
 import com.tencent.stat.StatService;
 
 import in.xsin.common.MTAHelper;
@@ -39,6 +43,16 @@ public class GuideActivity extends BaseActivity {
 
     //包裹小圆点的LinearLayout
     private ViewGroup viewPoints;
+
+    @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(Object ...param){
+
+    }
 
     /** Called when the activity is first created. */
     @Override

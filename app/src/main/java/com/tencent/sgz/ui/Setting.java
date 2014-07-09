@@ -39,6 +39,16 @@ public class Setting extends BaseActivity {
 
     AppContext ac=null;
 
+    @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(Object ...param){
+
+    }
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -52,6 +52,16 @@ public class EventNotice extends BaseActivity {
     private boolean hasInitData = false;
 
     @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(Object ...param){
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.initView();

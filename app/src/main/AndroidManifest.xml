@@ -54,19 +54,6 @@
             android:theme="@style/Theme.HalfTranslucent"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
-            android:name=".ui.ReportUi"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.HalfTranslucent"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-        <activity
-            android:name=".ui.Main"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.NoTitleBar" />
-        <activity
             android:name=".ui.ChannelList"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
@@ -84,68 +71,6 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/Theme.SlideTop" />
         <activity
-            android:name=".ui.SoftwareLib"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.ZoomLight" />
-        <activity
-            android:name=".ui.SoftwareDetail"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/Theme.SlideTop" />
-        <activity
-            android:name=".ui.BlogDetail"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/Theme.SlideTop" />
-        <activity
-            android:name=".ui.QuestionTag"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.SlideTop" />
-        <activity
-            android:name=".ui.QuestionDetail"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/Theme.SlideTop" />
-        <activity
-            android:name=".ui.QuestionPub"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.ZoomLight"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
-        <activity
-            android:name=".ui.TweetDetail"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/Theme.SlideTop" />
-        <activity
-            android:name=".ui.TweetPub"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.ZoomLight"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
-        <activity
-            android:name=".ui.MessageDetail"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.SlideTop" />
-        <activity
-            android:name=".ui.MessagePub"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.SlideTop"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
-        <activity
-            android:name=".ui.MessageForward"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.SlideTop"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
-        <activity
-            android:name=".ui.CommentPub"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.ZoomLight"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
-        <activity
             android:name=".ui.Setting"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
@@ -158,29 +83,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SlideTop"
             android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".ui.UserInfo"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.ZoomLight" />
-        <activity
-            android:name=".ui.UserCenter"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.ZoomLight" />
-        <activity
-            android:name=".ui.UserFavorite"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.ZoomLight" />
-        <activity
-            android:name=".ui.UserFriend"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.ZoomLight" />
         <activity
             android:name=".ui.ImageDialog"
             android:configChanges="keyboardHidden|orientation"
@@ -206,13 +108,6 @@
             android:theme="@style/Theme.SlideTop"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
-        <activity
-            android:name=".ui.Signin"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.HalfTranslucent"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name=".ui.CDVActivity1"
             android:configChanges="keyboardHidden|orientation"
@@ -283,9 +178,8 @@
 
         <!-- S 广播 -->
 
-        <receiver android:name=".ui.BroadCast" >
+        <receiver android:name=".receiver.BroadCast" >
             <intent-filter>
-                <action android:name="com.tencent.sgz.action.APPWIDGET_UPDATE" />
                 <action android:name="com.tencent.sgz.action.APP_EVENTNOTICE" />
             </intent-filter>
         </receiver>
@@ -309,6 +203,8 @@
             android:value="myapp" />
         <!-- E MTA -->
         <service
+            android:icon="@drawable/icon_small"
+            android:label="@string/app_datasrv_label"
             android:name=".service.XDDataService"
             android:enabled="true"
             android:exported="true" >

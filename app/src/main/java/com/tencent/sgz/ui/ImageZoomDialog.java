@@ -71,6 +71,16 @@ public class ImageZoomDialog extends BaseActivity implements OnTouchListener,
 	static final int ZOOM = 2;// 缩放
 	int mode = NONE;
 
+    @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(Object ...param){
+
+    }
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

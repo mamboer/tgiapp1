@@ -243,6 +243,75 @@ public class AppDataProvider {
     }
 
     /**
+     * 同步的方式获取应用数据
+     * @param context
+     * @param isRefresh
+     * @return
+     */
+    public static AppData getAppDataSync(final AppContext context,final boolean isRefresh)  throws Exception{
+        AppData datas = new AppData();
+        String data0 = "";
+        int flagIdx = 0;
+        final String uid = context.getLoginOpenId();
+        try {
+            Gson gson = new Gson();
+            //杂项数据
+            data0 = getRemoteData(context,URL.MISC,isRefresh);
+            flagIdx = data0.lastIndexOf("<!--");
+            if(flagIdx>0) {
+                data0 = data0.substring(0, flagIdx);
+                datas.setMisc(gson.fromJson(data0, MiscData.class));
+            }
+
+            //新闻数据
+            data0 = getRemoteData(context,URL.ARTICLE,isRefresh);
+            flagIdx = data0.lastIndexOf("<!--");
+            if(flagIdx>0) {
+                data0 = data0.substring(0, flagIdx);
+                datas.setArticles(gson.fromJson(data0, ArticleList.class));
+                //第一条数据是为了生成json数据伪造的不可用
+                datas.getArticles().getItems().remove(0);
+            }
+
+            //公告数据
+            data0 = getRemoteData(context,URL.NOTICE,isRefresh);
+            flagIdx = data0.lastIndexOf("<!--");
+            if(flagIdx>0) {
+                data0 = data0.substring(0, flagIdx);
+                datas.setNotices(gson.fromJson(data0, ArticleList.class));
+                //第一条数据是为了生成json数据伪造的不可用
+                datas.getNotices().getItems().remove(0);
+            }
+
+            //图片轮播数据
+            data0 = getRemoteData(context,URL.SLIDE,isRefresh);
+            flagIdx = data0.lastIndexOf("<!--");
+            if(flagIdx>0) {
+                data0 = data0.substring(0, flagIdx);
+                datas.setSlides(gson.fromJson(data0, ArticleList.class));
+                //第一条数据是为了生成json数据伪造的不可用
+                datas.getSlides().getItems().remove(0);
+            }
+
+            //收藏数据
+            UserFavArticleList favData = getFavArticlesSync(context,uid,false);
+            datas.setFavArticles(favData);
+
+            //提醒数据
+            UserRemindArticleList reminderData = UserRemindArticleList.getRemindArticlesSync(context,uid,false);
+            datas.setRemindArticles(reminderData);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            datas.setErrCode(1);
+            datas.setErrMsg(e.getMessage());
+            throw e;
+        }
+
+        return datas;
+    }
+
+    /**
      * 获取应用数据
      * @param context
      * @param handler
@@ -250,67 +319,19 @@ public class AppDataProvider {
      */
     public static void getAppData(final AppContext context,final Handler handler, final boolean isRefresh){
 
-        final AppData datas = new AppData();
-
         new Thread(){
             public void run() {
-                String data0 = "";
-                int flagIdx = 0;
+
                 Bundle data = new Bundle();
-                final String uid = context.getLoginOpenId();
+                AppData datas = new AppData();
+
                 try {
-                    Gson gson = new Gson();
-                    //杂项数据
-                    data0 = getRemoteData(context,URL.MISC,isRefresh);
-                    flagIdx = data0.lastIndexOf("<!--");
-                    if(flagIdx>0) {
-                        data0 = data0.substring(0, flagIdx);
-                        datas.setMisc(gson.fromJson(data0, MiscData.class));
-                    }
-
-                    //新闻数据
-                    data0 = getRemoteData(context,URL.ARTICLE,isRefresh);
-                    flagIdx = data0.lastIndexOf("<!--");
-                    if(flagIdx>0) {
-                        data0 = data0.substring(0, flagIdx);
-                        datas.setArticles(gson.fromJson(data0, ArticleList.class));
-                        //第一条数据是为了生成json数据伪造的不可用
-                        datas.getArticles().getItems().remove(0);
-                    }
-
-                    //公告数据
-                    data0 = getRemoteData(context,URL.NOTICE,isRefresh);
-                    flagIdx = data0.lastIndexOf("<!--");
-                    if(flagIdx>0) {
-                        data0 = data0.substring(0, flagIdx);
-                        datas.setNotices(gson.fromJson(data0, ArticleList.class));
-                        //第一条数据是为了生成json数据伪造的不可用
-                        datas.getNotices().getItems().remove(0);
-                    }
-
-                    //图片轮播数据
-                    data0 = getRemoteData(context,URL.SLIDE,isRefresh);
-                    flagIdx = data0.lastIndexOf("<!--");
-                    if(flagIdx>0) {
-                        data0 = data0.substring(0, flagIdx);
-                        datas.setSlides(gson.fromJson(data0, ArticleList.class));
-                        //第一条数据是为了生成json数据伪造的不可用
-                        datas.getSlides().getItems().remove(0);
-                    }
-
-                    //收藏数据
-                    UserFavArticleList favData = getFavArticlesSync(context,uid,false);
-                    datas.setFavArticles(favData);
-
-                    //提醒数据
-                    UserRemindArticleList reminderData = UserRemindArticleList.getRemindArticlesSync(context,uid,false);
-                    datas.setRemindArticles(reminderData);
+                    datas = getAppDataSync(context,isRefresh);
 
                     data.putInt("errCode",0);
                     data.putString("errMsg",null);
 
                 }catch (Exception e){
-                    e.printStackTrace();
                     datas.setErrCode(1);
                     datas.setErrMsg(e.getMessage());
                     data.putInt("errCode",1);

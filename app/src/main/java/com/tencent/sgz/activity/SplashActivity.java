@@ -8,10 +8,12 @@ import android.os.Message;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import com.tencent.sgz.AppManager;
 import com.tencent.sgz.AppStart;
 import com.tencent.sgz.BuildConfig;
 import com.tencent.sgz.R;
 import com.tencent.sgz.common.UIHelper;
+import com.tencent.sgz.service.XDDataService;
 import com.tencent.stat.StatConfig;
 import com.tencent.stat.StatReportStrategy;
 
@@ -30,8 +32,7 @@ public class SplashActivity extends BaseActivity {
     private static String TAG = SplashActivity.class.getName();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void init(){
 
         initMTAConfig(BuildConfig.DEBUG);
 
@@ -49,6 +50,17 @@ public class SplashActivity extends BaseActivity {
         else
             mHandler.sendEmptyMessageDelayed(SWITCH_MAINACTIVITY,duration);
     }
+
+    @Override
+    public void refresh(Object ...param){
+
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+    //是否第一次启动app
     private boolean isFirstEnter(Context context,String className){
         if(context==null || className==null||"".equalsIgnoreCase(className)) return false;
 
@@ -68,13 +80,13 @@ public class SplashActivity extends BaseActivity {
                     Intent mIntent = new Intent();
                     mIntent.setClass(SplashActivity.this, AppStart.class);
                     SplashActivity.this.startActivity(mIntent);
-                    SplashActivity.this.finish();
+                    AppManager.getAppManager().finishActivity();
                     break;
                 case SWITCH_GUIDACTIVITY:
                     mIntent = new Intent();
                     mIntent.setClass(SplashActivity.this, GuideActivity.class);
                     SplashActivity.this.startActivity(mIntent);
-                    SplashActivity.this.finish();
+                    AppManager.getAppManager().finishActivity();
                     break;
             }
             super.handleMessage(msg);

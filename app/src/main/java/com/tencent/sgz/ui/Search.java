@@ -67,6 +67,16 @@ public class Search extends BaseActivity {
 	
 	private final static int DATA_LOAD_ING = 0x001;
 	private final static int DATA_LOAD_COMPLETE = 0x002;
+
+    @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(Object ...param){
+
+    }
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {

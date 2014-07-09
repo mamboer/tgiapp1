@@ -42,6 +42,16 @@ public class ScreenShotShare extends BaseActivity {
 	private String mTitle;
 	private String mUrl;
 
+    @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(Object ...param){
+
+    }
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

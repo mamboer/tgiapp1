@@ -26,6 +26,16 @@ public class About extends BaseActivity {
     @InjectView(R.id.app_copyright) TextView mCopyright;
 	@InjectView(R.id.app_name) TextView mName;
 
+    @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(Object ...param){
+
+    }
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

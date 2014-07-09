@@ -22,7 +22,7 @@ import com.tencent.sgz.bean.News;
 import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.common.UpdateManager;
 import com.tencent.sgz.fragment.*;
-import com.tencent.sgz.ui.BroadCast;
+import com.tencent.sgz.receiver.BroadCast;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -7,6 +7,7 @@
     <string name="app_datahost">http://ttxd.qq.com</string>
     <string name="app_package">com.tencent.game.VXDGame</string>
     <string name="app_company">tencent</string>
+    <string name="app_datasrv_label">天天炫斗数据服务</string>
 
     <integer name="home_slider_interval">6</integer>
     <integer name="splash_duration">3000</integer>
@@ -29,24 +30,6 @@
     <string name="main_menu_community">社区</string>
     <string name="main_menu_appbox">百宝箱</string>
     <string name="main_menu_icenter">个人中心</string>
-    <string name="frame_title_news_all">全部</string>
-    <string name="frame_title_news_news">新闻</string>
-    <string name="frame_title_news_video">视频</string>
-    <string name="frame_title_news_event">活动</string>
-    <string name="frame_title_question_ask">问答</string>
-    <string name="frame_title_question_share">分享</string>
-    <string name="frame_title_question_other">综合</string>
-    <string name="frame_title_question_job">角色</string>
-    <string name="frame_title_question_site">官网</string>
-    <string name="frame_title_tweet_lastest">最新微博</string>
-    <string name="frame_title_tweet_hot">热门微博</string>
-    <string name="frame_title_tweet_my">我的微博</string>
-    <string name="frame_title_tweet_send">发个微博</string>
-    <string name="frame_title_active_lastest">最新动态</string>
-    <string name="frame_title_active_atme">我</string>
-    <string name="frame_title_active_comment">评论</string>
-    <string name="frame_title_active_myself">我自己</string>
-    <string name="frame_title_active_message">留言</string>
     <string name="community_url">http://bbs.g.qq.com/forum.php?mod=forumdisplay&amp;fid=12388</string>
     <string name="feedback_email_url">levinhuang@tencent.com</string>
     <string name="feedback_email_title">用户反馈-Android客户端</string>
@@ -71,30 +54,11 @@
     <string name="login_requiretip">您好，请登入</string>
     <string name="news_detail_head_title">新闻正文</string>
     <string name="news_detail_lable_pub">发布于</string>
-    <string name="question_detail_head_title">帖子正文</string>
-    <string name="question_pub_head_title">我要发帖</string>
-    <string name="blog_detail_head_title">攻略正文</string>
-    <string name="software_detail_head_title">游戏详情</string>
-    <string name="tweet_detail_head_title">微博详情</string>
-    <string name="tweet_pub_head_title">发个微博</string>
-    <string name="tweet_chatfooter_cancel_rcd">手指上滑，取消发送</string>
-    <string name="tweet_chatfooter_cancel_rcd_release">松开手指，取消发送</string>
-    <string name="tweet_chatfooter_too_short">录音时间太短</string>
-    <string name="message_detail_head_title">我和%s的对话</string>
-    <string name="user_center_head_title">用户空间</string>
-    <string name="user_friend_head_title">我的好友</string>
-    <string name="user_friend_follower">关注(%d)</string>
-    <string name="user_friend_fans">粉丝(%d)</string>
 
     <integer name="userfav_swipelistview_offsetleft">65</integer>
     <integer name="channelfav_max">4</integer>
     <string name="channelfav_name">猜你喜欢</string>
 
-    <string name="comment_list_head_title">玩家评论</string>
-    <string name="comment_listitem_type">发布于</string>
-    <string name="comment_pub_head_title">评论回复</string>
-    <string name="comment_pub_content_hint">输入评论</string>
-    <string name="comment_reply_title">---共有 %d 条评论---</string>
     <string name="img_from_camera">手机拍照</string>
     <string name="img_from_album">手机相册</string>
     <string name="ui_insert_image">插入图片</string>
@@ -108,8 +72,6 @@
     <string name="lbl_scan_qrcode">扫描二维码</string>
 
     <!--S 广播事件名-->
-    <string name="receiver_widgetupdate">com.tencent.sgz.action.APPWIDGET_UPDATE</string>
-    <string name="receiver_tweetpub">com.tencent.sgz.action.APP_TWEETPUB</string>
     <string name="receiver_eventnotice">com.tencent.sgz.action.APP_EVENTNOTICE</string>
     <!--E 广播事件名-->
 

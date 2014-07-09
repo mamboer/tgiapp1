@@ -36,6 +36,16 @@ public class ChannelList extends BaseActivity {
     private ChannelGroup mFavGroup;
 
     @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(Object ...param){
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.channellist);

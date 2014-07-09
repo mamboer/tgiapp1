@@ -38,6 +38,16 @@ public class ImageDialog extends BaseActivity {
 	private Thread thread;
 	private Handler handler;
 
+    @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(Object ...param){
+
+    }
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

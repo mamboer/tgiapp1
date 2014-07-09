@@ -20,6 +20,16 @@ public class FeedBack extends BaseActivity {
 
 	private EditText mEditer;
 	private Button mPublish;
+
+    @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(Object ...param){
+
+    }
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

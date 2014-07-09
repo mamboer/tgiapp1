@@ -44,6 +44,16 @@ public class UserFavor extends BaseActivity {
     private ProgressDialog progressDialog;
 
     @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(Object ...param){
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_favor);
