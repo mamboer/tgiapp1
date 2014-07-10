@@ -69,6 +69,7 @@ public class XDDataService extends Service implements Runnable {
 
                     doTask(lastTask);
                 }
+                return;
             }
             // 如果没有任务，则等待2000ms，继续获取任务
             try {
@@ -98,7 +99,7 @@ public class XDDataService extends Service implements Runnable {
                 case Task.SN.INIT:
 
                     //数据初始化
-                    AppData data = AppDataProvider.getAppDataSync(AppContext.Instance, true);
+                    AppData data = AppDataProvider.getAppDataSync(AppContext.Instance, false);
                     msg.obj = data;
 
                     break;

@@ -70,7 +70,7 @@ import android.widget.Toast;
 public class HttpUtil {
     private static Header[] headers = new BasicHeader[1];
     private static String TAG = "HTTPUTIL";
-    private static int TIMEOUT = 5 * 1000;
+    private static int TIMEOUT = 8 * 1000;
     private static final String BOUNDARY = "---------------------------7db1c523809b2";
     /**
      * Your header of http op
@@ -88,7 +88,7 @@ public class HttpUtil {
         URL url = new URL(murl);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("DELETE");
-        conn.setConnectTimeout(5000);
+        conn.setConnectTimeout(TIMEOUT);
         if (conn.getResponseCode() == 204) {
 
             MLog.e(conn.toString());
@@ -230,7 +230,7 @@ public class HttpUtil {
                     .openConnection();
             conn.setDoOutput(true);
             conn.setDoInput(true);
-            conn.setConnectTimeout(5 * 1000);
+            conn.setConnectTimeout(TIMEOUT);
 
             conn.setRequestMethod(method);
             conn.setUseCaches(false);
@@ -299,7 +299,7 @@ public class HttpUtil {
             URL murl = new URL(url);
             System.out.print(url);
             HttpURLConnection conn = (HttpURLConnection) murl.openConnection();
-            conn.setConnectTimeout(5 * 1000);
+            conn.setConnectTimeout(TIMEOUT);
             conn.setRequestMethod(method);
 
             conn.setRequestProperty("User-Agent",
@@ -330,7 +330,7 @@ public class HttpUtil {
 
             URL uri = new URL(actionUrl);
             HttpURLConnection conn = (HttpURLConnection) uri.openConnection();
-            conn.setReadTimeout(5 * 1000); // 缓存的最长时间
+            conn.setReadTimeout(TIMEOUT); // 缓存的最长时间
             conn.setDoInput(true);// 允许输入
             conn.setDoOutput(true);// 允许输出
             conn.setUseCaches(false); // 不允许使用缓存

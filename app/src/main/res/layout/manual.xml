@@ -6,8 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/manual_menu"></include>
-
+    <!--<include layout="@layout/manual_menu"></include>-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_10"></View>
 
     <in.xsin.pulltorefresh.PullToRefreshListView
         android:tag="manualListView"
@@ -17,6 +19,7 @@
 
     </in.xsin.pulltorefresh.PullToRefreshListView>
 
+    <!--
     <in.xsin.pulltorefresh.PullToRefreshListView
         android:tag="manualListView"
         android:id="@+id/manual_lv2"
@@ -34,6 +37,7 @@
         android:layout_height="match_parent">
 
     </in.xsin.pulltorefresh.PullToRefreshListView>
+    -->
 
 
 
