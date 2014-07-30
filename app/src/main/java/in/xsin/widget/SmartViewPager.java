@@ -121,7 +121,7 @@ public class SmartViewPager extends ViewPager implements InterceptTouchingLayout
             synchronized (SmartViewPager.this) {
 
                 mCurrentItem = (SmartViewPager.this.getCurrentItem() + 1) % SmartViewPager.this.getAdapter().getCount();
-                Log.e("LV","slider_viewPager currentItem:"+mCurrentItem);
+                //Log.e("LV","slider_viewPager currentItem:"+mCurrentItem);
                 sliderHandler.obtainMessage().sendToTarget();
             }
         }
@@ -130,9 +130,9 @@ public class SmartViewPager extends ViewPager implements InterceptTouchingLayout
 
     private Handler sliderHandler = new Handler() {
         public void handleMessage(android.os.Message msg) {
-            Log.e("LV","slider_viewPager currentItem handler:"+mCurrentItem);
-            SmartViewPager.this.setCurrentItem(mCurrentItem);
-        };
+        //Log.e("LV","slider_viewPager currentItem handler:"+mCurrentItem);
+        SmartViewPager.this.setCurrentItem(mCurrentItem);
+    };
     };
 
     // An ExecutorService that can schedule commands to run after a given delay,

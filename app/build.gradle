@@ -52,6 +52,8 @@ dependencies {
     compile files('libs/mta-sdk-1.8.0.jar')
     compile files('libs/open_sdk-2.3.1.jar')
     compile files('libs/weibosdkcore.jar')
+    compile files('libs/wup-1.0.0-SNAPSHOT.jar')
+    compile files('libs/Xg_sdk_v2.31.jar')
     compile 'org.roboguice:roboguice:2.0'
     compile 'com.google.zxing:core:3.0.1'
     compile 'com.google.zxing:android-integration:3.0.1'

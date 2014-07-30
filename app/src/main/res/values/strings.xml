@@ -86,6 +86,12 @@
     <string name="openqq_appkey">FSkWgCrBhHc2sKmn</string>
     <string name="openqq_default_pic">http://ossweb-img.qq.com/images/chanpin/ttxd/public/a20140528ttxd/downloadqrttxd.jpg</string>
 
+    <!--S 信鸽 http://xg.qq.com/xg/apps/ctr_app/get_app_info?app_id=2100034842-->
+    <string name="xg_appid">2100034842</string>
+    <string name="xg_accesskey">A9U45C4DMS9C</string>
+    <string name="xg_secretkey">d6526bef66ca630bf98af23796e058ea</string>
+    <!--E 信鸽-->
+
     <!--S 详情页-->
     <integer name="reminder_ahead_day">3</integer>
     <!--E 详情页-->
