@@ -21,6 +21,7 @@ import com.tencent.sgz.AppManager;
 import com.tencent.sgz.R;
 import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.activity.MainActivity;
+import com.tencent.sgz.activity.XGNoticeActivity;
 import com.tencent.sgz.adapter.GridViewFaceAdapter;
 import com.tencent.sgz.api.ApiClient;
 import com.tencent.sgz.bean.AccessInfo;
@@ -1060,6 +1061,19 @@ public class UIHelper {
      */
     public static void showEventCenter(Context context,Bundle data) {
         Intent intent = new Intent(context, EventNotice.class);
+        if(null!=data){
+            intent.putExtras(data);
+        }
+        context.startActivity(intent);
+    }
+
+    /**
+     * 显示系统消息
+     *
+     * @param context
+     */
+    public static void showXGCenter(Context context,Bundle data) {
+        Intent intent = new Intent(context, XGNoticeActivity.class);
         if(null!=data){
             intent.putExtras(data);
         }

@@ -73,6 +73,7 @@
 
     <!--S 广播事件名-->
     <string name="receiver_eventnotice">com.tencent.sgz.action.APP_EVENTNOTICE</string>
+    <string name="receiver_xgnotice">com.tencent.sgz.action.APP_XGNOTICE</string>
     <!--E 广播事件名-->
 
     <integer name="offsetTop_scan_qrcode">-30</integer>
@@ -90,6 +91,7 @@
     <string name="xg_appid">2100034842</string>
     <string name="xg_accesskey">A9U45C4DMS9C</string>
     <string name="xg_secretkey">d6526bef66ca630bf98af23796e058ea</string>
+    <string name="xg_db">XGTTXD.db</string>
     <!--E 信鸽-->
 
     <!--S 详情页-->

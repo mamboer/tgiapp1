@@ -2,10 +2,12 @@ package com.tencent.sgz.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -14,7 +16,9 @@ import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.tencent.android.tpush.XGPushClickedResult;
 import com.tencent.android.tpush.XGPushManager;
 import com.tencent.sgz.AppException;
 import com.tencent.sgz.R;
@@ -24,11 +28,13 @@ import com.tencent.sgz.common.UIHelper;
 import com.tencent.sgz.common.UpdateManager;
 import com.tencent.sgz.fragment.*;
 import com.tencent.sgz.receiver.BroadCast;
+import com.tencent.sgz.receiver.XGMsgReceiver;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import in.xsin.common.MTAHelper;
+import in.xsin.common.XGMsgService;
 
 /**
  * Demonstrates combining a TabHost with a ViewPager to implement a tab UI
@@ -55,7 +61,6 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
 
     ImageView mHeadLogo;
     ImageButton mHeadSearch;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,14 +96,8 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
 
         initHeadView();
 
-        // 注册信鸽
-        // 开启logcat输出，方便debug，发布时请关闭
-        // XGPushConfig.enableDebug(this, true);
-        // 如果需要知道注册是否成功，请使用registerPush(getApplicationContext(), XGIOperateCallback)带callback版本
-        // 如果需要绑定账号，请使用registerPush(getApplicationContext(),"account")版本
-        // 具体可参考详细的开发指南
-        // 传递的参数为ApplicationContext
-        XGPushManager.registerPush(getApplicationContext());
+        //信鸽初始化
+        initXinge();
 
     }
 
@@ -111,6 +110,14 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
         }
         // 检查是否需要下载欢迎图片
         this.checkBackGround();
+
+        // 是否信鸽消息点击进来
+        XGPushClickedResult click =XGPushManager.onActivityStarted(this);
+        Log.d("TPush", "onResumeXGPushClickedResult:" + click);
+        if (click != null) { // 判断是否来自信鸽的打开方式
+            Toast.makeText(this, "通知被点击:" + click.toString(),
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void checkBackGround() {
@@ -141,6 +148,17 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
             mTabHost.setCurrentTabByTag("tab5");
             gotoMsgCenter(null);
         }
+    }
+
+    private void initXinge(){
+        // 注册信鸽
+        // 开启logcat输出，方便debug，发布时请关闭
+        // XGPushConfig.enableDebug(this, true);
+        // 如果需要知道注册是否成功，请使用registerPush(getApplicationContext(), XGIOperateCallback)带callback版本
+        // 如果需要绑定账号，请使用registerPush(getApplicationContext(),"account")版本
+        // 具体可参考详细的开发指南
+        // 传递的参数为ApplicationContext
+        XGPushManager.registerPush(getApplicationContext());
     }
 
     /**

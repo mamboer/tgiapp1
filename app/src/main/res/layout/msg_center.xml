@@ -39,9 +39,8 @@
             android:layout_height="wrap_content">
 
             <RelativeLayout
-                android:visibility="gone"
                 android:clickable="true"
-                android:onClick="gotoEventCenter"
+                android:onClick="gotoXGCenter"
                 android:background="@drawable/layer_login_border"
                 android:padding="10dp"
                 android:layout_marginBottom="@dimen/space_10"
@@ -70,9 +69,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
+                        android:id="@+id/txtXGMsgCnt"
                         style="@style/badge"
 
-                        android:text="2"/>
+                        android:text="0"/>
 
                 </LinearLayout>
                 <ImageView
