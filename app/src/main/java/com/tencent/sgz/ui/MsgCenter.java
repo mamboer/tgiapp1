@@ -14,11 +14,14 @@ import com.tencent.sgz.R;
 import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.common.StringUtils;
 import com.tencent.sgz.common.UIHelper;
+import com.tencent.sgz.entity.AppData;
 import com.tencent.sgz.entity.Article;
 import com.tencent.sgz.entity.UserRemindArticleList;
+import com.tencent.sgz.entity.XGNotification;
 import com.tencent.sgz.receiver.XGMsgReceiver;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import in.xsin.common.XGMsgService;
 import roboguice.inject.ContentView;
@@ -98,7 +101,7 @@ public class MsgCenter extends BaseActivity {
     public void gotoXGCenter(View preView){
         Bundle data = new Bundle();
         data.putSerializable("data",cntXGRecords);
-        UIHelper.showXGCenter(this,data);
+        UIHelper.showXGCenter(this, data);
     }
 
     private void reload(){
@@ -126,6 +129,21 @@ public class MsgCenter extends BaseActivity {
     }
 
     private void reloadXGMsg(){
+
+        cntXGRecords = 0;
+
+        //获取提醒数据
+        AppData appData = AppContext.Instance.getData();
+        List<XGNotification> notices = xgMsgService.getScrollData(1, 30, "");
+
+        appData.setXgNotices(notices);
+
+        for (XGNotification item:notices){
+            if(item.getCntClick()==0){
+                cntXGRecords++;
+            }
+        }
+
         mTxtXGMsgCnt.setText(cntXGRecords+"");
         if(cntXGRecords>0){
             mTxtXGMsgCnt.setVisibility(View.VISIBLE);
@@ -139,7 +157,6 @@ public class MsgCenter extends BaseActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             // TODO Auto-generated method stub
-            cntXGRecords = xgMsgService.getCount();
             reloadXGMsg();
         }
     }

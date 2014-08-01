@@ -22,6 +22,7 @@ import com.tencent.sgz.R;
 import com.tencent.sgz.activity.BaseActivity;
 import com.tencent.sgz.activity.MainActivity;
 import com.tencent.sgz.activity.XGNoticeActivity;
+import com.tencent.sgz.activity.XGNoticeDetailActivity;
 import com.tencent.sgz.adapter.GridViewFaceAdapter;
 import com.tencent.sgz.api.ApiClient;
 import com.tencent.sgz.bean.AccessInfo;
@@ -36,6 +37,7 @@ import com.tencent.sgz.bean.Report;
 import com.tencent.sgz.bean.Result;
 import com.tencent.sgz.bean.Tweet;
 import com.tencent.sgz.bean.URLs;
+import com.tencent.sgz.entity.XGNotification;
 import com.tencent.sgz.ui.*;
 import com.tencent.sgz.widget.LinkView;
 import com.tencent.sgz.widget.PathChooseDialog;
@@ -280,6 +282,8 @@ public class UIHelper {
     private static View shareDialogView;
     private static PopupWindow pwShareMenu;
     private static int shareDialogViewHeight;
+
+
     /**
      * 分享到'新浪微博'或'腾讯微博'的对话框
      *
@@ -430,6 +434,21 @@ public class UIHelper {
 
 
         pwShareMenu.showAtLocation(anchor, Gravity.NO_GRAVITY,location[0],location[1]-shareDialogViewHeight);
+
+    }
+
+    /**
+     * 信鸽信息提示
+     *
+     * @param context
+     *            当前Activity
+     */
+    public static void showXGDetailDialog(final Activity context,
+                                        final XGNotification data) {
+
+        Intent intent = new Intent(context, XGNoticeDetailActivity.class);
+        intent.putExtra("data",data);
+        context.startActivity(intent);
 
     }
 

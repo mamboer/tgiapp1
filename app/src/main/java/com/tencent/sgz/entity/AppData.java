@@ -1,6 +1,8 @@
 package com.tencent.sgz.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by levin on 6/18/14.
@@ -15,6 +17,7 @@ public class AppData implements Serializable {
         misc = new MiscData();
         favArticles = new UserFavArticleList();
         remindArticles = new UserRemindArticleList();
+        xgNotices = new ArrayList<XGNotification>();
     }
 
     private int errCode;
@@ -26,6 +29,8 @@ public class AppData implements Serializable {
     private MiscData misc;
     private UserFavArticleList favArticles;
     private UserRemindArticleList remindArticles;
+
+    private List<XGNotification> xgNotices;
 
     public ArticleList getArticles() {
         return articles;
@@ -146,5 +151,13 @@ public class AppData implements Serializable {
 
     public void setRemindArticles(UserRemindArticleList remindArticles) {
         this.remindArticles = remindArticles;
+    }
+
+    public List<XGNotification> getXgNotices() {
+        return xgNotices;
+    }
+
+    public void setXgNotices(List<XGNotification> xgNotices) {
+        this.xgNotices = xgNotices;
     }
 }

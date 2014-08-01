@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 
 import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
 import com.fortysevendeg.swipelistview.SwipeListView;
@@ -51,6 +52,7 @@ public class XGNoticeActivity extends BaseActivity {
     private ProgressDialog progressDialog;
 
     private boolean hasInitData = false;
+    private boolean hasInitView = false;
 
     @Override
     public void init(){
@@ -65,16 +67,19 @@ public class XGNoticeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.initView();
+        //this.initView();
     }
 
     @Override
     protected void onResume(){
         super.onResume();
-        if(hasInitData){
-            return;
+        if(!hasInitView){
+            this.initView();
         }
-        reload();
+        if(!hasInitData){
+            reload();
+        }
+
     }
     private void initView(){
 
@@ -185,6 +190,16 @@ public class XGNoticeActivity extends BaseActivity {
 
                 UIHelper.showNewsDetailByInstance(EventNotice.this, news);
                 */
+
+                MTAHelper.trackClick(XGNoticeActivity.this, TAG, "onClickFrontView");
+
+                XGNotification item = (XGNotification)adapter.getItem(position);
+                //更新记录的点击数
+                XGMsgService.getInstance(XGNoticeActivity.this).updateCntClick(item.getMsg_id(),1);
+
+                //是否制定url字段
+                UIHelper.showXGDetailDialog(XGNoticeActivity.this,item);
+
             }
 
             @Override
@@ -207,7 +222,7 @@ public class XGNoticeActivity extends BaseActivity {
 
         //reload();
 
-
+        hasInitView = true;
     }
 
     private void reload() {
@@ -222,12 +237,19 @@ public class XGNoticeActivity extends BaseActivity {
         swipeListView.setAnimationTime(settings.getSwipeAnimationTime());
         swipeListView.setSwipeOpenOnLongPress(settings.isSwipeOpenOnLongPress());
         */
+
+        /*
         new ListAppTask().execute();
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getString(R.string.com_txt_loading));
         progressDialog.setCancelable(false);
         progressDialog.show();
+        */
+        data = appContext.getData().getXgNotices();
+        adapter.setData(data);
+        adapter.notifyDataSetChanged();
+        hasInitData = true;
     }
 
     public class ListAppTask extends AsyncTask<Void, Void, List<XGNotification>> {
@@ -239,15 +261,15 @@ public class XGNoticeActivity extends BaseActivity {
             Collections.sort(listInfo, new ApplicationInfo.DisplayNameComparator(appInfo));
             */
 
-            data = getData("");
+            List<XGNotification> items = getData("");
 
+            data = items;
 
-            return data;
+            return items;
         }
 
         protected void onPostExecute(List<XGNotification> result) {
-            data.clear();
-            data.addAll(result);
+            adapter.setData(result);
             adapter.notifyDataSetChanged();
             if (progressDialog != null) {
                 progressDialog.dismiss();

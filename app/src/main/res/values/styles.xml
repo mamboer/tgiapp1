@@ -619,6 +619,43 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">14sp</item>
     </style>
+    <style name="usernotice_item.hd">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="usernotice_item.badge">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:background">@drawable/layer_cate_badge</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="usernotice_item.badge.blue">
+        <item name="android:background">@drawable/layer_cate_badge_blue</item>
+    </style>
+    <style name="usernotice_item.badge.green">
+        <item name="android:background">@drawable/layer_cate_badge_green</item>
+    </style>
+    <style name="usernotice_item.badge.gray">
+        <item name="android:background">@drawable/layer_cate_badge_gray</item>
+    </style>
+    <style name="usernotice_item.tit">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_17</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">left</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_weight">1</item>
+    </style>
     <!--E user_notice-->
     
 </resources>

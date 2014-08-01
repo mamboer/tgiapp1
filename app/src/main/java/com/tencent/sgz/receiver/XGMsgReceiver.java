@@ -53,6 +53,9 @@ public class XGMsgReceiver extends XGPushBaseReceiver {
         notific.setActivity(notifiShowedRlt.getActivity());
         notific.setUpdate_time(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
                 .format(Calendar.getInstance().getTime()));
+        notific.setCntClick(0);
+        notific.setMeta(notifiShowedRlt.getCustomContent());
+
         XGMsgService.getInstance(context).save(notific);
         context.sendBroadcast(intent);
         show(context, "您有1条新消息, " + "通知被展示 ， " + notifiShowedRlt.toString());
@@ -119,6 +122,10 @@ public class XGMsgReceiver extends XGPushBaseReceiver {
             // APP自己处理点击的相关动作
             // 这个动作可以在activity的onResume也能监听，请看第3点相关内容
             text = "通知被打开 :" + message;
+
+            //更新记录的点击数
+            XGMsgService.getInstance(context).updateCntClick(message.getMsgId(),1);
+
         } else if (message.getActionType() == XGPushClickedResult.NOTIFACTION_DELETED_TYPE) {
             // 通知被清除啦。。。。
             // APP自己处理通知被清除后的相关动作

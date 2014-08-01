@@ -71,11 +71,12 @@ public class ListViewUserRemindAdapter extends BaseAdapter {
             LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = li.inflate(R.layout.user_noticeitem, parent, false);
             holder = new ViewHolder();
-            holder.ico = (ImageView) convertView.findViewById(R.id.userfav_item_ico);
+            //holder.ico = (ImageView) convertView.findViewById(R.id.userfav_item_ico);
             holder.title = (TextView) convertView.findViewById(R.id.userfav_item_title);
             holder.cname = (TextView) convertView.findViewById(R.id.userfav_item_cname);
             holder.date = (TextView) convertView.findViewById(R.id.userfav_item_date);
             holder.btnDel = (Button) convertView.findViewById(R.id.userfav_btn_del);
+            holder.state = (TextView) convertView.findViewById(R.id.notice_listitem_state);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -88,14 +89,19 @@ public class ListViewUserRemindAdapter extends BaseAdapter {
         holder.title.setText(item.getTitle());
         holder.title.setTag(item);
         holder.cname.setText(item.getCateName());
-        holder.date.setText(item.getEvtEndAt());
+        holder.date.setText(item.getEvtStartAt());
         holder.btnDel.setTag(item);
 
         //是否过期
-        if(StringUtils.isLargerThanToday(item.getEvtEndAt())){
-            holder.ico.setImageResource(R.drawable.dot_red12);
+        if(!StringUtils.isLargerThanToday(item.getEvtEndAt())){
+            holder.state.setText("已结束");
+            holder.state.setBackgroundResource(R.drawable.layer_cate_badge_gray);
+        }else if(StringUtils.isLargerThanToday(item.getEvtStartAt())){
+            holder.state.setText("即将开始");
+            holder.state.setBackgroundResource(R.drawable.layer_cate_badge_green);
         }else{
-            holder.ico.setImageResource(R.drawable.dot_gray12);
+            holder.state.setText("进行中");
+            holder.state.setBackgroundResource(R.drawable.layer_badge_red);
         }
 
 
@@ -144,6 +150,7 @@ public class ListViewUserRemindAdapter extends BaseAdapter {
         TextView cname;
         TextView date;
         Button btnDel;
+        TextView state;
     }
 
 }

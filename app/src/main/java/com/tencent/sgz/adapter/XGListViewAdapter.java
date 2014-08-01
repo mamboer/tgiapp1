@@ -38,6 +38,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import in.xsin.common.XGMsgService;
+
 /**
  * Created by levin on 7/31/14.
  */
@@ -78,16 +80,17 @@ public class XGListViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final XGNotification item = adapterData.get(position);
+        final int pos = position;
         ViewHolder holder;
         if (convertView == null) {
             LayoutInflater li = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = li.inflate(R.layout.user_noticeitem, parent, false);
+            convertView = li.inflate(R.layout.user_xgitem, parent, false);
             holder = new ViewHolder();
-            holder.ico = (ImageView) convertView.findViewById(R.id.userfav_item_ico);
-            holder.title = (TextView) convertView.findViewById(R.id.userfav_item_title);
-            holder.cname = (TextView) convertView.findViewById(R.id.userfav_item_cname);
-            holder.date = (TextView) convertView.findViewById(R.id.userfav_item_date);
-            holder.btnDel = (Button) convertView.findViewById(R.id.userfav_btn_del);
+            holder.ico = (ImageView) convertView.findViewById(R.id.xg_item_ico);
+            holder.title = (TextView) convertView.findViewById(R.id.xg_item_title);
+            holder.cname = (TextView) convertView.findViewById(R.id.xg_item_cname);
+            holder.date = (TextView) convertView.findViewById(R.id.xg_item_date);
+            holder.btnDel = (Button) convertView.findViewById(R.id.xg_btn_del);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -103,46 +106,41 @@ public class XGListViewAdapter extends BaseAdapter {
         holder.date.setText(item.getUpdate_time());
         holder.btnDel.setTag(item);
 
-        //是否过期
-        if(StringUtils.isLargerThanToday(item.getUpdate_time())){
-            holder.ico.setImageResource(R.drawable.dot_red12);
-        }else{
+        //是否已读
+        if (item.getCntClick()>0){
             holder.ico.setImageResource(R.drawable.dot_gray12);
+            holder.title.setTextColor(mActivity.getResources().getColor(R.color.gray_level3));
         }
-
-
+        else{
+            holder.ico.setImageResource(R.drawable.dot_red12);
+            holder.title.setTextColor(mActivity.getResources().getColor(R.color.black));
+        }
 
         holder.btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Article item = (Article)v.getTag();
+                XGNotification item = (XGNotification)v.getTag();
 
                 final Handler handler = new Handler(){
                     @Override
                     public void handleMessage(Message msg){
-                        Bundle data = msg.getData();
-                        int errCode = data.getInt("errCode");
-                        String errMsg = data.getString("errMsg");
 
-                        if(errMsg!=null){
+                        int errCode = msg.what;
+                        String errMsg = msg.obj.toString();
+
+                        if(!StringUtils.isEmpty(errMsg)){
                             UIHelper.ToastMessage(mActivity, errMsg);
                             return;
                         }
-                        //XGListViewAdapter.this.data.remove(position);
-                        //XGListViewAdapter.this.notifyDataSetChanged();
+                        XGListViewAdapter.this.adapterData.remove(pos);
+                        XGListViewAdapter.this.notifyDataSetChanged();
 
                     }
                 };
 
-                //UserRemindArticleList.removeRemindArticle(AppContext.Instance, item.getMD5(), uid, handler);
+                XGMsgService.getInstance(mActivity).delete(item.getId(),handler);
 
-                /*
-                ListViewUserFavAdapter.this.data.remove(position);
-                ListViewUserFavAdapter.this.notifyDataSetChanged();
-                //lvLoveViennaLiao.dismissSelected();
-                */
-                //lvLoveViennaLiao.dismissSelected();
             }
         });
 

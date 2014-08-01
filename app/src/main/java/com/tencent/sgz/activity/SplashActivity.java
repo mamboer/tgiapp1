@@ -5,14 +5,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import com.tencent.android.tpush.XGPushClickedResult;
+import com.tencent.android.tpush.XGPushManager;
 import com.tencent.sgz.AppManager;
 import com.tencent.sgz.AppStart;
 import com.tencent.sgz.BuildConfig;
 import com.tencent.sgz.R;
 import com.tencent.sgz.common.UIHelper;
+import com.tencent.sgz.common.UpdateManager;
 import com.tencent.sgz.service.XDDataService;
 import com.tencent.stat.StatConfig;
 import com.tencent.stat.StatReportStrategy;
@@ -66,7 +71,6 @@ public class SplashActivity extends BaseActivity {
 
         return appContext.isFirstBootup();
     }
-
 
     //*************************************************
     // Handler:跳转至不同页面

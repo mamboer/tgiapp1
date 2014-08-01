@@ -6,20 +6,20 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/swipelist_backview_notice"
+        android:id="@+id/swipelist_backview_xg"
         android:tag="back"
         style="@style/usernotice_item.back"
         >
 
         <Button
-            android:id="@+id/userfav_btn_del"
+            android:id="@+id/xg_btn_del"
             style="@style/usernotice_item.btn1"
             android:text="删除"/>
 
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/swipelist_frontview_notice"
+        android:id="@+id/swipelist_frontview_xg"
         android:tag="front"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -27,53 +27,45 @@
         <LinearLayout
             android:orientation="horizontal"
             style="@style/usernotice_item.front">
-
+            <LinearLayout
+                android:id="@+id/ico_reddot"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingRight="@dimen/space_10"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent">
+                <ImageView
+                    android:id="@+id/xg_item_ico"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:src="@drawable/dot_red12"/>
+            </LinearLayout>
             <LinearLayout
                 android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="fill_parent">
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/xg_item_title"
+                    style="@style/home_news_listitem.tit"
+                    android:layout_weight="0"
                     android:layout_marginBottom="@dimen/space_10"
-                    style="@style/usernotice_item.hd">
-                    <TextView
-                        android:id="@+id/userfav_item_title"
-                        style="@style/usernotice_item.tit"
-                        android:text="赤壁乱舞突破与蓝耗详"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="0">
-                        <TextView
-                            android:id="@+id/notice_listitem_state"
-                            style="@style/usernotice_item.badge"
-                            android:text="即将开始"/>
-
-                    </LinearLayout>
-                </LinearLayout>
-
+                    android:text="畅谈三国论古今标题长度限制畅谈三国论古今标题长度限制"/>
                 <LinearLayout
                     android:layout_gravity="left"
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:visibility="gone"
                         android:gravity="left"
-                        android:id="@+id/userfav_item_cname"
+                        android:id="@+id/xg_item_cname"
                         android:layout_marginRight="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="游戏攻略"/>
                     <TextView
-                        android:visibility="gone"
-                        android:text="结束时间："
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:id="@+id/userfav_item_date"
+                        android:id="@+id/xg_item_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2014.05.03"/>

@@ -166,6 +166,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SlideTop" />
         <activity
+            android:name=".activity.XGNoticeDetailActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SlideTop" />
+        <activity
             android:name=".ui.UserFavor"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"

@@ -120,6 +120,13 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        XGPushManager.onActivityStoped(this);
+    }
+
+
     private void checkBackGround() {
         if (!appContext.isNetworkConnected()) {
             return;
@@ -139,6 +146,9 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+
+        //http://developer.xg.qq.com/index.php/Android_SDK%E5%BF%AB%E9%80%9F%E6%8C%87%E5%8D%97
+        setIntent(intent);// 必须要调用这句
 
         //活动提醒广播，BroadCast.java
         if (intent.getBooleanExtra("NOTICE_REMIND", false)) {

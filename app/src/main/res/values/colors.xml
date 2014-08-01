@@ -6,6 +6,7 @@
 	<color name="gray">#808080</color>
     <color name="liter_gray">#c1c1c1</color>
     <color name="lite_gray">#DDDDDD</color>
+    <color name="gray_level3">#919191</color>
     <color name="gray_level4">#e1e3e5</color>
     <color name="gray_level5">#eaeaeb</color>
 	<color name="red">#FF0000</color>
