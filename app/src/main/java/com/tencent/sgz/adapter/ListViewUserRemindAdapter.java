@@ -93,18 +93,27 @@ public class ListViewUserRemindAdapter extends BaseAdapter {
         holder.btnDel.setTag(item);
 
         //是否过期
+
         if(!StringUtils.isLargerThanToday(item.getEvtEndAt())){
             holder.state.setText("已结束");
             holder.state.setBackgroundResource(R.drawable.layer_cate_badge_gray);
+            holder.state.setWidth(UIHelper.convertDpToPixel(context,42));
         }else if(StringUtils.isLargerThanToday(item.getEvtStartAt())){
             holder.state.setText("即将开始");
             holder.state.setBackgroundResource(R.drawable.layer_cate_badge_green);
+            holder.state.setWidth(UIHelper.convertDpToPixel(context,53));
         }else{
             holder.state.setText("进行中");
             holder.state.setBackgroundResource(R.drawable.layer_badge_red);
+            holder.state.setWidth(UIHelper.convertDpToPixel(context,42));
         }
 
-
+        //是否已经阅读过
+        if (item.getViewCount()>0){
+            holder.title.setTextColor(context.getResources().getColor(R.color.gray_level3));
+        }else{
+            holder.title.setTextColor(context.getResources().getColor(R.color.black));
+        }
 
         holder.btnDel.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -67,6 +67,20 @@ public class UserArticleList implements Serializable {
     }
 
     /**
+     * 增加查看次数
+     * @param item
+     * @param diffCount
+     */
+    public void increaseViewCount(Article item,int diffCount){
+        Article item1 = getItemByMd5(item.getMD5());
+        boolean isExists = (null!=item1);
+        if(!isExists) {
+            return;
+        }
+        item1.setViewCount(item1.getViewCount()+diffCount);
+    }
+
+    /**
      * 记录是否存在
      * @param item
      * @return

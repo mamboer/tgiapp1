@@ -54,6 +54,7 @@ dependencies {
     compile files('libs/weibosdkcore.jar')
     compile files('libs/wup-1.0.0-SNAPSHOT.jar')
     compile files('libs/Xg_sdk_v2.31.jar')
+    compile files('libs/android-viewbadger.jar')
     compile 'org.roboguice:roboguice:2.0'
     compile 'com.google.zxing:core:3.0.1'
     compile 'com.google.zxing:android-integration:3.0.1'

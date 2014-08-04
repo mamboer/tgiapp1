@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.ActionMode;
@@ -16,6 +18,7 @@ import android.widget.ListView;
 
 import com.fortysevendeg.swipelistview.BaseSwipeListViewListener;
 import com.fortysevendeg.swipelistview.SwipeListView;
+import com.tencent.sgz.AppContext;
 import com.tencent.sgz.AppDataProvider;
 import com.tencent.sgz.R;
 import com.tencent.sgz.activity.BaseActivity;
@@ -210,6 +213,23 @@ public class EventNotice extends BaseActivity {
 
                 MTAHelper.trackClick(EventNotice.this, TAG, "onClickFrontView");
 
+                //增加该新闻的阅读次数
+                final Handler handler = new Handler(){
+                    @Override
+                    public void handleMessage(Message msg){
+                        Bundle data = msg.getData();
+                        int errCode = data.getInt("errCode");
+                        String errMsg = data.getString("errMsg");
+
+                        if(errMsg!=null){
+                            UIHelper.ToastMessage(EventNotice.this,errMsg);
+                            return;
+                        }
+                    }
+                };
+                UserRemindArticleList.updateArticleViewCount(AppContext.Instance,item,AppContext.Instance.getLoginOpenId(),1,handler);
+
+                //打开该新闻
                 UIHelper.showNewsDetailByInstance(EventNotice.this, news);
             }
 

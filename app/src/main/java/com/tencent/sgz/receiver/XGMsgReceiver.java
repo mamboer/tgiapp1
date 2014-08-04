@@ -58,7 +58,7 @@ public class XGMsgReceiver extends XGPushBaseReceiver {
 
         XGMsgService.getInstance(context).save(notific);
         context.sendBroadcast(intent);
-        show(context, "您有1条新消息, " + "通知被展示 ， " + notifiShowedRlt.toString());
+        //show(context, "您有1条新消息, " + "通知被展示 ， " + notifiShowedRlt.toString());
     }
 
     @Override
@@ -73,7 +73,7 @@ public class XGMsgReceiver extends XGPushBaseReceiver {
             text = "反注册失败" + errorCode;
         }
         Log.d(LogTag, text);
-        show(context, text);
+        //show(context, text);
 
     }
 
@@ -89,7 +89,7 @@ public class XGMsgReceiver extends XGPushBaseReceiver {
             text = "\"" + tagName + "\"设置失败,错误码：" + errorCode;
         }
         Log.d(LogTag, text);
-        show(context, text);
+        //show(context, text);
 
     }
 
@@ -105,7 +105,7 @@ public class XGMsgReceiver extends XGPushBaseReceiver {
             text = "\"" + tagName + "\"删除失败,错误码：" + errorCode;
         }
         Log.d(LogTag, text);
-        show(context, text);
+        //show(context, text);
 
     }
 
@@ -150,7 +150,7 @@ public class XGMsgReceiver extends XGPushBaseReceiver {
         }
         // APP自主处理的过程。。。
         Log.d(LogTag, text);
-        show(context, text);
+        //show(context, text);
     }
 
     @Override
@@ -169,7 +169,7 @@ public class XGMsgReceiver extends XGPushBaseReceiver {
             text = message + "注册失败，错误码：" + errorCode;
         }
         Log.d(LogTag, text);
-        show(context, text);
+        //show(context, text);
     }
 
     // 消息透传
@@ -194,7 +194,7 @@ public class XGMsgReceiver extends XGPushBaseReceiver {
         }
         // APP自主处理消息的过程...
         Log.d(LogTag, text);
-        show(context, text);
+        //show(context, text);
     }
 
 }

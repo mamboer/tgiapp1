@@ -42,9 +42,11 @@ public class BroadCast extends BroadcastReceiver {
             return;
         }
         int activeCount = intent.getIntExtra("cnt", 0);//活动提醒数
+        int noticeType = intent.getIntExtra("type",0);//提醒类型 0，快过期提醒；1，快开始提醒；
+        String txtTpl = noticeType==0?"您有 $ 条活动提醒快要到期啦，赶紧去看看！":"您有 $ 条活动提醒快要开始啦，赶紧去看看！";
 
         //通知栏显示
-        this.notification(context, activeCount,"NOTICE_REMIND","您有 $ 条活动提醒快要到期啦，赶紧去看看！");
+        this.notification(context, activeCount,"NOTICE_REMIND",txtTpl);
     }
 
     private void notification(Context context, int noticeCount,String key,String msgTpl){

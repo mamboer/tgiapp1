@@ -147,14 +147,13 @@ public class HttpUtil {
 
         } catch (ConnectTimeoutException e) {
             result = "TIMEOUTERROR";
-        }
-
-        catch (Exception e) {
+            e.printStackTrace();
+        }catch (Exception e) {
             result = "OTHERERROR";
             e.printStackTrace();
 
         }
-        Log.i(TAG, "result =>" + result);
+        //Log.i(TAG, "result =>" + result);
 
         return result;
     }

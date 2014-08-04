@@ -147,6 +147,23 @@ public class StringUtils {
     }
 
     /**
+     * 判断给定字符串时间是否小于今天
+     * @param sdate
+     * @return
+     */
+    public static boolean isLessThanToday(String sdate){
+        boolean b=  false;
+        Date time = toDate(sdate,false);
+        Date today = new Date();
+        if(null==time){
+            return b;
+        }
+        long nowDate = Long.parseLong(dateFormater2.get().format(today).replace("-", ""));
+        long timeDate = Long.parseLong(dateFormater2.get().format(time).replace("-", ""));
+        return (timeDate<nowDate);
+    }
+
+    /**
      * 指定日期字符串是否大于今天diffDayNum天
      * @param sdate
      * @param diffDayNum
@@ -179,6 +196,24 @@ public class StringUtils {
         Date today = new Date();
 
         int diffDay = DateUtils.getDaysOfTwo(today,time);
+
+        return (diffDay<=diffDayNum);
+
+    }
+
+    /**
+     * 指定日期字符串是否小于今天,且小于diffDayNum天
+     * @param sdate
+     * @param diffDayNum
+     * @return
+     */
+    public static boolean isLessThanTodayAndLessThan(String sdate,int diffDayNum){
+        if(!isLessThanToday(sdate)) return false;
+
+        Date time = toDate(sdate,false);
+        Date today = new Date();
+
+        int diffDay = DateUtils.getDaysOfTwo(time,today);
 
         return (diffDay<=diffDayNum);
 

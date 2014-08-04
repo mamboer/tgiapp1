@@ -96,6 +96,7 @@
 
     <!--S 详情页-->
     <integer name="reminder_ahead_day">3</integer>
+    <integer name="reminder_readytobegin_day">3</integer>
     <!--E 详情页-->
 
 </resources>

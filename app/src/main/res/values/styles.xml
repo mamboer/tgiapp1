@@ -633,7 +633,7 @@
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:paddingLeft">5dp</item>
         <item name="android:paddingRight">5dp</item>
-        <item name="android:background">@drawable/layer_cate_badge</item>
+        <item name="android:background">@drawable/layer_badge_red</item>
         <item name="android:gravity">center</item>
     </style>
     <style name="usernotice_item.badge.blue">

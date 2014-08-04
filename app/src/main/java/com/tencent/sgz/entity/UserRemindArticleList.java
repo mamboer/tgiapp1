@@ -169,6 +169,72 @@ public class UserRemindArticleList extends UserArticleList {
     }
 
     /**
+     * 增加新闻的阅读次数
+     * @param context
+     * @param item
+     * @param handler
+     */
+    public static void updateArticleViewCount(final AppContext context, final Article item, final String uid,final int diffCount, final Handler handler){
+
+
+        final Handler onDataGot = new Handler(){
+
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+
+                Bundle data = msg.getData();
+                int errCode = data.getInt("errCode");
+                String errMsg = data.getString("errMsg");
+
+                if(errMsg!=null){
+                    UIHelper.ToastMessage(context, errMsg);
+                    return;
+                }
+
+                final UserRemindArticleList listData = (UserRemindArticleList)data.getSerializable("data");
+
+
+                new Thread(){
+                    public void run() {
+                        String uid1 = AppDataProvider.getOperationId(context, uid);
+                        String key = EncryptUtils.encodeMD5(uid1+"_"+ AppDataProvider.CONSTS.REMIND_ARTICLE);
+                        Bundle bundle = new Bundle();
+                        try{
+
+                            listData.increaseViewCount(item,diffCount);
+
+                            context.saveObject(listData,key);
+                            //更新内存缓存数据
+                            context.getData().setRemindArticles(listData);
+
+                            bundle.putInt("errCode",0);
+                            bundle.putString("errMsg",null);
+
+
+                        }catch(Exception e){
+                            e.printStackTrace();
+                            bundle.putInt("errCode",1);
+                            bundle.putString("errMsg",e.getMessage());
+                        }
+
+                        Message msg = new Message();
+                        bundle.putSerializable("data",listData);
+                        msg.setData(bundle);
+
+                        handler.sendMessage(msg);
+
+                    }
+                }.start();
+
+            }
+        };
+
+        getRemindArticles(context, onDataGot, uid, false);
+
+    }
+
+    /**
      * 删除新闻提醒.
      * @param context
      * @param itemId
@@ -256,14 +322,47 @@ public class UserRemindArticleList extends UserArticleList {
     }
 
     /**
+     * 获取快开始的本地活动提醒
+     * @return
+     */
+    public static ArrayList<Article> getReadyToBeginArticleList(AppContext context){
+        int dueDay = context.getResources().getInteger(R.integer.reminder_readytobegin_day);
+        ArrayList<Article> items = new ArrayList<Article>();
+
+        ArrayList<Article> items0 = context.getData().getRemindArticles().getItems();
+
+        for(Article item:items0){
+            if(StringUtils.isLessThanTodayAndLessThan(item.getEvtStartAt(),dueDay)){
+                items.add(item);
+            }
+        }
+
+        return items;
+    }
+
+    /**
      * 发活动提醒广播
      */
     public static void sendBroadCast(AppContext context){
+        //快结束提醒
         ArrayList<Article> items = getDueArticleList(context);
-        if(items.size()==0) return;
 
-        Intent intent = new Intent(context.getString(R.string.receiver_eventnotice));
-        intent.putExtra("cnt", items.size());
-        context.sendBroadcast(intent);
+        if(items.size()>0){
+            Intent intent = new Intent(context.getString(R.string.receiver_eventnotice));
+            intent.putExtra("cnt", items.size());
+            intent.putExtra("type",0);
+            context.sendBroadcast(intent);
+        }
+
+        //快开始提醒
+        items = getReadyToBeginArticleList(context);
+
+        if(items.size()>0){
+            Intent intent = new Intent(context.getString(R.string.receiver_eventnotice));
+            intent.putExtra("cnt", items.size());
+            intent.putExtra("type",1);
+            context.sendBroadcast(intent);
+        }
+
     }
 }

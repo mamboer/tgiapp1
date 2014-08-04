@@ -34,6 +34,7 @@ public class Article implements Serializable {
     private int commentCount;
     private int voteCount;
     private int favCount;
+    private int viewCount;//本地查看次数
     private String author;
     private String authorid;
     private String pubDate;
@@ -165,5 +166,13 @@ public class Article implements Serializable {
 
     public String getMD5(){
         return EncryptUtils.encodeMD5(this.url);
+    }
+
+    public int getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(int viewCount) {
+        this.viewCount = viewCount;
     }
 }
