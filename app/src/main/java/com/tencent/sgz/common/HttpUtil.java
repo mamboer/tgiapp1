@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpCookie;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.Socket;
@@ -58,6 +59,8 @@ import org.apache.http.util.EntityUtils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -106,14 +109,58 @@ public class HttpUtil {
      * @return
      */
     static public String get(String url) {
-        return get(url, null);
+        return get(url, null,null,null);
 
     }
 
-    static public String get(String url, HashMap<String, String> map) {
+    public static HttpGet getHttpGet(String url,HashMap<String,String> map,String cookie, String userAgent){
+        //HttpClient client = getNewHttpClient();
+        url = getFullUrl(url,map);
+        HttpGet get = new HttpGet(url);
+        get.setHeaders(headers);
+        get.setHeader("Connection","Keep-Alive");
+        if(!StringUtils.isEmpty(cookie)){
+            get.setHeader("Cookie",cookie);
+        }
+        if(!StringUtils.isEmpty(userAgent)){
+            get.setHeader("User-Agent",userAgent);
+        }
 
-        HttpClient client = getNewHttpClient();
-        String result = "ERROR";
+        return get;
+    }
+
+    public static HttpPost getHttpPost(String url,HashMap<String,String> map,String cookie, String userAgent) throws Exception{
+        HttpPost post = new HttpPost(url);
+        post.setHeaders(headers);
+        post.setHeader("Connection","Keep-Alive");
+        if(!StringUtils.isEmpty(cookie)){
+            post.setHeader("Cookie",cookie);
+        }
+        if(!StringUtils.isEmpty(userAgent)){
+            post.setHeader("User-Agent",userAgent);
+        }
+
+        ArrayList<BasicNameValuePair> pairList = new ArrayList<BasicNameValuePair>();
+        if (map != null) {
+            for (Map.Entry<String, String> entry : map.entrySet()) {
+                Log.i(TAG, entry.getKey() + "=>" + entry.getValue());
+                BasicNameValuePair pair = new BasicNameValuePair(
+                        entry.getKey(), entry.getValue());
+                pairList.add(pair);
+            }
+
+        }
+
+        //TODO:文件上传
+
+        HttpEntity entity = new UrlEncodedFormEntity(pairList, "UTF-8");
+        post.setEntity(entity);
+
+
+        return post;
+    }
+
+    static private String getFullUrl(String url,HashMap<String,String> map){
         if (null != map) {
             int i = 0;
             for (Map.Entry<String, String> entry : map.entrySet()) {
@@ -129,9 +176,15 @@ public class HttpUtil {
 
             }
         }
-        HttpGet get = new HttpGet(url);
-        get.setHeaders(headers);
-        Log.i(TAG, url);
+        return url;
+    }
+
+    static public String get(String url, HashMap<String, String> map,String cookie,String userAgent) {
+
+        HttpClient client = getNewHttpClient();
+        String result = "ERROR";
+        HttpGet get = getHttpGet(url,map,cookie,userAgent);
+
         try {
 
             HttpResponse response = client.execute(get);
@@ -152,6 +205,8 @@ public class HttpUtil {
             result = "OTHERERROR";
             e.printStackTrace();
 
+        }finally {
+            get.abort();
         }
         //Log.i(TAG, "result =>" + result);
 
@@ -167,26 +222,15 @@ public class HttpUtil {
      * @return
      */
 
-    static public String post(String url, HashMap<String, String> map) {
+    static public String post(String url, HashMap<String, String> map,String cookie,String userAgent,Handler cookieHandler) {
 
         HttpClient client = getNewHttpClient();
-        HttpPost post = new HttpPost(url);
-        MLog.i(TAG, url);
-        post.setHeaders(headers);
-        String result = "ERROR";
-        ArrayList<BasicNameValuePair> pairList = new ArrayList<BasicNameValuePair>();
-        if (map != null) {
-            for (Map.Entry<String, String> entry : map.entrySet()) {
-                Log.i(TAG, entry.getKey() + "=>" + entry.getValue());
-                BasicNameValuePair pair = new BasicNameValuePair(
-                        entry.getKey(), entry.getValue());
-                pairList.add(pair);
-            }
 
-        }
+        String result = "ERROR";
+        HttpPost post = null;
+
         try {
-            HttpEntity entity = new UrlEncodedFormEntity(pairList, "UTF-8");
-            post.setEntity(entity);
+            post = getHttpPost(url,map,cookie,userAgent);
             HttpResponse response = client.execute(post);
 
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
@@ -198,16 +242,25 @@ public class HttpUtil {
                         + response.getStatusLine().getStatusCode() + "ERROR";
             }
 
+            //cookie处理
+            if(null!=cookieHandler){
+                Message msg = new Message();
+                msg.what = 0;
+                msg.obj = response.getHeaders("Set-Cookie");
+                cookieHandler.sendMessage(msg);
+            };
+
         } catch (ConnectTimeoutException e) {
             result = "TIMEOUTERROR";
-        }
-
-        catch (Exception e) {
+            e.printStackTrace();
+        }catch (Exception e) {
             result = "OTHERERROR";
             e.printStackTrace();
 
+        }finally {
+            post.abort();
         }
-        Log.i(TAG, "result =>" + result);
+        //Log.i(TAG, "result =>" + result);
         return result;
     }
 
@@ -536,13 +589,17 @@ public class HttpUtil {
             ClientConnectionManager ccm = new ThreadSafeClientConnManager(
                     params, registry);
 
-            //超时设置
+            //设置 连接超时时间
             HttpConnectionParams.setConnectionTimeout(params, TIMEOUT);
+            //数据读取时间
             HttpConnectionParams.setSoTimeout(params, TIMEOUT);
             ConnManagerParams.setTimeout(params, TIMEOUT);
 
             // 设置 HttpClient 接收 Cookie,用与浏览器一样的策略
             HttpClientParams.setCookiePolicy(params, CookiePolicy.BROWSER_COMPATIBILITY);
+
+            //设置cookie
+
 
             client = new DefaultHttpClient(ccm,params);
 
