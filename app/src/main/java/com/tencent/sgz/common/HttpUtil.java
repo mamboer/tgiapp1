@@ -73,7 +73,7 @@ import android.widget.Toast;
 public class HttpUtil {
     private static Header[] headers = new BasicHeader[1];
     private static String TAG = "HTTPUTIL";
-    private static int TIMEOUT = 8 * 1000;
+    private static int TIMEOUT = 30 * 1000;
     private static final String BOUNDARY = "---------------------------7db1c523809b2";
     /**
      * Your header of http op
@@ -561,7 +561,7 @@ public class HttpUtil {
     }
 
     /**
-     * 处理https加密失败的情况
+     * 获取HttpClient实例
      *
      * @return
      */
@@ -570,6 +570,7 @@ public class HttpUtil {
         HttpClient client;
 
         try {
+
             KeyStore trustStore = KeyStore.getInstance(KeyStore
                     .getDefaultType());
             trustStore.load(null, null);
@@ -602,6 +603,8 @@ public class HttpUtil {
 
 
             client = new DefaultHttpClient(ccm,params);
+
+            //client = new DefaultHttpClient();
 
         } catch (Exception e) {
             e.printStackTrace();

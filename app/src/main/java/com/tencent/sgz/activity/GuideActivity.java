@@ -8,6 +8,7 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,7 @@ public class GuideActivity extends BaseActivity {
         pageViews = new ArrayList<View>();
         pageViews.add(inflater.inflate(R.layout.guide_page1, null));
         pageViews.add(inflater.inflate(R.layout.guide_page2, null));
+        pageViews.add(inflater.inflate(R.layout.guide_page3, null));
 
         //创建imageviews数组，大小是要显示的图片的数量
         imageViews = new ImageView[pageViews.size()];
@@ -138,7 +140,6 @@ public class GuideActivity extends BaseActivity {
         @Override
         public void finishUpdate(ViewGroup arg0) {
             // TODO Auto-generated method stub
-
         }
 
         //获取当前窗体界面数
@@ -155,7 +156,7 @@ public class GuideActivity extends BaseActivity {
             v.addView(pageViews.get(position));
 
             // 测试页卡1内的按钮事件
-            if (position == 1) {
+            if (position == 2) {
                 Button btn = (Button) v.findViewById(R.id.btn_close_guide);
                 btn.setOnClickListener(Button_OnClickListener);
             }
@@ -200,20 +201,35 @@ public class GuideActivity extends BaseActivity {
 
     class GuidePageChangeListener implements OnPageChangeListener{
 
+        //http://stackoverflow.com/questions/8239056/implementing-circular-scrolling-in-pageradapter
+        private int currentPageIndex = 0;
+        private int previousPageIndex = -1;
         @Override
-        public void onPageScrollStateChanged(int arg0) {
+        public void onPageScrollStateChanged(int state) {
             // TODO Auto-generated method stub
 
+            if (state == ViewPager.SCROLL_STATE_IDLE) {
+                int pageCount = pageViews.size();
+                if (currentPageIndex == 0 && previousPageIndex ==0){
+                    viewPager.setCurrentItem(pageCount-1,false);
+                    return;
+                }
+                if (currentPageIndex == pageCount-1 && previousPageIndex==pageCount-1){
+                    viewPager.setCurrentItem(0,false);
+                    return;
+                }
+                previousPageIndex = currentPageIndex;
+            }
         }
 
         @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             // TODO Auto-generated method stub
-
         }
 
         @Override
         public void onPageSelected(int position) {
+            currentPageIndex = position;
             // TODO Auto-generated method stub
             for(int i=0;i<imageViews.length;i++){
                 imageViews[position].setBackgroundResource(R.drawable.dot_focus);
