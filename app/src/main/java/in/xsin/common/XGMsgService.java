@@ -4,11 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
-import com.tencent.sgz.entity.XGNotification;
+import com.tencent.tgiapp1.entity.XGNotification;
 
 import java.util.ArrayList;
 import java.util.List;

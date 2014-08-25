@@ -15,10 +15,10 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('n3gz.jks')
-            storePassword '5611n3gz'
-            keyAlias 'n3gz'
-            keyPassword '5611n3gz'
+            storeFile file('tgiapp1.jks')
+            storePassword '5611tgiapp1'
+            keyAlias 'tgiapp1'
+            keyPassword '5611tgiapp1'
         }
     }
     buildTypes {

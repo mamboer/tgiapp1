@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tencent.sgz"
+    package="com.tencent.tgiapp1"
     android:versionCode="31"
     android:versionName="1.0.1" >
 
@@ -9,99 +9,95 @@
         android:targetSdkVersion="19" />
 
     <application
-        android:name=".AppContext"
+        android:name="com.tencent.tgiapp1.AppContext"
         android:icon="@drawable/icon"
         android:label="@string/app_name" >
         <activity
-            android:name=".activity.SplashActivity"
+            android:name="com.tencent.tgiapp1.activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.GuideActivity"
+            android:name="com.tencent.tgiapp1.activity.GuideActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
         <activity
-            android:name=".AppStart"
+            android:name="com.tencent.tgiapp1.AppStart"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
-
-            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
         </activity>
         <activity
-            android:name=".ui.About"
+            android:name="com.tencent.tgiapp1.ui.About"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SlideTop" />
         <activity
-            android:name=".ui.FeedBack"
+            android:name="com.tencent.tgiapp1.ui.FeedBack"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HalfTranslucent"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
-            android:name=".ui.ChannelList"
+            android:name="com.tencent.tgiapp1.ui.ChannelList"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SlideTop" />
         <activity
-            android:name=".ui.LoginDialog"
+            android:name="com.tencent.tgiapp1.ui.LoginDialog"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HalfTranslucent"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
-            android:name=".ui.NewsDetail"
+            android:name="com.tencent.tgiapp1.ui.NewsDetail"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/Theme.SlideTop" />
         <activity
-            android:name=".ui.Setting"
+            android:name="com.tencent.tgiapp1.ui.Setting"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Preference" />
         <activity
-            android:name=".ui.Search"
+            android:name="com.tencent.tgiapp1.ui.Search"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SlideTop"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.ImageDialog"
+            android:name="com.tencent.tgiapp1.ui.ImageDialog"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HalfTranslucent" />
         <activity
-            android:name=".ui.ImageZoomDialog"
+            android:name="com.tencent.tgiapp1.ui.ImageZoomDialog"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTask"
             android:theme="@style/Theme.ZoomLight.Fullscreen" />
         <activity
-            android:name=".ui.ScreenShotShare"
+            android:name="com.tencent.tgiapp1.ui.ScreenShotShare"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.ZoomLight.Fullscreen" />
         <activity
-            android:name=".ui.Capture"
+            android:name="com.tencent.tgiapp1.ui.Capture"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
@@ -109,7 +105,7 @@
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         <activity
-            android:name=".ui.CDVActivity1"
+            android:name="com.tencent.tgiapp1.ui.CDVActivity1"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -148,31 +144,31 @@
 
         <!-- S 个人中心 -->
         <activity
-            android:name=".ui.MsgCenter"
+            android:name="com.tencent.tgiapp1.ui.MsgCenter"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SlideTop" />
         <activity
-            android:name=".ui.EventNotice"
+            android:name="com.tencent.tgiapp1.ui.EventNotice"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SlideTop" />
         <activity
-            android:name=".activity.XGNoticeActivity"
+            android:name="com.tencent.tgiapp1.activity.XGNoticeActivity"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SlideTop" />
         <activity
-            android:name=".activity.XGNoticeDetailActivity"
+            android:name="com.tencent.tgiapp1.activity.XGNoticeDetailActivity"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SlideTop" />
         <activity
-            android:name=".ui.UserFavor"
+            android:name="com.tencent.tgiapp1.ui.UserFavor"
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -180,7 +176,7 @@
         <!-- E 个人中心 -->
 
         <activity
-            android:name=".activity.MainActivity"
+            android:name="com.tencent.tgiapp1.activity.MainActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/title_activity_main"
             android:launchMode="singleTask"
@@ -190,12 +186,12 @@
 
         <!-- S 广播 -->
 
-        <receiver android:name=".receiver.BroadCast" >
+        <receiver android:name="com.tencent.tgiapp1.receiver.BroadCast" >
             <intent-filter>
-                <action android:name="com.tencent.sgz.action.APP_EVENTNOTICE" />
+                <action android:name="com.tencent.tgiapp1.action.APP_EVENTNOTICE" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".fragment.HomeFragment$HomeBroadcastReceiver" >
+        <receiver android:name="com.tencent.tgiapp1.fragment.HomeFragment$HomeBroadcastReceiver" >
             <intent-filter>
                 <action android:name="TAB1_ACTION" />
             </intent-filter>
@@ -217,7 +213,7 @@
         <service
             android:icon="@drawable/icon_small"
             android:label="@string/app_datasrv_label"
-            android:name=".service.XDDataService"
+            android:name="com.tencent.tgiapp1.service.XDDataService"
             android:enabled="true"
             android:exported="true" >
         </service>
@@ -275,7 +271,7 @@
             android:value="A9U45C4DMS9C" />
 
         <!-- APP实现的Receiver，用于接收消息透传和操作结果的回调： -->
-        <receiver android:name="com.tencent.sgz.receiver.XGMsgReceiver" >
+        <receiver android:name="com.tencent.tgiapp1.receiver.XGMsgReceiver" >
             <intent-filter>
                 <!-- 接收消息透传 -->
                 <action android:name="com.tencent.android.tpush.action.PUSH_MESSAGE" />

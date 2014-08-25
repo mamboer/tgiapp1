@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.tencent.sgz.R;
+import com.tencent.tgiapp1.R;
 
 public class DBOpenHelper extends SQLiteOpenHelper {
 

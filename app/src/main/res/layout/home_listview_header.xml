@@ -187,7 +187,7 @@
         <!--/shortcurt entries-->
 
         <!--notices-->
-        <com.tencent.sgz.widget.BorderLinearLayout
+        <com.tencent.tgiapp1.widget.BorderLinearLayout
             xmlns:app="http://schemas.android.com/apk/res-auto"
             app:bottomBorderColor="@color/devider_line_bg1"
             app:bottomBorderWidth="1dp"
@@ -220,7 +220,7 @@
 
             </RelativeLayout>
 
-        </com.tencent.sgz.widget.BorderLinearLayout>
+        </com.tencent.tgiapp1.widget.BorderLinearLayout>
         <!--/notices-->
 
     </LinearLayout>

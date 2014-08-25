@@ -18,7 +18,7 @@ package greendroid.widget;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tencent.sgz.R;
+import com.tencent.tgiapp1.R;
 import android.content.Context;
 import android.graphics.Rect;
 import android.view.Gravity;

@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import com.tencent.sgz.R;
+import com.tencent.tgiapp1.R;
 
 public class FlowIndicator extends View {
     private static final boolean DEBUG = true;

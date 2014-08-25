@@ -1,6 +1,6 @@
 package in.xsin.pulltorefresh;
 
-import com.tencent.sgz.R;
+import com.tencent.tgiapp1.R;
 
 import android.content.Context;
 import android.text.TextUtils;

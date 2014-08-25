@@ -4,14 +4,13 @@ import android.content.Context;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.widget.ListView;
 import android.widget.ScrollView;
 
-import com.tencent.sgz.R;
+import com.tencent.tgiapp1.R;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

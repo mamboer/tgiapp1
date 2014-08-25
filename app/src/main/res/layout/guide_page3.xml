@@ -5,16 +5,4 @@
     android:background="@drawable/info_03"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_close_guide"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/space_10"
-        android:gravity="center"
-        android:background="@drawable/selector_btn_blue"
-        android:textColor="@color/white"
-        android:text="立即体验" />
-
 </RelativeLayout>

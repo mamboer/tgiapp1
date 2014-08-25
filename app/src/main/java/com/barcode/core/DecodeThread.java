@@ -29,7 +29,7 @@ import java.util.EnumSet;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
-import com.tencent.sgz.ui.Capture;
+import com.tencent.tgiapp1.ui.Capture;
 
 /**
  * This thread does all the heavy lifting of decoding the images.

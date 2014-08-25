@@ -8,6 +8,8 @@
     <string name="app_package">com.tencent.game.VXDGame</string>
     <string name="app_company">tencent</string>
     <string name="app_datasrv_label">天天炫斗数据服务</string>
+    <string name="app_logolink">http://ttxd.qq.com/act/minixd/index.html?ADTAG=tgideas.app.ttxd.android</string>
+    <string name="app_logotitle">mini炫斗</string>
 
     <integer name="home_slider_interval">6</integer>
     <integer name="splash_duration">3000</integer>
@@ -30,7 +32,7 @@
     <string name="main_menu_community">社区</string>
     <string name="main_menu_appbox">百宝箱</string>
     <string name="main_menu_icenter">个人中心</string>
-    <string name="community_url">http://bbs.g.qq.com/forum.php?mod=forumdisplay&amp;fid=12388</string>
+    <string name="community_url">http://bbs.agame.qq.com/forum.php?noheader=1&amp;mod=forumdisplay&amp;fid=12388&amp;opencode=</string>
     <string name="feedback_email_url">levinhuang@tencent.com</string>
     <string name="feedback_email_title">用户反馈-Android客户端</string>
     <string name="footbar_refresh">刷新</string>
@@ -72,8 +74,8 @@
     <string name="lbl_scan_qrcode">扫描二维码</string>
 
     <!--S 广播事件名-->
-    <string name="receiver_eventnotice">com.tencent.sgz.action.APP_EVENTNOTICE</string>
-    <string name="receiver_xgnotice">com.tencent.sgz.action.APP_XGNOTICE</string>
+    <string name="receiver_eventnotice">com.tencent.tgiapp1.action.APP_EVENTNOTICE</string>
+    <string name="receiver_xgnotice">com.tencent.tgiapp1.action.APP_XGNOTICE</string>
     <!--E 广播事件名-->
 
     <integer name="offsetTop_scan_qrcode">-30</integer>
@@ -83,8 +85,8 @@
 
     <string name="wx_appid">wx79c162a00f175fa1</string>
     <string name="wx_appsecret">1d17a332fed98f70bca8e1e6bb19c886</string>
-    <string name="openqq_appid">1101693014</string><!--http://op.open.qq.com/index.php?mod=appinfo&act=main&appid=1101693014#mobile|advancedAbilityAndroid -->
-    <string name="openqq_appkey">FSkWgCrBhHc2sKmn</string>
+    <string name="openqq_appid">101125247</string><!--http://op.open.qq.com/index.php?mod=appinfo&act=main&appid=101125247#mobile|advancedAbilityAndroid -->
+    <string name="openqq_appkey">c0b186d5c692ace60eff0d41d9300559</string>
     <string name="openqq_default_pic">http://ossweb-img.qq.com/images/chanpin/ttxd/public/a20140528ttxd/downloadqrttxd.jpg</string>
 
     <!--S 信鸽 http://xg.qq.com/xg/apps/ctr_app/get_app_info?app_id=2100034842-->

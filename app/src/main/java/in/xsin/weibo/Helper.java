@@ -24,9 +24,9 @@ import com.sina.weibo.sdk.auth.sso.SsoHandler;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.sina.weibo.sdk.exception.WeiboShareException;
 import com.sina.weibo.sdk.utils.Utility;
-import com.tencent.sgz.R;
-import com.tencent.sgz.common.BitmapManager;
-import com.tencent.sgz.common.UIHelper;
+import com.tencent.tgiapp1.R;
+import com.tencent.tgiapp1.common.BitmapManager;
+import com.tencent.tgiapp1.common.UIHelper;
 
 /**
  * Created by levin on 6/25/14.
