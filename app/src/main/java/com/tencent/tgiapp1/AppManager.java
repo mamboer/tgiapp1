@@ -19,7 +19,9 @@ public class AppManager {
     private static Stack<Activity> activityStack;
     private static AppManager instance;
 
-    private AppManager(){}
+    private AppManager(){
+        activityStack=new Stack<Activity>();
+    }
     /**
      * 单一实例
      */
@@ -33,16 +35,16 @@ public class AppManager {
      * 添加Activity到堆栈
      */
     public void addActivity(Activity activity){
-        if(activityStack==null){
-            activityStack=new Stack<Activity>();
-        }
         activityStack.add(activity);
+    }
+    public boolean isEmpty(){
+        return (null==activityStack||activityStack.size()==0);
     }
     /**
      * 获取当前Activity（堆栈中最后一个压入的）
      */
     public Activity currentActivity(){
-        if(null==activityStack) {
+        if(isEmpty()) {
             return null;
         }
         Activity activity=activityStack.lastElement();
@@ -52,6 +54,9 @@ public class AppManager {
      * 结束当前Activity（堆栈中最后一个压入的）
      */
     public void finishActivity(){
+        if(isEmpty()) {
+            return;
+        }
         Activity activity=activityStack.lastElement();
         finishActivity(activity);
     }

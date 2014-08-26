@@ -743,6 +743,25 @@ public class UIHelper {
         };
     }
 
+    public static WebViewClient getNewsDetailWebViewClient(){
+        return new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+                String key="tgideas.app.android.tgiapp1";
+
+                if(url.indexOf("?")<=0){
+                    url+="?ADTAG="+key;
+                }else if(url.indexOf("ADTAG=")<=0){
+                    url+="&ADTAG="+key;
+                }
+
+                view.loadUrl(url);
+                return true;
+            }
+        };
+    }
+
     /**
      * 获取TextWatcher对象
      *

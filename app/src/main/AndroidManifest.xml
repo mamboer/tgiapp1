@@ -31,10 +31,12 @@
             android:name="com.tencent.tgiapp1.AppStart"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
         <activity
             android:name="com.tencent.tgiapp1.ui.About"
@@ -55,13 +57,6 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SlideTop" />
-        <activity
-            android:name="com.tencent.tgiapp1.ui.LoginDialog"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.HalfTranslucent"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name="com.tencent.tgiapp1.ui.NewsDetail"
             android:configChanges="keyboardHidden|orientation|screenSize"

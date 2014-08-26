@@ -65,7 +65,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
     private ProgressBar mProgressbar;
     private ViewSwitcher mViewSwitcher;
 
-    private BadgeView bv_comment;
+    //private BadgeView bv_comment;
 
     private ImageView mCommentList;
     private ImageView mShare;
@@ -183,6 +183,8 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 
         mWebView = (ProgressWebView) findViewById(R.id.news_detail_webview);
 
+        mWebView.setWebViewClient(UIHelper.getNewsDetailWebViewClient());
+
         WebSettings webSettings = mWebView.getSettings();
 
         webSettings.setSupportZoom(true);
@@ -274,6 +276,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
                     }
 
                     // 显示评论数
+                    /*
                     if (newsDetail.getCommentCount() > 0) {
                         bv_comment.setText(newsDetail.getCommentCount() + "");
                         bv_comment.show();
@@ -281,6 +284,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
                         bv_comment.setText("");
                         bv_comment.hide();
                     }
+                    */
                     /*
                     String body = UIHelper.WEB_STYLE + newsDetail.getBody();
                     // 读取用户设置：是否加载文章图片--默认有wifi下始终加载图片

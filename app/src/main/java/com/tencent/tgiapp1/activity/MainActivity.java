@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
@@ -52,12 +53,16 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
 
     RelativeLayout mTabIndicator;
 
+    ImageView mBtnBack;
+
     LayoutInflater inflater;
 
     TextView mHeadTitle;
 
     ImageView mHeadLogo;
     ImageButton mHeadSearch;
+
+    TabManager.TabInfo mCurrentTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,10 +93,9 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
         appContext.initLoginInfo();
 
 
+        initHeadView();
 
         initTabs(savedInstanceState);
-
-        initHeadView();
 
         //信鸽初始化
         initXinge();
@@ -173,6 +177,7 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
      */
     private void initHeadView() {
 
+        mBtnBack = (ImageView) findViewById(R.id.main_head_btnback);
         mHeadLogo = (ImageView) findViewById(R.id.main_head_logo);
         mHeadSearch = (ImageButton) findViewById(R.id.main_head_search);
 
@@ -193,6 +198,14 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
                 news.setUrl(getString(R.string.app_logolink));
 
                 UIHelper.showNewsDetailByInstance(MainActivity.this,news,getString(R.string.app_logotitle),true,false);
+            }
+        });
+        mBtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MTAHelper.trackClick(v.getContext(),TAG,"main_head_btnback");
+                CommunityFragment fragment = (CommunityFragment)mCurrentTab.fragment;
+                fragment.goBack();
             }
         });
 
@@ -271,6 +284,20 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
         }
     }
 
+    public void showBtnBack(){
+        mBtnBack.setVisibility(View.VISIBLE);
+        mHeadLogo.setVisibility(View.GONE);
+    }
+
+    public void hideBtnBack(){
+        mHeadLogo.setVisibility(View.VISIBLE);
+        mBtnBack.setVisibility(View.GONE);
+    }
+
+    public void setTitle(String title){
+        mHeadTitle.setText(title);
+    }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -280,7 +307,9 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
     @Override
     public void onTabChanged(String tabId) {
         TabManager.TabInfo newTab = mTabManager.getTab(tabId);
-        mHeadTitle.setText(newTab.title);
+        setTitle(newTab.title);
+
+        mCurrentTab = newTab;
 
         MTAHelper.trackClick(this,TAG,tabId);
     }

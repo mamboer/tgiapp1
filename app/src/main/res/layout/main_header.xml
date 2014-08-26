@@ -19,11 +19,20 @@
             android:layout_height="fill_parent"
             android:scaleType="center"
             android:background="@color/transparent"
-            android:minWidth="35dp"
+            android:minWidth="40dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="4.0dip"
             android:src="@drawable/btn_playgame_bg" />
+
+        <ImageView
+            android:id="@+id/main_head_btnback"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|center"
+            android:src="@drawable/ico_arrow_left"
+            android:scaleType="center"
+            android:visibility="gone"
+            android:minWidth="40dp"/>
 
         <ProgressBar
             android:id="@+id/main_head_progress"
