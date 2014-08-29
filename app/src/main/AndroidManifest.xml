@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tencent.tgiapp1"
-    android:versionCode="31"
+    android:versionCode="32"
     android:versionName="1.0.1" >
 
     <uses-sdk
@@ -49,7 +49,7 @@
             android:configChanges="keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HalfTranslucent"
+            android:theme="@style/Theme.SlideTop"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name="com.tencent.tgiapp1.ui.ChannelList"
@@ -60,7 +60,13 @@
         <activity
             android:name="com.tencent.tgiapp1.ui.NewsDetail"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/Theme.SlideTop" />
+            android:theme="@style/Theme.SlideTop">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name="com.tencent.tgiapp1.ui.Setting"
             android:configChanges="keyboardHidden|orientation"

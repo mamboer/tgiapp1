@@ -578,6 +578,10 @@ public class AppDataProvider {
                         res.setPubDate(item.getEvtStartAt());
                         res.setTitle(item.getTitle());
                         res.setImg(item.getCover());
+                        res.setDesc(item.getDesc());
+                        res.setCateName(item.getCateName());
+                        res.setStartAt(item.getEvtStartAt());
+                        res.setEndAt(item.getEvtEndAt());
                         data.getResultlist().add(res);
                     }
 

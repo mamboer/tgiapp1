@@ -172,7 +172,15 @@ public class Search extends BaseActivity {
                 //UIHelper.showUrlRedirect(view.getContext(), res.getUrl());
 
                 News news = new News();
+
+                news.setTitle(res.getTitle());
+                news.setDesc(res.getDesc());
+                news.setFace(res.getImg());
+                news.setCateName(res.getCateName());
                 news.setUrl(AppDataProvider.assertUrl(appContext,res.getUrl()));
+                news.setStartAt(res.getStartAt());
+                news.setEndAt(res.getEndAt());
+                news.setPubDate(res.getPubDate());
 
                 UIHelper.showNewsRedirect(Search.this, news);
             }

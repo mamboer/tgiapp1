@@ -31,6 +31,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -183,19 +185,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 
         mWebView = (ProgressWebView) findViewById(R.id.news_detail_webview);
 
-        mWebView.setWebViewClient(UIHelper.getNewsDetailWebViewClient());
-
-        WebSettings webSettings = mWebView.getSettings();
-
-        webSettings.setSupportZoom(true);
-        webSettings.setBuiltInZoomControls(true);
-        //webSettings.setDefaultFontSize(15);
-        webSettings.setJavaScriptEnabled(true);
-        //webSettings.setAllowContentAccess(true);
-        webSettings.setAllowFileAccess(true);
-        webSettings.setLoadsImagesAutomatically(true);
-
-        UIHelper.addWebImageShow(this, mWebView);
+        this.initWebView();
 
         //mHome.setOnClickListener(homeClickListener);
         mFavorite.setOnClickListener(favoriteClickListener);
@@ -228,6 +218,53 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
         this.assertReminder();
 
     }
+
+    private WebViewClient getNewsDetailWebViewClient(){
+        return new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+                String key="tgideas.app.android.tgiapp1";
+
+                if(url.indexOf("?")<=0){
+                    url+="?ADTAG="+key;
+                }else if(url.indexOf("ADTAG=")<=0){
+                    url+="&ADTAG="+key;
+                }
+
+                view.loadUrl(url);
+                /*
+                Give the host application a chance to take over the control when a new url is about to be loaded in the current WebView.
+                If WebViewClient is not provided, by default WebView will ask Activity Manager to choose the proper handler for the url.
+                If WebViewClient is provided, return true means the host application handles the url, while return false means the current WebView handles the url...
+                http://developer.android.com/reference/android/webkit/WebViewClient.html#shouldOverrideUrlLoading%28android.webkit.WebView,%20java.lang.String%29
+                 */
+                return false;
+            }
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                // do your stuff here
+                mHeadTitle.setText(view.getTitle());
+            }
+        };
+    }
+
+    private void initWebView(){
+        mWebView.setWebViewClient(getNewsDetailWebViewClient());
+
+        WebSettings webSettings = mWebView.getSettings();
+
+        webSettings.setSupportZoom(true);
+        webSettings.setBuiltInZoomControls(true);
+        //webSettings.setDefaultFontSize(15);
+        webSettings.setJavaScriptEnabled(true);
+        //webSettings.setAllowContentAccess(true);
+        webSettings.setAllowFileAccess(true);
+        webSettings.setLoadsImagesAutomatically(true);
+
+        UIHelper.addWebImageShow(this, mWebView);
+    }
+
     //业务逻辑：如果该新闻有结束时间，并且结束时间大于当前时间，则允许添加到提醒中去
     private boolean assertReminder(){
         if(null==newsDetail||StringUtils.isEmpty(newsDetail.getMd5())) return false;
@@ -343,7 +380,6 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
                     */
 
                     mWebView.loadUrl(newsDetail.getUrl());
-                    mWebView.setWebViewClient(UIHelper.getWebViewClient());
 
                 } else if (msg.what == 0) {
                     headButtonSwitch(DATA_LOAD_FAIL);

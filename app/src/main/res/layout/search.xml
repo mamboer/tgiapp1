@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  	android:layout_width="fill_parent"
-  	android:layout_height="fill_parent"
-  	android:orientation="vertical"
-  	android:background="@color/white">
-  	<FrameLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <FrameLayout
         style="@style/main_head">
         <RelativeLayout
             style="@style/main_head_pattern">
@@ -66,16 +66,16 @@
 
     </FrameLayout>
 
-	<LinearLayout
-	    android:id="@+id/search_ll" 
-	   	android:orientation="vertical" 
-	   	android:layout_width="fill_parent" 
-	   	android:layout_height="fill_parent">
-		
-		<ListView
-		  	android:id="@+id/search_listview"
-		    style="@style/widget_listview"/>
-		
-	</LinearLayout>
-   	
+    <LinearLayout
+        android:id="@+id/search_ll"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ListView
+            android:id="@+id/search_listview"
+            style="@style/widget_listview"/>
+
+    </LinearLayout>
+
 </LinearLayout>

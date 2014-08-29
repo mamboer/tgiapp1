@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/news_detail_header"
-   	style="@style/main_head">
+    style="@style/main_head">
     <RelativeLayout
         style="@style/main_head_pattern">
         <TextView
@@ -21,19 +21,20 @@
             android:minWidth="40dp"/>
     </RelativeLayout>
 
-   	<ProgressBar 
-		android:id="@+id/news_detail_head_progress"
+    <ProgressBar
+        android:id="@+id/news_detail_head_progress"
         style="@style/GenericProgressIndicator"
-		android:layout_gravity="right|center"
-		android:layout_marginRight="10dip"/>
+        android:layout_gravity="right|center"
+        android:layout_marginRight="10dip"/>
 
-   	<ImageView 
-   		android:id="@+id/news_detail_reminder"
-	   	android:layout_width="wrap_content" 
-	   	android:layout_height="wrap_content" 
-	   	android:layout_gravity="right|center"
-	   	android:clickable="true"
-        android:layout_marginRight="10dip"
-	   	android:background="@drawable/fbar_clock_bg1"/>
+    <ImageView
+        android:id="@+id/news_detail_reminder"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_gravity="right|center"
+        android:clickable="true"
+        android:minWidth="40dp"
+        android:scaleType="center"
+        android:src="@drawable/fbar_clock_bg1"/>
 
 </FrameLayout>

@@ -16,7 +16,7 @@ import com.sina.weibo.sdk.auth.Oauth2AccessToken;
  * @since 2013-10-07
  */
 public class AccessTokenKeeper {
-    private static final String PREFERENCES_NAME = "com_weibo_sdk_android_sgz";
+    private static final String PREFERENCES_NAME = "com_weibo_sdk_android_tgiapp1";
 
     private static final String KEY_UID           = "uid";
     private static final String KEY_ACCESS_TOKEN  = "access_token";

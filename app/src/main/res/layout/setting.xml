@@ -45,6 +45,7 @@
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
+                    android:visibility="gone"
                     android:clickable="true"
                     android:focusable="true"
                     android:onClick="onClickImgPath"

@@ -10,12 +10,15 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.sina.weibo.sdk.api.TextObject;
 import com.sina.weibo.sdk.api.WebpageObject;
 import com.sina.weibo.sdk.api.WeiboMessage;
+import com.sina.weibo.sdk.api.WeiboMultiMessage;
 import com.sina.weibo.sdk.api.share.IWeiboDownloadListener;
 import com.sina.weibo.sdk.api.share.IWeiboHandler;
 import com.sina.weibo.sdk.api.share.IWeiboShareAPI;
 import com.sina.weibo.sdk.api.share.SendMessageToWeiboRequest;
+import com.sina.weibo.sdk.api.share.SendMultiMessageToWeiboRequest;
 import com.sina.weibo.sdk.api.share.WeiboShareSDK;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.WeiboAuth;
@@ -26,6 +29,7 @@ import com.sina.weibo.sdk.exception.WeiboShareException;
 import com.sina.weibo.sdk.utils.Utility;
 import com.tencent.tgiapp1.R;
 import com.tencent.tgiapp1.common.BitmapManager;
+import com.tencent.tgiapp1.common.ImageUtils;
 import com.tencent.tgiapp1.common.UIHelper;
 
 /**
@@ -84,6 +88,47 @@ public class Helper {
 
     }
 
+    public static void shareTextMessage(String title, String url) {
+
+
+        try {
+            createWeiboAPI(context);
+            // 如果未安装微博客户端，设置下载微博对应的回调
+            if (!mWeiboShareAPI.isWeiboAppInstalled()) {
+                mWeiboShareAPI.registerWeiboDownloadListener(new IWeiboDownloadListener() {
+                    @Override
+                    public void onCancel() {
+                        Toast.makeText(context,
+                                "您已取消下载新浪微博客户端",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            // 检查微博客户端环境是否正常，如果未安装微博，弹出对话框询问用户下载微博客户端
+            if (mWeiboShareAPI.checkEnvironment(true)) {
+
+                WeiboMessage weiboMessage = new WeiboMessage();//初始化微博的分享消息
+                TextObject textObject = new TextObject();
+                textObject.text = "#"+context.getString(R.string.app_name)+"# "+title+" "+url;
+
+                weiboMessage.mediaObject = textObject;
+
+                SendMessageToWeiboRequest request = new SendMessageToWeiboRequest();
+                request.transaction = String.valueOf(System.currentTimeMillis());
+                request.message = weiboMessage;
+                mWeiboShareAPI.sendRequest(request); //发送请求消息到微博，唤起微博分享界面
+                return;
+            }
+
+            throw new WeiboShareException("微博客户端环境异常");
+
+        } catch (WeiboShareException e) {
+            e.printStackTrace();
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
+    }
+
     /**
      * 分享网页数据
      * @param title
@@ -91,7 +136,7 @@ public class Helper {
      * @param picUrl
      * @param handler
      */
-    public static void shareWebPage(String title,String url, final String picUrl, final Handler handler){
+    public static void shareWebPage(final String title,final String url, final String picUrl, final Handler handler){
 
         try {
             createWeiboAPI(context);
@@ -139,6 +184,18 @@ public class Helper {
                         }
                         // 设置 Bitmap 类型的图片到视频对象里
                         Bitmap bitmap = (Bitmap)msg.obj;
+
+
+                        // 图片不能大于32KB 32768B
+                        // 缩略图的二进制数据
+                        byte[] bytes = ImageUtils.bmpToByteArray(bitmap, true);
+                        // 检查图片是否大于32kb
+                        if (bytes.length>32*1024){
+                            //UIHelper.ToastMessage(context,"分享失败：分享的图片尺寸不能超过32KB");
+
+                            shareTextMessage(title,url);
+                            return;
+                        }
                         mediaObject.setThumbImage(bitmap);
 
                         //发送微博

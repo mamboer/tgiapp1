@@ -25,9 +25,9 @@ import android.os.Message;
  * @created 2014-02-13
  */
 public class WeixinHelper {
-	// APP_ID 替换为你的应用从官方网站申请到的合法appId
-	private static String APP_ID = null;
-	private static final int MIN_SUPPORTED_VERSION = 0x21020001;// 最小支持的版本
+    // APP_ID 替换为你的应用从官方网站申请到的合法appId
+    private static String APP_ID = null;
+    private static final int MIN_SUPPORTED_VERSION = 0x21020001;// 最小支持的版本
 
     private static BitmapManager bitmapManager;
 
@@ -69,15 +69,15 @@ public class WeixinHelper {
         api.registerApp(getAppId(context));
     }
 
-	/**
-	 * 分享到微信朋友圈
-	 * @param context
-	 * @param title
-	 * @param url
-	 */
-	public static void shareToWXTimeline(Activity context,String title,String url,String picUrl){
-		shareToWX(context,title,url,picUrl,SendMessageToWX.Req.WXSceneTimeline);
-	}
+    /**
+     * 分享到微信朋友圈
+     * @param context
+     * @param title
+     * @param url
+     */
+    public static void shareToWXTimeline(Activity context,String title,String url,String picUrl){
+        shareToWX(context,title,url,picUrl,SendMessageToWX.Req.WXSceneTimeline);
+    }
 
     private static void shareToWX(final Activity context,String title,String url,String picUrl,int type){
         mContext = context;
@@ -158,19 +158,19 @@ public class WeixinHelper {
         shareToWX(context,title,url,picUrl,SendMessageToWX.Req.WXSceneSession);
     }
 
-	// 处理缩略图
-	public static byte[] bmpToByteArray(final Bitmap bmp, final boolean needRecycle) {
-		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		bmp.compress(CompressFormat.PNG, 100, output);
-		if (needRecycle) {
-			bmp.recycle();
-		}
-		byte[] result = output.toByteArray();
-		try {
-			output.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
+    // 处理缩略图
+    public static byte[] bmpToByteArray(final Bitmap bmp, final boolean needRecycle) {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        bmp.compress(CompressFormat.PNG, 100, output);
+        if (needRecycle) {
+            bmp.recycle();
+        }
+        byte[] result = output.toByteArray();
+        try {
+            output.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }
