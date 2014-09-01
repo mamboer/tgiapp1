@@ -7,5 +7,10 @@ package com.tencent.tgiapp1.activity;
 public interface IActivity {
 
     public abstract void init();
+
+    /**
+     * 更新UI
+     * @param param
+     */
     public abstract void refresh(Object ...param);
 }
