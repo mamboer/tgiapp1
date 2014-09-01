@@ -430,7 +430,7 @@ public class OpenQQHelper {
 
     public static Weibo getWeibo() {
         if(null==mWeibo){
-            mWeibo = new Weibo(context, mQQAuth.getQQToken());
+            mWeibo = new Weibo(context,mQQAuth, mQQAuth.getQQToken());
         }
         return mWeibo;
     }
@@ -554,7 +554,7 @@ public class OpenQQHelper {
                 }
                 e.printStackTrace();
                 OpenQQUtil.toastMessage(mActivity,
-                        "onComplete() JSONException: " + response.toString());
+                        "分享失败: " + response.toString());
             }
             OpenQQUtil.dismissDialog();
 

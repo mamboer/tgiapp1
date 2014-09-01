@@ -83,8 +83,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <string name="wx_appid">wx79c162a00f175fa1</string>
-    <string name="wx_appsecret">1d17a332fed98f70bca8e1e6bb19c886</string>
+    <string name="wx_appid">wx3c396d34900c67e8</string>
+    <string name="wx_appsecret">5022539a75e7e3ec72283dda87a5a3be</string>
     <string name="openqq_appid">101125247</string><!--http://op.open.qq.com/index.php?mod=appinfo&act=main&appid=101125247#mobile|advancedAbilityAndroid -->
     <string name="openqq_appkey">c0b186d5c692ace60eff0d41d9300559</string>
     <string name="openqq_default_pic">http://ossweb-img.qq.com/images/chanpin/ttxd/public/a20140528ttxd/downloadqrttxd.jpg</string>
