@@ -2,6 +2,7 @@ package com.tencent.tgiapp1.bean;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
@@ -21,12 +22,19 @@ public class Task {
 
     private final static String TAG = Task.class.getName();
 
+    private final static Handler taskHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            super.handleMessage(msg);
+            done(msg);
+        }
+    };
+
     /**
      * 执行指定的任务
      * @param params
-     * @param handler
      */
-    public static void run(Message params,Handler handler){
+    public static void run(Message params){
 
         int taskId = params.what;
         int serviceId = params.arg1;
@@ -82,14 +90,18 @@ public class Task {
             params.obj = e;
             e.printStackTrace();
         }
-        handler.sendMessage(params);
+
+        Message msg = new Message();
+        msg.copyFrom(params);
+
+        taskHandler.sendMessage(msg);
     }
 
     /**
      * 执行指定任务后的回调处理函数
      * @param params
      */
-    public static void done( Message params){
+    private static void done( Message params){
         int taskId = params.what;
         Bundle data = params.getData();
         String activityName = data.getString("activity");

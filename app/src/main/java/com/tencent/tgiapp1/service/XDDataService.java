@@ -74,7 +74,7 @@ public class XDDataService extends Service {
         msg.arg1 = startId;
         msg.setData(intent.getExtras());
 
-        Task.run(msg,mServiceHandler);
+        mServiceHandler.sendMessage(msg);
 
         return START_STICKY;
     }
@@ -110,10 +110,7 @@ public class XDDataService extends Service {
         @Override
         public void handleMessage(Message msg) {
 
-            super.handleMessage(msg);
-
-            Task.done(msg);
-
+            Task.run(msg);
             // Stop the service using the startId, so that we don't stop
             // the service in the middle of handling another job
             stopSelf(msg.arg1);

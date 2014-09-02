@@ -6,6 +6,14 @@
         <option name="distributionType" value="WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="$PROJECT_DIR$/../../../../IDE/gradle-1.12" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/cordova" />
+            <option value="$PROJECT_DIR$/swipelistview" />
+          </set>
+        </option>
       </GradleProjectSettings>
     </option>
   </component>
