@@ -2,6 +2,7 @@ package com.tencent.tgiapp1.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.widget.TextView;
 
 import com.tencent.tgiapp1.R;
@@ -46,7 +47,7 @@ public class XGNoticeDetailActivity extends BaseActivity  {
     }
 
     @Override
-    public void refresh(Object ...param){
+    public void refresh(int flag,Message data){
 
     }
 }

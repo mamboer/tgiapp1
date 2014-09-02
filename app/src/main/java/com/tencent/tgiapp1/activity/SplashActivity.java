@@ -51,7 +51,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     @Override
-    public void refresh(Object ...param){
+    public void refresh(int flag,Message data){
 
     }
 

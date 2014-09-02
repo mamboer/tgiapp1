@@ -4,199 +4,51 @@ import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.IBinder;
-import android.os.Message;
+import android.os.*;
+import android.os.Process;
 import android.util.Log;
 
 import com.tencent.tgiapp1.AppContext;
 import com.tencent.tgiapp1.AppDataProvider;
 import com.tencent.tgiapp1.AppManager;
-import com.tencent.tgiapp1.activity.IActivity;
 import com.tencent.tgiapp1.bean.Task;
 import com.tencent.tgiapp1.entity.AppData;
 
-import java.util.ArrayList;
 
 /**
  * 实现业务调度的核心逻辑服务
  * 关于service请看文章：http://www.vogella.com/tutorials/AndroidServices/article.html
  */
-public class XDDataService extends Service implements Runnable {
+public class XDDataService extends Service {
     private static String TAG = XDDataService.class.getName();
 
-    public XDDataService() {
-    }
-    // 所以任务
-    public static ArrayList<Task> allTasks = new ArrayList<Task>();
-    // 循环控制变量
-    private boolean isrun = true;
+    private Looper mServiceLooper;
+    private ServiceHandler mServiceHandler;
 
-    /**
-     * 在集合里，通过name获取Activity对象
-     *
-     * @param name
-     * @return Activity
-     */
-    public static Activity getActivityByName(String name) {
-        return AppManager.getActivityByName(name);
-    }
-
-    /**
-     * 新建任务
-     *
-     * @param task
-     */
-    public static void addTask(Task task) {
-        // 添加一个任务
-        allTasks.add(task);
-    }
-
-    /**
-     * 启动线程
-     */
-    @Override
-    public void run() {
-        while (isrun) {
-            Task lastTask = null;
-            if (allTasks.size() > 0) {
-                synchronized (allTasks) {
-                    // 获取任务
-                    lastTask = allTasks.get(0);
-                    // 执行任务
-
-                    doTask(lastTask);
-                }
-                return;
-            }
-            // 如果没有任务，则等待2000ms，继续获取任务
-            try {
-                Thread.sleep(2000);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-    /**
-     * 很据任务ID，执行该任务
-     *
-     * @param task
-     */
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    private void doTask(Task task) {
-
-        Message msg = new Message();
-        Log.e(TAG, "doTask-->" + "任务编号： " + task.getTaskId());
-        msg.what = task.getTaskId();
-
-        try {
-            switch (task.getTaskId()) {
-
-                case Task.SN.INIT:
-
-                    //数据初始化
-                    AppData data = AppDataProvider.getAppDataSync(AppContext.Instance, false);
-                    msg.obj = data;
-
-                    break;
-
-                case Task.SN.GET_ARTICLE:
-
-                    //TODO:获取新闻数据
-
-                    break;
-                case Task.SN.GET_NOTICE:
-
-                    //TODO:获取公告数据
-
-                    break;
-
-                case Task.SN.GET_SLIDE:
-
-                    //TODO:获取图片轮播
-
-                    break;
-
-                case Task.SN.GET_MANUAL:
-
-                    //TODO:获取攻略
-
-                    break;
-                case Task.SN.GET_EXT:
-                    //TODO:获取高玩心得
-                    break;
-                case Task.SN.GET_TESTING:
-                    //TODO:获取评测
-                    break;
-            }
-
-        } catch (Exception e) {
-            msg.arg1 = -1;
-            msg.obj = e;
-            e.printStackTrace();
-        }
-        handler.sendMessage(msg);
-        allTasks.remove(task);// 执行完任务，则移出该任务
-    }
-
-    // 当前服务的子线程Handler,负责处理更新UI操作
-    private Handler handler = new Handler() {
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            Log.i(TAG, "UI 更新编号：" + msg.what);
-            switch (msg.what) {
-
-                case Task.SN.INIT:
-
-                    //刷新UI
-                    IActivity ia = (IActivity) getActivityByName("AppStart");
-                    ia.refresh(msg.arg1,msg.obj);
-
-                    break;
-
-                case Task.SN.GET_ARTICLE:
-
-                    //TODO:获取新闻数据
-
-                    break;
-                case Task.SN.GET_NOTICE:
-
-                    //TODO:获取公告数据
-
-                    break;
-
-                case Task.SN.GET_SLIDE:
-
-                    //TODO:获取图片轮播
-
-                    break;
-
-                case Task.SN.GET_MANUAL:
-
-                    //TODO:获取攻略
-
-                    break;
-                case Task.SN.GET_EXT:
-                    //TODO:获取高玩心得
-                    break;
-                case Task.SN.GET_TESTING:
-                    //TODO:获取评测
-                    break;
-            }
-        }
-
-    };
-
+    public XDDataService() {}
     @Override
     public void onCreate() {
         super.onCreate();
-        isrun = true;
-        new Thread(this).start();
+        /*
+        http://developer.android.com/guide/components/services.html
+        A service runs in the main thread of its hosting process—the service does not create its own thread and does not run in a separate process (unless you specify otherwise).
+        This means that, if your service is going to do any CPU intensive work or blocking operations (such as MP3 playback or networking),
+        you should create a new thread within the service to do that work.
+        By using a separate thread, you will reduce the risk of Application Not Responding (ANR) errors
+        and the application's main thread can remain dedicated to user interaction with your activities.
+         */
+
+        // Start up the thread running the service.  Note that we create a
+        // separate thread because the service normally runs in the process's
+        // main thread, which we don't want to block.  We also make it
+        // background priority so CPU-intensive work will not disrupt our UI.
+        HandlerThread thread = new HandlerThread(TAG, Process.THREAD_PRIORITY_BACKGROUND);
+        thread.start();
+
+        // Get the HandlerThread's Looper and use it for our Handler
+        mServiceLooper = thread.getLooper();
+        mServiceHandler = new ServiceHandler(mServiceLooper);
+
     }
 
     @Override
@@ -208,13 +60,23 @@ public class XDDataService extends Service implements Runnable {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        isrun = false;
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        //TODO do something useful
-        return Service.START_NOT_STICKY;
+        // We want this service to continue running until it is explicitly
+        // stopped, so return sticky.
+
+        // For each start request, send a message to start a job and deliver the
+        // start ID so we know which request we're stopping when we finish the job
+        Message msg = mServiceHandler.obtainMessage();
+        msg.what = intent.getIntExtra("taskId",-1);
+        msg.arg1 = startId;
+        msg.setData(intent.getExtras());
+
+        Task.run(msg,mServiceHandler);
+
+        return START_STICKY;
     }
 
     /**
@@ -227,9 +89,10 @@ public class XDDataService extends Service implements Runnable {
     }
 
     /**
-     * 启动服务。在AppStart中调用
+     * 启动一个服务。同一activity可以多次调用该方法
+     * @param data 传给服务的数据
      */
-    public static void start(Context context,Bundle data){
+    public static void execute(Context context,Bundle data){
         Intent it = new Intent(context,XDDataService.class);
         // potentially add data to the intent
         if (null!=data){
@@ -237,5 +100,26 @@ public class XDDataService extends Service implements Runnable {
         }
         context.startService(it);
     }
+
+    // Handler that receives messages from the thread
+    // 当前服务的子线程Handler,负责处理更新UI操作
+    private final class ServiceHandler extends Handler {
+        public ServiceHandler(Looper looper) {
+            super(looper);
+        }
+        @Override
+        public void handleMessage(Message msg) {
+
+            super.handleMessage(msg);
+
+            Task.done(msg);
+
+            // Stop the service using the startId, so that we don't stop
+            // the service in the middle of handling another job
+            stopSelf(msg.arg1);
+        }
+    }
+
+
 }
 

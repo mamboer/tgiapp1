@@ -401,7 +401,11 @@ public class OpenQQHelper {
             }
         };
 
-        login(context,onLogined);
+        if(isLoginedAndHasOpenId(context)){
+            onLogined.sendEmptyMessage(0);
+        }else{
+            login(context,onLogined);
+        }
     }
 
     /**
@@ -507,10 +511,11 @@ public class OpenQQHelper {
 
         @Override
         public void onComplete(Object response) {
+            OpenQQUtil.dismissDialog();
             try {
                 JSONObject json =(JSONObject)response;
                 int ret = json.getInt("ret");
-                if (json.has("data")) {
+                if (json.has("data")&& !json.isNull("data")) {
                     JSONObject data = json.getJSONObject("data");
                     if (data.has("id")) {
                         mLastAddTweetId = data.getString("id");
@@ -526,15 +531,8 @@ public class OpenQQHelper {
                     OpenQQUtil.toastMessage(mActivity, "分享失败: " + msg.obj);
                     return;
                 }
-                if (ret == 0) {
-                    if(null!=mHandler){
-                        msg = mHandler.obtainMessage(0, mScope);
-                        msg.what = 0;
-                        msg.obj = response;
-                        mHandler.sendMessage(msg);
-                    }
-                    OpenQQUtil.toastMessage(mActivity, "分享成功！");
-                } else if (ret == 100030) {
+                //重新登录
+                if (ret == 100030) {
                     if (mNeedReAuth) {
                         Runnable r = new Runnable() {
                             public void run() {
@@ -544,6 +542,24 @@ public class OpenQQHelper {
                         };
                         mActivity.runOnUiThread(r);
                     }
+                    return;
+                }
+
+                //未开通微博
+                if (ret==6){
+                    OpenQQUtil.toastMessage(mActivity, "分享失败！当前QQ用户未开通腾讯微博。");
+                    return;
+                }
+
+                //分享成功
+                if (ret == 0) {
+                    if(null!=mHandler){
+                        msg = mHandler.obtainMessage(0, mScope);
+                        msg.what = 0;
+                        msg.obj = response;
+                        mHandler.sendMessage(msg);
+                    }
+                    OpenQQUtil.toastMessage(mActivity, "分享成功！");
                 }
             } catch (JSONException e) {
                 if(null!=mHandler){
@@ -556,7 +572,7 @@ public class OpenQQHelper {
                 OpenQQUtil.toastMessage(mActivity,
                         "分享失败: " + response.toString());
             }
-            OpenQQUtil.dismissDialog();
+            //OpenQQUtil.dismissDialog();
 
         }
     }

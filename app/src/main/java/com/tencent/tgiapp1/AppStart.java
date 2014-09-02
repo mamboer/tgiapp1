@@ -14,6 +14,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -44,15 +45,16 @@ public class AppStart extends Activity  implements IActivity {
     }
 
     @Override
-    public void refresh(Object ...param){
-        int errCode = ((Integer)param[0]).intValue();
+    public void refresh(int flag,Message params){
+        int errCode = params.arg2;
+        Bundle data = params.getData();
         if(errCode<0){
             mProgress.setVisibility(View.GONE);
-            mLoadingTip.setText(param[1].toString());
+            mLoadingTip.setText(data.getString("errMsg"));
             return;
         }
 
-        ac.setData((AppData)param[1]);
+        ac.setData((AppData)params.obj);
 
         Log.e(TAG,"AppData loaded, "+(isDelayEnded?"startup animation ended,let's do redirect.":"startup animation running..."));
 
@@ -70,9 +72,6 @@ public class AppStart extends Activity  implements IActivity {
         AppManager.getAppManager().addActivity(this);
 
         ac = AppContext.Instance;
-
-        //启动我们的数据服务
-        XDDataService.start(this, null);
 
         // 初始化登录
         OpenQQHelper.attachTo(this);
@@ -141,7 +140,11 @@ public class AppStart extends Activity  implements IActivity {
         AppDataProvider.getAppData(ac,onAppDataGot , false);
         */
 
-        XDDataService.addTask(new Task(Task.SN.INIT,null,this));
+        //启动数据服务
+        Bundle data = new Bundle();
+        data.putInt("taskId",Task.SN.INIT);
+        data.putString("activity","AppStart");
+        XDDataService.execute(this,data);
 
     }
     

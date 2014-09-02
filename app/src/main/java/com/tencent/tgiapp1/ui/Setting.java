@@ -13,6 +13,7 @@ import com.tencent.tgiapp1.common.UpdateManager;
 import com.tencent.tgiapp1.widget.PathChooseDialog.ChooseCompleteListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -45,7 +46,7 @@ public class Setting extends BaseActivity {
     }
 
     @Override
-    public void refresh(Object ...param){
+    public void refresh(int flag,Message data){
 
     }
 

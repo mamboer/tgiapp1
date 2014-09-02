@@ -10,6 +10,7 @@ import com.tencent.tgiapp1.common.UIHelper;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -48,7 +49,7 @@ public class ScreenShotShare extends BaseActivity {
     }
 
     @Override
-    public void refresh(Object ...param){
+    public void refresh(int flag,Message data){
 
     }
 

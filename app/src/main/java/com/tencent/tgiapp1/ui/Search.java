@@ -69,7 +69,7 @@ public class Search extends BaseActivity {
     }
 
     @Override
-    public void refresh(Object ...param){
+    public void refresh(int flag,Message data){
 
     }
 

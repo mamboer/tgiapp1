@@ -7,6 +7,7 @@ import com.tencent.stat.StatService;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
 
@@ -120,6 +121,6 @@ public abstract class BaseActivity extends RoboActivity implements IActivity {
     }
 
     public abstract void init();
-    public abstract void refresh(Object ...param);
+    public abstract void refresh(int flag,Message data);
 
 }

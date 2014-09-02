@@ -1,6 +1,15 @@
 package com.tencent.tgiapp1.bean;
 
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+
+import com.tencent.tgiapp1.AppContext;
+import com.tencent.tgiapp1.AppDataProvider;
+import com.tencent.tgiapp1.AppManager;
 import com.tencent.tgiapp1.activity.IActivity;
+import com.tencent.tgiapp1.entity.AppData;
 
 import java.util.Map;
 
@@ -9,43 +18,88 @@ import java.util.Map;
  *
  */
 public class Task {
-    private int taskId;// 任务编号
-    @SuppressWarnings("rawtypes")
-    private Map taskParam;// 任务参数
-    //任务上下文
-    private IActivity context;
 
-    @SuppressWarnings("rawtypes")
-    public Task(int taskId, Map taskParam,IActivity ct) {
-        this.taskId = taskId;
-        this.taskParam = taskParam;
-        this.context = ct;
+    private final static String TAG = Task.class.getName();
+
+    /**
+     * 执行指定的任务
+     * @param params
+     * @param handler
+     */
+    public static void run(Message params,Handler handler){
+
+        int taskId = params.what;
+        int serviceId = params.arg1;
+
+        //errCode
+        params.arg2 = 0;
+
+        Log.e(TAG, "Task.run --> " + "任务编号： " + taskId);
+
+        try {
+            switch (taskId) {
+
+                case Task.SN.INIT:
+
+                    //数据初始化
+                    AppData data = AppDataProvider.getAppDataSync(AppContext.Instance, false);
+                    params.obj = data;
+
+                    break;
+
+                case Task.SN.GET_ARTICLE:
+
+                    //TODO:获取新闻数据
+
+                    break;
+                case Task.SN.GET_NOTICE:
+
+                    //TODO:获取公告数据
+
+                    break;
+
+                case Task.SN.GET_SLIDE:
+
+                    //TODO:获取图片轮播
+
+                    break;
+
+                case Task.SN.GET_MANUAL:
+
+                    //TODO:获取攻略
+
+                    break;
+                case Task.SN.GET_EXT:
+                    //TODO:获取高玩心得
+                    break;
+                case Task.SN.GET_TESTING:
+                    //TODO:获取评测
+                    break;
+            }
+
+        } catch (Exception e) {
+            params.arg2 = -1;
+            params.obj = e;
+            e.printStackTrace();
+        }
+        handler.sendMessage(params);
     }
 
-    public int getTaskId() {
-        return taskId;
-    }
+    /**
+     * 执行指定任务后的回调处理函数
+     * @param params
+     */
+    public static void done( Message params){
+        int taskId = params.what;
+        Bundle data = params.getData();
+        String activityName = data.getString("activity");
 
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
-    }
+        Log.e(TAG, "Task.done --> " + "任务编号： " + taskId);
 
-    @SuppressWarnings("rawtypes")
-    public Map getTaskParam() {
-        return taskParam;
-    }
+        //刷新UI
+        IActivity ia = (IActivity) AppManager.getActivityByName(activityName);
+        ia.refresh(taskId,params);
 
-    @SuppressWarnings("rawtypes")
-    public void setTaskParam(Map taskParam) {
-        this.taskParam = taskParam;
-    }
-
-    public IActivity getContext() {
-        return context;
-    }
-
-    public void setContext(IActivity context) {
-        this.context = context;
     }
 
     /**

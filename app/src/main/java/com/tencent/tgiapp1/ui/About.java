@@ -6,6 +6,7 @@ import com.tencent.tgiapp1.activity.BaseActivity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
+import android.os.Message;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -32,7 +33,7 @@ public class About extends BaseActivity {
     }
 
     @Override
-    public void refresh(Object ...param){
+    public void refresh(int flag,Message data){
 
     }
 
