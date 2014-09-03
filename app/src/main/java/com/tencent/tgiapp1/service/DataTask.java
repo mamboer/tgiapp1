@@ -81,7 +81,8 @@ public class DataTask {
 
                 case DataTask.SN.GET_MANUAL:
 
-                    //TODO:获取攻略
+                    ArticleList data4 = AppDataProvider.getArticleDataSync(AppContext.Instance,data.getString("url"), data.getBoolean("isRefresh"));
+                    params.obj = data4;
 
                     break;
                 case DataTask.SN.GET_EXT:

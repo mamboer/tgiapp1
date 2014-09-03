@@ -80,13 +80,11 @@ public class HomeFragment extends FragmentBase {
     private FlowIndicator vpDots1;
     private int mSliderCount;
 
-    private AppContext ct;
-
     private SimpleDateFormat mDateFormat = new SimpleDateFormat("MM-dd HH:mm");
 
     @Override
     public void init(){
-        ct = this.getAppContext();
+
     }
 
     @Override
@@ -220,9 +218,9 @@ public class HomeFragment extends FragmentBase {
         mPullListView.onPullDownRefreshComplete();
         //mPullListView.onPullUpRefreshComplete();
 
-        ct.setData((AppData)msg.obj);
+        appContext.setData((AppData)msg.obj);
 
-        AppData ad1 = ct.getData();
+        AppData ad1 = appContext.getData();
         mListViewData = ad1.getArticles();
 
         //计算新数据并做出提示
@@ -249,7 +247,7 @@ public class HomeFragment extends FragmentBase {
                     .makeText(
                             getActivity(),
                             getString(R.string.new_data_toast_message,
-                                    newdata), ct.isAppSound()
+                                    newdata), appContext.isAppSound()
                     )
                     .show();
             //更新数据集
@@ -279,7 +277,7 @@ public class HomeFragment extends FragmentBase {
         //mPullListView.onPullDownRefreshComplete();
         mPullListView.onPullUpRefreshComplete();
 
-        AppData ad1 = ct.getData();
+        AppData ad1 = appContext.getData();
 
         mListViewData = (ArticleList)msg.obj;
         mListViewHasMoreData = mListViewData.getNextPageId()!="";
@@ -287,23 +285,6 @@ public class HomeFragment extends FragmentBase {
         updateData(ad1,mListViewData);
 
     }
-
-    final Handler onImgDownloadedHandler = new Handler(){
-        @Override
-        public void handleMessage(Message msg){
-            int errCode = msg.arg2;
-            Bundle data = msg.getData();
-            String imgCacheId = data.getString("uuid");
-            if(errCode!=0){
-                UIHelper.ToastMessage(HomeFragment.this.getContext(),"图片下载失败："+msg.obj);
-                return;
-            }
-
-            Bitmap bmp = (Bitmap) msg.obj;
-            ImageUtils.updateImgViewCache(imgCacheId,bmp,true);
-
-        }
-    };
 
     private void initListView(View parent,LayoutInflater inflater,View header,AppData ad,final AppContext ct){
 

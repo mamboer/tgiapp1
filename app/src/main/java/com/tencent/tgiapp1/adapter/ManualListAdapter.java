@@ -2,6 +2,7 @@ package com.tencent.tgiapp1.adapter;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +12,13 @@ import android.widget.TextView;
 
 import com.tencent.tgiapp1.R;
 import com.tencent.tgiapp1.common.BitmapManager;
+import com.tencent.tgiapp1.common.ImageUtils;
 import com.tencent.tgiapp1.common.StringUtils;
 import com.tencent.tgiapp1.common.UIHelper;
 import com.tencent.tgiapp1.entity.Article;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 
 public class ManualListAdapter extends BaseAdapter {
@@ -27,8 +30,6 @@ public class ManualListAdapter extends BaseAdapter {
     private LayoutInflater inflater;
 
     private int itemViewResource;//自定义项视图源
-
-    private BitmapManager bmpManager;
 
     static class ViewHolder{				//自定义控件集合
         public TextView title;
@@ -46,9 +47,7 @@ public class ManualListAdapter extends BaseAdapter {
         this.items = data;
         this.context = context;
         this.itemViewResource = resource;
-        this.inflater = LayoutInflater.from(context);	//创建视图容器并设置上下文
-
-        this.bmpManager = new BitmapManager(BitmapFactory.decodeResource(context.getResources(), R.drawable.widget_dface_loading));
+        this.inflater = LayoutInflater.from(context);	//创建视图容器并设置上下文;
     }
 
     @Override
@@ -120,16 +119,6 @@ public class ManualListAdapter extends BaseAdapter {
         //攻略隐藏badge
         vh.cate.setVisibility(View.GONE);
 
-        /*
-        String faceURL = news.getCover();
-        if(faceURL==null||faceURL.endsWith("p150x110.gif") || StringUtils.isEmpty(faceURL)){
-            vh.face.setImageResource(R.drawable.widget_dface);
-            vh.face.setVisibility(View.GONE);
-        }else {
-            bmpManager.loadBitmap(faceURL, vh.face);
-        }
-        */
-
         // 是否有图片
         String cover = news.getCover();
         if(StringUtils.isEmpty(cover)){
@@ -139,11 +128,23 @@ public class ManualListAdapter extends BaseAdapter {
             UIHelper.showLoadImage(vh.face,cover,"加载图片时发生错误："+cover);
         }
 
+        String imgCacheId = null;
+        Bundle data = null;
         //是否有描述
         if(StringUtils.isEmpty(news.getDesc())){
             vh.desc.setVisibility(View.GONE);
         }else{
             vh.desc.setVisibility(View.VISIBLE);
+            imgCacheId = UUID.randomUUID().toString();
+            ImageUtils.cacheImgView(imgCacheId, vh.face);
+
+            data = new Bundle();
+            data.putString("uuid",imgCacheId);
+            data.putString("activity","MainActivity");
+            data.putString("fragment","tab2");
+            data.putString("url",cover);
+
+            UIHelper.lazyLoadImage(context,data);
         }
 
         return convertView;

@@ -1,7 +1,9 @@
 package com.tencent.tgiapp1.fragment;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -10,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tencent.tgiapp1.AppContext;
+import com.tencent.tgiapp1.common.ImageUtils;
+import com.tencent.tgiapp1.common.UIHelper;
 import com.tencent.tgiapp1.service.IUpdatableUI;
 
 import in.xsin.common.MTAHelper;
@@ -21,6 +25,10 @@ public abstract class FragmentBase extends Fragment implements IUpdatableUI {
 
     private int fragmentViewId;
     private View fragmentView;
+
+    public AppContext appContext;
+
+    public Context context;
 
     public AppContext getAppContext() {
         return AppContext.Instance;
@@ -64,7 +72,9 @@ public abstract class FragmentBase extends Fragment implements IUpdatableUI {
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
-        this.initView(fragmentView,getLayoutInflater(savedInstanceState));
+        this.initView(fragmentView, getLayoutInflater(savedInstanceState));
+        appContext = getAppContext();
+        context = getContext();
         this.init();
     }
 
@@ -75,4 +85,25 @@ public abstract class FragmentBase extends Fragment implements IUpdatableUI {
     public abstract void initView(View fragmentView,LayoutInflater inflater);
     public abstract void init();
     public abstract void refresh(int flag,Message data);
+
+    /**
+     * 图片下载处理回调
+     */
+    public final Handler onImgDownloadedHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            int errCode = msg.arg2;
+            Bundle data = msg.getData();
+            String imgCacheId = data.getString("uuid");
+            if(errCode!=0){
+                UIHelper.ToastMessage(context, "图片下载失败：" + msg.obj);
+                return;
+            }
+
+            Bitmap bmp = (Bitmap) msg.obj;
+            ImageUtils.updateImgViewCache(imgCacheId, bmp, true);
+
+        }
+    };
+
 }

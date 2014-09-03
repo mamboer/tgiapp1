@@ -16,8 +16,11 @@ import com.tencent.tgiapp1.R;
 import com.tencent.tgiapp1.adapter.ManualListAdapter;
 import com.tencent.tgiapp1.bean.News;
 import com.tencent.tgiapp1.common.UIHelper;
+import com.tencent.tgiapp1.entity.AppData;
 import com.tencent.tgiapp1.entity.Article;
 import com.tencent.tgiapp1.entity.ArticleList;
+import com.tencent.tgiapp1.service.DataService;
+import com.tencent.tgiapp1.service.DataTask;
 import com.tencent.tgiapp1.widget.NewDataToast;
 
 import java.text.SimpleDateFormat;
@@ -80,12 +83,6 @@ public class ManualFragment extends FragmentBase {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setFragmentViewId(R.layout.manual);
-
-        mIsTabDataLoaded = new ArrayList<Boolean>();
-        mIsTabDataLoaded.add(false);
-        mIsTabDataLoaded.add(false);
-        mIsTabDataLoaded.add(false);
-
     }
 
 
@@ -112,20 +109,25 @@ public class ManualFragment extends FragmentBase {
 
     @Override
     public void init(){
-
+        mIsTabDataLoaded = new ArrayList<Boolean>();
+        mIsTabDataLoaded.add(false);
+        mIsTabDataLoaded.add(false);
+        mIsTabDataLoaded.add(false);
     }
 
     @Override
     public void refresh(int flag,Message params){
-        int errCode = params.arg2;
-        Bundle data = params.getData();
-        if(errCode<0){
-
-            return;
+        Message msg = new Message();
+        msg.copyFrom(params);
+        switch (flag){
+            case DataTask.SN.GET_MANUAL:
+                //onArticleDataGot(params);
+                onArticleDataGotHandler.sendMessage(msg);
+                break;
+            case DataTask.SN.DownloadImg:
+                onImgDownloadedHandler.sendMessage(msg);
+                break;
         }
-
-
-
 
     }
 
@@ -210,103 +212,33 @@ public class ManualFragment extends FragmentBase {
             @Override
             public void onPullDownToRefresh(final PullToRefreshBase<ListView> refreshView) {
 
-                final Handler onDataGot = new Handler(){
-                    @Override
-                    public void handleMessage(Message msg) {
-                        super.handleMessage(msg);
-
-                        mIsFirstLoad = false;
-                        mPullListView1.onPullDownRefreshComplete();
-                        //mPullListView1.onPullUpRefreshComplete();
-
-                        Bundle data = msg.getData();
-                        int errCode = data.getInt("errCode");
-                        String errMsg = data.getString("errMsg");
-
-                        if(errMsg!=null){
-                            UIHelper.ToastMessage(getContext(),errMsg);
-                            mPullListView1.setHasMoreData(mListViewHasMoreData1);
-                            return;
-                        }
-
-                        mListViewData1 = (ArticleList)data.getSerializable("data");
-
-                        //计算新数据并做出提示
-                        int newdata = 0;
-                        if (mListViewDataItems1.size() > 0) {
-                            for (Article item1 : mListViewData1.getItems()) {
-                                boolean b = false;
-                                for (Article item2 : mListViewDataItems1) {
-                                    if (item1.getMD5().equals(item2.getMD5())) {
-                                        b = true;
-                                        break;
-                                    }
-                                }
-                                if (!b)
-                                    newdata++;
-                            }
-                        } else {
-                            newdata = mListViewData1.getItems().size();
-                        }
-
-                        // 提示新加载数据
-                        if (newdata > 0) {
-                            NewDataToast
-                                    .makeText(
-                                            getActivity(),
-                                            getString(R.string.new_data_toast_message,
-                                                    newdata), ct.isAppSound()
-                                    )
-                                    .show();
-                            //更新数据集
-                            mListViewDataItems1.clear();
-                            mListViewDataItems1.addAll(mListViewData1.getItems());
-                        } else {
-                            NewDataToast.makeText(getActivity(),
-                                    getString(R.string.new_data_toast_none), false)
-                                    .show();
-                        }
-                        mListViewHasMoreData1 = mListViewData1.getNextPageId()!="";
-                        mPullListView1.setHasMoreData(mListViewHasMoreData1);
-                        setLastUpdateTime(mPullListView1);
-
-                    }
-                };
-
                 //初始化数据
                 boolean isRefresh = mIsFirstLoad?false:true;
-                AppDataProvider.getArticleData(ct, AppDataProvider.URL.MANUAL, onDataGot, isRefresh);
+                //AppDataProvider.getArticleData(ct, AppDataProvider.URL.MANUAL, onDataGot, isRefresh);
+
+                Bundle data = new Bundle();
+                data.putInt("taskId", DataTask.SN.GET_MANUAL);
+                data.putString("activity", "MainActivity");
+                data.putString("fragment","tab2");
+                data.putString("url",AppDataProvider.URL.MANUAL);
+                data.putBoolean("isRefresh",isRefresh);
+                data.putBoolean("paging",false);
+                DataService.execute(ct, data);
+
             }
 
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                final Handler onDataGot = new Handler(){
-                    @Override
-                    public void handleMessage(Message msg) {
-                        super.handleMessage(msg);
-
-                        //mPullListView1.onPullDownRefreshComplete();
-                        mPullListView1.onPullUpRefreshComplete();
-
-                        Bundle data = msg.getData();
-                        int errCode = data.getInt("errCode");
-                        String errMsg = data.getString("errMsg");
-
-                        if(errMsg!=null){
-                            UIHelper.ToastMessage(getContext(),errMsg);
-                            mPullListView1.setHasMoreData(mListViewHasMoreData1);
-                            return;
-                        }
-
-                        mListViewData1 = (ArticleList)data.getSerializable("data");
-                        mListViewHasMoreData1 = mListViewData1.getNextPageId()!="";
-                        mPullListView1.setHasMoreData(mListViewHasMoreData1);
-
-                    }
-                };
-
                 //获取数据
-                AppDataProvider.getArticleData(ct, mListViewData1.getNextPageId(), onDataGot, false);
+                //AppDataProvider.getArticleData(ct, mListViewData1.getNextPageId(), onDataGot, false);
+                Bundle data = new Bundle();
+                data.putInt("taskId", DataTask.SN.GET_MANUAL);
+                data.putString("activity", "MainActivity");
+                data.putString("fragment","tab2");
+                data.putString("url",mListViewData1.getNextPageId());
+                data.putBoolean("isRefresh",false);
+                data.putBoolean("paging",true);
+                DataService.execute(ct, data);
             }
         });
         setLastUpdateTime(mPullListView1);
@@ -331,17 +263,7 @@ public class ManualFragment extends FragmentBase {
     }
 
     void setCurrentTab(int tabIndex){
-        /*
-        for(View v:mTabMenuLines){
-            v.setBackgroundColor(getResources().getColor(R.color.white));
-        }
-        mTabMenuLines.get(tabIndex).setBackgroundColor(getResources().getColor(R.color.tab_highlight_bg));
 
-        for(TextView v:mTabMenuTexts){
-            v.setTextColor(getResources().getColor(R.color.bright_bg_btntext));
-        }
-        mTabMenuTexts.get(tabIndex).setTextColor(getResources().getColor(R.color.tab_highlight_bg));
-        */
         for (PullToRefreshListView v:mPullListViews){
             v.setVisibility(View.GONE);
         }
@@ -353,6 +275,75 @@ public class ManualFragment extends FragmentBase {
         }
 
         MTAHelper.trackClick(getActivity(),TAG,"tab"+tabIndex);
+
+    }
+
+    private void onArticleDataGot1(Message msg){
+        mPullListView1.onPullUpRefreshComplete();
+
+        mListViewData1 = (ArticleList)msg.obj;
+        mListViewHasMoreData1 = mListViewData1.getNextPageId()!="";
+        mPullListView1.setHasMoreData(mListViewHasMoreData1);
+    }
+
+    final Handler onArticleDataGotHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            boolean isPaging = msg.getData().getBoolean("paging");
+            if(isPaging){
+                onArticleDataGot1(msg);
+                return;
+            }
+            onArticleDataGot(msg);
+        }
+    };
+    private void onArticleDataGot(Message msg) {
+
+        mIsFirstLoad = false;
+        mPullListView1.onPullDownRefreshComplete();
+        //mPullListView1.onPullUpRefreshComplete();
+
+
+        mListViewData1 = (ArticleList)msg.obj;
+
+        //计算新数据并做出提示
+        int newdata = 0;
+        if (mListViewDataItems1.size() > 0) {
+            for (Article item1 : mListViewData1.getItems()) {
+                boolean b = false;
+                for (Article item2 : mListViewDataItems1) {
+                    if (item1.getMD5().equals(item2.getMD5())) {
+                        b = true;
+                        break;
+                    }
+                }
+                if (!b)
+                    newdata++;
+            }
+        } else {
+            newdata = mListViewData1.getItems().size();
+        }
+
+        // 提示新加载数据
+        if (newdata > 0) {
+            NewDataToast
+                    .makeText(
+                            getActivity(),
+                            getString(R.string.new_data_toast_message,
+                                    newdata), appContext.isAppSound()
+                    )
+                    .show();
+            //更新数据集
+            mListViewDataItems1.clear();
+            mListViewDataItems1.addAll(mListViewData1.getItems());
+        } else {
+            NewDataToast.makeText(getActivity(),
+                    getString(R.string.new_data_toast_none), false)
+                    .show();
+        }
+        mListViewHasMoreData1 = mListViewData1.getNextPageId()!="";
+        mPullListView1.setHasMoreData(mListViewHasMoreData1);
+        setLastUpdateTime(mPullListView1);
 
     }
 
