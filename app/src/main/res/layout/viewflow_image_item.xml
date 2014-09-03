@@ -6,7 +6,7 @@
 		<ImageView android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
 		    android:id="@+id/imgView"
-		    android:src="@drawable/welcome"
+		    android:src="@drawable/p640x230"
 		    android:layout_gravity="center_vertical|center_horizontal"
 		    android:scaleType="fitXY"
 		    >

@@ -67,10 +67,28 @@ public class AppboxFragment extends FragmentBase {
 
         super.onResume();
     }
-
+    @Override
     public void initView(View parent,LayoutInflater inflater){
 
         initScrollView(parent,inflater);
+    }
+    @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(int flag,Message params){
+        int errCode = params.arg2;
+        Bundle data = params.getData();
+        if(errCode<0){
+
+            return;
+        }
+
+
+
+
     }
     void initScrollView(View parent,LayoutInflater inflater){
 

@@ -2,6 +2,7 @@ package com.tencent.tgiapp1.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
@@ -13,10 +14,12 @@ import com.tencent.tgiapp1.AppContext;
 import com.tencent.tgiapp1.AppDataProvider;
 import com.tencent.tgiapp1.R;
 import com.tencent.tgiapp1.bean.News;
+import com.tencent.tgiapp1.common.ImageUtils;
 import com.tencent.tgiapp1.common.UIHelper;
 import com.tencent.tgiapp1.entity.Article;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import in.xsin.common.MTAHelper;
 
@@ -58,7 +61,20 @@ public class ILoveViennaLiaoSliderAdapter extends PagerAdapter {
         if(null==url||url.equals("")){
             url = AppDataProvider.URL.DEFAULT_SLIDE_IMG;
         }
-        UIHelper.showLoadImage(iv, url, "图片加载失败" + url);
+
+        String imgCacheId = null;
+        Bundle data = null;
+        //UIHelper.showLoadImage(iv, url, "图片加载失败" + url);
+        imgCacheId = UUID.randomUUID().toString();
+        ImageUtils.cacheImgView(imgCacheId, iv);
+
+        data = new Bundle();
+        data.putString("uuid",imgCacheId);
+        data.putString("activity","MainActivity");
+        data.putString("fragment","tab1");
+        data.putString("url",url);
+
+        UIHelper.lazyLoadImage(context,data);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

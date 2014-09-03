@@ -110,7 +110,26 @@ public class ManualFragment extends FragmentBase {
         super.onResume();
     }
 
+    @Override
+    public void init(){
 
+    }
+
+    @Override
+    public void refresh(int flag,Message params){
+        int errCode = params.arg2;
+        Bundle data = params.getData();
+        if(errCode<0){
+
+            return;
+        }
+
+
+
+
+    }
+
+    @Override
     public void initView(View parent,LayoutInflater inflater){
         ViewGroup vg1 = (ViewGroup)parent;
 

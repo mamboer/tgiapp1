@@ -60,6 +60,7 @@ import org.apache.commons.httpclient.methods.multipart.StringPart;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 */
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
@@ -270,6 +271,32 @@ public class ApiClient {
     private static Result http_post(AppContext appContext, String url, HashMap<String, String> params) throws AppException, IOException {
         return Result.parse(_post(appContext, url, params));
     }
+
+    /**
+     * 下载并保存图片至SD卡
+     * @param context
+     * @param url
+     */
+    public static Bitmap getAndSaveImageSync(Context context,String url) throws Exception{
+        Bitmap bmp = null;
+        try {
+            bmp = FileUtils.getLocalImage(context,url);
+            if(null!=bmp){
+                return bmp;
+            }
+
+            final String filename = FileUtils.getFileName(url);
+            bmp = ApiClient.getNetBitmap(url);
+
+            ImageUtils.saveImage(context, filename,bmp);
+
+        }catch(Exception e){
+            e.printStackTrace();
+            throw e;
+        }
+        return bmp;
+    }
+
 
     /**
      * 获取网络图片

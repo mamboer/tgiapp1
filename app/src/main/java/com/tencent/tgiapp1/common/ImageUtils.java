@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -36,6 +37,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.DisplayMetrics;
+import android.widget.ImageView;
 
 /**
  * 图片操作工具包
@@ -55,6 +57,37 @@ public class ImageUtils {
     public static final int REQUEST_CODE_GETIMAGE_BYCAMERA = 1;
     /** 请求裁剪 */
     public static final int REQUEST_CODE_GETIMAGE_BYCROP = 2;
+
+    /**
+     * 图片控件缓存
+     */
+    public final static HashMap<String,ImageView> imgViewCache = new HashMap<String, ImageView>();
+
+    /**
+     * 将指定图片控件添加到缓存
+     * @param key
+     * @param iv
+     */
+    public static void cacheImgView(String key,ImageView iv){
+        imgViewCache.put(key,iv);
+    }
+
+    /**
+     * 设置图片控件的图片
+     * @param key
+     * @param bmp
+     * @param removeFromCache
+     */
+    public static void updateImgViewCache(String key,Bitmap bmp,boolean removeFromCache){
+        ImageView iv = imgViewCache.get(key);
+        if(null==iv){
+            return;
+        }
+        iv.setImageBitmap(bmp);
+        if(removeFromCache){
+            imgViewCache.remove(key);
+        }
+    }
 
     /**
      * 写图片文件 在Android系统中，文件保存在 /data/data/PACKAGE_NAME/files 目录下

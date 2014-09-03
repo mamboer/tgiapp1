@@ -7,7 +7,7 @@
     <string name="app_datahost">http://ttxd.qq.com</string>
     <string name="app_package">com.tencent.game.VXDGame</string>
     <string name="app_company">tencent</string>
-    <string name="app_datasrv_label">天天炫斗数据服务</string>
+    <string name="app_datasrv_label">天天炫斗宝典数据服务</string>
     <string name="app_logolink">http://ttxd.qq.com/act/minixd/index.html?ADTAG=tgideas.app.ttxd.android</string>
     <string name="app_logotitle">mini炫斗</string>
 

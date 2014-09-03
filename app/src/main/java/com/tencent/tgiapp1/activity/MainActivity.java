@@ -2,6 +2,7 @@ package com.tencent.tgiapp1.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -24,10 +25,13 @@ import com.tencent.tgiapp1.AppException;
 import com.tencent.tgiapp1.R;
 import com.tencent.tgiapp1.api.ApiClient;
 import com.tencent.tgiapp1.bean.News;
+import com.tencent.tgiapp1.common.StringUtils;
 import com.tencent.tgiapp1.common.UIHelper;
 import com.tencent.tgiapp1.common.UpdateManager;
+import com.tencent.tgiapp1.entity.AppData;
 import com.tencent.tgiapp1.fragment.*;
 import com.tencent.tgiapp1.receiver.BroadCast;
+import com.tencent.tgiapp1.service.IUpdatableUI;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,7 +43,7 @@ import in.xsin.common.MTAHelper;
  * that switches between tabs and also allows the user to perform horizontal
  * flicks to move between the tabs.
  */
-public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabChangeListener{
+public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabChangeListener,IUpdatableUI{
 
     private static String TAG = MainActivity.class.getName();
 
@@ -63,6 +67,35 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
     ImageButton mHeadSearch;
 
     TabManager.TabInfo mCurrentTab;
+
+    @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(int flag,Message params){
+        int errCode = params.arg2;
+        Bundle data = params.getData();
+        if(errCode<0){
+            UIHelper.ToastMessage(this,data.getString("errMsg"),Toast.LENGTH_LONG);
+            return;
+        }
+
+        //是否fragment
+        String fragmentId = data.getString("fragment");
+        TabManager.TabInfo tab = null;
+        IUpdatableUI ui = null;
+        if(!StringUtils.isEmpty(fragmentId)){
+            tab=mTabManager.getTab(fragmentId);
+            if(null!=tab){
+                ui = (IUpdatableUI)tab.fragment;
+                ui.refresh(params.what,params);
+            }
+        }
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -6,7 +6,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 
-import com.tencent.tgiapp1.service.XDDataService;
+import com.tencent.tgiapp1.service.DataService;
 
 /**
  * 应用程序Activity管理类：用于Activity管理和应用程序退出
@@ -100,7 +100,7 @@ public class AppManager {
             ActivityManager activityMgr= (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
             activityMgr.restartPackage(context.getPackageName());
             //停止服务
-            XDDataService.stop(context);
+            DataService.stop(context);
             System.exit(0);
         } catch (Exception e) {	}
     }

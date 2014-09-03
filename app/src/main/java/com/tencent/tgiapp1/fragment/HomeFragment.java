@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,6 +26,7 @@ import com.tencent.tgiapp1.R;
 import com.tencent.tgiapp1.adapter.HomeListAdapter;
 import com.tencent.tgiapp1.adapter.ILoveViennaLiaoSliderAdapter;
 import com.tencent.tgiapp1.bean.News;
+import com.tencent.tgiapp1.common.ImageUtils;
 import com.tencent.tgiapp1.common.UIHelper;
 import com.tencent.tgiapp1.entity.AppData;
 import com.tencent.tgiapp1.entity.Article;
@@ -32,6 +34,9 @@ import com.tencent.tgiapp1.entity.ArticleList;
 import com.tencent.tgiapp1.entity.ChannelGroup;
 import com.tencent.tgiapp1.entity.ChannelItem;
 import com.tencent.tgiapp1.entity.UserRemindArticleList;
+import com.tencent.tgiapp1.service.DataService;
+import com.tencent.tgiapp1.service.DataTask;
+import com.tencent.tgiapp1.service.IUpdatableUI;
 import com.tencent.tgiapp1.widget.NewDataToast;
 
 import in.xsin.common.MTAHelper;
@@ -47,6 +52,8 @@ import com.viewpagerindicator.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.UUID;
 
 
 public class HomeFragment extends FragmentBase {
@@ -73,7 +80,35 @@ public class HomeFragment extends FragmentBase {
     private FlowIndicator vpDots1;
     private int mSliderCount;
 
+    private AppContext ct;
+
     private SimpleDateFormat mDateFormat = new SimpleDateFormat("MM-dd HH:mm");
+
+    @Override
+    public void init(){
+        ct = this.getAppContext();
+    }
+
+    @Override
+    public void refresh(int flag,Message params){
+        //Bundle data = params.getData();
+        Message msg = new Message();
+        msg.copyFrom(params);
+        switch (flag){
+            case DataTask.SN.Get_AppData:
+                onAppDataGotHandler.sendMessage(msg);
+                //onAppDataGot(params);
+                break;
+            case DataTask.SN.GET_ARTICLE:
+                //onArticleDataGot(params);
+                onArticleDataGotHandler.sendMessage(msg);
+                break;
+            case DataTask.SN.DownloadImg:
+                onImgDownloadedHandler.sendMessage(msg);
+                break;
+        }
+
+    }
 
 
     @Override
@@ -170,6 +205,106 @@ public class HomeFragment extends FragmentBase {
         viewPager.setCurrentItem(mSliderCount * 100000);
     }
 
+
+    //数据回调，需要用一个Handler包住，否则会报错：android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views
+    final Handler onAppDataGotHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            onAppDataGot(msg);
+        }
+    };
+    private void onAppDataGot(Message msg) {
+
+        //AppContext ct = HomeFragment.this.getAppContext();
+
+        mPullListView.onPullDownRefreshComplete();
+        //mPullListView.onPullUpRefreshComplete();
+
+        ct.setData((AppData)msg.obj);
+
+        AppData ad1 = ct.getData();
+        mListViewData = ad1.getArticles();
+
+        //计算新数据并做出提示
+        int newdata = 0;
+        if (mListViewDataItems.size() > 0) {
+            for (Article item1 : mListViewData.getItems()) {
+                boolean b = false;
+                for (Article item2 : mListViewDataItems) {
+                    if (item1.getMD5().equals(item2.getMD5())) {
+                        b = true;
+                        break;
+                    }
+                }
+                if (!b)
+                    newdata++;
+            }
+        } else {
+            newdata = mListViewData.getItems().size();
+        }
+
+        // 提示新加载数据
+        if (newdata > 0) {
+            NewDataToast
+                    .makeText(
+                            getActivity(),
+                            getString(R.string.new_data_toast_message,
+                                    newdata), ct.isAppSound()
+                    )
+                    .show();
+            //更新数据集
+            mListViewDataItems.clear();
+            mListViewDataItems.addAll(mListViewData.getItems());
+        } else {
+            NewDataToast.makeText(getActivity(),
+                    getString(R.string.new_data_toast_none), false)
+                    .show();
+        }
+        mListViewHasMoreData = mListViewData.getNextPageId()!="";
+        mPullListView.setHasMoreData(mListViewHasMoreData);
+        updateData(ad1,null);
+        setLastUpdateTime();
+
+    }
+
+    //数据回调，需要用一个Handler包住，否则会报错：android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views
+    final Handler onArticleDataGotHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            onArticleDataGot(msg);
+        }
+    };
+    private void onArticleDataGot(Message msg) {
+
+        //mPullListView.onPullDownRefreshComplete();
+        mPullListView.onPullUpRefreshComplete();
+
+        AppData ad1 = ct.getData();
+
+        mListViewData = (ArticleList)msg.obj;
+        mListViewHasMoreData = mListViewData.getNextPageId()!="";
+        mPullListView.setHasMoreData(mListViewHasMoreData);
+        updateData(ad1,mListViewData);
+
+    }
+
+    final Handler onImgDownloadedHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            int errCode = msg.arg2;
+            Bundle data = msg.getData();
+            String imgCacheId = data.getString("uuid");
+            if(errCode!=0){
+                UIHelper.ToastMessage(HomeFragment.this.getContext(),"图片下载失败："+msg.obj);
+                return;
+            }
+
+            Bitmap bmp = (Bitmap) msg.obj;
+            ImageUtils.updateImgViewCache(imgCacheId,bmp,true);
+
+        }
+    };
+
     private void initListView(View parent,LayoutInflater inflater,View header,AppData ad,final AppContext ct){
 
         mPullListView = (PullToRefreshListView) parent.findViewById(R.id.pulltorefreshlistview);
@@ -205,112 +340,31 @@ public class HomeFragment extends FragmentBase {
             @Override
             public void onPullDownToRefresh(final PullToRefreshBase<ListView> refreshView) {
 
-                final Handler onAppDataGot = new Handler(){
-                    @Override
-                    public void handleMessage(Message msg) {
-                        super.handleMessage(msg);
-
-                        mPullListView.onPullDownRefreshComplete();
-                        //mPullListView.onPullUpRefreshComplete();
-
-                        Bundle data = msg.getData();
-                        int errCode = data.getInt("errCode");
-                        String errMsg = data.getString("errMsg");
-
-                        if(errMsg!=null){
-                            UIHelper.ToastMessage(getContext(),errMsg);
-                            mPullListView.setHasMoreData(mListViewHasMoreData);
-                            return;
-                        }
-
-                        ct.setData((AppData)data.getSerializable("data"));
-
-                        AppData ad1 = ct.getData();
-                        mListViewData = ad1.getArticles();
-
-                        //计算新数据并做出提示
-                        int newdata = 0;
-                        if (mListViewDataItems.size() > 0) {
-                            for (Article item1 : mListViewData.getItems()) {
-                                boolean b = false;
-                                for (Article item2 : mListViewDataItems) {
-                                    if (item1.getMD5().equals(item2.getMD5())) {
-                                        b = true;
-                                        break;
-                                    }
-                                }
-                                if (!b)
-                                    newdata++;
-                            }
-                        } else {
-                            newdata = mListViewData.getItems().size();
-                        }
-
-                        // 提示新加载数据
-                        if (newdata > 0) {
-                            NewDataToast
-                                    .makeText(
-                                            getActivity(),
-                                            getString(R.string.new_data_toast_message,
-                                                    newdata), ct.isAppSound()
-                                    )
-                                    .show();
-                            //更新数据集
-                            mListViewDataItems.clear();
-                            mListViewDataItems.addAll(mListViewData.getItems());
-                        } else {
-                            NewDataToast.makeText(getActivity(),
-                                    getString(R.string.new_data_toast_none), false)
-                                    .show();
-                        }
-                        mListViewHasMoreData = mListViewData.getNextPageId()!="";
-                        mPullListView.setHasMoreData(mListViewHasMoreData);
-                        updateData(ad1,null);
-                        setLastUpdateTime();
-
-
-
-
-                    }
-                };
-
                 //初始化数据
-                AppDataProvider.getAppData(ct,onAppDataGot , true);
+                //AppDataProvider.getAppData(ct,onAppDataGot , true);
+
+                Bundle data = new Bundle();
+                data.putInt("taskId", DataTask.SN.Get_AppData);
+                data.putString("activity","MainActivity");
+                data.putString("fragment","tab1");
+                DataService.execute(ct,data);
 
             }
 
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                final Handler onDataGot = new Handler(){
-                    @Override
-                    public void handleMessage(Message msg) {
-                        super.handleMessage(msg);
 
-                        //mPullListView.onPullDownRefreshComplete();
-                        mPullListView.onPullUpRefreshComplete();
-
-                        Bundle data = msg.getData();
-                        int errCode = data.getInt("errCode");
-                        String errMsg = data.getString("errMsg");
-
-                        if(errMsg!=null){
-                            UIHelper.ToastMessage(getContext(),errMsg);
-                            mPullListView.setHasMoreData(mListViewHasMoreData);
-                            return;
-                        }
-
-                        AppData ad1 = ct.getData();
-
-                        mListViewData = (ArticleList)data.getSerializable("data");
-                        mListViewHasMoreData = mListViewData.getNextPageId()!="";
-                        mPullListView.setHasMoreData(mListViewHasMoreData);
-                        updateData(ad1,mListViewData);
-
-                    }
-                };
 
                 //获取数据
-                AppDataProvider.getArticleData(ct, mListViewData.getNextPageId(), onDataGot, false);
+                //AppDataProvider.getArticleData(ct, mListViewData.getNextPageId(), onArticleDataGot, false);
+
+                Bundle data = new Bundle();
+                data.putInt("taskId", DataTask.SN.GET_ARTICLE);
+                data.putString("activity", "MainActivity");
+                data.putString("fragment","tab1");
+                data.putString("url",mListViewData.getNextPageId());
+                DataService.execute(ct,data);
+
             }
         });
         setLastUpdateTime();
@@ -339,6 +393,8 @@ public class HomeFragment extends FragmentBase {
         TextView tv = null;
         ViewGroup vg = null;
         ChannelItem citem = null;
+        String imgCacheId = null;
+        Bundle data = null;
 
         //首页4个快捷入口按钮
         ChannelGroup favGroup = AppDataProvider.getFavChannelGroup(ct,false);
@@ -351,7 +407,21 @@ public class HomeFragment extends FragmentBase {
                 iv = (ImageView)vg.getChildAt(0);
                 tv = (TextView)vg.getChildAt(1);
 
-                UIHelper.showLoadImage(iv,citem.getIcon(),"图标加载失败："+citem.getIcon());
+                //性能Tips：showLoadImage会新开线程，并发多的时候会导致页面卡
+                //UIHelper.showLoadImage(iv,citem.getIcon(),"图标加载失败："+citem.getIcon());
+
+                // lazyLoadImage方法会将图片下载的操作放到DataService中进行
+                iv.setImageResource(R.drawable.p150x110);
+                imgCacheId = UUID.randomUUID().toString();
+                ImageUtils.cacheImgView(imgCacheId,iv);
+
+                data = new Bundle();
+                data.putString("uuid",imgCacheId);
+                data.putString("activity","MainActivity");
+                data.putString("fragment","tab1");
+                data.putString("url",citem.getIcon());
+
+                UIHelper.lazyLoadImage(iv.getContext(),data);
 
                 tv.setText(citem.getName());
 
@@ -407,7 +477,7 @@ public class HomeFragment extends FragmentBase {
         }
 
     }
-
+    @Override
     public void initView(View parent,LayoutInflater inflater){
 
         AppData ad = this.getAppContext().getData();

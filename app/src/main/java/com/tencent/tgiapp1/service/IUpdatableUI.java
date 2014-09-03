@@ -1,4 +1,4 @@
-package com.tencent.tgiapp1.activity;
+package com.tencent.tgiapp1.service;
 
 import android.os.Bundle;
 import android.os.Message;
@@ -7,7 +7,7 @@ import android.os.Message;
  * 本系统的所有activity父接口，实现activity初始化和Ui更新
  *
  */
-public interface IActivity {
+public interface IUpdatableUI {
 
     public abstract void init();
 

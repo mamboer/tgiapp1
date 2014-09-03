@@ -83,6 +83,26 @@ public class ICenterFragment extends FragmentBase {
         updateICenter();
     }
 
+    @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(int flag,Message params){
+        int errCode = params.arg2;
+        Bundle data = params.getData();
+        if(errCode<0){
+
+            return;
+        }
+
+
+
+
+    }
+
+    @Override
     public void initView(View parent,LayoutInflater inflater){
         btnLogin = (LinearLayout) parent.findViewById(R.id.wt_btn_login);
         btnLogoff = (Button) parent.findViewById(R.id.wt_login_btn_logoff);

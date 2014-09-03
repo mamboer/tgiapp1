@@ -2,6 +2,7 @@ package com.tencent.tgiapp1.activity;
 
 import com.tencent.tgiapp1.AppContext;
 import com.tencent.tgiapp1.AppManager;
+import com.tencent.tgiapp1.service.IUpdatableUI;
 import com.tencent.tgiapp1.widget.LoadingDialog;
 import com.tencent.stat.StatService;
 
@@ -23,7 +24,7 @@ import roboguice.activity.RoboActivity;
  * @created 2014-5-11
  * TODO:请注意BaseActiviy和FragmentBaseActivity的同步
  */
-public abstract class BaseActivity extends RoboActivity implements IActivity {
+public abstract class BaseActivity extends RoboActivity implements IUpdatableUI {
 
     // 是否允许全屏
     private boolean allowFullScreen = true;

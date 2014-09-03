@@ -35,7 +35,7 @@ public class AppDataProvider {
         final public static String NOTICE = "http://ttxd.qq.com/webplat/info/news_version3/7367/8248/8277/8279/m6748/list_1.shtml";//公告数据
         final public static String MISC = "http://ttxd.qq.com/webplat/info/news_version3/7367/8248/8277/8280/m6749/list_1.shtml";//杂项数据
         final public static String SLIDE = "http://ttxd.qq.com/webplat/info/news_version3/7367/8248/8277/8340/m6810/list_1.shtml";//图片轮播
-        final public static String DEFAULT_SLIDE_IMG="http://ossweb-img.qq.com/upload/webplat/info/tgideas/201406/1402931095_1436653066_785_imageAddr.jpg";
+        final public static String DEFAULT_SLIDE_IMG="http://ossweb-img.qq.com/upload/webplat/info/ttxd/201408/1408451188_1436653066_17125_imageAddr.jpg";
         final public static String MANUAL ="http://ttxd.qq.com/webplat/info/news_version3/7367/8248/8277/8339/8341/m6808/list_1.shtml";//玩法攻略
         final public static String TESTING="http://ttxd.qq.com/webplat/info/news_version3/7367/8248/8277/8339/8342/m6808/list_1.shtml";//评测
         final public static String EXP = "http://ttxd.qq.com/webplat/info/news_version3/7367/8248/8277/8339/8343/m6808/list_1.shtml";//高玩心得
@@ -159,40 +159,55 @@ public class AppDataProvider {
 
         new Thread(){
             public void run() {
-                String data0 = "";
-                int flagIdx = 0;
-                ArticleList data = new ArticleList();
-                Bundle bundle = new Bundle();
-                try {
-                    Gson gson = new Gson();
-                    data0 = getRemoteData(context,assertUrl(context,url),isRefresh);
-                    flagIdx = data0.lastIndexOf("<!--");
-                    if(flagIdx>0) {
-                        data0 = data0.substring(0, flagIdx);
-                        data = gson.fromJson(data0, ArticleList.class);
-                        data.getItems().remove(0);
-                        bundle.putInt("errCode",0);
-                        bundle.putString("errMsg",null);
-                    }else{
-                        bundle.putInt("errCode",2);
-                        bundle.putString("errMsg","网络数据连失败或数据格式有误！");
-                    }
 
-                } catch (AppException e) {
+                ArticleList data = new ArticleList();
+                Message msg = new Message();
+                try {
+                    data = getArticleDataSync(context,url,isRefresh);
+                    msg.obj = data;
+
+                } catch (Exception e) {
                     data = null;
                     e.printStackTrace();
-                    bundle.putInt("errCode",1);
-                    bundle.putString("errMsg",e.getMessage());
+                    msg.arg2 = 1;
+                    msg.obj = e;
                 }
-
-                Message msg = new Message();
-                bundle.putSerializable("data",data);
-
-                msg.setData(bundle);
                 handler.sendMessage(msg);
 
             }
         }.start();
+
+    }
+
+    /**
+     * 获取指定新闻列表的数据
+     * @param context
+     * @param url
+     * @param isRefresh
+     */
+    public static ArticleList getArticleDataSync(final AppContext context,final String url,final boolean isRefresh)  throws Exception{
+
+        String data0 = "";
+        int flagIdx = 0;
+        ArticleList data = new ArticleList();
+        try {
+            Gson gson = new Gson();
+            data0 = getRemoteData(context,assertUrl(context,url),isRefresh);
+            flagIdx = data0.lastIndexOf("<!--");
+            if(flagIdx>0) {
+                data0 = data0.substring(0, flagIdx);
+                data = gson.fromJson(data0, ArticleList.class);
+                data.getItems().remove(0);
+            }else{
+                throw new Exception("网络数据连失败或数据格式有误!");
+            }
+
+        } catch (AppException e) {
+            data = null;
+            e.printStackTrace();
+            throw e;
+        }
+        return data;
 
     }
 

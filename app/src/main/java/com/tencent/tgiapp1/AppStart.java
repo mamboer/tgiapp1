@@ -1,14 +1,14 @@
 package com.tencent.tgiapp1;
 
-import com.tencent.tgiapp1.activity.IActivity;
-import com.tencent.tgiapp1.bean.Task;
+import com.tencent.tgiapp1.service.DataService;
+import com.tencent.tgiapp1.service.DataTask;
+import com.tencent.tgiapp1.service.IUpdatableUI;
 import com.tencent.tgiapp1.common.OpenQQHelper;
 import com.tencent.tgiapp1.common.StringUtils;
 import com.tencent.tgiapp1.common.UIHelper;
 import com.tencent.tgiapp1.common.WeixinHelper;
 import com.tencent.tgiapp1.activity.MainActivity;
 import com.tencent.tgiapp1.entity.AppData;
-import com.tencent.tgiapp1.service.XDDataService;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -28,7 +28,7 @@ import android.widget.TextView;
  * @version 1.0
  * @created 2014-5-11
  */
-public class AppStart extends Activity  implements IActivity {
+public class AppStart extends Activity  implements IUpdatableUI {
     
     private static final String TAG  = AppStart.class.getName();
     AppContext ac = null;
@@ -46,11 +46,11 @@ public class AppStart extends Activity  implements IActivity {
 
     @Override
     public void refresh(int flag,Message params){
-        int errCode = params.arg2;
         Bundle data = params.getData();
-        if(errCode<0){
+        int errCode = params.arg2;
+        if(errCode!=0){
             mProgress.setVisibility(View.GONE);
-            mLoadingTip.setText(data.getString("errMsg"));
+            mLoadingTip.setText(params.obj.toString());
             return;
         }
 
@@ -142,9 +142,9 @@ public class AppStart extends Activity  implements IActivity {
 
         //启动数据服务
         Bundle data = new Bundle();
-        data.putInt("taskId",Task.SN.INIT);
+        data.putInt("taskId", DataTask.SN.INIT);
         data.putString("activity","AppStart");
-        XDDataService.execute(this,data);
+        DataService.execute(this, data);
 
     }
     

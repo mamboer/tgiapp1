@@ -1,26 +1,25 @@
-package com.tencent.tgiapp1.bean;
+package com.tencent.tgiapp1.service;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
 import com.tencent.tgiapp1.AppContext;
 import com.tencent.tgiapp1.AppDataProvider;
 import com.tencent.tgiapp1.AppManager;
-import com.tencent.tgiapp1.activity.IActivity;
+import com.tencent.tgiapp1.api.ApiClient;
 import com.tencent.tgiapp1.entity.AppData;
-
-import java.util.Map;
+import com.tencent.tgiapp1.entity.ArticleList;
 
 /**
  * 任务类 获取不同信息
  *
  */
-public class Task {
+public class DataTask {
 
-    private final static String TAG = Task.class.getName();
+    private final static String TAG = DataTask.class.getName();
 
     private final static Handler taskHandler = new Handler(){
         @Override
@@ -38,6 +37,7 @@ public class Task {
 
         int taskId = params.what;
         int serviceId = params.arg1;
+        Bundle data = params.getData();
 
         //errCode
         params.arg2 = 0;
@@ -47,41 +47,52 @@ public class Task {
         try {
             switch (taskId) {
 
-                case Task.SN.INIT:
+                case DataTask.SN.INIT:
 
                     //数据初始化
-                    AppData data = AppDataProvider.getAppDataSync(AppContext.Instance, false);
-                    params.obj = data;
+                    AppData data0 = AppDataProvider.getAppDataSync(AppContext.Instance, false);
+                    params.obj = data0;
 
                     break;
 
-                case Task.SN.GET_ARTICLE:
+                case SN.Get_AppData:
+                    //应用数据更新
+                    AppData data1 = AppDataProvider.getAppDataSync(AppContext.Instance, true);
+                    params.obj = data1;
+                    break;
 
-                    //TODO:获取新闻数据
+                case DataTask.SN.GET_ARTICLE:
+
+                    ArticleList data2 = AppDataProvider.getArticleDataSync(AppContext.Instance,data.getString("url"), true);
+                    params.obj = data2;
 
                     break;
-                case Task.SN.GET_NOTICE:
+                case DataTask.SN.GET_NOTICE:
 
                     //TODO:获取公告数据
 
                     break;
 
-                case Task.SN.GET_SLIDE:
+                case DataTask.SN.GET_SLIDE:
 
                     //TODO:获取图片轮播
 
                     break;
 
-                case Task.SN.GET_MANUAL:
+                case DataTask.SN.GET_MANUAL:
 
                     //TODO:获取攻略
 
                     break;
-                case Task.SN.GET_EXT:
+                case DataTask.SN.GET_EXT:
                     //TODO:获取高玩心得
                     break;
-                case Task.SN.GET_TESTING:
+                case DataTask.SN.GET_TESTING:
                     //TODO:获取评测
+                    break;
+                case SN.DownloadImg:
+                    Bitmap obj = ApiClient.getAndSaveImageSync(AppContext.Instance,data.getString("url"));
+                    params.obj = obj;
                     break;
             }
 
@@ -109,7 +120,7 @@ public class Task {
         Log.e(TAG, "Task.done --> " + "任务编号： " + taskId);
 
         //刷新UI
-        IActivity ia = (IActivity) AppManager.getActivityByName(activityName);
+        IUpdatableUI ia = (IUpdatableUI) AppManager.getActivityByName(activityName);
         ia.refresh(taskId,params);
 
     }
@@ -143,8 +154,17 @@ public class Task {
          */
         public static final int GET_EXT = 5;
         /**
+         * 获取应用数据
+         */
+        public static final int Get_AppData = 6;
+        /**
+         * 下载图片
+         */
+        public static final int DownloadImg = 7;
+        /**
          * 初始化
          */
         public static final int INIT = 100;
+
     }
 }

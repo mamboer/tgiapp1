@@ -29,6 +29,8 @@ import com.tencent.tgiapp1.bean.AccessInfo;
 import com.tencent.tgiapp1.bean.News;
 import com.tencent.tgiapp1.bean.URLs;
 import com.tencent.tgiapp1.entity.XGNotification;
+import com.tencent.tgiapp1.service.DataService;
+import com.tencent.tgiapp1.service.DataTask;
 import com.tencent.tgiapp1.ui.*;
 import com.tencent.tgiapp1.widget.LinkView;
 import com.tencent.tgiapp1.widget.PathChooseDialog;
@@ -681,6 +683,19 @@ public class UIHelper {
                 handler.sendMessage(msg);
             }
         }.start();
+    }
+
+    /**
+     * 延迟加载显示图片
+     *
+     * @param data
+     */
+    public static void lazyLoadImage(final Context context,Bundle data) {
+
+        data.putInt("taskId", DataTask.SN.DownloadImg);
+
+        DataService.execute(context, data);
+
     }
 
     /**

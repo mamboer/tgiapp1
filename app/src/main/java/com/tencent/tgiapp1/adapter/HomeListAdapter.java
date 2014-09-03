@@ -1,6 +1,7 @@
 package com.tencent.tgiapp1.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tencent.tgiapp1.R;
+import com.tencent.tgiapp1.common.ImageUtils;
 import com.tencent.tgiapp1.common.StringUtils;
 import com.tencent.tgiapp1.common.UIHelper;
 import com.tencent.tgiapp1.entity.Article;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 
 public class HomeListAdapter extends BaseAdapter {
@@ -116,11 +119,23 @@ public class HomeListAdapter extends BaseAdapter {
 
         // 是否有图片
         String cover = news.getCover();
+        String imgCacheId = null;
+        Bundle data = null;
         if(StringUtils.isEmpty(cover)){
             vh.face.setVisibility(View.GONE);
         }else{
             vh.face.setVisibility(View.VISIBLE);
-            UIHelper.showLoadImage(vh.face,cover,"加载图片时发生错误："+cover);
+            //UIHelper.showLoadImage(vh.face,cover,"加载图片时发生错误："+cover);
+            imgCacheId = UUID.randomUUID().toString();
+            ImageUtils.cacheImgView(imgCacheId, vh.face);
+
+            data = new Bundle();
+            data.putString("uuid",imgCacheId);
+            data.putString("activity","MainActivity");
+            data.putString("fragment","tab1");
+            data.putString("url",cover);
+
+            UIHelper.lazyLoadImage(context,data);
         }
 
         //是否有描述

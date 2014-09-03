@@ -1,6 +1,7 @@
 package com.tencent.tgiapp1.fragment;
 
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,6 +52,26 @@ public class CommunityFragment extends FragmentBase {
         wvCommunity.destroy();
     }
 
+    @Override
+    public void init(){
+
+    }
+
+    @Override
+    public void refresh(int flag,Message params){
+        int errCode = params.arg2;
+        Bundle data = params.getData();
+        if(errCode<0){
+
+            return;
+        }
+
+
+
+
+    }
+
+    @Override
     public void initView(View parent,LayoutInflater inflater){
 
         activity = (MainActivity) getActivity();

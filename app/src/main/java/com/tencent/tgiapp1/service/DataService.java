@@ -1,31 +1,23 @@
 package com.tencent.tgiapp1.service;
 
-import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.*;
 import android.os.Process;
-import android.util.Log;
-
-import com.tencent.tgiapp1.AppContext;
-import com.tencent.tgiapp1.AppDataProvider;
-import com.tencent.tgiapp1.AppManager;
-import com.tencent.tgiapp1.bean.Task;
-import com.tencent.tgiapp1.entity.AppData;
 
 
 /**
  * 实现业务调度的核心逻辑服务
  * 关于service请看文章：http://www.vogella.com/tutorials/AndroidServices/article.html
  */
-public class XDDataService extends Service {
-    private static String TAG = XDDataService.class.getName();
+public class DataService extends Service {
+    private static String TAG = DataService.class.getName();
 
     private Looper mServiceLooper;
     private ServiceHandler mServiceHandler;
 
-    public XDDataService() {}
+    public DataService() {}
     @Override
     public void onCreate() {
         super.onCreate();
@@ -84,7 +76,7 @@ public class XDDataService extends Service {
      */
     public static void stop(Context context) {
         // 关闭服务
-        Intent it = new Intent(context,XDDataService.class);
+        Intent it = new Intent(context,DataService.class);
         context.stopService(it);
     }
 
@@ -93,7 +85,7 @@ public class XDDataService extends Service {
      * @param data 传给服务的数据
      */
     public static void execute(Context context,Bundle data){
-        Intent it = new Intent(context,XDDataService.class);
+        Intent it = new Intent(context,DataService.class);
         // potentially add data to the intent
         if (null!=data){
             it.putExtras(data);
@@ -110,7 +102,7 @@ public class XDDataService extends Service {
         @Override
         public void handleMessage(Message msg) {
 
-            Task.run(msg);
+            DataTask.run(msg);
             // Stop the service using the startId, so that we don't stop
             // the service in the middle of handling another job
             stopSelf(msg.arg1);
