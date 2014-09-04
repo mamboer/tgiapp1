@@ -12,6 +12,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.tencent.tgiapp1.AppConfig;
+import com.tencent.tgiapp1.AppDataProvider;
 import com.tencent.tgiapp1.R;
 import com.tencent.tgiapp1.activity.MainActivity;
 import com.tencent.tgiapp1.bean.AccessInfo;
@@ -59,15 +60,6 @@ public class CommunityFragment extends FragmentBase {
 
     @Override
     public void refresh(int flag,Message params){
-        int errCode = params.arg2;
-        Bundle data = params.getData();
-        if(errCode<0){
-
-            return;
-        }
-
-
-
 
     }
 
@@ -85,6 +77,12 @@ public class CommunityFragment extends FragmentBase {
         wvCommunity.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+                if(!appContext.isNetworkConnected() && url.indexOf("file://")!=0){
+                    view.loadUrl(AppDataProvider.URL.FILE_404);
+                    return true;
+                }
+
                 if(url.indexOf("?")<=0){
                     url+="?noheader=1";
                 }else if(url.indexOf("noheader=1")<=0){
@@ -105,6 +103,17 @@ public class CommunityFragment extends FragmentBase {
                     activity.setTitle(getString(R.string.main_menu_community));
                     activity.hideBtnBack();
                 }
+            }
+            @Override
+            public void onReceivedError (WebView view, int errorCode,String description, String failingUrl) {
+                /*
+                if (errorCode == ERROR_TIMEOUT) {
+                    view.stopLoading();  // may not be needed
+                    //view.loadData(timeoutMessageHtml, "text/html", "utf-8");
+                }
+                */
+                view.stopLoading();
+                view.loadUrl(AppDataProvider.URL.FILE_404);
             }
         });
 

@@ -686,9 +686,9 @@ public class ImageUtils {
         String ext = getImageExtName(filePath);
         CompressFormat format = CompressFormat.JPEG;
 
-        if(ext=="PNG"){
+        if(ext.equals("PNG")){
             format = CompressFormat.PNG;
-        }else if(ext =="WEBP"){
+        }else if(ext.equals("WEBP")){
             format = CompressFormat.WEBP;
         }
         return format;

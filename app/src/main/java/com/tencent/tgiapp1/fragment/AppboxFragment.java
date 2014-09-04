@@ -15,15 +15,19 @@ import com.tencent.tgiapp1.AppContext;
 import com.tencent.tgiapp1.AppDataProvider;
 import com.tencent.tgiapp1.R;
 import com.tencent.tgiapp1.bean.News;
+import com.tencent.tgiapp1.common.ImageUtils;
 import com.tencent.tgiapp1.common.UIHelper;
 import com.tencent.tgiapp1.entity.ActionItem;
 import com.tencent.tgiapp1.entity.MiscData;
 import com.tencent.tgiapp1.entity.ToolboxData;
+import com.tencent.tgiapp1.service.DataService;
+import com.tencent.tgiapp1.service.DataTask;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.UUID;
 
 import in.xsin.common.MTAHelper;
 import in.xsin.pulltorefresh.PullToRefreshBase;
@@ -79,22 +83,50 @@ public class AppboxFragment extends FragmentBase {
 
     @Override
     public void refresh(int flag,Message params){
-        int errCode = params.arg2;
-        Bundle data = params.getData();
-        if(errCode<0){
-
-            return;
+        Message msg = new Message();
+        msg.copyFrom(params);
+        switch (flag){
+            case DataTask.SN.GET_MISC:
+                onDataGotHandler.sendMessage(msg);
+                break;
+            case DataTask.SN.DownloadImg:
+                onImgDownloadedHandler.sendMessage(msg);
+                break;
         }
 
 
 
 
     }
-    void initScrollView(View parent,LayoutInflater inflater){
 
-        mToolboxData = getAppContext().getData().getMisc().getToolbox();
-        mAppsData = mToolboxData.getApps();
-        mToolsData = mToolboxData.getTools();
+    final Handler onDataGotHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            mPullScrollView.onPullDownRefreshComplete();
+            mPullScrollView.onPullUpRefreshComplete();
+
+            int errCode = msg.arg2;
+            if(errCode<0){
+                //错误提示已经在MainActivity的refresh方法中统一处理
+                return;
+            }
+
+
+            MiscData mdata = (MiscData)msg.obj;
+            appContext.getData().setMisc(mdata);
+
+
+            mAppsData = mToolboxData.getApps();
+            mToolsData = mToolboxData.getTools();
+
+            setLastUpdateTime();
+
+        }
+    };
+
+    void initScrollView(View parent,LayoutInflater inflater){
 
         mPullScrollView = (PullToRefreshScrollView) parent.findViewById(R.id.mPullScrollView);
 
@@ -104,38 +136,17 @@ public class AppboxFragment extends FragmentBase {
 
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
-                final Handler onDataGot = new Handler(){
-                    @Override
-                    public void handleMessage(Message msg) {
-                        super.handleMessage(msg);
 
-                        mPullScrollView.onPullDownRefreshComplete();
-                        mPullScrollView.onPullUpRefreshComplete();
-
-                        Bundle data = msg.getData();
-                        int errCode = data.getInt("errCode");
-                        String errMsg = data.getString("errMsg");
-
-                        if(errMsg!=null){
-                            UIHelper.ToastMessage(getActivity(), errMsg);
-                            return;
-                        }
-
-                        MiscData mdata = (MiscData)data.getSerializable("data");
-                        appContext.getData().setMisc(mdata);
-
-
-                        mAppsData = mToolboxData.getApps();
-                        mToolsData = mToolboxData.getTools();
-
-                        setLastUpdateTime();
-
-
-                    }
-                };
 
                 //初始化数据
-                AppDataProvider.getMiscData(appContext, onDataGot, false);
+                boolean isRefresh = true;
+
+                Bundle data = new Bundle();
+                data.putInt("taskId", DataTask.SN.GET_MISC);
+                data.putString("activity", "MainActivity");
+                data.putString("fragment","tab4");
+                data.putBoolean("isRefresh",isRefresh);
+                DataService.execute(appContext, data);
             }
 
             @Override
@@ -143,6 +154,10 @@ public class AppboxFragment extends FragmentBase {
 
             }
         });
+
+        mToolboxData = getAppContext().getData().getMisc().getToolbox();
+        mAppsData = mToolboxData.getApps();
+        mToolsData = mToolboxData.getTools();
 
         mScrollView = mPullScrollView.getRefreshableView();
         View tempView = View.inflate(getAppContext(),R.layout.appbox_main,mScrollView);
@@ -191,6 +206,9 @@ public class AppboxFragment extends FragmentBase {
             if (action.indexOf("http")==0){
                 News news = new News();
                 news.setUrl(action);
+                news.setTitle(str);
+                news.setStartAt("2005-10-10");
+                news.setEndAt("2020-10-10");
                 UIHelper.showNewsDetailByInstance(getActivity(),news,str,false);
                 return;
             }
@@ -228,6 +246,9 @@ public class AppboxFragment extends FragmentBase {
             if (action.indexOf("http")==0){
                 News news = new News();
                 news.setUrl(action);
+                news.setTitle(str);
+                news.setStartAt("2005-10-10");
+                news.setEndAt("2020-10-10");
                 UIHelper.showNewsDetailByInstance(getActivity(),news,str,false);
                 return;
             }
@@ -284,7 +305,17 @@ public class AppboxFragment extends FragmentBase {
                                         String textRepresentation) {
                 if (view instanceof ImageView) {
                     ImageView iv = (ImageView) view;
-                    UIHelper.showLoadImage(iv, data.toString(), "Error loading image:" + data);
+                    //UIHelper.showLoadImage(iv, data.toString(), "Error loading image:" + data);
+                    String imgCacheId = UUID.randomUUID().toString();
+                    ImageUtils.cacheImgView(imgCacheId, iv);
+
+                    Bundle data1 = new Bundle();
+                    data1.putString("uuid",imgCacheId);
+                    data1.putString("activity","MainActivity");
+                    data1.putString("fragment","tab4");
+                    data1.putString("url",data.toString());
+
+                    UIHelper.lazyLoadImage(context,data1);
                     return true;
                 }
                 return false;

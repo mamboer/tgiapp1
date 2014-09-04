@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -36,7 +35,6 @@ import com.tencent.tgiapp1.entity.ChannelItem;
 import com.tencent.tgiapp1.entity.UserRemindArticleList;
 import com.tencent.tgiapp1.service.DataService;
 import com.tencent.tgiapp1.service.DataTask;
-import com.tencent.tgiapp1.service.IUpdatableUI;
 import com.tencent.tgiapp1.widget.NewDataToast;
 
 import in.xsin.common.MTAHelper;
@@ -52,7 +50,6 @@ import com.viewpagerindicator.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.UUID;
 
 
@@ -93,7 +90,7 @@ public class HomeFragment extends FragmentBase {
         Message msg = new Message();
         msg.copyFrom(params);
         switch (flag){
-            case DataTask.SN.Get_AppData:
+            case DataTask.SN.GET_AppData:
                 onAppDataGotHandler.sendMessage(msg);
                 //onAppDataGot(params);
                 break;
@@ -325,7 +322,7 @@ public class HomeFragment extends FragmentBase {
                 //AppDataProvider.getAppData(ct,onAppDataGot , true);
 
                 Bundle data = new Bundle();
-                data.putInt("taskId", DataTask.SN.Get_AppData);
+                data.putInt("taskId", DataTask.SN.GET_AppData);
                 data.putString("activity","MainActivity");
                 data.putString("fragment","tab1");
                 DataService.execute(ct,data);

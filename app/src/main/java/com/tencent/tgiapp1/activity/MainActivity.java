@@ -78,8 +78,7 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
         int errCode = params.arg2;
         Bundle data = params.getData();
         if(errCode<0){
-            UIHelper.ToastMessage(this,data.getString("errMsg"),Toast.LENGTH_LONG);
-            return;
+            UIHelper.ToastMessage(this,params.obj.toString(),Toast.LENGTH_LONG);
         }
 
         //是否fragment

@@ -161,7 +161,7 @@ public class FileUtils {
         // 读取本地图片
         if (StringUtils.isEmpty(imgURL) || imgURL.endsWith("portrait.gif")) {
             bmp = BitmapFactory.decodeResource(context.getResources(),
-                    R.drawable.widget_dface);
+                    R.drawable.p150x110);
             return bmp;
         }
 

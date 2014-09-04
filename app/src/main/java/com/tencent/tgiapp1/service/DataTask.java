@@ -12,6 +12,7 @@ import com.tencent.tgiapp1.AppManager;
 import com.tencent.tgiapp1.api.ApiClient;
 import com.tencent.tgiapp1.entity.AppData;
 import com.tencent.tgiapp1.entity.ArticleList;
+import com.tencent.tgiapp1.entity.MiscData;
 
 /**
  * 任务类 获取不同信息
@@ -55,7 +56,7 @@ public class DataTask {
 
                     break;
 
-                case SN.Get_AppData:
+                case SN.GET_AppData:
                     //应用数据更新
                     AppData data1 = AppDataProvider.getAppDataSync(AppContext.Instance, true);
                     params.obj = data1;
@@ -90,6 +91,11 @@ public class DataTask {
                     break;
                 case DataTask.SN.GET_TESTING:
                     //TODO:获取评测
+                    break;
+                case SN.GET_MISC:
+                    //杂项数据
+                    MiscData data5 = AppDataProvider.getMiscDataSync(AppContext.Instance,data.getBoolean("isRefresh"));
+                    params.obj = data5;
                     break;
                 case SN.DownloadImg:
                     Bitmap obj = ApiClient.getAndSaveImageSync(AppContext.Instance,data.getString("url"));
@@ -157,11 +163,15 @@ public class DataTask {
         /**
          * 获取应用数据
          */
-        public static final int Get_AppData = 6;
+        public static final int GET_AppData = 6;
         /**
          * 下载图片
          */
         public static final int DownloadImg = 7;
+        /**
+         * 杂项数据
+         */
+        public static final int GET_MISC = 8;
         /**
          * 初始化
          */

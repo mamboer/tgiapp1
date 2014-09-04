@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +19,17 @@ import com.tencent.tgiapp1.AppContext;
 import com.tencent.tgiapp1.R;
 import com.tencent.tgiapp1.bean.User;
 import com.tencent.tgiapp1.common.BitmapManager;
+import com.tencent.tgiapp1.common.ImageUtils;
 import com.tencent.tgiapp1.common.OpenQQHelper;
 import com.tencent.tgiapp1.common.UIHelper;
 import com.tencent.tgiapp1.entity.UserFavArticleList;
+import com.tencent.tgiapp1.service.DataTask;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Properties;
+import java.util.UUID;
 
 import in.xsin.common.MTAHelper;
 
@@ -90,11 +94,12 @@ public class ICenterFragment extends FragmentBase {
 
     @Override
     public void refresh(int flag,Message params){
-        int errCode = params.arg2;
-        Bundle data = params.getData();
-        if(errCode<0){
-
-            return;
+        Message msg = new Message();
+        msg.copyFrom(params);
+        switch (flag){
+            case DataTask.SN.DownloadImg:
+                onImgDownloadedHandler.sendMessage(msg);
+                break;
         }
 
 
@@ -167,8 +172,9 @@ public class ICenterFragment extends FragmentBase {
                 if(what!=0){
                     Properties pro = new Properties();
                     pro.setProperty("error",msg.obj.toString());
-                    MTAHelper.trackLogin(getActivity(),false,pro);
-                    UIHelper.ToastMessage(getActivity(),"登录失败："+msg.obj);
+                    MTAHelper.trackLogin(getActivity(), false, pro);
+                    Log.e(TAG,"登录失败："+msg.obj);
+                    UIHelper.ToastMessage(getActivity(),"登录失败，请稍后重试！");
                     return;
                 }
 
@@ -212,7 +218,7 @@ public class ICenterFragment extends FragmentBase {
                     Properties pro = new Properties();
                     pro.setProperty("error",e.getMessage());
                     MTAHelper.trackLogin(getActivity(),false,pro);
-                    UIHelper.ToastMessage(getContext(),"解析用户数据时出错："+e.getMessage());
+                    UIHelper.ToastMessage(getContext(),"解析用户数据时出错！");
                 }
                 getAppContext().saveLoginInfo(user);
                 cacheUser(user);
@@ -266,7 +272,18 @@ public class ICenterFragment extends FragmentBase {
         //txtUserId.setVisibility(View.VISIBLE);
         //txtUserId.setText("QQ号：" + user.getUid());
         txtUserName.setText("您好，"+curUser.getName());
-        bitmapManager.loadBitmap(curUser.getFace(),imgUserAvatar);
+        //bitmapManager.loadBitmap(curUser.getFace(),imgUserAvatar);
+
+        String imgCacheId = UUID.randomUUID().toString();
+        ImageUtils.cacheImgView(imgCacheId, imgUserAvatar);
+
+        Bundle data = new Bundle();
+        data.putString("uuid",imgCacheId);
+        data.putString("activity","MainActivity");
+        data.putString("fragment","tab5");
+        data.putString("url",curUser.getFace());
+
+        UIHelper.lazyLoadImage(context,data);
 
         //更新收藏总数
         UserFavArticleList favData =appContext.getData().getFavArticles();

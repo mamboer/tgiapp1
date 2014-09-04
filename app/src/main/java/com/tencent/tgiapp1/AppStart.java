@@ -117,29 +117,6 @@ public class AppStart extends Activity  implements IUpdatableUI {
             }
         }
 
-        /*
-        final Handler onAppDataGot = new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                Bundle data = msg.getData();
-                int errCode = data.getInt("errCode");
-                String errMsg = data.getString("errMsg");
-                ac.setData((AppData)data.getSerializable("data"));
-
-                Log.e(TAG,"AppData loaded, "+(isDelayEnded?"startup animation ended,let's do redirect.":"startup animation running..."));
-
-                if(isDelayEnded){
-                    redirectTo();
-                }
-
-            }
-        };
-
-        //初始化数据
-        AppDataProvider.getAppData(ac,onAppDataGot , false);
-        */
-
         //启动数据服务
         Bundle data = new Bundle();
         data.putInt("taskId", DataTask.SN.INIT);

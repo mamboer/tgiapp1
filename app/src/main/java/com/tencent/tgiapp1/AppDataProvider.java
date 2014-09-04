@@ -39,6 +39,7 @@ public class AppDataProvider {
         final public static String MANUAL ="http://ttxd.qq.com/webplat/info/news_version3/7367/8248/8277/8339/8341/m6808/list_1.shtml";//玩法攻略
         final public static String TESTING="http://ttxd.qq.com/webplat/info/news_version3/7367/8248/8277/8339/8342/m6808/list_1.shtml";//评测
         final public static String EXP = "http://ttxd.qq.com/webplat/info/news_version3/7367/8248/8277/8339/8343/m6808/list_1.shtml";//高玩心得
+        final public static String FILE_404="file:///android_asset/html/404.html";
     }
 
     public static class CONSTS{
@@ -212,6 +213,36 @@ public class AppDataProvider {
     }
 
     /**
+     * 同步的方式获取杂项的数据
+     * @param context
+     * @param isRefresh
+     */
+    public static MiscData getMiscDataSync(final AppContext context,final boolean isRefresh) throws Exception{
+
+        String data0 = "";
+        int flagIdx = 0;
+        MiscData data = null;
+        try {
+            Gson gson = new Gson();
+            data0 = getRemoteData(context,assertUrl(context,URL.MISC),isRefresh);
+            flagIdx = data0.lastIndexOf("<!--");
+            if(flagIdx>0) {
+                data0 = data0.substring(0, flagIdx);
+                data = gson.fromJson(data0, MiscData.class);
+            }else{
+                throw new Exception("网络数据连失败或数据格式有误");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+
+        return data;
+
+    }
+
+    /**
      * 获取杂项的数据
      * @param context
      * @param handler
@@ -221,27 +252,13 @@ public class AppDataProvider {
 
         new Thread(){
             public void run() {
-                String data0 = "";
-                int flagIdx = 0;
                 MiscData data = new MiscData();
                 Bundle bundle = new Bundle();
                 try {
                     Gson gson = new Gson();
-                    data0 = getRemoteData(context,assertUrl(context,URL.MISC),isRefresh);
-                    flagIdx = data0.lastIndexOf("<!--");
-                    if(flagIdx>0) {
-                        data0 = data0.substring(0, flagIdx);
-                        data = gson.fromJson(data0, MiscData.class);
-                        bundle.putInt("errCode",0);
-                        bundle.putString("errMsg",null);
-                    }else{
-                        bundle.putInt("errCode",2);
-                        bundle.putString("errMsg","网络数据连失败或数据格式有误！");
-                    }
-
-                } catch (AppException e) {
+                    data = getMiscDataSync(context,isRefresh);
+                } catch (Exception e) {
                     data = null;
-                    e.printStackTrace();
                     bundle.putInt("errCode",1);
                     bundle.putString("errMsg",e.getMessage());
                 }

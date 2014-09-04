@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>网络不通或网页不存在</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+    <!--normalize.css-->
+    <style>
+        article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{background:#fff;color:#000;font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,select{text-transform:none}button,html input[type="button"],/* 1 */
+        input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
+    </style>
+    <!--style.css-->
+    <style>
+        html,body{display:block;height:100%;}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0;font-family:"Open sans",sans-serif;font-weight:400;line-height:1.2em;color:#404040}.rs,h1.rs,h2.rs,h3.rs,h4.rs,h5.rs,h6.rs{margin:0;padding:0}ul.rs,ol.rs{list-style:none}img{vertical-align:middle;border:0;-ms-interpolation-mode:bicubic}button,input,select,textarea{padding:0;margin:0;vertical-align:middle;font-family:inherit;font-size:100%;outline:0}button,input{*overflow:visible;line-height:normal}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}label,select,button,input[type=button],input[type=reset],input[type=submit],input[type=radio],input[type=checkbox]{cursor:pointer}input[type=search]{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-webkit-appearance:textfield}input[type=search]::-webkit-search-decoration,input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}textarea{overflow:auto;vertical-align:top;resize:none}*,:before,:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}a,a:hover,a:focus{outline:0}a,li{text-decoration:none;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}header{position:relative;text-align:center;display:inline-block}.panda-wrapper{background-color:#D9443F;border-width:8px 0;border-style:solid;border-color:#000;text-align:center;overflow:hidden;padding:30px 20px;display: -webkit-box;min-height: 100%;}.logo img{max-width:90%}.panda-content{margin:0 auto;width:1090px;max-width:100%}.panda-content h2,.panda-content p{color:#FFF}.panda-content h2{text-transform:uppercase}.panda-content h2.title-404{font-size:80px;line-height:120%;max-width:90%;margin:0 auto 5px}.panda-content p{font-size:24px}.dot{width:26px;height:24px;background-color:#FFF}h2{font-family:bebas_neueregular;font-weight:400;line-height:120%}p{font-family:'Open sans';font-weight:400;line-height:120%}p.text-min{font-size:24px}p.text-medium{font-size:60px}p.text-big{font-size:80px}.page-404 p{width:90%;max-width:570px;margin:0 auto}.logo-pd-404,.dot{position:absolute}.logo-pd-404{top:-111px;right:-265px}.dot{top:71px;right:-10px}.logo-pd-404 img,.logo-panda img,.logo-404-2{max-width:100%;height:auto}.logo-404-2,.logo-pd-2{max-width:90%;margin-bottom:60px}.panda-content .logo-pd-2{margin-bottom:31px}.panda-wrapper .pull-left{text-align:left}.panda-wrapper h2{font-size:150px;line-height:100%}.pull-left h1.logo{margin-bottom:80px;padding-top:20px}.pull-left p{margin:0;font-size:60px;width:100%;max-width:727px;line-height:100%}.text-underline{text-transform:uppercase;text-decoration:underline}p.text-opacity{color:rgba(255,255,255,.4)}p.text-black{color:#000;line-height:120%}.panda-wrapper.not-absolute{position:static}.clear{clear:both}
+    </style>
+    <!--responsive.css-->
+    <style>
+        /* max-width :If [device width] is less than or equal to [specified #], then do {...} */
+        /* min-width :If [device width] is greater than or equal to [specified #], then do {...} */
+        @media screen and (max-width:1100px){.panda-wrapper .pull-left{text-align:center}}
+        @media screen and (max-width:768px){.panda-wrapper{overflow:auto}}
+        @media screen and (max-width:550px){.panda-wrapper h2{font-size:100px}.panda-content p.text-min,.panda-content p.text-big,.panda-content p.text-medium{font-size:40px}}
+        @media screen and (max-width:500px){.panda-content h2.title-404{font-size:60px}}
+        @media screen and (max-width:360px){
+            .panda-content h2.title-404{font-size:36px}
+            .panda-content .logo-pd-2{margin-bottom:20px;}
+            .panda-content p{font-size:18px;}
+        }
+        @media screen and (max-height:567px){
+            .logo-404-2, .logo-pd-2{max-width:80%;}
+            .panda-wrapper{padding:15px 10px;}
+            .panda-content h2.title-404{font-size:24px}
+            .panda-content .logo-pd-2{margin-bottom:14px;}
+            .panda-content p{font-size:14px;}
+        }
+        @media screen and (max-height:479px){
+            .logo-404-2, .logo-pd-2{max-width:80%;}
+            .panda-wrapper{padding:15px 10px;}
+            .panda-content h2.title-404{display:none;}
+            .panda-content p{display:none;}
+            .panda-content .logo-pd-2{margin-bottom:0;}
+        }
+    </style>
+</head>
+<body>
+<div id="page-404-3" class="panda-wrapper panda-404">
+    <div class="panda-content">
+        <img class="logo-pd-2" src="../img/logo-pd-2.png" alt=""/>
+        <h2 class="rs title-404">太胖了</h2>
+        <p class="rs">找不到页面，请检查您的网络环境以及确认该页面是否存在。</p>
+    </div>
+</div>
+</body>
+</html>

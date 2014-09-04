@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tencent.tgiapp1.AppContext;
 import com.tencent.tgiapp1.AppDataProvider;
@@ -39,36 +40,13 @@ public class ManualFragment extends FragmentBase {
     private static  String TAG = ManualFragment.class.getName();
 
     private PullToRefreshListView mPullListView1;
-    //private PullToRefreshListView mPullListView2;
-    //private PullToRefreshListView mPullListView3;
 
     private ListView mListView1; // 下拉刷新的listview
-    //private ListView mListView2;
-    //private ListView mListView3;
 
     private ManualListAdapter mListViewAdapter1;
     private boolean mListViewHasMoreData1;
     private ArticleList mListViewData1;
     private ArrayList<Article> mListViewDataItems1;
-
-    /*
-    private ManualListAdapter mListViewAdapter2;
-    private boolean mListViewHasMoreData2;
-    private ArticleList mListViewData2;
-    private ArrayList<Article> mListViewDataItems2;
-
-    private ManualListAdapter mListViewAdapter3;
-    private boolean mListViewHasMoreData3;
-    private ArticleList mListViewData3;
-    private ArrayList<Article> mListViewDataItems3;
-    */
-
-
-    private ArrayList<View> mTabMenus;
-
-    private ArrayList<View> mTabMenuLines;
-
-    private ArrayList<TextView> mTabMenuTexts;
 
     private ArrayList<PullToRefreshListView> mPullListViews;
 
@@ -83,6 +61,10 @@ public class ManualFragment extends FragmentBase {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setFragmentViewId(R.layout.manual);
+        mIsTabDataLoaded = new ArrayList<Boolean>();
+        mIsTabDataLoaded.add(false);
+        mIsTabDataLoaded.add(false);
+        mIsTabDataLoaded.add(false);
     }
 
 
@@ -109,14 +91,12 @@ public class ManualFragment extends FragmentBase {
 
     @Override
     public void init(){
-        mIsTabDataLoaded = new ArrayList<Boolean>();
-        mIsTabDataLoaded.add(false);
-        mIsTabDataLoaded.add(false);
-        mIsTabDataLoaded.add(false);
+
     }
 
     @Override
     public void refresh(int flag,Message params){
+
         Message msg = new Message();
         msg.copyFrom(params);
         switch (flag){
@@ -135,33 +115,9 @@ public class ManualFragment extends FragmentBase {
     public void initView(View parent,LayoutInflater inflater){
         ViewGroup vg1 = (ViewGroup)parent;
 
-        //this.initTabMenu(vg1,inflater);
-
         this.initListView(vg1,inflater);
 
         setCurrentTab(0);
-
-    }
-
-    void initTabMenu(ViewGroup vg1,LayoutInflater inflater){
-        mTabMenuTexts = new ArrayList<TextView>();
-        mTabMenus = UIHelper.getViewsByTag(vg1,"filterBtn");
-        mTabMenuLines = UIHelper.getViewsByTag(vg1,"tabMenuLine");
-
-        for(int i=0;i<mTabMenus.size();i++){
-            final int j = i;
-            mTabMenus.get(i).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    setCurrentTab(j);
-                }
-            });
-        }
-
-        ArrayList<View> tempViews = UIHelper.getViewsByTag(vg1,"tabMenuText");
-        for(View v:tempViews){
-            mTabMenuTexts.add((TextView)v);
-        }
 
     }
 
@@ -175,10 +131,6 @@ public class ManualFragment extends FragmentBase {
         final AppContext ct = getAppContext();
 
         initListView1(ct);
-
-        //initListView2(ct);
-
-        //initListView3(ct);
 
     }
 
@@ -280,7 +232,11 @@ public class ManualFragment extends FragmentBase {
 
     private void onArticleDataGot1(Message msg){
         mPullListView1.onPullUpRefreshComplete();
-
+        int errCode = msg.arg2;
+        if(errCode<0){
+            //错误提示已经在MainActivity的refresh方法中统一处理
+            return;
+        }
         mListViewData1 = (ArticleList)msg.obj;
         mListViewHasMoreData1 = mListViewData1.getNextPageId()!="";
         mPullListView1.setHasMoreData(mListViewHasMoreData1);
@@ -303,6 +259,11 @@ public class ManualFragment extends FragmentBase {
         mPullListView1.onPullDownRefreshComplete();
         //mPullListView1.onPullUpRefreshComplete();
 
+        int errCode = msg.arg2;
+        if(errCode<0){
+            //错误提示已经在MainActivity的refresh方法中统一处理
+            return;
+        }
 
         mListViewData1 = (ArticleList)msg.obj;
 

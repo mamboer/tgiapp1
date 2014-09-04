@@ -121,20 +121,13 @@ public class ManualListAdapter extends BaseAdapter {
 
         // 是否有图片
         String cover = news.getCover();
+        String imgCacheId = null;
+        Bundle data = null;
         if(StringUtils.isEmpty(cover)){
             vh.face.setVisibility(View.GONE);
         }else{
             vh.face.setVisibility(View.VISIBLE);
-            UIHelper.showLoadImage(vh.face,cover,"加载图片时发生错误："+cover);
-        }
-
-        String imgCacheId = null;
-        Bundle data = null;
-        //是否有描述
-        if(StringUtils.isEmpty(news.getDesc())){
-            vh.desc.setVisibility(View.GONE);
-        }else{
-            vh.desc.setVisibility(View.VISIBLE);
+            //UIHelper.showLoadImage(vh.face,cover,"加载图片时发生错误："+cover);
             imgCacheId = UUID.randomUUID().toString();
             ImageUtils.cacheImgView(imgCacheId, vh.face);
 
@@ -145,6 +138,13 @@ public class ManualListAdapter extends BaseAdapter {
             data.putString("url",cover);
 
             UIHelper.lazyLoadImage(context,data);
+        }
+        //是否有描述
+        if(StringUtils.isEmpty(news.getDesc())){
+            vh.desc.setVisibility(View.GONE);
+        }else{
+            vh.desc.setVisibility(View.VISIBLE);
+
         }
 
         return convertView;
