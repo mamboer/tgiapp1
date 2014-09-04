@@ -89,7 +89,7 @@ public class ICenterFragment extends FragmentBase {
 
     @Override
     public void init(){
-
+        this.initICenter();
     }
 
     @Override
@@ -116,7 +116,6 @@ public class ICenterFragment extends FragmentBase {
         imgUserAvatar = (ImageView) parent.findViewById(R.id.icenter_userAvatar);
         txtFavCnt = (TextView) parent.findViewById(R.id.icenter_favcnt);
 
-        this.initICenter();
     }
 
     //初始化个人中心
@@ -241,14 +240,6 @@ public class ICenterFragment extends FragmentBase {
     private void updateICenter(){
         btnLogin.setVisibility(View.GONE);
         btnLogoff.setVisibility(View.GONE);
-        //txtUserId.setVisibility(View.GONE);
-
-        /*
-        btnLogin.setVisibility(View.VISIBLE);
-        imgUserAvatar.setImageResource(R.drawable.widget_dface);
-        txtUserId.setText("QQ号：未知用户");
-        txtUserName.setText("未知用户");
-        */
 
         AppContext appContext = getAppContext();
 

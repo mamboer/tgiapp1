@@ -4,14 +4,14 @@
     <wp7>1.0</wp7>
     <ios>1.0.0</ios>
     <android>
-      <versionCode>32</versionCode>
-      <versionName>1.0.1</versionName>
+      <versionCode>33</versionCode>
+      <versionName>1.1.0</versionName>
       <downloadUrl>http://ossweb-img.qq.com/upload/apps/android/ttxd/app-release.apk</downloadUrl>
       <updateLog>
           <![CDATA[版本信息：
-天天炫斗官方宝典 Android v1.0.1.32
+天天炫斗官方宝典 Android v1.1.0.33
 版本更新日志：
-1.论坛接入优化
+1.N多性能优化
 2.就不告诉你其他各种功能...
 请点击确定在线升级，如果升级失败，请到http://ossweb-img.qq.com/upload/apps/android/ttxd/app-release.apk下载最新版本
 安装包大小：5.7MB]]>

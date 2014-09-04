@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tencent.tgiapp1"
-    android:versionCode="32"
-    android:versionName="1.0.1" >
+    android:versionCode="33"
+    android:versionName="1.1.0" >
 
     <uses-sdk
         android:minSdkVersion="10"
@@ -253,6 +253,10 @@
             android:name="com.tencent.android.tpush.XGPushActivity"
             android:theme="@android:style/Theme.Translucent"
             android:exported="false" >
+            <intent-filter>
+                <!-- 若使用AndroidStudio，请设置android:name="android.intent.action"-->
+                <action android:name="android.intent.action" />
+            </intent-filter>
         </activity>
 
         <!-- 【必须】 信鸽service -->
@@ -265,11 +269,11 @@
         <!-- 【必须】 请将YOUR_ACCESS_ID修改为APP的AccessId，“21”开头的10位数字，中间没空格 -->
         <meta-data
             android:name="XG_V2_ACCESS_ID"
-            android:value="2100034842" />
+            android:value="2100046705" />
         <!-- 【必须】 请将YOUR_ACCESS_KEY修改为APP的AccessKey，“A”开头的12位字符串，中间没空格 -->
         <meta-data
             android:name="XG_V2_ACCESS_KEY"
-            android:value="A9U45C4DMS9C" />
+            android:value="AA57FZ9G2I6B" />
 
         <!-- APP实现的Receiver，用于接收消息透传和操作结果的回调： -->
         <receiver android:name="com.tencent.tgiapp1.receiver.XGMsgReceiver" >

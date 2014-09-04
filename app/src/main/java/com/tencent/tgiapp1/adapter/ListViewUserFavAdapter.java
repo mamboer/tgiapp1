@@ -17,9 +17,12 @@ import com.tencent.tgiapp1.AppContext;
 import com.tencent.tgiapp1.AppDataProvider;
 import com.tencent.tgiapp1.R;
 import com.tencent.tgiapp1.bean.FavItem;
+import com.tencent.tgiapp1.common.ImageUtils;
+import com.tencent.tgiapp1.common.StringUtils;
 import com.tencent.tgiapp1.common.UIHelper;
 
 import java.util.List;
+import java.util.UUID;
 
 public class ListViewUserFavAdapter extends BaseAdapter {
 
@@ -78,13 +81,21 @@ public class ListViewUserFavAdapter extends BaseAdapter {
         final  SwipeListView lvLoveViennaLiao = (SwipeListView)parent;
         lvLoveViennaLiao.recycle(convertView, position);
 
+
+        holder.ico.setImageResource(R.drawable.p150x110);
         String ico = item.getIcon();
 
-        if(null==ico||ico.equals("")){
-            holder.ico.setImageResource(R.drawable.widget_dface);
-        }else{
-            UIHelper.showLoadImage(holder.ico, ico, "Error loading image:" + ico);
+        if(!StringUtils.isEmpty(ico)){
+            String imgCacheId = UUID.randomUUID().toString();
+            ImageUtils.cacheImgView(imgCacheId, holder.ico);
+
+            Bundle data1 = new Bundle();
+            data1.putString("uuid",imgCacheId);
+            data1.putString("activity","UserFavor");
+            data1.putString("url",ico);
+            UIHelper.lazyLoadImage(context,data1);
         }
+
         holder.title.setText(item.getName());
         holder.title.setTag(item);
         holder.cname.setText(item.getCateName());

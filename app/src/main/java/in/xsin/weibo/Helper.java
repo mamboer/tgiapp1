@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.sina.weibo.sdk.api.TextObject;
@@ -30,12 +31,15 @@ import com.sina.weibo.sdk.utils.Utility;
 import com.tencent.tgiapp1.R;
 import com.tencent.tgiapp1.common.BitmapManager;
 import com.tencent.tgiapp1.common.ImageUtils;
+import com.tencent.tgiapp1.common.StringUtils;
 import com.tencent.tgiapp1.common.UIHelper;
 
 /**
  * Created by levin on 6/25/14.
  */
 public class Helper {
+
+    private static String TAG = Helper.class.getName();
 
     private static WeiboAuth mWeiboAuth;
     private static Activity context;
@@ -161,7 +165,7 @@ public class Helper {
                 mediaObject.actionUrl = url;
                 mediaObject.defaultText = "#"+context.getString(R.string.app_name)+"# "+title+" "+url;
 
-                String picUrl1 = (null==picUrl||picUrl.equals(""))?context.getString(R.string.openqq_default_pic):picUrl;
+                String picUrl1 = (StringUtils.isEmpty(picUrl))?context.getString(R.string.openqq_default_pic):picUrl;
 
                 bitmapManager.loadBitmap(context,picUrl1,160,160,new Handler(){
 
@@ -188,7 +192,7 @@ public class Helper {
 
                         // 图片不能大于32KB 32768B
                         // 缩略图的二进制数据
-                        byte[] bytes = ImageUtils.bmpToByteArray(bitmap, true);
+                        byte[] bytes = ImageUtils.bmpToByteArray(bitmap, false);
                         // 检查图片是否大于32kb
                         if (bytes.length>32*1024){
                             //UIHelper.ToastMessage(context,"分享失败：分享的图片尺寸不能超过32KB");
@@ -301,8 +305,9 @@ public class Helper {
 
         @Override
         public void onWeiboException(WeiboException e) {
+            Log.e(TAG,"新浪微博分享授权发生错误:"+e.getMessage());
             Toast.makeText(context,
-                    "新浪微博分享授权发生错误 : " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    "新浪微博分享授权发生错误!" , Toast.LENGTH_LONG).show();
             msg.what = -3;
             msg.obj = e.getMessage();
             sendMsg();

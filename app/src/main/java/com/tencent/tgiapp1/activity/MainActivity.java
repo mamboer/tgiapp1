@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tencent.android.tpush.XGPushClickedResult;
+import com.tencent.android.tpush.XGPushConfig;
 import com.tencent.android.tpush.XGPushManager;
 import com.tencent.tgiapp1.AppException;
 import com.tencent.tgiapp1.R;
@@ -31,6 +32,8 @@ import com.tencent.tgiapp1.common.UpdateManager;
 import com.tencent.tgiapp1.entity.AppData;
 import com.tencent.tgiapp1.fragment.*;
 import com.tencent.tgiapp1.receiver.BroadCast;
+import com.tencent.tgiapp1.service.DataService;
+import com.tencent.tgiapp1.service.DataTask;
 import com.tencent.tgiapp1.service.IUpdatableUI;
 
 import java.util.ArrayList;
@@ -79,6 +82,12 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
         Bundle data = params.getData();
         if(errCode<0){
             UIHelper.ToastMessage(this,params.obj.toString(),Toast.LENGTH_LONG);
+        }
+
+        switch (flag){
+            case DataTask.SN.DownloadWellcomeImage:
+                //下载背景图后不需要做别的处理
+                break;
         }
 
         //是否fragment
@@ -164,16 +173,11 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
         if (!appContext.isNetworkConnected()) {
             return;
         }
-        // 启动线程去检查服务器接口是否需要下载新的欢迎界面背景图片到手机
-        new Thread(){
-            public void run() {
-                // 将图片下载下来
-                try {
-                    ApiClient.checkBackGround(appContext);
-                } catch (AppException e) {
-                }
-            }
-        }.start();
+        //启动数据服务 - 去检查服务器接口是否需要下载新的欢迎界面背景图片到手机
+        Bundle data = new Bundle();
+        data.putInt("taskId", DataTask.SN.DownloadWellcomeImage);
+        data.putString("activity","MainActivity");
+        DataService.execute(this, data);
     }
 
     @Override
@@ -196,7 +200,7 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
     private void initXinge(){
         // 注册信鸽
         // 开启logcat输出，方便debug，发布时请关闭
-        // XGPushConfig.enableDebug(this, true);
+        //XGPushConfig.enableDebug(this, true);
         // 如果需要知道注册是否成功，请使用registerPush(getApplicationContext(), XGIOperateCallback)带callback版本
         // 如果需要绑定账号，请使用registerPush(getApplicationContext(),"account")版本
         // 具体可参考详细的开发指南

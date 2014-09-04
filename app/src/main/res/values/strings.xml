@@ -90,9 +90,9 @@
     <string name="openqq_default_pic">http://ossweb-img.qq.com/images/chanpin/ttxd/public/a20140528ttxd/downloadqrttxd.jpg</string>
 
     <!--S 信鸽 http://xg.qq.com/xg/apps/ctr_app/get_app_info?app_id=2100034842-->
-    <string name="xg_appid">2100034842</string>
-    <string name="xg_accesskey">A9U45C4DMS9C</string>
-    <string name="xg_secretkey">d6526bef66ca630bf98af23796e058ea</string>
+    <string name="xg_appid">2100046705</string>
+    <string name="xg_accesskey">AA57FZ9G2I6B</string>
+    <string name="xg_secretkey">4bfa67d8d4ca1d053d099af815a4c657</string>
     <string name="xg_db">XGTTXD.db</string>
     <!--E 信鸽-->
 

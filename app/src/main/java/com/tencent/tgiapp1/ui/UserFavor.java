@@ -25,6 +25,7 @@ import com.tencent.tgiapp1.bean.News;
 import com.tencent.tgiapp1.common.UIHelper;
 import com.tencent.tgiapp1.entity.Article;
 import com.tencent.tgiapp1.entity.UserFavArticleList;
+import com.tencent.tgiapp1.service.DataTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +51,14 @@ public class UserFavor extends BaseActivity {
     }
 
     @Override
-    public void refresh(int flag,Message data){
-
+    public void refresh(int flag,Message params){
+        Message msg = new Message();
+        msg.copyFrom(params);
+        switch (flag){
+            case DataTask.SN.DownloadImg:
+                onImgDownloadedHandler.sendMessage(msg);
+                break;
+        }
     }
 
     @Override

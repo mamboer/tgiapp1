@@ -101,6 +101,9 @@ public class DataTask {
                     Bitmap obj = ApiClient.getAndSaveImageSync(AppContext.Instance,data.getString("url"));
                     params.obj = obj;
                     break;
+                case SN.DownloadWellcomeImage:
+                    ApiClient.checkBackGround(AppContext.Instance);
+                    break;
             }
 
         } catch (Exception e) {
@@ -172,6 +175,10 @@ public class DataTask {
          * 杂项数据
          */
         public static final int GET_MISC = 8;
+        /**
+         * 下载欢迎图片
+         */
+        public static final int DownloadWellcomeImage = 9;
         /**
          * 初始化
          */

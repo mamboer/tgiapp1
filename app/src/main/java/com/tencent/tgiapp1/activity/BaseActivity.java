@@ -2,12 +2,16 @@ package com.tencent.tgiapp1.activity;
 
 import com.tencent.tgiapp1.AppContext;
 import com.tencent.tgiapp1.AppManager;
+import com.tencent.tgiapp1.common.ImageUtils;
+import com.tencent.tgiapp1.common.UIHelper;
 import com.tencent.tgiapp1.service.IUpdatableUI;
 import com.tencent.tgiapp1.widget.LoadingDialog;
 import com.tencent.stat.StatService;
 
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
@@ -123,5 +127,25 @@ public abstract class BaseActivity extends RoboActivity implements IUpdatableUI 
 
     public abstract void init();
     public abstract void refresh(int flag,Message data);
+
+    /**
+     * 图片下载处理回调
+     */
+    public final Handler onImgDownloadedHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            int errCode = msg.arg2;
+            Bundle data = msg.getData();
+            String imgCacheId = data.getString("uuid");
+            if(errCode!=0){
+                UIHelper.ToastMessage(appContext, "图片下载失败：" + msg.obj);
+                return;
+            }
+
+            Bitmap bmp = (Bitmap) msg.obj;
+            ImageUtils.updateImgViewCache(imgCacheId, bmp, true);
+
+        }
+    };
 
 }

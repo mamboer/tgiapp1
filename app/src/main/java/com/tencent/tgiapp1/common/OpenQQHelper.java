@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.tencent.connect.UserInfo;
@@ -52,6 +53,8 @@ public class OpenQQHelper {
     private static Bitmap defaultUserAvatar;
 
     private static Activity context;
+
+    private static String TAG = OpenQQHelper.class.getName();
 
 
     /**
@@ -267,7 +270,7 @@ public class OpenQQHelper {
         boolean ready = mQQAuth.isSessionValid()
                 && mQQAuth.getQQToken().getOpenId() != null;
         if (!ready)
-            Toast.makeText(context, "login and get openId first, please!",
+            Toast.makeText(context, "登录态过期!",
                     Toast.LENGTH_SHORT).show();
         return ready;
     }
@@ -303,7 +306,8 @@ public class OpenQQHelper {
                         if(null!=handler){
                             handler.sendMessage(msg);
                         }
-                        OpenQQUtil.toastMessage(context, "分享成功: " + response.toString());
+                        Log.d(TAG,"分享成功："+response.toString());
+                        OpenQQUtil.toastMessage(context, "分享成功! ");
                     }
 
                     @Override
@@ -314,7 +318,8 @@ public class OpenQQHelper {
                         if(null!=handler){
                             handler.sendMessage(msg);
                         }
-                        OpenQQUtil.toastMessage(context, "分享时发生错误: " + e.errorMessage, "e");
+                        Log.d(TAG,"分享时发生错误: " + e.errorMessage);
+                        OpenQQUtil.toastMessage(context, "分享时发生错误~ ", "e");
                     }
 
                 });
@@ -352,7 +357,8 @@ public class OpenQQHelper {
                         if(null!=handler){
                             handler.sendMessage(msg);
                         }
-                        OpenQQUtil.toastMessage(context, "分享时发生错误: " + e.errorMessage, "e");
+                        Log.d(TAG,"分享时发生错误: " + e.errorMessage);
+                        OpenQQUtil.toastMessage(context, "分享时发生错误! " , "e");
                     }
 
                     @Override
@@ -363,7 +369,8 @@ public class OpenQQHelper {
                         if(null!=handler){
                             handler.sendMessage(msg);
                         }
-                        OpenQQUtil.toastMessage(context, "分享成功: " + response.toString());
+                        Log.d(TAG,"分享成功: " + response.toString());
+                        OpenQQUtil.toastMessage(context, "分享成功! ");
                     }
 
                 });
@@ -506,7 +513,8 @@ public class OpenQQHelper {
                 msg.obj = e;
                 mHandler.sendMessage(msg);
             }
-            OpenQQUtil.toastMessage(mActivity, "分享时发生错误: " + e.errorMessage, "e");
+            Log.d(TAG,"分享时发生错误: " + e.errorMessage);
+            OpenQQUtil.toastMessage(mActivity, "分享时发生错误！", "e");
         }
 
         @Override
@@ -528,7 +536,8 @@ public class OpenQQHelper {
                         msg.obj = json.getString("msg");
                         mHandler.sendMessage(msg);
                     }
-                    OpenQQUtil.toastMessage(mActivity, "分享失败: " + msg.obj);
+
+                    OpenQQUtil.toastMessage(mActivity, "分享失败，请稍后再试");
                     return;
                 }
                 //重新登录
@@ -569,8 +578,7 @@ public class OpenQQHelper {
                     mHandler.sendMessage(msg);
                 }
                 e.printStackTrace();
-                OpenQQUtil.toastMessage(mActivity,
-                        "分享失败: " + response.toString());
+                OpenQQUtil.toastMessage(mActivity,"分享失败，请稍候再试" );
             }
             //OpenQQUtil.dismissDialog();
 

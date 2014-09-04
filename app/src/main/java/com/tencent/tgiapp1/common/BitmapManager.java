@@ -15,6 +15,7 @@ import com.tencent.tgiapp1.api.ApiClient;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.ImageView;
@@ -83,12 +84,17 @@ public class BitmapManager {
      */
     public void loadBitmap(String url, ImageView imageView, Bitmap defaultBmp, int width, int height) {  
         imageViews.put(imageView, url);  
-        Bitmap bitmap = getBitmapFromCache(url);  
+        Bitmap bitmap = getBitmapFromCache(url);
+
+        if(null==bitmap){
+            bitmap = loadLocalBitmap(url,width,height);
+        }
    
         if (bitmap != null) {  
             //显示缓存图片
             imageView.setImageBitmap(bitmap);  
-        } else {  
+        } else {
+
             //加载SD卡中的图片缓存
             String filename = FileUtils.getFileName(url);
             String filepath = imageView.getContext().getFilesDir() + File.separator + filename;
@@ -106,6 +112,33 @@ public class BitmapManager {
     }
 
     /**
+     * 加载本地图片
+     * @param path
+     * @return
+     */
+    public static Bitmap loadLocalBitmap(String path,int width,int height){
+
+        if(path.indexOf("http://")==0 || path.indexOf("https://")==0 || path.indexOf("file://")==0 ){
+            return null;
+        }
+        Bitmap bitmap = null;
+        try {
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            bitmap = BitmapFactory.decodeFile(path, options);
+
+            if(width > 0 && height > 0) {
+                //指定显示图片的高宽
+                bitmap = Bitmap.createScaledBitmap(bitmap, width, height, true);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return bitmap;
+    }
+
+    /**
      * 加载图片-可指定显示图片的高宽
      * @param url
      * @param width
@@ -115,6 +148,10 @@ public class BitmapManager {
 
         Bitmap bitmap = getBitmapFromCache(url);
         Message msg = new Message();
+
+        if(null==bitmap){
+            bitmap = loadLocalBitmap(url,width,height);
+        }
 
         if (bitmap != null) {
             //显示缓存图片

@@ -224,6 +224,11 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
+                if(!appContext.isNetworkConnected() && url.indexOf("file://")!=0){
+                    view.loadUrl(AppDataProvider.URL.FILE_404);
+                    return true;
+                }
+
                 String key="tgideas.app.android.tgiapp1";
 
                 if(url.indexOf("?")<=0){
@@ -245,6 +250,17 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
             public void onPageFinished(WebView view, String url) {
                 // do your stuff here
                 mHeadTitle.setText(view.getTitle());
+            }
+            @Override
+            public void onReceivedError (WebView view, int errorCode,String description, String failingUrl) {
+                /*
+                if (errorCode == ERROR_TIMEOUT) {
+                    view.stopLoading();  // may not be needed
+                    //view.loadData(timeoutMessageHtml, "text/html", "utf-8");
+                }
+                */
+                view.stopLoading();
+                view.loadUrl(AppDataProvider.URL.FILE_404);
             }
         };
     }
