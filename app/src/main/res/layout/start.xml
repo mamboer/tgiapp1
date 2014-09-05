@@ -7,21 +7,21 @@
     android:background="@drawable/welcome">
 
     <LinearLayout
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/app_start_loadingtxt"
         android:layout_centerInParent="true"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ProgressBar
-            android:id="@+id/news_detail_head_progress"
+            android:id="@+id/app_start_progress"
             style="@style/GenericProgressIndicator"
             android:layout_gravity="right|center"
             android:layout_marginRight="10dip"/>
         <TextView
             android:id="@+id/txt_appstart_tip"
             android:textSize="16sp"
-            android:text="狠命加载数据中..."
+            android:text="加载数据中..."
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

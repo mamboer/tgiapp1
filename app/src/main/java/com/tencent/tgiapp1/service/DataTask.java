@@ -10,9 +10,12 @@ import com.tencent.tgiapp1.AppContext;
 import com.tencent.tgiapp1.AppDataProvider;
 import com.tencent.tgiapp1.AppManager;
 import com.tencent.tgiapp1.api.ApiClient;
+import com.tencent.tgiapp1.common.StringUtils;
 import com.tencent.tgiapp1.entity.AppData;
 import com.tencent.tgiapp1.entity.ArticleList;
 import com.tencent.tgiapp1.entity.MiscData;
+
+import java.util.HashMap;
 
 /**
  * 任务类 获取不同信息
@@ -21,6 +24,7 @@ import com.tencent.tgiapp1.entity.MiscData;
 public class DataTask {
 
     private final static String TAG = DataTask.class.getName();
+    private final static HashMap<String,Handler> callbacks = new HashMap<String, Handler>();
 
     private final static Handler taskHandler = new Handler(){
         @Override
@@ -31,14 +35,38 @@ public class DataTask {
     };
 
     /**
+     * 添加一个回调
+     * @param key
+     * @param cbk
+     */
+    public static void addCallback(String key,Handler cbk){
+        callbacks.put(key,cbk);
+    }
+
+    /**
+     * 移除某个回调函数
+     * @param key
+     */
+    public static void removeCallback(String key){
+        callbacks.remove(key);
+    }
+
+
+    /**
      * 执行指定的任务
      * @param params
      */
-    public static void run(Message params){
+    public static void run(Message params,Handler... cbk){
 
         int taskId = params.what;
         int serviceId = params.arg1;
         Bundle data = params.getData();
+        String uuid = data.getString("uuid");
+
+        if(!StringUtils.isEmpty(uuid) && null!=cbk && cbk.length==1){
+            data.putBoolean("hasCallback",true);
+            addCallback(uuid,cbk[0]);
+        }
 
         //errCode
         params.arg2 = 0;
@@ -115,6 +143,7 @@ public class DataTask {
         Message msg = new Message();
         msg.copyFrom(params);
 
+        //不能直接用done方法么？
         taskHandler.sendMessage(msg);
     }
 
@@ -123,15 +152,24 @@ public class DataTask {
      * @param params
      */
     private static void done( Message params){
+
+
         int taskId = params.what;
         Bundle data = params.getData();
-        String activityName = data.getString("activity");
 
         Log.e(TAG, "Task.done --> " + "任务编号： " + taskId);
 
-        //刷新UI
-        IUpdatableUI ia = (IUpdatableUI) AppManager.getActivityByName(activityName);
-        ia.refresh(taskId,params);
+
+        String activityName = data.getString("activity");
+        if(!StringUtils.isEmpty(activityName)){
+            //刷新UI
+            IUpdatableUI ia = (IUpdatableUI) AppManager.getActivityByName(activityName);
+            ia.refresh(taskId,params);
+        }
+
+        if(data.getBoolean("hasCallback")){
+            callbacks.get(data.getString("uuid")).sendMessage(params);
+        }
 
     }
 

@@ -90,6 +90,8 @@ public class UpdateManager {
     private String curVersionName = "";
     private int curVersionCode;
     private Update mUpdate;
+
+    private Handler onDismissHandler;
     
     private Handler mHandler = new Handler(){
         public void handleMessage(Message msg) {
@@ -123,8 +125,9 @@ public class UpdateManager {
      * @param context
      * @param isShowMsg 是否显示提示消息
      */
-    public void checkAppUpdate(Context context, final boolean isShowMsg){
+    public void checkAppUpdate(Context context, final boolean isShowMsg, final Handler onDismissHandler){
         this.mContext = context;
+        this.onDismissHandler = onDismissHandler;
         getCurrentVersion();
         if(isShowMsg){
             if(mProDialog == null)
@@ -287,7 +290,7 @@ public class UpdateManager {
                 }
 
                 //没有挂载SD卡，无法下载文件
-                if(apkFilePath == null || apkFilePath == ""){
+                if(StringUtils.isEmpty(apkFilePath)){
                     mHandler.sendEmptyMessage(DOWN_NOSDCARD);
                     return;
                 }
@@ -352,7 +355,6 @@ public class UpdateManager {
 
     /**
     * 下载apk
-    * @param url
     */
     private void downloadApk(){
         downLoadThread = new Thread(mdownApkRunnable);
@@ -361,7 +363,6 @@ public class UpdateManager {
 
     /**
     * 安装apk
-    * @param url
     */
     private void installApk(){
         File apkfile = new File(apkFilePath);

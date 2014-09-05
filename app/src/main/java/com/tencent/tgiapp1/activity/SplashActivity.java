@@ -5,16 +5,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.tencent.tgiapp1.AppContext;
 import com.tencent.tgiapp1.AppManager;
 import com.tencent.tgiapp1.AppStart;
 import com.tencent.tgiapp1.BuildConfig;
 import com.tencent.tgiapp1.R;
+import com.tencent.tgiapp1.common.OpenQQHelper;
 import com.tencent.tgiapp1.common.UIHelper;
 import com.tencent.stat.StatConfig;
 import com.tencent.stat.StatReportStrategy;
+import com.tencent.tgiapp1.common.WeixinHelper;
+import com.tencent.tgiapp1.entity.AppData;
+
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectView;
 
 /**
  * 功能：使用ViewPager实现初次进入应用时的引导页
@@ -26,21 +37,45 @@ import com.tencent.stat.StatReportStrategy;
  * @author sz082093
  *
  */
+@ContentView(R.layout.start)
 public class SplashActivity extends BaseActivity {
 
     private static String TAG = SplashActivity.class.getName();
 
+    @InjectView(R.id.app_start_view)
+    RelativeLayout wellcome;
+
+    @InjectView(R.id.app_start_loadingtxt)
+    LinearLayout mLoadingWrap;
+
+    @InjectView(R.id.txt_appstart_tip)
+    TextView mLoadingTip;
+
+    @InjectView(R.id.app_start_progress)
+    ProgressBar mProgress;
+
+    AppContext ac = null;
+    boolean isRedirecting;
+    boolean isDelayEnded;
+
     @Override
     public void init(){
 
+        ac = AppContext.Instance;
+
+        // 初始化登录
+        OpenQQHelper.attachTo(this);
+        ac.initLoginInfo();
+
+        // 初始化MTA
         initMTAConfig(BuildConfig.DEBUG);
 
-        final View view = View.inflate(this, R.layout.start, null);
-        RelativeLayout wellcome = (RelativeLayout) view.findViewById(R.id.app_start_view);
+        // 初始化微信SDK
+        WeixinHelper.attachTo(this);
 
+        //更换背景图
         UIHelper.checkWelcomeBG(this, wellcome);
 
-        setContentView(view);
 
         boolean mFirst = isFirstEnter(SplashActivity.this,TAG);//SplashActivity.this.getClass().getName()
         int duration = res.getInteger(R.integer.splash_duration);
@@ -51,8 +86,22 @@ public class SplashActivity extends BaseActivity {
     }
 
     @Override
-    public void refresh(int flag,Message data){
+    public void refresh(int flag,Message params){
+        Bundle data = params.getData();
+        int errCode = params.arg2;
+        if(errCode!=0){
+            mProgress.setVisibility(View.GONE);
+            mLoadingTip.setText(params.obj.toString());
+            return;
+        }
 
+        ac.setData((AppData)params.obj);
+
+        Log.e(TAG, "AppData loaded, " + (isDelayEnded ? "startup animation ended,let's do redirect." : "startup animation running..."));
+
+        if(isDelayEnded){
+            redirectTo();
+        }
     }
 
     @Override
@@ -75,8 +124,9 @@ public class SplashActivity extends BaseActivity {
         public void handleMessage(Message msg) {
             switch(msg.what){
                 case SWITCH_MAINACTIVITY:
+
                     Intent mIntent = new Intent();
-                    mIntent.setClass(SplashActivity.this, AppStart.class);
+                    mIntent.setClass(SplashActivity.this, MainActivity.class);
                     SplashActivity.this.startActivity(mIntent);
                     AppManager.getAppManager().finishActivity();
                     break;
@@ -90,6 +140,8 @@ public class SplashActivity extends BaseActivity {
             super.handleMessage(msg);
         }
     };
+
+
 
     /**
      * 根据不同的模式，建议设置的开关状态，可根据实际情况调整，仅供参考。
@@ -135,5 +187,17 @@ public class SplashActivity extends BaseActivity {
             // 选择默认的上报策略
             StatConfig.setStatSendStrategy(StatReportStrategy.APP_LAUNCH);
         }
+    }
+
+    /**
+     * 跳转到主页
+     */
+    private void redirectTo(){
+        if(isRedirecting) return;
+        isRedirecting = true;
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        AppManager.getAppManager().finishActivity(this);
+
     }
 }

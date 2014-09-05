@@ -35,9 +35,6 @@ public class AppStart extends Activity  implements IUpdatableUI {
     boolean isRedirecting;
     boolean isDelayEnded;
 
-    LinearLayout mLoadingWrap;
-    TextView mLoadingTip;
-    ProgressBar mProgress;
 
     @Override
     public void init(){
@@ -46,51 +43,13 @@ public class AppStart extends Activity  implements IUpdatableUI {
 
     @Override
     public void refresh(int flag,Message params){
-        Bundle data = params.getData();
-        int errCode = params.arg2;
-        if(errCode!=0){
-            mProgress.setVisibility(View.GONE);
-            mLoadingTip.setText(params.obj.toString());
-            return;
-        }
 
-        ac.setData((AppData)params.obj);
-
-        Log.e(TAG,"AppData loaded, "+(isDelayEnded?"startup animation ended,let's do redirect.":"startup animation running..."));
-
-        if(isDelayEnded){
-            redirectTo();
-        }
 
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // 添加Activity到堆栈
-        AppManager.getAppManager().addActivity(this);
-
-        ac = AppContext.Instance;
-
-        // 初始化登录
-        OpenQQHelper.attachTo(this);
-        ac.initLoginInfo();
-
-        //初始化微信助手
-        WeixinHelper.attachTo(this);
-       
-        final View view = View.inflate(this, R.layout.start, null);
-        RelativeLayout wellcome = (RelativeLayout) view.findViewById(R.id.app_start_view);
-        mLoadingWrap = (LinearLayout) view.findViewById(R.id.app_start_loadingtxt);
-        mLoadingWrap.setVisibility(View.VISIBLE);
-        mLoadingTip = (TextView) view.findViewById(R.id.txt_appstart_tip);
-        mProgress = (ProgressBar) view.findViewById(R.id.news_detail_head_progress);
-
-
-        UIHelper.checkWelcomeBG(this,wellcome);
-
-        setContentView(view);
         
         //延迟展示启动屏
         new Handler().postDelayed(new Runnable() {
@@ -124,18 +83,5 @@ public class AppStart extends Activity  implements IUpdatableUI {
         DataService.execute(this, data);
 
     }
-    
-    /**
-     * 跳转到...
-     */
-    private void redirectTo(){
-        if(isRedirecting) return;
-        isRedirecting = true;
-        Intent intent = new Intent(this, MainActivity.class);
-        //Intent intent = new Intent(this, Main.class);
-        startActivity(intent);
 
-        AppManager.getAppManager().finishActivity(this);
-
-    }
 }

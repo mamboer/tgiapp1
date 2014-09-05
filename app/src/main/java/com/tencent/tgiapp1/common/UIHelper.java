@@ -1269,8 +1269,7 @@ public class UIHelper {
                         i.setType("message/rfc822"); // 真机
                         i.putExtra(Intent.EXTRA_EMAIL,
                                 new String[] { "badstyle@qq.com" });
-                        i.putExtra(Intent.EXTRA_SUBJECT,
-                                "赤壁乱舞客户端 - 错误报告");
+                        i.putExtra(Intent.EXTRA_SUBJECT,cont.getString(R.string.app_name)+" - 错误报告");
                         i.putExtra(Intent.EXTRA_TEXT, crashReport);
                         cont.startActivity(Intent.createChooser(i, "发送错误报告"));
                         // 退出
