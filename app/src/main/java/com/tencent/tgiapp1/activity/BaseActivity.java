@@ -61,9 +61,15 @@ public abstract class BaseActivity extends RoboActivity implements IUpdatableUI 
     protected  void onResume(){
         super.onResume();
         //activity initialization
-        init();
+        //init();
         //页面开始-MTA
         StatService.onResume(this);
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        init();
     }
 
     @Override

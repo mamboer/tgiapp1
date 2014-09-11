@@ -3,10 +3,12 @@ package com.tencent.tgiapp1.ui;
 import com.sina.weibo.sdk.api.share.BaseResponse;
 import com.sina.weibo.sdk.api.share.IWeiboHandler;
 import com.sina.weibo.sdk.constant.WBConstants;
+import com.tencent.stat.StatService;
 import com.tencent.tgiapp1.AppConfig;
 import com.tencent.tgiapp1.AppContext;
 import com.tencent.tgiapp1.AppDataProvider;
 import com.tencent.tgiapp1.AppException;
+import com.tencent.tgiapp1.AppManager;
 import com.tencent.tgiapp1.R;
 import com.tencent.tgiapp1.activity.BaseActivity;
 import com.tencent.tgiapp1.bean.CommentList;
@@ -40,6 +42,8 @@ import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
+
+import java.util.Properties;
 
 import in.xsin.common.MTAHelper;
 import in.xsin.weibo.Helper;
@@ -113,6 +117,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
     private boolean allowFullscreen = true;
 
     private PopupWindow pwShareMenu;
+    private int webviewHisCounter = 0;
 
     @Override
     public void init(){
@@ -226,6 +231,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
 
                 if(!appContext.isNetworkConnected() && url.indexOf("file://")!=0){
                     view.loadUrl(AppDataProvider.URL.FILE_404);
+                    webviewHisCounter = 0;
                     return true;
                 }
 
@@ -238,6 +244,9 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
                 }
 
                 view.loadUrl(url);
+
+                webviewHisCounter++;
+
                 /*
                 Give the host application a chance to take over the control when a new url is about to be loaded in the current WebView.
                 If WebViewClient is not provided, by default WebView will ask Activity Manager to choose the proper handler for the url.
@@ -303,14 +312,7 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
                     AppData appData = appContext.getData();
 
                     // 是否收藏
-                    /*
-                    if (newsDetail.getFavorite() == 1)
-                        mFavorite
-                                .setImageResource(R.drawable.fbar_favon_bg);
-                    else
-                        mFavorite
-                                .setImageResource(R.drawable.fbar_fav_bg);
-                    */
+
                     if(appData.hasFavItem(newsDetail.getMd5())){
                         mFavorite
                                 .setImageResource(R.drawable.fbar_favon_bg);
@@ -327,73 +329,6 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
                         mReminder
                                 .setImageResource(R.drawable.fbar_clock_bg1);
                     }
-
-                    // 显示评论数
-                    /*
-                    if (newsDetail.getCommentCount() > 0) {
-                        bv_comment.setText(newsDetail.getCommentCount() + "");
-                        bv_comment.show();
-                    } else {
-                        bv_comment.setText("");
-                        bv_comment.hide();
-                    }
-                    */
-                    /*
-                    String body = UIHelper.WEB_STYLE + newsDetail.getBody();
-                    // 读取用户设置：是否加载文章图片--默认有wifi下始终加载图片
-                    boolean isLoadImage;
-                    AppContext ac = (AppContext) getApplication();
-                    if (AppContext.NETTYPE_WIFI == ac.getNetworkType()) {
-                        isLoadImage = true;
-                    } else {
-                        isLoadImage = ac.isLoadImage();
-                    }
-                    if (isLoadImage) {
-                        // 过滤掉 img标签的width,height属性
-                        body = body.replaceAll(
-                                "(<img[^>]*?)\\s+width\\s*=\\s*\\S+", "$1");
-                        body = body.replaceAll(
-                                "(<img[^>]*?)\\s+height\\s*=\\s*\\S+", "$1");
-
-                        // 添加点击图片放大支持
-                        body = body.replaceAll("(<img[^>]+src=\")(\\S+)\"",
-                                "$1$2\" onClick=\"javascript:mWebViewImageListener.onImageClick('$2')\"");
-
-                    } else {
-                        // 过滤掉 img标签
-                        body = body.replaceAll("<\\s*img\\s+([^>]*)\\s*>", "");
-                    }
-
-                    // 更多关于***软件的信息
-                    String softwareName = newsDetail.getSoftwareName();
-                    String softwareLink = newsDetail.getSoftwareLink();
-                    if (!StringUtils.isEmpty(softwareName)
-                            && !StringUtils.isEmpty(softwareLink))
-                        body += String
-                                .format("<div id='tencent_software' style='margin-top:8px;color:#FF0000;font-weight:bold'>更多关于:&nbsp;<a href='%s'>%s</a>&nbsp;的详细信息</div>",
-                                        softwareLink, softwareName);
-
-                    // 相关新闻
-                    if (newsDetail.getRelatives().size() > 0) {
-                        String strRelative = "";
-                        for (Relative relative : newsDetail.getRelatives()) {
-                            strRelative += String
-                                    .format("<a href='%s' style='text-decoration:none'>%s</a><p/>",
-                                            relative.url, relative.title);
-                        }
-                        body += String.format(
-                                "<p/><hr/><b>相关资讯</b><div><p/>%s</div>",
-                                strRelative);
-                    }
-
-                    body += "<div style='margin-bottom: 80px'/>";
-
-                    System.out.println(body);
-
-                    mWebView.loadDataWithBaseURL(null, body, "text/html",
-                            "utf-8", null);
-                    mWebView.setWebViewClient(UIHelper.getWebViewClient());
-                    */
 
                     mWebView.loadUrl(newsDetail.getUrl());
 
@@ -419,32 +354,6 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
         msg.what = 1;
         msg.obj = null;
         mHandler.sendMessage(msg);
-        /*
-
-        new Thread() {
-            public void run() {
-                Message msg = new Message();
-
-                try {
-                    newsDetail = ((AppContext) getApplication()).getNews(
-                            news_id, isRefresh);
-                    msg.what = (newsDetail != null && newsDetail.getId() > 0) ? 1
-                            : 0;
-                    msg.obj = (newsDetail != null) ? newsDetail.getNotice()
-                            : null;// 通知信息
-
-                } catch (AppException e) {
-                    e.printStackTrace();
-                    msg.what = -1;
-                    msg.obj = e;
-                }
-
-                msg.what = 1;
-                msg.obj = null;
-                mHandler.sendMessage(msg);
-            }
-        }.start();
-        */
     }
 
     /**
@@ -654,108 +563,8 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
             item.setCover(newsDetail.getFace());
 
             AppDataProvider.toggleFavArticle(appContext, item, _uid, onDataGot);
-
-            /*
-            if (newsId == 0 || newsDetail == null) {
-                return;
-            }
-
-            final AppContext ac = (AppContext) getApplication();
-            if (!ac.isLogin()) {
-                //UIHelper.showLoginDialog(NewsDetail.this);
-                UIHelper.showLoginPage(NewsDetail.this);
-                return;
-            }
-            final long uid = ac.getLoginUid();
-
-            final Handler handler = new Handler() {
-                public void handleMessage(Message msg) {
-                    if (msg.what == 1) {
-                        Result res = (Result) msg.obj;
-                        if (res.OK()) {
-                            if (newsDetail.getFavorite() == 1) {
-                                newsDetail.setFavorite(0);
-                                mFavorite
-                                        .setImageResource(R.drawable.widget_bar_favorite);
-                            } else {
-                                newsDetail.setFavorite(1);
-                                mFavorite
-                                        .setImageResource(R.drawable.widget_bar_favorite2);
-                            }
-                            // 重新保存缓存
-                            ac.saveObject(newsDetail, newsDetail.getCacheKey());
-                        }
-                        UIHelper.ToastMessage(NewsDetail.this,
-                                res.getErrorMessage());
-                    } else {
-                        ((AppException) msg.obj).makeToast(NewsDetail.this);
-                    }
-                }
-            };
-            new Thread() {
-                public void run() {
-                    Message msg = new Message();
-                    Result res = null;
-                    try {
-                        if (newsDetail.getFavorite() == 1) {
-                            res = ac.delFavorite(uid, newsId,
-                                    FavoriteList.TYPE_NEWS);
-                        } else {
-                            res = ac.addFavorite(uid, newsId,
-                                    FavoriteList.TYPE_NEWS);
-                        }
-                        msg.what = 1;
-                        msg.obj = res;
-                    } catch (AppException e) {
-                        e.printStackTrace();
-                        msg.what = -1;
-                        msg.obj = e;
-                    }
-                    handler.sendMessage(msg);
-                }
-            }.start();
-            */
         }
     };
-
-    /**
-     * 线程加载评论数据
-     *
-     * @param id
-     *            当前文章id
-     * @param catalog
-     *            分类
-     * @param pageIndex
-     *            当前页数
-     * @param handler
-     *            处理器
-     * @param action
-     *            动作标识
-     */
-    private void loadLvCommentData(final int id, final int catalog,
-            final int pageIndex, final Handler handler, final int action) {
-        new Thread() {
-            public void run() {
-                Message msg = new Message();
-                boolean isRefresh = false;
-                if (action == UIHelper.LISTVIEW_ACTION_REFRESH
-                        || action == UIHelper.LISTVIEW_ACTION_SCROLL)
-                    isRefresh = true;
-                try {
-                    CommentList commentlist = ((AppContext) getApplication())
-                            .getCommentList(catalog, id, pageIndex, isRefresh);
-                    msg.what = commentlist.getPageSize();
-                    msg.obj = commentlist;
-                } catch (AppException e) {
-                    e.printStackTrace();
-                    msg.what = -1;
-                    msg.obj = e;
-                }
-                msg.arg1 = action;// 告知handler当前action
-                handler.sendMessage(msg);
-            }
-        }.start();
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -848,6 +657,18 @@ public class NewsDetail extends BaseActivity implements IWeiboHandler.Response  
                 UIHelper.ToastMessage(NewsDetail.this,getString(R.string.Weibo_Share_Error)+":"+baseResp.errMsg);
                 break;
         }
+    }
+
+    public void navBack(View paramView) {
+
+        if(webviewHisCounter>0 && mWebView.canGoBack()){
+            mWebView.goBack();
+            webviewHisCounter--;
+            return;
+        }
+
+        //mta统计－后退按钮
+        back(paramView);
     }
 
 }

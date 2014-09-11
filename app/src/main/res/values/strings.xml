@@ -68,6 +68,8 @@
     <string name="com_txt_search">搜索</string>
     <string name="com_txt_about">关于</string>
     <string name="com_txt_loading">加载中...</string>
+    <string name="com_txt_updatechecking">检查更新...</string>
+    <string name="com_txt_dataloading">加载数据...</string>
     <string name="capture_head_title">扫一扫</string>
     <string name="msg_camera_framework_bug">抱歉，Android相机出现问题。您可能需要重启设备。</string>
     <string name="lbl_ok">确认</string>

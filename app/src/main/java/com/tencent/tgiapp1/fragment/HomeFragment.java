@@ -215,6 +215,11 @@ public class HomeFragment extends FragmentBase {
         mPullListView.onPullDownRefreshComplete();
         //mPullListView.onPullUpRefreshComplete();
 
+        int errCode = msg.arg2;
+        if(errCode!=0){
+            return;
+        }
+
         appContext.setData((AppData)msg.obj);
 
         AppData ad1 = appContext.getData();
@@ -273,6 +278,11 @@ public class HomeFragment extends FragmentBase {
 
         //mPullListView.onPullDownRefreshComplete();
         mPullListView.onPullUpRefreshComplete();
+
+        int errCode = msg.arg2;
+        if(errCode!=0){
+            return;
+        }
 
         AppData ad1 = appContext.getData();
 

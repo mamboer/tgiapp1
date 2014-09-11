@@ -73,14 +73,15 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
 
     @Override
     public void init(){
-
+        // 检查是否需要下载欢迎图片
+        this.checkBackGround();
     }
 
     @Override
     public void refresh(int flag,Message params){
         int errCode = params.arg2;
         Bundle data = params.getData();
-        if(errCode<0){
+        if(errCode!=0){
             UIHelper.ToastMessage(this,params.obj.toString(),Toast.LENGTH_LONG);
         }
 
@@ -146,12 +147,6 @@ public class MainActivity extends FragmentBaseActivity implements TabHost.OnTabC
     @Override
     protected void onResume(){
         super.onResume();
-        // 检查新版本
-        if (appContext.isCheckUp()) {
-            UpdateManager.getUpdateManager().checkAppUpdate(this, false);
-        }
-        // 检查是否需要下载欢迎图片
-        this.checkBackGround();
 
         // 是否信鸽消息点击进来
         XGPushClickedResult click =XGPushManager.onActivityStarted(this);

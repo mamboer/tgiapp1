@@ -8,12 +8,16 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.UUID;
 
 import com.tencent.tgiapp1.AppContext;
 import com.tencent.tgiapp1.AppException;
 import com.tencent.tgiapp1.R;
 import com.tencent.tgiapp1.api.ApiClient;
 import com.tencent.tgiapp1.bean.Update;
+import com.tencent.tgiapp1.service.CallbackManager;
+import com.tencent.tgiapp1.service.DataService;
+import com.tencent.tgiapp1.service.DataTask;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -27,6 +31,7 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
@@ -92,6 +97,8 @@ public class UpdateManager {
     private Update mUpdate;
 
     private Handler onDismissHandler;
+    private Handler onCheckedHandler;
+    private boolean isShowMsg;
     
     private Handler mHandler = new Handler(){
         public void handleMessage(Message msg) {
@@ -125,9 +132,11 @@ public class UpdateManager {
      * @param context
      * @param isShowMsg 是否显示提示消息
      */
-    public void checkAppUpdate(Context context, final boolean isShowMsg, final Handler onDismissHandler){
+    public void checkAppUpdate(Context context, final boolean isShowMsg, final Handler onDismissHandler, final Handler onCheckedHandler){
         this.mContext = context;
         this.onDismissHandler = onDismissHandler;
+        this.onCheckedHandler = onCheckedHandler;
+        this.isShowMsg = isShowMsg;
         getCurrentVersion();
         if(isShowMsg){
             if(mProDialog == null)
@@ -154,23 +163,27 @@ public class UpdateManager {
                             apkUrl = mUpdate.getDownloadUrl();
                             updateMsg = mUpdate.getUpdateLog();
                             showNoticeDialog();
-                        }else if(isShowMsg){
-                            showLatestOrFailDialog(DIALOG_TYPE_LATEST);
+                            return;
                         }
+                        showLatestOrFailDialog(DIALOG_TYPE_LATEST);
+                        return;
                     }
-                }else if(isShowMsg){
                     showLatestOrFailDialog(DIALOG_TYPE_FAIL);
+                    return;
                 }
+
+                showLatestOrFailDialog(DIALOG_TYPE_FAIL);
+
             }
         };
         new Thread(){
             public void run() {
                 Message msg = new Message();
                 try {
-                    Update update = ApiClient.checkVersion((AppContext)mContext.getApplicationContext());
+                    Update update = getUpdateInfoSync();
                     msg.what = 1;
                     msg.obj = update;
-                } catch (AppException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 handler.sendMessage(msg);
@@ -179,9 +192,97 @@ public class UpdateManager {
     }
 
     /**
+     * 获取更新信息
+     * @return
+     * @throws Exception
+     */
+    public Update getUpdateInfoSync() throws Exception{
+        Update update = null;
+        try {
+            update = ApiClient.checkVersion((AppContext)mContext.getApplicationContext());
+        } catch (AppException e) {
+            e.printStackTrace();
+            throw  e;
+        }
+        return update;
+    }
+
+    /**
+     * 以DataService的方式检查App更新
+     * @param context
+     * @param isShowMsg 是否显示提示消息
+     */
+    public void checkAppUpdate1(Context context, final boolean isShowMsg, final Handler onDismissHandler, final Handler onCheckedHandler){
+        this.mContext = context;
+        this.onDismissHandler = onDismissHandler;
+        this.onCheckedHandler = onCheckedHandler;
+        this.isShowMsg = isShowMsg;
+        getCurrentVersion();
+        if(isShowMsg){
+            if(mProDialog == null)
+                mProDialog = ProgressDialog.show(mContext, null, "正在检测，请稍后...", true, true);
+            else if(mProDialog.isShowing() || (latestOrFailDialog!=null && latestOrFailDialog.isShowing()))
+                return;
+        }
+        final Handler handler = new Handler(){
+            public void handleMessage(Message msg) {
+                //进度条对话框不显示 - 检测结果也不显示
+                if(mProDialog != null && !mProDialog.isShowing()){
+                    return;
+                }
+                //关闭并释放释放进度条对话框
+                if(isShowMsg && mProDialog != null){
+                    mProDialog.dismiss();
+                    mProDialog = null;
+                }
+
+                Bundle data = msg.getData();
+                int errCode = msg.arg2;
+                if(errCode!=0){
+                    showLatestOrFailDialog(DIALOG_TYPE_FAIL);
+                    return;
+                }
+
+                //显示检测结果
+                mUpdate = (Update)msg.obj;
+                if(mUpdate != null){
+                    if(curVersionCode < mUpdate.getVersionCode()){
+                        apkUrl = mUpdate.getDownloadUrl();
+                        updateMsg = mUpdate.getUpdateLog();
+                        showNoticeDialog();
+                        return;
+                    }
+                    showLatestOrFailDialog(DIALOG_TYPE_LATEST);
+                    return;
+                }
+                showLatestOrFailDialog(DIALOG_TYPE_FAIL);
+
+            }
+        };
+
+        Bundle data = new Bundle();
+        String taskUUID = UUID.randomUUID().toString();
+        data.putInt("taskId", DataTask.SN.CheckUpgrade);
+        data.putString("uuid",taskUUID);
+        CallbackManager.add(taskUUID, handler);
+        DataService.execute(context, data);
+
+    }
+
+
+    /**
      * 显示'已经是最新'或者'无法获取版本信息'对话框
      */
     private void showLatestOrFailDialog(int dialogType) {
+
+        if(!isShowMsg){
+            if(null!=onCheckedHandler){
+                onCheckedHandler.sendEmptyMessage(0);
+            }
+            return;
+        }
+
+
         if (latestOrFailDialog != null) {
             //关闭并释放之前的对话框
             latestOrFailDialog.dismiss();
@@ -194,7 +295,15 @@ public class UpdateManager {
         } else if (dialogType == DIALOG_TYPE_FAIL) {
             builder.setMessage("无法获取版本更新信息");
         }
-        builder.setPositiveButton("确定", null);
+        builder.setPositiveButton("确定", new OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                if(null!=onCheckedHandler){
+                    onCheckedHandler.sendEmptyMessage(0);
+                }
+            }
+        });
         latestOrFailDialog = builder.create();
         latestOrFailDialog.show();
     }
@@ -230,6 +339,11 @@ public class UpdateManager {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+
+                if(null!=onDismissHandler){
+                    onDismissHandler.sendEmptyMessage(0);
+                }
+
             }
         });
         noticeDialog = builder.create();
@@ -254,6 +368,9 @@ public class UpdateManager {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 interceptFlag = true;
+                if(null!=onDismissHandler){
+                    onDismissHandler.sendEmptyMessage(1);
+                }
             }
         });
         builder.setOnCancelListener(new OnCancelListener() {
@@ -261,6 +378,9 @@ public class UpdateManager {
             public void onCancel(DialogInterface dialog) {
                 dialog.dismiss();
                 interceptFlag = true;
+                if(null!=onDismissHandler){
+                    onDismissHandler.sendEmptyMessage(1);
+                }
             }
         });
         downloadDialog = builder.create();

@@ -14,15 +14,21 @@ import android.widget.TextView;
 
 import com.tencent.tgiapp1.AppContext;
 import com.tencent.tgiapp1.AppManager;
-import com.tencent.tgiapp1.AppStart;
 import com.tencent.tgiapp1.BuildConfig;
 import com.tencent.tgiapp1.R;
 import com.tencent.tgiapp1.common.OpenQQHelper;
+import com.tencent.tgiapp1.common.StringUtils;
 import com.tencent.tgiapp1.common.UIHelper;
 import com.tencent.stat.StatConfig;
 import com.tencent.stat.StatReportStrategy;
+import com.tencent.tgiapp1.common.UpdateManager;
 import com.tencent.tgiapp1.common.WeixinHelper;
 import com.tencent.tgiapp1.entity.AppData;
+import com.tencent.tgiapp1.service.CallbackManager;
+import com.tencent.tgiapp1.service.DataService;
+import com.tencent.tgiapp1.service.DataTask;
+
+import java.util.UUID;
 
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
@@ -76,33 +82,40 @@ public class SplashActivity extends BaseActivity {
         //更换背景图
         UIHelper.checkWelcomeBG(this, wellcome);
 
+        //cookie处理
+        initCookie();
 
-        boolean mFirst = isFirstEnter(SplashActivity.this,TAG);//SplashActivity.this.getClass().getName()
-        int duration = res.getInteger(R.integer.splash_duration);
-        if(mFirst)
-            mHandler.sendEmptyMessageDelayed(SWITCH_GUIDACTIVITY,duration);
-        else
-            mHandler.sendEmptyMessageDelayed(SWITCH_MAINACTIVITY,duration);
+        //检查更新
+        initAutoUpdate();
+
     }
 
     @Override
     public void refresh(int flag,Message params){
-        Bundle data = params.getData();
-        int errCode = params.arg2;
-        if(errCode!=0){
-            mProgress.setVisibility(View.GONE);
-            mLoadingTip.setText(params.obj.toString());
-            return;
-        }
-
-        ac.setData((AppData)params.obj);
-
-        Log.e(TAG, "AppData loaded, " + (isDelayEnded ? "startup animation ended,let's do redirect." : "startup animation running..."));
-
-        if(isDelayEnded){
-            redirectTo();
-        }
+        //Note:不能直接用onRefreshHandler里handleMessage方法中的代码，否则会报CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.
+        onRefreshHandler.sendMessage(params);
     }
+
+    private Handler onRefreshHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            Bundle data = msg.getData();
+            int errCode = msg.arg2;
+            if(errCode!=0){
+                mProgress.setVisibility(View.GONE);
+                mLoadingTip.setText(msg.obj.toString());
+                return;
+            }
+
+            ac.setData((AppData)msg.obj);
+
+            Log.e(TAG, "AppData loaded, " + (isDelayEnded ? "startup animation ended,let's do redirect." : "startup animation running..."));
+
+            if(isDelayEnded){
+                redirectTo();
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -195,9 +208,77 @@ public class SplashActivity extends BaseActivity {
     private void redirectTo(){
         if(isRedirecting) return;
         isRedirecting = true;
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        AppManager.getAppManager().finishActivity(this);
+
+        boolean mFirst = isFirstEnter(SplashActivity.this,TAG);//SplashActivity.this.getClass().getName()
+        if(mFirst)
+            mHandler.sendEmptyMessage(SWITCH_GUIDACTIVITY);
+        else
+            mHandler.sendEmptyMessage(SWITCH_MAINACTIVITY);
 
     }
+
+    private void initCookie(){
+        //兼容低版本cookie（1.5版本以下，包括1.5.0,1.5.1）
+        String cookie = ac.getProperty("cookie");
+        if(StringUtils.isEmpty(cookie)) {
+            String cookie_name = ac.getProperty("cookie_name");
+            String cookie_value = ac.getProperty("cookie_value");
+            if(!StringUtils.isEmpty(cookie_name) && !StringUtils.isEmpty(cookie_value)) {
+                cookie = cookie_name + "=" + cookie_value;
+                ac.setProperty("cookie", cookie);
+                ac.removeProperty("cookie_domain","cookie_name","cookie_value","cookie_version","cookie_path");
+            }
+        }
+    }
+
+    private void initAutoUpdate(){
+        // 检查新版本
+        if (!appContext.isCheckUp()) {
+            onAppUpdateCanceledHandler.sendEmptyMessage(0);
+            return;
+        }
+        mLoadingTip.setText(R.string.com_txt_updatechecking);
+        UpdateManager.getUpdateManager().checkAppUpdate1(this, false, onAppUpdateCanceledHandler, onAppUpdateCanceledHandler);
+    }
+
+    private Handler onAppDataInitedHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+
+            Log.e(TAG,"CallbackManager测试：onAppDataInitedHandler");
+        }
+    };
+
+    private Handler onAppUpdateCanceledHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+
+            //更新已被取消，我们走正常的加载流程
+            //延迟展示启动屏
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    isDelayEnded = true;
+                    if(ac.getData()!=null){
+                        Log.e(TAG,"AppData loaded and startup animation ended, preparing redirecting...");
+                        redirectTo();
+                    }
+                }
+            },res.getInteger(R.integer.splash_duration));
+
+
+            mLoadingTip.setText(R.string.com_txt_dataloading);
+
+            //启动数据服务
+            Bundle data = new Bundle();
+            String taskUUID = UUID.randomUUID().toString();
+            data.putInt("taskId", DataTask.SN.INIT);
+            data.putString("activity", "SplashActivity");
+            data.putString("uuid",taskUUID);
+            CallbackManager.add(taskUUID,onAppDataInitedHandler);
+            DataService.execute(SplashActivity.this, data);
+
+        }
+    };
+
 }

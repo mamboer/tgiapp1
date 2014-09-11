@@ -179,7 +179,7 @@ public class Setting extends BaseActivity {
 
     public void onClickCheckVersion(View v){
         MTAHelper.trackClick(Setting.this, TAG, "onClickCheckVersion");
-        UpdateManager.getUpdateManager().checkAppUpdate(Setting.this,true);
+        UpdateManager.getUpdateManager().checkAppUpdate(Setting.this,true,null,null);
     }
 
     public void onClickAbout(View v){

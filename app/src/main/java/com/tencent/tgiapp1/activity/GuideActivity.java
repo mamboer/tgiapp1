@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.tencent.tgiapp1.AppStart;
 import com.tencent.tgiapp1.R;
 
 import in.xsin.common.MTAHelper;
@@ -110,7 +109,7 @@ public class GuideActivity extends BaseActivity {
 
         //跳转
         Intent mIntent = new Intent();
-        mIntent.setClass(GuideActivity.this, AppStart.class);
+        mIntent.setClass(GuideActivity.this, MainActivity.class);
         GuideActivity.this.startActivity(mIntent);
         GuideActivity.this.finish();
     }

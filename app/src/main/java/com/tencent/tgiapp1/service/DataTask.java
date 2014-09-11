@@ -24,7 +24,7 @@ import java.util.HashMap;
 public class DataTask {
 
     private final static String TAG = DataTask.class.getName();
-    private final static HashMap<String,Handler> callbacks = new HashMap<String, Handler>();
+
 
     private final static Handler taskHandler = new Handler(){
         @Override
@@ -35,38 +35,15 @@ public class DataTask {
     };
 
     /**
-     * 添加一个回调
-     * @param key
-     * @param cbk
-     */
-    public static void addCallback(String key,Handler cbk){
-        callbacks.put(key,cbk);
-    }
-
-    /**
-     * 移除某个回调函数
-     * @param key
-     */
-    public static void removeCallback(String key){
-        callbacks.remove(key);
-    }
-
-
-    /**
      * 执行指定的任务
      * @param params
      */
-    public static void run(Message params,Handler... cbk){
+    public static void run(Message params){
 
         int taskId = params.what;
         int serviceId = params.arg1;
         Bundle data = params.getData();
         String uuid = data.getString("uuid");
-
-        if(!StringUtils.isEmpty(uuid) && null!=cbk && cbk.length==1){
-            data.putBoolean("hasCallback",true);
-            addCallback(uuid,cbk[0]);
-        }
 
         //errCode
         params.arg2 = 0;
@@ -132,6 +109,9 @@ public class DataTask {
                 case SN.DownloadWellcomeImage:
                     ApiClient.checkBackGround(AppContext.Instance);
                     break;
+                case SN.CheckUpgrade:
+
+                    break;
             }
 
         } catch (Exception e) {
@@ -144,7 +124,8 @@ public class DataTask {
         msg.copyFrom(params);
 
         //不能直接用done方法么？
-        taskHandler.sendMessage(msg);
+        //taskHandler.sendMessage(msg);
+        done(msg);
     }
 
     /**
@@ -167,8 +148,9 @@ public class DataTask {
             ia.refresh(taskId,params);
         }
 
-        if(data.getBoolean("hasCallback")){
-            callbacks.get(data.getString("uuid")).sendMessage(params);
+        String uuid = data.getString("uuid");
+        if(!StringUtils.isEmpty(uuid)){
+            CallbackManager.run(uuid,params);
         }
 
     }
@@ -217,6 +199,12 @@ public class DataTask {
          * 下载欢迎图片
          */
         public static final int DownloadWellcomeImage = 9;
+
+        /**
+         * 检查更新
+         */
+        public static final int CheckUpgrade = 10;
+
         /**
          * 初始化
          */

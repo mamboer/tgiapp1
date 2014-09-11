@@ -15,7 +15,7 @@
             android:layout_height="fill_parent"
             android:layout_gravity="left|center"
             android:clickable="true"
-            android:onClick="back"
+            android:onClick="navBack"
             android:src="@drawable/ico_arrow_left"
             android:scaleType="center"
             android:minWidth="40dp"/>
