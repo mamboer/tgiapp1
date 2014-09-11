@@ -4,12 +4,12 @@
     <wp7>1.0</wp7>
     <ios>1.0.0</ios>
     <android>
-      <versionCode>34</versionCode>
-      <versionName>1.2.0</versionName>
+      <versionCode>35</versionCode>
+      <versionName>1.2.1</versionName>
       <downloadUrl>http://ossweb-img.qq.com/upload/apps/android/ttxd/app-release.apk</downloadUrl>
       <updateLog>
           <![CDATA[版本信息：
-天天炫斗官方宝典 Android v1.2.0.34
+天天炫斗官方宝典 Android v1.2.1.35
 版本更新日志：
 1.优化自动升级的逻辑。
 2.优化新闻详情页后退按钮的逻辑。
