@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="open_sdk-2.3.1">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/libs/open_sdk-2.3.1.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
